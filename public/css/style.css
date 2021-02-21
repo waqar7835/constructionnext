@@ -12848,5 +12848,9 @@ footer#page-footer .footer-area-top {
   content: "";
 }
 .shape-service-layout1 {
-  min-height: 209px;
+  min-height: 211px;
+}
+.main-menu-area.layout1.stick {
+  border-bottom: 2px solid #ff9800;
+  background: rgba(245, 124, 0, 0.8); 
 }

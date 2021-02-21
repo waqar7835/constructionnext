@@ -20,7 +20,7 @@ const Header = () => {
     <header>
       <div
         id="header-one"
-        className="bg-light light-border header header-layout1 header-fixed"
+        className="bg-light light-border header header-layout3 header-fixed"
       >
         <div className="header-top-area1 header-top-bar bg-grey">
           <div className="container">
