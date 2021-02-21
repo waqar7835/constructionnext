@@ -17,13 +17,13 @@ const Layout = (props) => {
         <Head>
           <link
             rel="shortcut icon"
-            href="iamges/favicon.png"
+            href="/iamges/favicon.png"
           />
-          <link rel="stylesheet" href={`css/bootstrap.min.css`} />
+          <link rel="stylesheet" href={`/css/bootstrap.min.css`} />
            
-          <link rel="stylesheet" href={`css/style.css`} />
-          <link rel="stylesheet" href={`css/icofont.css`} />
-          <link rel="stylesheet" href={`css/font-awesome.min.css`} />
+          <link rel="stylesheet" href={`/css/style.css`} />
+          <link rel="stylesheet" href={`/css/icofont.css`} />
+          <link rel="stylesheet" href={`/css/font-awesome.min.css`} />
      
        
         </Head>

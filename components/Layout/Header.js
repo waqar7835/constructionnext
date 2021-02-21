@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 const Header = () => {
   const dispatch = useDispatch();
   const [isSticky, setIsSticky] = useState(false);
-
+  const [topPosition, setTopPosition] = useState(0);
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     // dispatch(time({}));
@@ -13,11 +13,17 @@ const Header = () => {
   }, []);
 
   const handleScroll = useCallback(() => {
+    if(window.scrollY >= 122){
+      setTopPosition(window.scrollY * -1)
+    }
     setIsSticky(window.scrollY >= 112);
   }, []);
 
   return (
-    <header>
+    <header
+      style={{ top: topPosition }}
+      className={`${isSticky ? "header-sticky" : ""}`}
+    >
       <div
         id="header-one"
         className="bg-light light-border header header-layout1 header-fixed"
@@ -29,7 +35,7 @@ const Header = () => {
                 <div className="logo-area">
                   <a href="index.html">
                     <img
-                      src="images/logo.png"
+                      src="/images/logo.png"
                       alt="logo"
                       className="img-responsive"
                     />
@@ -72,11 +78,16 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className={`main-menu-area layout1 blue-bg ${isSticky ? "stick" : ""}`} id="sticker">
+        <div
+          className={`main-menu-area layout1 blue-bg ${
+            isSticky ? "stick" : ""
+          }`}
+          id="sticker"
+        >
           <div className="container">
             <div className="row d-md-flex">
               <div className="col-lg-8 col-md-9">
-                <nav id="dropdown"  >
+                <nav id="dropdown">
                   <ul className="text-left">
                     <li>
                       <a className="active" href="#">
@@ -199,7 +210,6 @@ const Header = () => {
                       className="search-input search-form"
                       placeholder="Search...."
                       required=""
-                       
                     />
                     <a href="#" id="search-button" className="search-button">
                       <i className="icofont icofont-search"></i>

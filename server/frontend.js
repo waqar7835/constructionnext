@@ -18,6 +18,28 @@ app.prepare().then(() => {
       ...req.query,
     });
   });
+  server.get("/contact", (req, res) => {
+    return app.render(req, res, "/contact", {
+      ...req.query,
+    });
+  });
+  server.get("/about", (req, res) => {
+    return app.render(req, res, "/about", {
+      ...req.query,
+    });
+  });
+  server.get("/inventory/search", (req, res) => {
+    return app.render(req, res, "/products", {
+      ...req.query,
+    });
+  });
+  server.get("/inventory/:title/:id", (req, res) => {
+    return app.render(req, res, "/products/detail", {
+      title: req.params.title,
+      id: req.params.id,
+      ...req.query,
+    });
+  });
   server.all("*", (req, res) => {
     return handle(req, res);
   });
