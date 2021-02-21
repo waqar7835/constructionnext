@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="col-lg-12">
               <div className="footer-one-col">
                 <div className="footer-logo">
-                  <img src="img/logo.png" alt="logo" />
+                  <img src="images/logo.png" alt="logo" />
                 </div>
                 <div className="footer-newslatter">
                   <h3 className="title-bar-footer">Newslatter</h3>

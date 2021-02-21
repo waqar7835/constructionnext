@@ -72,7 +72,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="main-menu-area" id="sticker">
+        <div className="main-menu-area layout1 blue-bg" id="sticker">
           <div className="container">
             <div className="row d-md-flex">
               <div className="col-lg-8 col-md-9">
