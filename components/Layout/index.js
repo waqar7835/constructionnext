@@ -17,7 +17,7 @@ const Layout = (props) => {
         <Head>
           <link
             rel="shortcut icon"
-            href="https://files.qatarliving.com/favicon.png"
+            href="iamges/favicon.png"
           />
           <link rel="stylesheet" href={`/bootstrap.min.css`} />
           <link rel="stylesheet" href={`/carousel.min.css`} />
@@ -25,6 +25,9 @@ const Layout = (props) => {
             rel="stylesheet"
             href={`/react-multi-carousel-styles.css`}
           />
+          <link rel="stylesheet" href={`css/style.css`} />
+          <link rel="stylesheet" href={`css/icofont.css`} />
+          <link rel="stylesheet" href={`css/font-awesome.min.css`} />
         </Head>
         <Header />
         {props.children}
