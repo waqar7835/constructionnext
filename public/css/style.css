@@ -12757,6 +12757,8 @@ footer#page-footer .footer-area-top {
 }
 .simplenews-subscriber-form  form .js-form-item-message {
   text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 .simplenews-subscriber-form  form .description {
   display: none;
@@ -12764,3 +12766,14 @@ footer#page-footer .footer-area-top {
 .simplenews-subscriber-form  form .form-actions {
   text-align: center;
 }
+#welcome-section-fluid {
+  padding-bottom: 35px;
+}
+@font-face{
+  font-family:'bicon';
+  font-weight:400;
+  font-style:normal;
+  src:url(font/bicon.eot?b8vo7z);src:url(font/bicon.eot?b8vo7z#iefix) format('embedded-opentype'),url(font/bicon.ttf?b8vo7z) format('truetype'),url(../fonts/bicon.woff?b8vo7z) format('woff'),url(font/bicon.svg?b8vo7z#bicon) format('svg')}.bi{font-family:'bicon'!important;font-weight:400;font-style:normal;font-variant:normal;line-height:1;text-transform:none;speak:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  .bi-location-pointer:before{content:''}
+  .bi-phone:before{content:''}
+  .bi-envelop:before{content:''}
