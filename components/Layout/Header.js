@@ -13,7 +13,7 @@ const Header = () => {
   }, []);
 
   const handleScroll = useCallback(() => {
-    setIsSticky(window.scrollY >= 105);
+    setIsSticky(window.scrollY >= 112);
   }, []);
 
   return (
@@ -72,7 +72,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        <div className="main-menu-area layout1 blue-bg" id="sticker">
+        <div className={`main-menu-area layout1 blue-bg ${isSticky ? "stick" : ""}`} id="sticker">
           <div className="container">
             <div className="row d-md-flex">
               <div className="col-lg-8 col-md-9">
