@@ -13,16 +13,11 @@ app.prepare().then(() => {
   server.get(/\.(jpg|png|svg|gif|css|jpeg|woff|woff2)$/, (req, res) => {
     return handle(req, res);
   });
-
-
   server.get("/", (req, res) => {
     return app.render(req, res, "/", {
       ...req.query,
     });
   });
-
-
-
   server.all("*", (req, res) => {
     return handle(req, res);
   });

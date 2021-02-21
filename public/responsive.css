@@ -1,0 +1,15 @@
+.nodes-in-carousel .carousel.carousel-slider {
+  height: 100%;
+}
+.nodes-in-carousel .carousel .slide {
+  background: #ffffff !important;
+}
+
+.nodes-in-carousel .dots {
+  background: #000;
+  opacity: 0.2;
+}
+
+.nodes-in-carousel > div:first-child {
+  height: 100%;
+}

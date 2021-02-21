@@ -5,7 +5,6 @@ import withRedux from "next-redux-wrapper";
 import { initStore } from "@store/configureStore";
 import Head from "next/head";
 import "antd/dist/antd.less";
-import "../styles/globals.css";
 
 class AppCon extends App {
   static async getInitialProps({ Component, _router, ctx }) {

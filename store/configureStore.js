@@ -1,11 +1,11 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import SearchReducer from "./reducers/search";
+
+import Lang from "./reducers/Lang";
 
 const reducers = combineReducers({
-  search: SearchReducer,
-
+  lang: Lang
 });
 
 export const initStore = (initialState = {}) => {

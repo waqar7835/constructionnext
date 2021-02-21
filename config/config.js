@@ -1,4 +1,5 @@
-export const baseURL = "http://demo.ajsoftsol.com";
+export const baseURL = '';
 export const baseHeaders = {
   "Content-Type": "application/hal+json",
 };
+
