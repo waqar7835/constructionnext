@@ -10,17 +10,36 @@ const Equipments = () => {
     dispatch(getEquipmentsData());
   }, []);
   return (
-    <div>
-      {equipmentsData.map((val, index) => (
-        <div key={index}>
-          <img
-            src={baseURL + val.image_uri}
-            alt="equipments"
-            title={`equipments-${index}`}
-          />
-          <h3>{val.name}</h3>
+    <div className="section-space-less30 bg-gray2 bg-common-style">
+      <div className="container">
+        <div className="section-title text-center">
+          <h2>
+            We Build <span>Your Dream</span>
+          </h2>
+          <p>
+            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+            consec tetur, adipisci velit, sed quia non numquam eius modi
+            tempora.
+          </p>
         </div>
-      ))}
+      </div>
+      <div className="container">
+        <div className="row">
+          {equipmentsData.map((val, index) => (
+            <div key={index} className="col-md-3 col-sm-6 col-xs-12">
+              <div className="shape-service-layout1">
+              <img
+                src={baseURL + val.image_uri}
+                alt={val.index}
+                title={val.name}
+              />
+              <h3>{val.name}</h3>
+              </div>
+             
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
