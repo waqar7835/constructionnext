@@ -2,10 +2,10 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import Lang from "./reducers/Lang";
+import slider from "./reducers/slider";
 
 const reducers = combineReducers({
-  lang: Lang
+  slider: slider
 });
 
 export const initStore = (initialState = {}) => {
