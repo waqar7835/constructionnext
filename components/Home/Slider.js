@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import getSliderData from "@store/actions//slider";
+import getSliderData from "@store/actions/slider";
 import { baseURL } from "@config/config";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";

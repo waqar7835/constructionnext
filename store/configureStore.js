@@ -3,9 +3,11 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import slider from "./reducers/slider";
+import equipments from "./reducers/equipments";
 
 const reducers = combineReducers({
-  slider: slider
+  slider,
+  equipments
 });
 
 export const initStore = (initialState = {}) => {
