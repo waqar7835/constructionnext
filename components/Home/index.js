@@ -7,7 +7,7 @@ const Index = () => {
       
       <Slider />
       <Welcome />
-      <Equipments />
+      <Equipments />    
     </div>
   );
 };
