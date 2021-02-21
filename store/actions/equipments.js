@@ -1,7 +1,7 @@
 import { GET_EQUIPMENTS_DATA } from "./type";
 import { baseURL } from "@config/config";
 
-export default () => (dispatch) => {
+const equipments = () => (dispatch) => {
   return new Promise(async (resolve) => {
     let targetURL = baseURL + "/api/equipments?_format=hal_json";
     try {
@@ -16,3 +16,4 @@ export default () => (dispatch) => {
     }
   });
 };
+export default equipments;

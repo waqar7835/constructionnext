@@ -4,10 +4,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import slider from "./reducers/slider";
 import equipments from "./reducers/equipments";
+import clients from './reducers/clients'
 
 const reducers = combineReducers({
   slider,
-  equipments
+  equipments,
+  clients
 });
 
 export const initStore = (initialState = {}) => {
