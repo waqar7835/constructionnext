@@ -56,12 +56,12 @@ Version: 1.0
 html,
 body {
   height: 100%;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif !important;
   line-height: 1.5;
   font-weight: 400;
   vertical-align: baseline;
-  color: #7d8f99;
-  font-size: 16px;
+  color: #7d8f99 !important;
+  font-size: 16px !important;
 }
 h1,
 h2,
@@ -4136,7 +4136,7 @@ ul.slider-btn li:last-child {
   display: inline-block;
   border-right: 1px solid #6e9fda;
   border-left: 1px solid #6e9fda;
-  float: right;
+ 
 }
 .header .top-bar-social-layout2 li {
   display: inline-block;
@@ -5324,7 +5324,7 @@ ul.slider-btn li:last-child {
   text-transform: uppercase;
   font-weight: 700;
   line-height: 1.0;
-  scolor: #ffffff;
+  color: #ffffff;
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .slide-3 .big-title,
@@ -5409,7 +5409,7 @@ ul.slider-btn li:last-child {
   text-transform: uppercase;
   font-weight: 700;
   line-height: 1.0;
-  scolor: #ffffff;
+  color: #ffffff;
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .slide-5 .big-title,
@@ -12742,4 +12742,25 @@ footer#page-footer .footer-area-top {
   bottom: -20px;
   z-index: 1;
   border-radius: 4px;
+}
+.simplenews-subscriber-form form .field--name-mail .custom-email input[type="email"] {
+  background: #ffffff;
+  height: 57px;
+  border: 0;
+  box-shadow: none;
+  font-size: 16px;
+  width: 450px;
+  margin: 0 auto;
+}
+.simplenews-subscriber-form form .field--name-mail .custom-email label {
+  display: none;
+}
+.simplenews-subscriber-form  form .js-form-item-message {
+  text-align: center;
+}
+.simplenews-subscriber-form  form .description {
+  display: none;
+}
+.simplenews-subscriber-form  form .form-actions {
+  text-align: center;
 }
