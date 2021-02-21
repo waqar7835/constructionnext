@@ -17,14 +17,17 @@ const Layout = (props) => {
         <Head>
           <link
             rel="shortcut icon"
-            href="https://files.qatarliving.com/favicon.png"
+            href="iamges/favicon.png"
           />
-          <link rel="stylesheet" href={`/bootstrap.min.css`} />
-          <link rel="stylesheet" href={`/carousel.min.css`} />
-          <link
-            rel="stylesheet"
-            href={`/react-multi-carousel-styles.css`}
-          />
+          <link rel="stylesheet" href={`css/bootstrap.min.css`} />
+           
+          <link rel="stylesheet" href={`css/style.css`} />
+          <link rel="stylesheet" href={`css/icofont.css`} />
+          <link rel="stylesheet" href={`css/font-awesome.min.css`} />
+          <link rel="stylesheet" href={`slider/css/nivo-slider.css`} />
+          <link rel="stylesheet" href={`slider/css/preview.css`}/>
+          <script src="slider/js/jquery.nivo.slider.js"></script>
+          <script src="slider/home.js"></script>
         </Head>
         <Header />
         {props.children}
