@@ -4136,7 +4136,7 @@ ul.slider-btn li:last-child {
   display: inline-block;
   border-right: 1px solid #6e9fda;
   border-left: 1px solid #6e9fda;
-  float: right;
+ 
 }
 .header .top-bar-social-layout2 li {
   display: inline-block;
@@ -5324,7 +5324,7 @@ ul.slider-btn li:last-child {
   text-transform: uppercase;
   font-weight: 700;
   line-height: 1.0;
-  scolor: #ffffff;
+  color: #ffffff;
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .slide-3 .big-title,
@@ -5409,7 +5409,7 @@ ul.slider-btn li:last-child {
   text-transform: uppercase;
   font-weight: 700;
   line-height: 1.0;
-  scolor: #ffffff;
+  color: #ffffff;
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .slide-5 .big-title,
