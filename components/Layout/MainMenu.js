@@ -1,6 +1,9 @@
 import { Navbar, Nav } from "react-bootstrap";
 const MainMenu = () => {
   return (
+    <div className="headermenu">
+
+    
     <Navbar collapseOnSelect>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -14,6 +17,7 @@ const MainMenu = () => {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
+    </div>
   );
 };
 
