@@ -112,9 +112,9 @@ const Filters = () => {
             <Collapse defaultActiveKey={['5']} onChange={callback}>
             <Panel header="Listing Type" key="5">
             <fieldset  id="edit-country--wrapper" className="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
-                <legend>
+                {/* <legend>
                    <span className="fieldset-legend">Listing Type </span>
-                </legend>
+                </legend> */}
                 <div className="fieldset-wrapper">
                    <div id="edit-country" className="form-checkboxes">
                        <div className="form-checkboxes bef-nested">        
@@ -133,9 +133,9 @@ const Filters = () => {
             </Panel>
             <Panel header="Condition" key="6">
             <fieldset  id="edit-country--wrapper" className="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
-                <legend>
+                {/* <legend>
                    <span className="fieldset-legend">Condition </span>
-                </legend>
+                </legend> */}
                 <div className="fieldset-wrapper">
                    <div id="edit-country" className="form-checkboxes">
                        <div className="form-checkboxes bef-nested">        
