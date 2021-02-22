@@ -111,7 +111,7 @@ const Header = () => {
                   </form>
                 </div>
               </div>
-              <div className="col-lg-2 col-md-1">
+              <div className="col-lg-2 col-md-1 get-quote">
                   <a href="#" title="quote" class="btn quote-btn-grey">Get A quote</a>
               </div>
             </div>

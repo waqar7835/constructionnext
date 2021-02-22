@@ -1,4 +1,7 @@
 import Equipments from "@components/Common/Equipments";
+import { baseURL } from "@config/config";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 const Main = () => {
   return (
@@ -8,7 +11,40 @@ const Main = () => {
         <Equipments />
         <div className="container">
           <div className="row">
-            <div class="col-lg-8 col-md-8">Slider section</div>
+            <div className="col-lg-8 col-md-8">
+            <Carousel  infiniteLoop={true}>
+              {/* {sliderData.map((val, index) => ( */}
+                <div  >
+                  <img
+                    src='/images/653gaZ_3.jpg'
+                    alt="slider"
+                    title={`#slider-direction`}
+                  />
+                </div>
+                <div  >
+                  <img
+                    src='/images/653gaZ_3.jpg'
+                    alt="slider"
+                    title={`#slider-direction`}
+                  />
+                </div>
+                <div  >
+                  <img
+                    src='/images/653gaZ_3.jpg'
+                    alt="slider"
+                    title={`#slider-direction`}
+                  />
+                </div>
+                <div  >
+                  <img
+                    src='/images/653gaZ_3.jpg'
+                    alt="slider"
+                    title={`#slider-direction`}
+                  />
+                </div> 
+              {/* ))} */}
+            </Carousel>
+            </div>
             {/* product right side start  */}
             <div className="col-lg-4 col-md-4">
               <div className="project-info-layout1 shadow-equal">
