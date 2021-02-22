@@ -11,31 +11,53 @@ const HappyClients = () => {
     dispatch(getClients());
   }, []);
   return (
-    <div>
-      {clients.map((val, index) => (
-        <div class="feedback-review-layout1 shadow-equal2" key={index}>
-          <div class="media">
-            <div class="media-left">
-              <div class="media-object">
-                <img
-                  src={baseURL + val.image_uri}
-                  width="80"
-                  height="80"
-                  alt=""
-                  loading="lazy"
-                />
-              </div>
-            </div>
-            <div class="media-body">
-              <h3 class="media-heading">
-                <a>{val.title}</a>
-              </h3>
-              <div class="description"> {ReactHtmlParser(val.body)}</div>
-              <span>{val.designation}</span>
+    <div className="section-space-default bg-common-style">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="section-title text-center">
+              <h2>
+                Happy Clients <span>Feedback</span>
+              </h2>
+              <p>
+                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                consec tetur, adipisci velit, sed quia non numquam eius modi
+                tempora
+              </p>
             </div>
           </div>
         </div>
-      ))}
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="g-feedback">
+            {clients.map((val, index) => (
+              <div className="feedback-review-layout1 shadow-equal2" key={index}>
+                <div className="media">
+                  <div className="media-left">
+                    <div className="media-object">
+                      <img
+                        src={baseURL + val.image_uri}
+                        width="80"
+                        height="80"
+                        alt=""
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                  <div className="media-body">
+                    <h3 className="media-heading">
+                      <a>{val.title}</a>
+                    </h3>
+                    <div className="description"> {ReactHtmlParser(val.body)}</div>
+                    <span>{val.designation}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
