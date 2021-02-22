@@ -1,4 +1,4 @@
-import Equipments from '../Home/Equipments';
+import Equipments from '@components/Common/Equipments';
 import List from './List';
 import Filters from './Filters';
 import EmailBlock from './Email_Block';

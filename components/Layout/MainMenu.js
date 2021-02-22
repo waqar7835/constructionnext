@@ -12,7 +12,7 @@ const MainMenu = () => {
           <Nav.Link href="#pricing">Pricing</Nav.Link>
           <Nav.Link href="#pricing">Services</Nav.Link>
           <Nav.Link href="#pricing">About</Nav.Link>
-          <Nav.Link href="#pricing">Contact</Nav.Link>
+          <Nav.Link href="/contact">Contact</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
