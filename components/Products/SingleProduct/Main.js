@@ -8,6 +8,17 @@ const Main = ({ content }) => {
   return (
     <>
       <div id="header-area-space"></div>
+      <section className="bg-gray2 product-title-banner" id="welcome-section-fluid">
+        <div className="container">
+          <div className="row">
+            <h1 className="page-title">
+              <span className="field field--name-title field--type-string field--label-hidden">
+                {!!content && content.title}
+              </span>
+            </h1>
+          </div>
+        </div>
+      </section>
       <div className="product-detail-section">
         <Equipments />
         <div className="container">
@@ -59,19 +70,19 @@ const Main = ({ content }) => {
                       />
                     </div>
                   ))} */}
-                  <div className="pro-det-title">Skid Steers 2</div>
+                  <div className="pro-det-title"> {!!content && content.title}</div>
                   <div className="pro-det-sub-title">
                     <div className="field field--name-field-description field--type-string field--label-hidden field__item">
                       Lorem ipsum dolor sit{" "}
                     </div>
                   </div>
                   <div className="pro-det-prbtn">
-                    <div className="pro-b2-gen-label">Price: </div>
+                    <div className="pro-b2-gen-label">Price:  {!!content && content.field_price}</div>
                     <div className="pro-det-prbtn rigth-side-detailp"></div>
                   </div>
                   <div className="pro-det-btnp rigth-side-detailp">
                     <p>
-                      <a class="btn btn-str-up2">Make an Offer</a>
+                      <a className="btn btn-str-up2">Make an Offer</a>
                     </p>
                   </div>
                   <div className="pro-b2-purchase-value"></div>
@@ -85,7 +96,7 @@ const Main = ({ content }) => {
                   </div>
                   <div className="pro-rt2-lft-phon rigth-side-detailp">
                     <p>
-                      <span>Phone: </span> (99) 4549-7018
+                      <span>Phone: </span> {!!content && content.field_phone}
                     </p>
                   </div>
                   <div className="pro-rt2-lft-video rigth-side-detailp">
@@ -102,7 +113,7 @@ const Main = ({ content }) => {
                     <p>Matchine Location:</p>
                     <p></p>
                     <div className="field field--name-field-machine-location field--type-string-long field--label-hidden field__item">
-                      Lorem ipsum dolor sit dir
+                    {!!content && content.field_machine_location}
                     </div>
                     <p></p>
                   </div>
@@ -133,7 +144,7 @@ const Main = ({ content }) => {
                   <div className="pro-b2-gen-label">Hours</div>
                   <div className="pro-b2-gen-value">
                     <div className="field field--name-field-hours field--type-string field--label-hidden field__item">
-                      235
+                    {!!content && content.field_hours}
                     </div>
                   </div>
                 </div>
@@ -141,7 +152,7 @@ const Main = ({ content }) => {
                   <div className="pro-b2-gen-label">Serial Number</div>
                   <div className="pro-b2-gen-value">
                     <div className="field field--name-field-serial-numbers field--type-string field--label-hidden field__item">
-                      7238682et8723
+                    {!!content && content.field_hours}
                     </div>
                   </div>
                 </div>
