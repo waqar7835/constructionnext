@@ -8,16 +8,6 @@ const MyMapComponent = withScriptjs(
   withGoogleMap((props) => {
     return (
       <>
-        {/* <div class="container">
-          <div class="section-title-primary text-center">
-            <h2>where to find us</h2>
-            <p>
-              Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-              te consec tetur, adipisci velit, sed quia non numquam eius modi
-              tempora incidunt
-            </p>
-          </div>
-        </div> */}
         <GoogleMap
           defaultZoom={8}
           defaultCenter={{ lat: -34.397, lng: 150.644 }}
