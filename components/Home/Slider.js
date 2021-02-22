@@ -13,6 +13,8 @@ const Slider = () => {
   }, []);
 //   console.log(sliderData);
   return (
+    <>
+    <div id="header-area-space"></div>
     <Carousel showThumbs={false} infiniteLoop={true}>
       {sliderData.map((val, index) => (
         <div key={index}>
@@ -24,6 +26,7 @@ const Slider = () => {
         </div>
       ))}
     </Carousel>
+    </>
   );
 };
 export default Slider;
