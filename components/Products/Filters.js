@@ -1,18 +1,6 @@
 import { Collapse, Checkbox } from 'antd';
-
 const { Panel } = Collapse;
-// @Component({
-//     selector: 'nz-demo-checkbox-check-all',
-//     template: `
-//       <div style="border-bottom: 1px solid rgb(233, 233, 233);">
-//         <label nz-checkbox [(ngModel)]="allChecked" (ngModelChange)="updateAllChecked()" [nzIndeterminate]="indeterminate">
-//           Check all
-//         </label>
-//       </div>
-//       <br />
-//       <nz-checkbox-group [(ngModel)]="checkOptionsOne" (ngModelChange)="updateSingleChecked()"></nz-checkbox-group>
-//     `
-//   });
+
 
 const Filters = () => {
     
@@ -28,7 +16,7 @@ const Filters = () => {
       <div className="filters-block">
          <form className="views-exposed-form">
             <div className="js-form-item form-item custom-control custom-textfield js-form-type-textfield form-type-textfield js-form-item-title form-item-title">
-                <label for="edit-title" className="custom-control-label">Quick Search</label>        
+                <label  className="custom-control-label">Quick Search</label>        
                 <input placeholder="Keyword(s) Search"  className="form-text form-control" />
             </div>
             <fieldset  id="edit-country--wrapper" className="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
@@ -41,8 +29,8 @@ const Filters = () => {
                          <ul>
                              <li>
                                  <div class="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-country-55 form-item-country-55">
-                                     <input  type="checkbox" id="edit-country-55" name="country[55]" value="55" className="form-checkbox custom-control-input"/>
-                                     <label for="edit-country-55" className="custom-control-label option">For Sale</label>
+                                     <input  type="checkbox" id="edit-country-55"  className="form-checkbox custom-control-input"/>
+                                     <label  className="custom-control-label option">For Sale</label>
                                  </div>
                             </li>
                          </ul>            
@@ -60,8 +48,8 @@ const Filters = () => {
                          <ul>
                              <li>
                                  <div class="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-country-55 form-item-country-55">
-                                     <input  type="checkbox" id="edit-country-55" name="country[55]" value="55" className="form-checkbox custom-control-input"/>
-                                     <label for="edit-country-55" className="custom-control-label option">Used</label>
+                                     <input  type="checkbox" id="edit-country-55" className="form-checkbox custom-control-input"/>
+                                     <label  className="custom-control-label option">Used</label>
                                  </div>
                             </li>
                          </ul>            
@@ -80,8 +68,8 @@ const Filters = () => {
                          <ul>
                              <li>
                                  <div className="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-country-55 form-item-country-55">
-                                     <input  type="checkbox" id="edit-country-55" name="country[55]" value="55" class="form-checkbox custom-control-input"/>
-                                     <label for="edit-country-55" className="custom-control-label option">USA</label>
+                                     <input  type="checkbox" id="edit-country-55"  className="form-checkbox custom-control-input"/>
+                                     <label  className="custom-control-label option">USA</label>
                                  </div>
                             </li>
                          </ul>            
@@ -98,26 +86,26 @@ const Filters = () => {
                          <ul>
                              <li>
                                  <div className="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-state-56 form-item-state-56">
-                                     <input  type="checkbox" id="edit-state-56" name="state[56]" value="56" className="form-checkbox custom-control-input"/>
-                                     <label for="edit-state-56" class="custom-control-label option">CALIFORNIA</label>
+                                     <input  type="checkbox" id="edit-state-56"  className="form-checkbox custom-control-input"/>
+                                     <label for="edit-state-56" className="custom-control-label option">CALIFORNIA</label>
                                  </div>                                
                              </li>
                              <li>
                                  <div className="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-state-57 form-item-state-57">
-                                     <input  type="checkbox" id="edit-state-57" name="state[57]" value="57" class="form-checkbox custom-control-input"/>
+                                     <input  type="checkbox" id="edit-state-57"  className="form-checkbox custom-control-input"/>
                                      <label for="edit-state-57" className="custom-control-label option">NEVADA</label>
                                      </div>                                
                               </li>
                               <li>
                                   <div class="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-state-58 form-item-state-58">
-                                      <input  type="checkbox" id="edit-state-58" name="state[58]" value="58" className="form-checkbox custom-control-input"/>
+                                      <input  type="checkbox" id="edit-state-58" className="form-checkbox custom-control-input"/>
                                       <label for="edit-state-58" class="custom-control-label option">NEW YORK</label>
                                   </div>                                
                                 </li>
                                 <li>
                                     <div className="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-state-59 form-item-state-59">
-                                        <input  type="checkbox" id="edit-state-59" name="state[59]" value="59" className="form-checkbox custom-control-input"/>
-                                        <label for="edit-state-59" className="custom-control-label option">WASHINGTON</label>
+                                        <input  type="checkbox" id="edit-state-59"  className="form-checkbox custom-control-input"/>
+                                        <label  className="custom-control-label option">WASHINGTON</label>
                                     </div>
                                 </li>
                             </ul>           
@@ -127,7 +115,7 @@ const Filters = () => {
             </fieldset>
             <div class="js-form-item form-item custom-control custom-textfield js-form-type-textfield form-type-textfield js-form-item-created form-item-created">
                 <label for="edit-created" class="custom-control-label">Authored on</label>        
-                <input  type="text" id="edit-created" name="created" value="" size="30" maxlength="128" className="form-text form-control"/>
+                <input  type="text" id="edit-created" size="30" maxlength="128" className="form-text form-control"/>
             </div>
 
             <Collapse defaultActiveKey={['1']} onChange={callback}>
