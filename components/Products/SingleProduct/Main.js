@@ -13,43 +13,52 @@ const Main = ({ content }) => {
         <div className="container">
           <div className="row">
             <div className="col-lg-8 col-md-8">
-            <Carousel  infiniteLoop={true}>
-              {/* {sliderData.map((val, index) => ( */}
-                <div  >
+              <Carousel infiniteLoop={true}>
+                {/* {sliderData.map((val, index) => ( */}
+                <div>
                   <img
-                    src='/images/653gaZ_3.jpg'
+                    src="/images/653gaZ_3.jpg"
                     alt="slider"
                     title={`#slider-direction`}
                   />
                 </div>
-                <div  >
+                <div>
                   <img
-                    src='/images/653gaZ_3.jpg'
+                    src="/images/653gaZ_3.jpg"
                     alt="slider"
                     title={`#slider-direction`}
                   />
                 </div>
-                <div  >
+                <div>
                   <img
-                    src='/images/653gaZ_3.jpg'
+                    src="/images/653gaZ_3.jpg"
                     alt="slider"
                     title={`#slider-direction`}
                   />
                 </div>
-                <div  >
+                <div>
                   <img
-                    src='/images/653gaZ_3.jpg'
+                    src="/images/653gaZ_3.jpg"
                     alt="slider"
                     title={`#slider-direction`}
                   />
-                </div> 
-              {/* ))} */}
-            </Carousel>
+                </div>
+                {/* ))} */}
+              </Carousel>
             </div>
             {/* product right side start  */}
             <div className="col-lg-4 col-md-4">
               <div className="project-info-layout1 shadow-equal">
                 <div className="info-top">
+                  {/* {sliderData.map((val, index) => (
+                    <div key={index}>
+                      <img
+                        src={baseURL + val.image_uri}
+                        alt="slider"
+                        title={`#slider-direction-${index}`}
+                      />
+                    </div>
+                  ))} */}
                   <div className="pro-det-title">Skid Steers 2</div>
                   <div className="pro-det-sub-title">
                     <div className="field field--name-field-description field--type-string field--label-hidden field__item">
@@ -62,12 +71,7 @@ const Main = ({ content }) => {
                   </div>
                   <div className="pro-det-btnp rigth-side-detailp">
                     <p>
-                      <a
-                       class="btn btn-str-up2"
-                         
-                      >
-                         Make an Offer 
-                      </a>
+                      <a class="btn btn-str-up2">Make an Offer</a>
                     </p>
                   </div>
                   <div className="pro-b2-purchase-value"></div>

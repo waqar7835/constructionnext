@@ -13063,12 +13063,29 @@ footer#page-footer .footer-area-top {
   min-height: 133px;
   padding: 16px 6px;
 }
-.product-listing-page img {
+.product-listing-page .shape-service-layout1 img {
   width: 54px;
 }
 .product-listing-page .shape-service-layout1 h3 {
   font-size: 14px;
   text-align: center; 
+}
+.product-listing-page .filters-block {
+  border-radius: 4px;
+}
+.product-listing-page .filters-block form.views-exposed-form {
+  padding: 15px;
+  background: #fff;
+  border-radius: 4px;
+}
+.product-listing-page .filters-block form.views-exposed-form fieldset legend,
+.product-listing-page .filters-block form.views-exposed-form > .custom-control label {
+  color: #000; 
+}
+.product-listing-page .filters-block form.views-exposed-form fieldset {
+   margin-bottom: 10px;
+   border-bottom: 1px solid #ddd;
+   padding-bottom: 8px;
 }
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
