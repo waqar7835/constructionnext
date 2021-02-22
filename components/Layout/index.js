@@ -30,7 +30,7 @@ const Layout = (props) => {
           <link rel="stylesheet" href={`/css/meanmenu.min.css`} />
           {!!isRander && (
             <>
-              <script src={`/js/jquery-2.2.4.min.js`} />
+              {/* <script src={`/js/jquery-2.2.4.min.js`} /> */}
               {/* <script src={`/js/jquery.magnific-popup.min.js`} /> */}
               {/* <script src={`/js/bootstrap.min.js`} /> */}
               {/* <script src={`/js/isotope.pkgd.min.js`} /> */}
@@ -46,8 +46,8 @@ const Layout = (props) => {
               {/* <script src={`/js/vc-gallery.js`} /> */}
               {/* <script src={`/js/waypoints.min.js`} /> */}
               {/* <script src={`/js/wow.min.js`} /> */}
-              <script src={`/js/jquery.meanmenu.min.js`} />
-              <script src={`/js/main.js`} />
+              {/* <script src={`/js/jquery.meanmenu.min.js`} />
+              <script src={`/js/main.js`} /> */}
             </>
           )}
         </Head>

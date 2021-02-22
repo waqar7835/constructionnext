@@ -12919,7 +12919,7 @@ footer#page-footer .footer-area-top {
   margin-bottom: 0;
 }
 #header-area-space {
-  margin-top: 192px;
+  margin-top: 181px;
 }
 /* for mobile menu end  */
 .project-info-layout1 {
@@ -13150,8 +13150,12 @@ header .main-menu-area {
   -webkit-box-shadow: 0 4px 4px -2px rgb(0 0 0 / 30%);
   box-shadow: 0 4px 4px -2px rgb(0 0 0 / 30%);
 }
+.feedback-review-layout1 .media-body h3 a {
+  color: #ff9800;
+}
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
+  .header .main-menu-area,
   .header-top-area1 {
     display: none;
   }
@@ -13161,9 +13165,14 @@ header .main-menu-area {
  } 
 
  @media (min-width: 320px) and (max-width: 575.98px)  { 
+  #welcome-section-fluid {
+   
+    padding: 0 15px;
+  }
   #header-area-space {
     margin-top: 0;
   }
+  .main-menu-area,
   .header-search,
   .header-top-area1 {
     display: none;
@@ -13189,12 +13198,23 @@ header .main-menu-area {
   .get-quote {
     padding-bottom: 15px;
   }
+  .simplenews-subscriber-form form .field--name-mail .custom-email input[type="email"] {
+    width: 80%;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
+  #welcome-section-fluid {
+   
+    padding: 0 15px;
+  }
+  .simplenews-subscriber-form form .field--name-mail .custom-email input[type="email"] {
+    width: 80%;
+  }
   #header-area-space {
     margin-top: 0;
   }
+  .main-menu-area,
   .header-search,
   .header-top-area1 {
     display: none;
