@@ -175,7 +175,7 @@ const Filters = () => {
                         className="form-checkbox custom-control-input"
                       />
                       <label
-                        for="edit-state-56"
+                        htmlFor="edit-state-56"
                         className="custom-control-label option"
                       >
                         CALIFORNIA
@@ -190,7 +190,7 @@ const Filters = () => {
                         className="form-checkbox custom-control-input"
                       />
                       <label
-                        for="edit-state-57"
+                        htmlFor="edit-state-57"
                         className="custom-control-label option"
                       >
                         NEVADA
@@ -205,7 +205,7 @@ const Filters = () => {
                         className="form-checkbox custom-control-input"
                       />
                       <label
-                        for="edit-state-58"
+                        htmlFor="edit-state-58"
                         className="custom-control-label option"
                       >
                         NEW YORK
@@ -230,7 +230,7 @@ const Filters = () => {
           </div>
         </fieldset>
         <div className="js-form-item form-item custom-control custom-textfield js-form-type-textfield form-type-textfield js-form-item-created form-item-created">
-          <label for="edit-created" className="custom-control-label">
+          <label htmlFor="edit-created" className="custom-control-label">
             Authored on
           </label>
           <input
@@ -274,7 +274,7 @@ const Filters = () => {
         </Collapse>
 
         {/* <div className="js-form-item form-item custom-control js-form-type-select form-type-select js-form-item-category form-item-category">
-                <label for="edit-category" className="custom-control-label">Select Equipment</label>
+                <label htmlFor="edit-category" className="custom-control-label">Select Equipment</label>
                 <select data-drupal-selector="edit-category" id="edit-category" name="category" className="form-select custom-select"><option value="All">- Any -</option><option value="4">Articulated Dump Trucks</option><option value="8">Attachments</option><option value="2">Excavators</option><option value="6">Material Handling</option><option value="7">Mowers</option><option value="1" selected="selected">Skid Steers</option><option value="10">Track Loaders</option><option value="3">Utility Vehicles</option><option value="5">Wheel Loaders</option></select>
             </div> */}
       </form>

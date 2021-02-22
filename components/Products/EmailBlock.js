@@ -24,8 +24,8 @@ const EmailBlock = () => {
 
     return (
       <div className="email-block">
-        <p><a onClick={showModal}> <i class="fa fa-envelope" aria-hidden="true"></i>Email</a></p>
-        <p><a  > <i class="fa fa-print" aria-hidden="true"></i>  Print</a></p>
+        <p><a onClick={showModal}> <i className="fa fa-envelope" aria-hidden="true"></i>Email</a></p>
+        <p><a  > <i className="fa fa-print" aria-hidden="true"></i>  Print</a></p>
         <Modal title="Email this to a friend"   visible={isModalVisible}  onCancel={handleCancel} footer={[]} >
         <Form
            layout="vertical"
