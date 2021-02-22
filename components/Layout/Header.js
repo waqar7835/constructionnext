@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import MainMenu from "./MainMenu";
+import Head from "next/head";
+
+
 const Header = () => {
-  const dispatch = useDispatch();
   const [isSticky, setIsSticky] = useState(false);
   const [topPosition, setTopPosition] = useState(0);
   useEffect(() => {
@@ -12,7 +13,12 @@ const Header = () => {
       window.removeEventListener("scroll", () => handleScroll);
     };
   }, []);
+  const [isRander , setIsRander] = useState(false);
+  useEffect(() => {
+    // if(window){}
+    setIsRander(!!window);
 
+  }, [])
   const handleScroll = useCallback(() => {
     if (window.scrollY >= 122) {
       setTopPosition(window.scrollY * -1);
@@ -25,6 +31,37 @@ const Header = () => {
       style={{ top: topPosition }}
       className={`${isSticky ? "header-sticky" : ""}`}
     >
+      <Head>
+          <link rel="shortcut icon" href="/images/favicon.png" />
+          <link rel="stylesheet" href={`/css/bootstrap.min.css`} />
+
+          <link rel="stylesheet" href={`/css/style.css`} />
+          <link rel="stylesheet" href={`/css/icofont.css`} />
+          <link rel="stylesheet" href={`/css/font-awesome.min.css`} />
+          <link rel="stylesheet" href={`/css/meanmenu.min.css`} />
+          {!!isRander && (
+            <>
+              <script src={`/js/jquery-2.2.4.min.js`} />
+              {/* <script src={`/js/jquery.magnific-popup.min.js`} /> */}
+              {/* <script src={`/js/bootstrap.min.js`} /> */}
+              {/* <script src={`/js/isotope.pkgd.min.js`} /> */}
+              {/* <script src={`/js/jquery.countdown.min.js`} /> */}
+              {/* <script src={`/js/jquery.counterup.min.js`} /> */}
+              {/* <script src={`/js/jquery.equalheights.min.js`} /> */}
+              {/* <script src={`/js/jquery.justifiedGallery.min.js`} /> */}
+              {/* <script src={`/js/jquery.nav.js`} /> */}
+              {/* <script src={`/js/jquery.scrollUp.min.js`} /> */}
+              {/* <script src={`/js/modernizr-2.8.3.min.js`} />
+              <script src={`/js/plugins.js`} /> */}
+              {/* <script src={`/js/validator.min.js`} /> */}
+              {/* <script src={`/js/vc-gallery.js`} /> */}
+              {/* <script src={`/js/waypoints.min.js`} /> */}
+              {/* <script src={`/js/wow.min.js`} /> */}
+              <script src={`/js/jquery.meanmenu.min.js`} />
+              <script src={`/js/main.js`} />
+            </>
+          )}
+        </Head>
       <div
         id="header-one"
         className=" header header-layout3 header-fixed"
