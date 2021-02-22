@@ -12897,6 +12897,9 @@ footer#page-footer .footer-area-top {
   font-weight: 500; 
   display: inline-block;
 }
+.headermenu .navbar-nav a:hover {
+    color: #ccc;
+}
 .headermenu button {
   display: none;
 }
