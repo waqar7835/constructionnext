@@ -27,11 +27,12 @@ const Header = () => {
     >
       <div
         id="header-one"
-        className="bg-light light-border header header-layout3 header-fixed"
+        className=" header header-layout3 header-fixed"
       >
         <div className="header-top-area1 header-top-bar bg-grey">
           <div className="container">
             <div className="row">
+              {/* logo section  */}
               <div className="col-lg-4 col-md-3 col-sm-12">
                 <div className="logo-area">
                   <a href="index.html">
@@ -43,16 +44,8 @@ const Header = () => {
                   </a>
                 </div>
               </div>
-              <div className="col-lg-3 col-md-3 col-sm-12">
-                <div className="media top-bar-contact-layout4">
-                  <div className="media-left media-middle">
-                    <i className="icofont icofont-location-arrow"></i>
-                  </div>
-                  <div className="media-body">
-                    <p>505 North State Street, London</p>
-                    <h2 className="media-heading"> United Kingdom</h2>
-                  </div>
-                </div>
+              {/* logo section  */}
+              
                 <div className="col-lg-3 col-md-3 col-sm-12">
                   <div className="media top-bar-contact-layout4">
                     <div className="media-left media-middle">
@@ -91,7 +84,7 @@ const Header = () => {
               </div>
             </div>
           </div>
-        </div>
+        
         <div
           className={`main-menu-area layout1 blue-bg ${
             isSticky ? "stick" : ""
@@ -121,7 +114,8 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </div>
+        </div>
+       
     </header>
   );
 };
