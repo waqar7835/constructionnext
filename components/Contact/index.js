@@ -4,6 +4,7 @@ import Form from "./Form";
 const Index = () => {
   return (
     <>
+      <div id="header-area-space"></div>
       <ImgContact />
       <WhereToFind />
       <Form />
