@@ -13155,9 +13155,15 @@ header .main-menu-area {
   .header-top-area1 {
     display: none;
   }
+  #header-area-space {
+    margin-top: 0;
+  }
  } 
 
  @media (min-width: 320px) and (max-width: 575.98px)  { 
+  #header-area-space {
+    margin-top: 0;
+  }
   .header-search,
   .header-top-area1 {
     display: none;
@@ -13186,6 +13192,9 @@ header .main-menu-area {
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
+  #header-area-space {
+    margin-top: 0;
+  }
   .header-search,
   .header-top-area1 {
     display: none;
