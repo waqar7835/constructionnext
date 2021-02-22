@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
-import './style.css'
+import { useEffect, useState } from 'react'
+import "./style.css";
 const layoutStyle = {
   margin: "auto",
   // padding: "0 15px",
@@ -10,21 +11,44 @@ const layoutStyle = {
 };
 
 const Layout = (props) => {
+  const [isRander , setIsRander] = useState(false);
+  useEffect(() => {
+    // if(window){}
+    setIsRander(!!window);
+
+  }, [])
   return (
-    <div  >
+    <div>
       <div style={layoutStyle}>
         <Head>
-          <link
-            rel="shortcut icon"
-            href="/iamges/favicon.png"
-          />
+          <link rel="shortcut icon" href="/images/favicon.png" />
           <link rel="stylesheet" href={`/css/bootstrap.min.css`} />
-           
+
           <link rel="stylesheet" href={`/css/style.css`} />
           <link rel="stylesheet" href={`/css/icofont.css`} />
           <link rel="stylesheet" href={`/css/font-awesome.min.css`} />
-     
-       
+          {!!isRander && (
+            <>
+              <script src={`/js/jquery-2.2.4.min.js`} />
+              {/* <script src={`/js/jquery.magnific-popup.min.js`} /> */}
+              {/* <script src={`/js/bootstrap.min.js`} /> */}
+              {/* <script src={`/js/isotope.pkgd.min.js`} /> */}
+              {/* <script src={`/js/jquery.countdown.min.js`} /> */}
+              {/* <script src={`/js/jquery.counterup.min.js`} /> */}
+              {/* <script src={`/js/jquery.equalheights.min.js`} /> */}
+              {/* <script src={`/js/jquery.justifiedGallery.min.js`} /> */}
+              {/* <script src={`/js/jquery.nav.js`} /> */}
+              {/* <script src={`/js/jquery.scrollUp.min.js`} /> */}
+              {/* <script src={`/js/modernizr-2.8.3.min.js`} />
+              <script src={`/js/plugins.js`} /> */}
+              {/* <script src={`/js/validator.min.js`} /> */}
+              {/* <script src={`/js/vc-gallery.js`} /> */}
+              {/* <script src={`/js/waypoints.min.js`} /> */}
+              {/* <script src={`/js/wow.min.js`} /> */}
+              <script src={`/js/jquery.meanmenu.min.js`} />
+              <script src={`/js/main.js`} />
+            </>
+          )}
         </Head>
         <Header />
         {props.children}

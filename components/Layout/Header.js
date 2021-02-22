@@ -112,7 +112,7 @@ const Header = () => {
                 </div>
               </div>
               <div className="col-lg-2 col-md-1 get-quote">
-                  <a href="#" title="quote" class="btn quote-btn-grey">Get A quote</a>
+                  <a href="#" title="quote" className="btn quote-btn-grey">Get A quote</a>
               </div>
             </div>
           </div>
