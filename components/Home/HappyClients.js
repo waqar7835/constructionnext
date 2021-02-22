@@ -13,10 +13,10 @@ const HappyClients = () => {
   return (
     <div>
       {clients.map((val, index) => (
-        <div class="feedback-review-layout1 shadow-equal2" key={index}>
-          <div class="media">
-            <div class="media-left">
-              <div class="media-object">
+        <div className="feedback-review-layout1 shadow-equal2" key={index}>
+          <div className="media">
+            <div className="media-left">
+              <div className="media-object">
                 <img
                   src={baseURL + val.image_uri}
                   width="80"
@@ -26,11 +26,11 @@ const HappyClients = () => {
                 />
               </div>
             </div>
-            <div class="media-body">
-              <h3 class="media-heading">
+            <div className="media-body">
+              <h3 className="media-heading">
                 <a>{val.title}</a>
               </h3>
-              <div class="description"> {ReactHtmlParser(val.body)}</div>
+              <div className="description"> {ReactHtmlParser(val.body)}</div>
               <span>{val.designation}</span>
             </div>
           </div>
