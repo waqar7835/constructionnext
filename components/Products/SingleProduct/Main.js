@@ -1,6 +1,10 @@
 import Equipments from "@components/Common/Equipments";
+import { baseURL } from "@config/config";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
-const Main = () => {
+const Main = ({ content }) => {
+  console.log(content);
   return (
     <>
       <div id="header-area-space"></div>
@@ -8,7 +12,40 @@ const Main = () => {
         <Equipments />
         <div className="container">
           <div className="row">
-            <div class="col-lg-8 col-md-8">Slider section</div>
+            <div className="col-lg-8 col-md-8">
+            <Carousel  infiniteLoop={true}>
+              {/* {sliderData.map((val, index) => ( */}
+                <div  >
+                  <img
+                    src='/images/653gaZ_3.jpg'
+                    alt="slider"
+                    title={`#slider-direction`}
+                  />
+                </div>
+                <div  >
+                  <img
+                    src='/images/653gaZ_3.jpg'
+                    alt="slider"
+                    title={`#slider-direction`}
+                  />
+                </div>
+                <div  >
+                  <img
+                    src='/images/653gaZ_3.jpg'
+                    alt="slider"
+                    title={`#slider-direction`}
+                  />
+                </div>
+                <div  >
+                  <img
+                    src='/images/653gaZ_3.jpg'
+                    alt="slider"
+                    title={`#slider-direction`}
+                  />
+                </div> 
+              {/* ))} */}
+            </Carousel>
+            </div>
             {/* product right side start  */}
             <div className="col-lg-4 col-md-4">
               <div className="project-info-layout1 shadow-equal">
@@ -26,10 +63,10 @@ const Main = () => {
                   <div className="pro-det-btnp rigth-side-detailp">
                     <p>
                       <a
-                        className="cboxElement"
-                        data-colorbox-inline=".webform-submission-make-an-offer-form"
+                       class="btn btn-str-up2"
+                         
                       >
-                        <span className="btn">Make an Offer</span>
+                         Make an Offer 
                       </a>
                     </p>
                   </div>
