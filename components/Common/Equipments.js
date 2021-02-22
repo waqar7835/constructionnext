@@ -26,7 +26,7 @@ const Equipments = () => {
       <div className="container">
         <div className="row">
           {equipmentsData.map((val, index) => (
-            <div key={index} className="col-md-3 col-sm-6 col-xs-12">
+            <div key={index} className="col-md-3 col-sm-6 col-xs-12 for-product-deatil">
               <div className="shape-service-layout1">
               <img
                 src={baseURL + val.image_uri}
