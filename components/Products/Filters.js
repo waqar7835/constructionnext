@@ -2,8 +2,8 @@ const Filters = () => {
     return (
       <div className="filters-block">
          <form className="views-exposed-form">
-            <div class="js-form-item form-item custom-control custom-textfield js-form-type-textfield form-type-textfield js-form-item-title form-item-title">
-                <label for="edit-title" class="custom-control-label">Quick Search</label>        
+            <div className="js-form-item form-item custom-control custom-textfield js-form-type-textfield form-type-textfield js-form-item-title form-item-title">
+                <label for="edit-title" className="custom-control-label">Quick Search</label>        
                 <input placeholder="Keyword(s) Search"  class="form-text form-control" />
             </div>
             <fieldset data-drupal-selector="edit-country" id="edit-country--wrapper" class="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
