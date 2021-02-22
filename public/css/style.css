@@ -12919,7 +12919,7 @@ footer#page-footer .footer-area-top {
   margin-bottom: 0;
 }
 #header-area-space {
-  margin-top: 192px;
+  margin-top: 181px;
 }
 /* for mobile menu end  */
 .project-info-layout1 {
@@ -13152,6 +13152,7 @@ header .main-menu-area {
 }
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
+  .header .main-menu-area,
   .header-top-area1 {
     display: none;
   }
@@ -13164,6 +13165,7 @@ header .main-menu-area {
   #header-area-space {
     margin-top: 0;
   }
+  .main-menu-area,
   .header-search,
   .header-top-area1 {
     display: none;
@@ -13195,6 +13197,7 @@ header .main-menu-area {
   #header-area-space {
     margin-top: 0;
   }
+  .main-menu-area,
   .header-search,
   .header-top-area1 {
     display: none;
