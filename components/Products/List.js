@@ -1,29 +1,10 @@
 import React, { useState } from 'react';
 import { Modal, Form, Input, Button, Radio, Checkbox,Menu, Dropdown, } from 'antd';
 const { TextArea } = Input;
+import VideoChatModal from './VideoChatModal';
+import EmailSellerModal from './EmailSellerModal';
 const List = () => {
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [isVideoModalVisible, setIsVideoModalVisible] = useState(false);
- 
-
-    const showModal = () => {
-      setIsModalVisible(true);
-     
-    };
-    const showVideoModal = () => {
-       
-        setIsVideoModalVisible(true);
-      };
-  
-    const handleOk = () => {
-      setIsModalVisible(false);
-      setIsVideoModalVisible(false);
-    };
-  
-    const handleCancel = () => {
-      setIsModalVisible(false);
-      setIsVideoModalVisible(false);
-    };
+   
    function onChange(e) {
       console.log(`checked = ${e.target.checked}`);
     }
@@ -123,81 +104,14 @@ const List = () => {
                 </div>
                 <div class="products-info-btns">
                     <a href="/inventory/listing/skid-steers-2" hreflang="en">View Details</a>
-                    <a onClick={showModal}>Email Seller</a>
-                    <a onClick={showVideoModal}>Video Chat</a>
+                   <EmailSellerModal/>
+                    <VideoChatModal/>
                 </div>
               </div>
             </div>
         </div> 
         </div>   
-        <Modal title="Email this to a friend"   visible={isModalVisible}  onCancel={handleCancel} footer={[]} >
-            <Form layout="vertical" >
-            <Form.Item label="First Name">
-                <Input placeholder="Enter your first name" />
-                </Form.Item>
-                <Form.Item label="Last Name">
-                 <Input placeholder="Enter your last name" />
-                </Form.Item>
-                <Form.Item label="Email"  rules={[{ type: 'email' }]}>
-                    <Input placeholder="Enter your email address" />
-                </Form.Item>
-                <Form.Item label="Phone" >
-                    <Input placeholder="(000) 000-0000" />
-                </Form.Item>
-                <Form.Item label="Postal Code" >
-                    <Input placeholder="Enter your postal code" />
-                </Form.Item>
-                
-                <Checkbox onChange={onChange}>Click here to acknowledge you understand our Privacy Policy</Checkbox>
-                <Form.Item label="Message">
-                    <TextArea rows={4} />
-                </Form.Item>
-                <Form.Item>     
-                    <Button type="primary">Submit</Button>
-                </Form.Item>
-           </Form>       
-        </Modal>
-
-        {/* video chat modal */}
-        <Modal title="Email this to a friend"   visible={isVideoModalVisible}  onCancel={handleCancel} footer={[]} >
-            <Form layout="vertical" >
-            <Form.Item label="First Name">
-                <Input placeholder="Enter your first name" />
-                </Form.Item>
-                <Form.Item label="Last Name">
-                 <Input placeholder="Enter your last name" />
-                </Form.Item>
-                <Form.Item label="Email"  rules={[{ type: 'email' }]}>
-                    <Input placeholder="Enter your email address" />
-                </Form.Item>
-                <Form.Item label="Phone" >
-                    <Input placeholder="(000) 000-0000" />
-                </Form.Item>
-                <Form.Item label="Postal Code" >
-                    <Input placeholder="Enter your postal code" />
-                </Form.Item>
-                <Checkbox onChange={onChange}>Click here to acknowledge you understand our Privacy Policy</Checkbox>
-                <Form.Item label="Video Chat Service" >
-                <Dropdown overlay={menu} placement="bottomLeft" arrow>
-                 <Button>Service</Button>
-                 </Dropdown>
-                 </Form.Item>
-                 <Form.Item label="When would you like to video chat?" >
-                 <Dropdown overlay={timemenu} placement="bottomLeft" arrow>
-                 <Button>Time</Button>
-                 </Dropdown>
-                 <Dropdown overlay={timemenu} placement="bottomLeft" arrow>
-                 <Button>Day</Button>
-                 </Dropdown>
-                 </Form.Item>
-                <Form.Item label="Message">
-                    <TextArea rows={4} />
-                </Form.Item>
-                <Form.Item>     
-                    <Button type="primary">Submit</Button>
-                </Form.Item>
-           </Form>       
-        </Modal>
+       
       </div>
     );
   };
