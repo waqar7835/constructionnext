@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Form, Input, Button, Radio, Checkbox,Menu, Dropdown, } from 'antd';
 const { TextArea } = Input;
-import VideoChatModal from './VideoChatModal';
+
 const EmailSellerModal = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
   

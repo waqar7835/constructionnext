@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Collapse, Checkbox,Modal, Form, Input, Divider } from 'antd';
 import YearFilter from './YearFilter';
+import CountryStateCity from './CountryStateCity';
 const { Panel } = Collapse;
 const CheckboxGroup = Checkbox.Group;
 
@@ -221,9 +222,12 @@ const Filters = () => {
              </Panel>            
                
             </Collapse>
-
-          
-                
+           
+              <CountryStateCity/>
+              
+            <Panel header="Year" key="4">
+              <YearFilter/>
+            </Panel>   
          
             {/* <div className="js-form-item form-item custom-control js-form-type-select form-type-select js-form-item-category form-item-category">
                 <label for="edit-category" className="custom-control-label">Select Equipment</label>
@@ -263,7 +267,7 @@ const Filters = () => {
                     </Form.Item>
                     <a>Apply Filter</a>
        </Modal>
-<YearFilter/>
+
       </div>
     );
   };
