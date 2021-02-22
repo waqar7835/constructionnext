@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900');
 /*=======================================================================
 
 Template Name: Fabarc | Construction & Interior Responsive HTML5 Template.
@@ -52,7 +53,7 @@ Version: 1.0
 [01] Typography
 =========================================================================*/
 
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,900");
+ 
 html,
 body {
   height: 100%;
@@ -11587,6 +11588,18 @@ div ~ :last-child .features3-wrp-layout1 {
   text-transform: capitalize;
   font-size: 24px;
 }
+.product-title-banner {
+  padding: 100px 0 120px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../images/layer-16.jpg);
+}
+.product-title-banner .page-title {
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+}
 @media (max-width: 767px) {
   .portfolio-layout3 .content-box h3 {
     font-size: 22px;
@@ -12884,8 +12897,7 @@ footer#page-footer .footer-area-top {
 }
 /* for mobile menu stat  */
 .headermenu .navbar-nav a {
-  padding: 35px 20px 35px 0px;
-   
+  padding: 28px 20px 33px 0px;
   text-decoration: none;
   color: #fff;
   -webkit-transition: all 1s ease-out;
@@ -13003,6 +13015,7 @@ footer#page-footer .footer-area-top {
 .product-detail-section .shape-service-layout1 h3 {
   font-size: 14px;
   text-align: center;
+  margin-top: 8px;
 }
 .headermenu nav button {
   height: 38px;
@@ -13063,12 +13076,35 @@ footer#page-footer .footer-area-top {
   min-height: 133px;
   padding: 16px 6px;
 }
+.product-listing-page .shape-service-layout1:after {
+  border-bottom: 25px solid #f57c00;
+  border-right: 25px solid transparent;
+}
+.product-listing-page .shape-service-layout1:before {
+  border-top: 25px solid #f57c00;
+  border-left: 25px solid transparent;
+}
 .product-listing-page .shape-service-layout1 img {
   width: 54px;
 }
 .product-listing-page .shape-service-layout1 h3 {
   font-size: 14px;
   text-align: center; 
+  margin-top: 8px;
+}
+.product-detail-section .section-space-less30 {
+  padding: 11px 0 0px;
+}
+.product-detail-section .section-space-less30.bg-gray2 {
+  background-color: transparent;
+}
+.product-detail-section .shape-service-layout1:before {
+  border-top: 25px solid #f57c00;
+  border-left: 25px solid transparent;
+}
+.product-detail-section .shape-service-layout1:after {
+  border-bottom: 25px solid #f57c00;
+  border-right: 25px solid transparent;
 }
 .product-listing-page .filters-block {
   border-radius: 4px;
@@ -13083,9 +13119,36 @@ footer#page-footer .footer-area-top {
   color: #000; 
 }
 .product-listing-page .filters-block form.views-exposed-form fieldset {
-   margin-bottom: 10px;
-   border-bottom: 1px solid #ddd;
-   padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+  padding-top: 12px;
+  margin-top: 12px;
+}
+.product-listing-page .filters-block form.views-exposed-form fieldset .fieldset-wrapper .form-checkboxes .form-item label {
+  font-size: 14px;
+  font-weight: normal;
+}
+.product-listing-page .filters-block form.views-exposed-form .ant-collapse label.ant-collapse-wrapper{
+  display: block;
+}
+.product-listing-page .filters-block form.views-exposed-form .ant-collapse {
+    background-color: transparent;
+    border: 0px solid #d9d9d9;
+    padding-top: 15px;
+}
+.product-listing-page .filters-block form.views-exposed-form .ant-collapse .ant-collapse-wrapper .ant-collapse {
+  margin-right: 5px;
+}
+.product-listing-page .section-space-less30 {
+  padding: 11px 0 0px;
+}
+.product-listing-page .section-space-less30.bg-gray2 {
+  background-color: transparent;
+}
+header .main-menu-area {
+  -webkit-box-shadow: 0 4px 4px -2px rgb(0 0 0 / 30%);
+  box-shadow: 0 4px 4px -2px rgb(0 0 0 / 30%);
 }
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
