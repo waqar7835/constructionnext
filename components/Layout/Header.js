@@ -31,7 +31,10 @@ const Header = () => {
       style={{ top: topPosition }}
       className={`${isSticky ? "header-sticky" : ""}`}
     >
+      
       <Head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <link rel="shortcut icon" href="/images/favicon.png" />
           <link rel="stylesheet" href={`/css/bootstrap.min.css`} />
 
@@ -72,7 +75,7 @@ const Header = () => {
               {/* logo section  */}
               <div className="col-lg-4 col-md-3 col-sm-12">
                 <div className="logo-area">
-                  <a href="index.html">
+                  <a href="/">
                     <img
                       src="/images/logo.png"
                       alt="logo"

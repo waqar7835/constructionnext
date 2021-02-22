@@ -31,7 +31,7 @@ const MainMenu = () => {
           <a href="#">Products</a>
           <ul>
             <li>
-            <Link href="/products">
+            <Link href="/inventory/search">
               <a>All Products</a>
             </Link>
              
