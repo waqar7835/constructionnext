@@ -27,6 +27,7 @@ const Layout = (props) => {
           <link rel="stylesheet" href={`/css/style.css`} />
           <link rel="stylesheet" href={`/css/icofont.css`} />
           <link rel="stylesheet" href={`/css/font-awesome.min.css`} />
+          <link rel="stylesheet" href={`/css/meanmenu.min.css`} />
           {!!isRander && (
             <>
               <script src={`/js/jquery-2.2.4.min.js`} />
