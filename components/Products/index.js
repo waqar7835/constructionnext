@@ -1,8 +1,8 @@
-import Equipments from "../Common/Equipments";
-import List from "./List";
-import Filters from "./Filters";
-import EmailBlock from "./Email_Block";
-import "./Listing_Page.css";
+import Equipments from '../Common/Equipments';
+import List from './List';
+import Filters from './Filters';
+import EmailBlock from './Email_Block';
+import './Listing_Page.css'
 const Index = () => {
   return (
     <>
