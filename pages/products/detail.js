@@ -1,7 +1,9 @@
-import Layout from "@components/Layout";
 import Head from "next/head";
+import fetch from "isomorphic-fetch";
+import Layout from "@components/Layout";
 import { baseURL } from "@config/config";
 import SingleProduct from "@components/Products/SingleProduct/Main";
+
 const Index = ({ content }) => {
   return (
     <Layout>
