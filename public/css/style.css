@@ -13132,6 +13132,14 @@ footer#page-footer .footer-area-top {
 .product-listing-page .filters-block form.views-exposed-form .ant-collapse label.ant-collapse-wrapper{
   display: block;
 }
+.product-listing-page .filters-block form.views-exposed-form .ant-collapse {
+    background-color: transparent;
+    border: 0px solid #d9d9d9;
+    padding-top: 15px;
+}
+.product-listing-page .filters-block form.views-exposed-form .ant-collapse .ant-collapse-wrapper .ant-collapse {
+  margin-right: 5px;
+}
 .product-listing-page .section-space-less30 {
   padding: 11px 0 0px;
 }

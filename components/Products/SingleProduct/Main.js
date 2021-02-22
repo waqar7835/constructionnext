@@ -77,8 +77,8 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                   <div className="pro-det-prbtn">
-                    <div className="pro-b2-gen-label">Price:  {!!content && content.field_price}</div>
-                    <div className="pro-det-prbtn rigth-side-detailp"></div>
+                    <div className="pro-b2-gen-label">Price:  </div>
+                    <div className="pro-det-prbtn rigth-side-detailp">{!!content && content.field_price}</div>
                   </div>
                   <div className="pro-det-btnp rigth-side-detailp">
                     <p>
@@ -110,7 +110,7 @@ const Main = ({ content }) => {
                     </p>
                   </div>
                   <div className="pro-rt2-lft-loc rigth-side-detailp">
-                    <p>Matchine Location:</p>
+                    <p>Machine Location:</p>
                     <p></p>
                     <div className="field field--name-field-machine-location field--type-string-long field--label-hidden field__item">
                     {!!content && content.field_machine_location}
@@ -123,7 +123,7 @@ const Main = ({ content }) => {
                         className="cboxElement"
                         data-colorbox-inline=".webform-submission-email-seller-form"
                       >
-                        {" "}
+                       {/* {!!content && content.field_heater} */}
                         <i
                           className="fa fa-envelope"
                           aria-hidden="true"
@@ -152,7 +152,7 @@ const Main = ({ content }) => {
                   <div className="pro-b2-gen-label">Serial Number</div>
                   <div className="pro-b2-gen-value">
                     <div className="field field--name-field-serial-numbers field--type-string field--label-hidden field__item">
-                    {!!content && content.field_hours}
+                    {!!content && content.field_serial_numbers}
                     </div>
                   </div>
                 </div>
@@ -160,7 +160,7 @@ const Main = ({ content }) => {
                   <div className="pro-b2-gen-label">Condition</div>
                   <div className="pro-b2-gen-value">
                     <div className="field field--name-field-condition field--type-list-string field--label-hidden field__item">
-                      Used
+                    {!!content && content.field_condition}
                     </div>
                   </div>
                 </div>
@@ -168,7 +168,7 @@ const Main = ({ content }) => {
                   <div className="pro-b2-gen-label">Stock Number</div>
                   <div className="pro-b2-gen-value">
                     <div className="field field--name-field-stock-number field--type-string field--label-hidden field__item">
-                      7238e6dhweud
+                    {!!content && content.field_stock_number}
                     </div>
                   </div>
                 </div>
@@ -179,7 +179,7 @@ const Main = ({ content }) => {
                   <div className="pro-b2-gen-label">Bucket</div>
                   <div className="pro-b2-gen-value">
                     <div className="field field--name-field-bucket field--type-list-string field--label-hidden field__item">
-                      Yes
+                    {!!content && content.field_bucket}
                     </div>
                   </div>
                 </div>
@@ -187,7 +187,7 @@ const Main = ({ content }) => {
                   <div className="pro-b2-gen-label">Bucket Capacity</div>
                   <div className="pro-b2-gen-value">
                     <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
-                      2.4
+                    {!!content && content.field_bucket_capacity}
                     </div>
                   </div>
                 </div>
@@ -198,7 +198,7 @@ const Main = ({ content }) => {
                   <div className="pro-b2-gen-label">Number of Fenders</div>
                   <div className="pro-b2-gen-value">
                     <div className="field field--name-field-number-of-fenders field--type-integer field--label-hidden field__item">
-                      -1
+                    {!!content && content.field_number_of_fenders}
                     </div>
                   </div>
                 </div>
@@ -209,7 +209,7 @@ const Main = ({ content }) => {
                   <div className="pro-b2-gen-label">A/C</div>
                   <div className="pro-b2-gen-value">
                     <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
-                      Yes
+                    {!!content && content.field_a_c}
                     </div>
                   </div>
                 </div>
@@ -217,7 +217,7 @@ const Main = ({ content }) => {
                   <div className="pro-b2-gen-label">Heater</div>
                   <div className="pro-b2-gen-value">
                     <div className="field field--name-field-heater field--type-list-string field--label-hidden field__item">
-                      Yes
+                    {!!content && content.field_heater}
                     </div>
                   </div>
                 </div>
