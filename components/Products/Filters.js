@@ -8,6 +8,45 @@ const Filters = () => {
             </div>
             <fieldset data-drupal-selector="edit-country" id="edit-country--wrapper" class="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
                 <legend>
+                   <span class="fieldset-legend">Listing Type </span>
+                </legend>
+                <div class="fieldset-wrapper">
+                   <div id="edit-country" class="form-checkboxes">
+                       <div class="form-checkboxes bef-nested">        
+                         <ul>
+                             <li>
+                                 <div class="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-country-55 form-item-country-55">
+                                     <input data-drupal-selector="edit-country-55" type="checkbox" id="edit-country-55" name="country[55]" value="55" class="form-checkbox custom-control-input"/>
+                                     <label for="edit-country-55" class="custom-control-label option">For Sale</label>
+                                 </div>
+                            </li>
+                         </ul>            
+                       </div>
+                  </div>
+                </div>
+            </fieldset>
+            <fieldset data-drupal-selector="edit-country" id="edit-country--wrapper" class="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
+                <legend>
+                   <span class="fieldset-legend">Condition </span>
+                </legend>
+                <div class="fieldset-wrapper">
+                   <div id="edit-country" class="form-checkboxes">
+                       <div class="form-checkboxes bef-nested">        
+                         <ul>
+                             <li>
+                                 <div class="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-country-55 form-item-country-55">
+                                     <input data-drupal-selector="edit-country-55" type="checkbox" id="edit-country-55" name="country[55]" value="55" class="form-checkbox custom-control-input"/>
+                                     <label for="edit-country-55" class="custom-control-label option">Used</label>
+                                 </div>
+                            </li>
+                         </ul>            
+                       </div>
+                  </div>
+                </div>
+            </fieldset>
+            
+            <fieldset data-drupal-selector="edit-country" id="edit-country--wrapper" class="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
+                <legend>
                    <span class="fieldset-legend">Country </span>
                 </legend>
                 <div class="fieldset-wrapper">
@@ -61,6 +100,14 @@ const Filters = () => {
                     </div>
                 </div>
             </fieldset>
+            <div class="js-form-item form-item custom-control custom-textfield js-form-type-textfield form-type-textfield js-form-item-created form-item-created">
+                <label for="edit-created" class="custom-control-label">Authored on</label>        
+                <input data-drupal-selector="edit-created" type="text" id="edit-created" name="created" value="" size="30" maxlength="128" class="form-text form-control"/>
+            </div>
+            {/* <div class="js-form-item form-item custom-control js-form-type-select form-type-select js-form-item-category form-item-category">
+                <label for="edit-category" class="custom-control-label">Select Equipment</label>
+                <select data-drupal-selector="edit-category" id="edit-category" name="category" class="form-select custom-select"><option value="All">- Any -</option><option value="4">Articulated Dump Trucks</option><option value="8">Attachments</option><option value="2">Excavators</option><option value="6">Material Handling</option><option value="7">Mowers</option><option value="1" selected="selected">Skid Steers</option><option value="10">Track Loaders</option><option value="3">Utility Vehicles</option><option value="5">Wheel Loaders</option></select>
+            </div> */}
          </form>
       </div>
     );
