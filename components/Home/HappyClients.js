@@ -11,7 +11,6 @@ const HappyClients = () => {
     dispatch(getClients());
   }, []);
   return (
-<<<<<<< HEAD
     <div className="section-space-default bg-common-style">
       <div className="container">
         <div className="row">
@@ -25,29 +24,6 @@ const HappyClients = () => {
                 consec tetur, adipisci velit, sed quia non numquam eius modi
                 tempora
               </p>
-=======
-    <div>
-      {clients.map((val, index) => (
-        <div className="feedback-review-layout1 shadow-equal2" key={index}>
-          <div className="media">
-            <div className="media-left">
-              <div className="media-object">
-                <img
-                  src={baseURL + val.image_uri}
-                  width="80"
-                  height="80"
-                  alt=""
-                  loading="lazy"
-                />
-              </div>
-            </div>
-            <div className="media-body">
-              <h3 className="media-heading">
-                <a>{val.title}</a>
-              </h3>
-              <div className="description"> {ReactHtmlParser(val.body)}</div>
-              <span>{val.designation}</span>
->>>>>>> 817e1e6768925c07f9f66bbb1269b1fa4d8b9377
             </div>
           </div>
         </div>
