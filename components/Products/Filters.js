@@ -1,4 +1,14 @@
+import { Collapse } from 'antd';
+const { Panel } = Collapse;
 const Filters = () => {
+    function callback(key) {
+        console.log(key);
+      }      
+      const text = `
+        A dog is a type of domesticated animal.
+        Known for its loyalty and faithfulness,
+        it can be found as a welcome guest in many households across the world.
+      `;
     return (
       <div className="filters-block">
          <form className="views-exposed-form">
@@ -104,6 +114,18 @@ const Filters = () => {
                 <label for="edit-created" class="custom-control-label">Authored on</label>        
                 <input data-drupal-selector="edit-created" type="text" id="edit-created" name="created" value="" size="30" maxlength="128" class="form-text form-control"/>
             </div>
+
+            <Collapse defaultActiveKey={['1']} onChange={callback}>
+                <Panel header="Category" key="1">
+                <p>{text}</p>
+                </Panel>
+                <Panel header="This is panel header 2" key="2">
+                <p>{text}</p>
+                </Panel>
+                <Panel header="This is panel header 3" key="3">
+                <p>{text}</p>
+                </Panel>
+            </Collapse>,
             {/* <div class="js-form-item form-item custom-control js-form-type-select form-type-select js-form-item-category form-item-category">
                 <label for="edit-category" class="custom-control-label">Select Equipment</label>
                 <select data-drupal-selector="edit-category" id="edit-category" name="category" class="form-select custom-select"><option value="All">- Any -</option><option value="4">Articulated Dump Trucks</option><option value="8">Attachments</option><option value="2">Excavators</option><option value="6">Material Handling</option><option value="7">Mowers</option><option value="1" selected="selected">Skid Steers</option><option value="10">Track Loaders</option><option value="3">Utility Vehicles</option><option value="5">Wheel Loaders</option></select>
