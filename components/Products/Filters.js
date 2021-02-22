@@ -28,7 +28,7 @@ const Filters = () => {
                        <div className="form-checkboxes bef-nested">        
                          <ul>
                              <li>
-                                 <div class="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-country-55 form-item-country-55">
+                                 <div className="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-country-55 form-item-country-55">
                                      <input  type="checkbox" id="edit-country-55"  className="form-checkbox custom-control-input"/>
                                      <label  className="custom-control-label option">For Sale</label>
                                  </div>
@@ -47,7 +47,7 @@ const Filters = () => {
                        <div className="form-checkboxes bef-nested">        
                          <ul>
                              <li>
-                                 <div class="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-country-55 form-item-country-55">
+                                 <div className="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-country-55 form-item-country-55">
                                      <input  type="checkbox" id="edit-country-55" className="form-checkbox custom-control-input"/>
                                      <label  className="custom-control-label option">Used</label>
                                  </div>
@@ -64,7 +64,7 @@ const Filters = () => {
                 </legend>
                 <div className="fieldset-wrapper">
                    <div id="edit-country" className="form-checkboxes">
-                       <div class="form-checkboxes bef-nested">        
+                       <div className="form-checkboxes bef-nested">        
                          <ul>
                              <li>
                                  <div className="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-country-55 form-item-country-55">
@@ -82,7 +82,7 @@ const Filters = () => {
                     <span className="fieldset-legend">State</span>
                 </legend>
                 <div className="fieldset-wrapper">
-                    <div id="edit-state" className="form-checkboxes"><div class="form-checkboxes bef-nested">
+                    <div id="edit-state" className="form-checkboxes"><div className="form-checkboxes bef-nested">
                          <ul>
                              <li>
                                  <div className="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-state-56 form-item-state-56">
@@ -97,9 +97,9 @@ const Filters = () => {
                                      </div>                                
                               </li>
                               <li>
-                                  <div class="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-state-58 form-item-state-58">
+                                  <div className="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-state-58 form-item-state-58">
                                       <input  type="checkbox" id="edit-state-58" className="form-checkbox custom-control-input"/>
-                                      <label for="edit-state-58" class="custom-control-label option">NEW YORK</label>
+                                      <label for="edit-state-58" className="custom-control-label option">NEW YORK</label>
                                   </div>                                
                                 </li>
                                 <li>
@@ -113,8 +113,8 @@ const Filters = () => {
                     </div>
                 </div>
             </fieldset>
-            <div class="js-form-item form-item custom-control custom-textfield js-form-type-textfield form-type-textfield js-form-item-created form-item-created">
-                <label for="edit-created" class="custom-control-label">Authored on</label>        
+            <div className="js-form-item form-item custom-control custom-textfield js-form-type-textfield form-type-textfield js-form-item-created form-item-created">
+                <label for="edit-created" className="custom-control-label">Authored on</label>        
                 <input  type="text" id="edit-created" size="30" maxlength="128" className="form-text form-control"/>
             </div>
 
@@ -127,9 +127,9 @@ const Filters = () => {
                
                 
             </Collapse>,
-            {/* <div class="js-form-item form-item custom-control js-form-type-select form-type-select js-form-item-category form-item-category">
-                <label for="edit-category" class="custom-control-label">Select Equipment</label>
-                <select data-drupal-selector="edit-category" id="edit-category" name="category" class="form-select custom-select"><option value="All">- Any -</option><option value="4">Articulated Dump Trucks</option><option value="8">Attachments</option><option value="2">Excavators</option><option value="6">Material Handling</option><option value="7">Mowers</option><option value="1" selected="selected">Skid Steers</option><option value="10">Track Loaders</option><option value="3">Utility Vehicles</option><option value="5">Wheel Loaders</option></select>
+            {/* <div className="js-form-item form-item custom-control js-form-type-select form-type-select js-form-item-category form-item-category">
+                <label for="edit-category" className="custom-control-label">Select Equipment</label>
+                <select data-drupal-selector="edit-category" id="edit-category" name="category" className="form-select custom-select"><option value="All">- Any -</option><option value="4">Articulated Dump Trucks</option><option value="8">Attachments</option><option value="2">Excavators</option><option value="6">Material Handling</option><option value="7">Mowers</option><option value="1" selected="selected">Skid Steers</option><option value="10">Track Loaders</option><option value="3">Utility Vehicles</option><option value="5">Wheel Loaders</option></select>
             </div> */}
          </form>
       </div>

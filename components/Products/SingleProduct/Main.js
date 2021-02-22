@@ -63,10 +63,10 @@ const Main = ({ content }) => {
                   <div className="pro-det-btnp rigth-side-detailp">
                     <p>
                       <a
-                        className="cboxElement"
-                        data-colorbox-inline=".webform-submission-make-an-offer-form"
+                       class="btn btn-str-up2"
+                         
                       >
-                        <span className="btn">Make an Offer</span>
+                         Make an Offer 
                       </a>
                     </p>
                   </div>
