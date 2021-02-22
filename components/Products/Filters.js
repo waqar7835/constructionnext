@@ -88,7 +88,29 @@ const Filters = () => {
             <div className="js-form-item form-item custom-control custom-textfield js-form-type-textfield form-type-textfield js-form-item-title form-item-title">
                 <label  className="custom-control-label">Quick Search</label>        
                 <input placeholder="Keyword(s) Search"  className="form-text form-control" />
-            </div>
+            </div>       
+                      
+            {/* <fieldset  id="edit-country--wrapper" className="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
+                <legend>
+                   <span className="fieldset-legend">Country </span>
+                </legend>
+                <div className="fieldset-wrapper">
+                   <div id="edit-country" className="form-checkboxes">
+                       <div className="form-checkboxes bef-nested">        
+                         <ul>
+                             <li>
+                                 <div className="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-country-55 form-item-country-55">
+                                     <input  type="checkbox" id="edit-country-55"  className="form-checkbox custom-control-input"/>
+                                     <label  className="custom-control-label option">USA</label>
+                                 </div>
+                            </li>
+                         </ul>            
+                       </div>
+                  </div>
+                </div>
+            </fieldset> */}
+            <Collapse defaultActiveKey={['1']} onChange={callback}>
+            <Panel header="Listing Type" key="1">
             <fieldset  id="edit-country--wrapper" className="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
                 <legend>
                    <span className="fieldset-legend">Listing Type </span>
@@ -108,6 +130,8 @@ const Filters = () => {
                   </div>
                 </div>
             </fieldset>
+            </Panel>
+            <Panel header="Condition" key="2">
             <fieldset  id="edit-country--wrapper" className="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
                 <legend>
                    <span className="fieldset-legend">Condition </span>
@@ -127,27 +151,9 @@ const Filters = () => {
                   </div>
                 </div>
             </fieldset>
-            
-            <fieldset  id="edit-country--wrapper" className="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
-                <legend>
-                   <span className="fieldset-legend">Country </span>
-                </legend>
-                <div className="fieldset-wrapper">
-                   <div id="edit-country" className="form-checkboxes">
-                       <div className="form-checkboxes bef-nested">        
-                         <ul>
-                             <li>
-                                 <div className="js-form-item form-item custom-control custom-checkbox js-form-type-checkbox form-type-checkbox js-form-item-country-55 form-item-country-55">
-                                     <input  type="checkbox" id="edit-country-55"  className="form-checkbox custom-control-input"/>
-                                     <label  className="custom-control-label option">USA</label>
-                                 </div>
-                            </li>
-                         </ul>            
-                       </div>
-                  </div>
-                </div>
-            </fieldset>
-            <fieldset  id="edit-state--wrapper" className="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
+            </Panel>
+            </Collapse>
+            {/* <fieldset  id="edit-state--wrapper" className="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper">
                 <legend>
                     <span className="fieldset-legend">State</span>
                 </legend>
@@ -182,11 +188,11 @@ const Filters = () => {
                          </div>
                     </div>
                 </div>
-            </fieldset>
-            <div className="js-form-item form-item custom-control custom-textfield js-form-type-textfield form-type-textfield js-form-item-created form-item-created">
+            </fieldset> */}
+            {/* <div className="js-form-item form-item custom-control custom-textfield js-form-type-textfield form-type-textfield js-form-item-created form-item-created">
                 <label for="edit-created" className="custom-control-label">Authored on</label>        
                 <input  type="text" id="edit-created" size="30" maxlength="128" className="form-text form-control"/>
-            </div>
+            </div> */}
 
             <Collapse defaultActiveKey={['1']} onChange={callback}>
              <Panel header="Category" key="1">
@@ -219,12 +225,10 @@ const Filters = () => {
                         </Checkbox>
                     </Form.Item>
                     <a onClick={showManModal} >+ Show All</a>  
-             </Panel>            
+             </Panel>          
                
-            </Collapse>
-           
-              <CountryStateCity/>
-              
+            </Collapse>           
+              <div className="countryStateCity"><CountryStateCity/></div>              
             <Panel header="Year" key="4">
               <YearFilter/>
             </Panel>   
