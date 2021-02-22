@@ -160,7 +160,7 @@ const Header = () => {
               {/* logo section  */}
               <div className="col-lg-4 col-md-3 col-sm-12">
                 <div className="logo-area">
-                  <a href="index.html">
+                  <a href="/">
                     <img
                       src="/images/logo.png"
                       alt="logo"
