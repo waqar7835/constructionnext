@@ -15,7 +15,7 @@ const YearFilter = () => {
             value={state}
             onChange={onChange}
           />
-        <Slider range defaultValue={[{state}, 50]}  />
+        <Slider range defaultValue={[state, 50]}  />
      
         {/* <Slider
             min={1}
