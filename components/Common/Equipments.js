@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Link from 'next/link'
 import { useDispatch, useSelector } from "react-redux";
 import getEquipmentsData from "@store/actions/equipments";
 import { baseURL } from "@config/config";
@@ -33,7 +34,7 @@ const Equipments = () => {
                 alt={val.index}
                 title={val.name}
               />
-              <h3>{val.name}</h3>
+              <h3><Link href="/inventory/search">{val.name}</Link></h3>
               </div>
              
             </div>

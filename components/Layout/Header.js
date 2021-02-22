@@ -20,7 +20,7 @@ const Header = () => {
       $(".mean-nav > ul").css("height", wHeight + "px");
     });
 
-    /*-------------------------------------
+  /*-------------------------------------
    Jquery Stiky Menu at window Load
    -------------------------------------*/
     $(window).on("scroll", function () {

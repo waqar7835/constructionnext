@@ -1,5 +1,5 @@
 import { Navbar, Nav } from "react-bootstrap";
-import Link from 'next/link'
+import Link from "next/link";
 const MainMenu = () => {
   return (
     // <div className="headermenu">
@@ -17,36 +17,29 @@ const MainMenu = () => {
     //   </Navbar.Collapse>
     // </Navbar>
     // </div>
-    <nav id="dropdown" >
+    <nav id="dropdown">
       <ul className="text-left">
         <li>
-          
           <Link href="/">
-          <a>Home</a>
-        </Link>
-          
+            <a>Home</a>
+          </Link>
         </li>
-        
+
         <li>
           <a href="#">Products</a>
           <ul>
             <li>
-            <Link href="/inventory/search">
-              <a>All Products</a>
-            </Link>
-             
+              <Link href="/inventory/search">
+                <a>All Products</a>
+              </Link>
             </li>
-            
           </ul>
         </li>
-        
-         
-        
+
         <li>
-        <Link href="/contact">
-          <a>Contact</a>
-        </Link>
-           
+          <Link href="/contact">
+            <a>Contact</a>
+          </Link>
         </li>
       </ul>
     </nav>
