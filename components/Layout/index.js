@@ -2,8 +2,6 @@ import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
 import './style.css'
-
-
 const layoutStyle = {
   margin: "auto",
   // padding: "0 15px",
