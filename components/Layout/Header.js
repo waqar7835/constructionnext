@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MainMenu from "./MainMenu";
+import Mobilemenu from './Mobilemenu'
+
 import $ from 'jquery';
 
 const Header = () => {
@@ -243,6 +245,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <Mobilemenu />
     </header>
   );
 };
