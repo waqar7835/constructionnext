@@ -15,12 +15,10 @@ const Equipments = () => {
       <div className="container">
         <div className="section-title text-center">
           <h2>
-            We Build <span>Your Dream</span>
+          What Equipment Are <span>You Looking For?</span>
           </h2>
           <p>
-            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-            consec tetur, adipisci velit, sed quia non numquam eius modi
-            tempora.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis molestie nulla, quis ullamcorper leo tristique ut. Fusce suscipit eget mi in semper. Nulla in ornare nisl. Vestibulum eget sem sed orci tempus blandit. Cras vitae semper lectus. Curabitur quis auctor mi.
           </p>
         </div>
       </div>
