@@ -13195,6 +13195,22 @@ footer#page-footer .footer-area-top {
   padding: 8px 10px;
   margin-top: 22px;
 }
+.ant-btn-primary {
+  color: #fff;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 14px 45px !important;
+  position: relative;
+  text-transform: capitalize;
+  transform: perspective(1px) translateZ(0px);
+  transition: 0.3s !important;
+  vertical-align: middle;
+  background: #ff9800 !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
 .ant-collapse-item .ant-collapse-content-box .apply-filter:hover {
   text-decoration: none;
 }
