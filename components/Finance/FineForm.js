@@ -14,11 +14,6 @@ const Fine = () => {
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="section-title-primary">
-              <h2>
-                Send Us a <span> Message</span>
-              </h2>
-            </div>
             <div class="contact-form-layout4 text-center">
               <Form
                 id="contact-form"
@@ -154,6 +149,15 @@ const Fine = () => {
                 {/* <Form.Item name={["user", "introduction"]} label="Introduction">
                   <Input.TextArea />
                 </Form.Item> */}
+                <div
+                  className="form-actions js-form-wrapper form-wrapper"
+                  id="edit-actions"
+                >
+                  <a href="#" className="btn btn-str-up2">
+                    {" "}
+                    Subscribe
+                  </a>
+                </div>
               </Form>
             </div>
           </div>
