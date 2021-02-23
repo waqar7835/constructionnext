@@ -225,7 +225,7 @@ const Filters = () => {
                                 VIKING
                         </Checkbox>
                     </Form.Item>
-                    <a onClick={showManModal} >+ Show All</a>  
+                    <a onClick={showManModal}  className="apply-filter">+ Show All</a>  
              </Panel>          
              <Panel header="Year" key="4">
               <YearFilter/>
@@ -273,7 +273,7 @@ const Filters = () => {
                                 VIKING
                         </Checkbox>
                     </Form.Item>
-                    <a>Apply Filter</a>
+                    <a className="apply-filter">Apply Filter</a>
        </Modal>
 
       </div>
