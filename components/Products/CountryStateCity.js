@@ -37,14 +37,14 @@ const CountryStateCity = () => {
              <Checkbox onChange={onChange}>COLORADO</Checkbox>
              <Checkbox onChange={onChange}>FLORIDA</Checkbox>
              <Checkbox onChange={onChange}>GEORGIA</Checkbox>         
-                <a onClick={showStateModal} >+ Show All</a>            
+                <a onClick={showStateModal} className="apply-filter" >+ Show All</a>            
              </Panel>
              <Panel header="City" key="3">
              <Checkbox onChange={onChange}>ARLINGTON</Checkbox>
              <Checkbox onChange={onChange}>BEDFORD</Checkbox>
              <Checkbox onChange={onChange}>BIG LAKE</Checkbox>
              <Checkbox onChange={onChange}>BOWLING GREEN</Checkbox>         
-                <a onClick={showStateModal} >+ Show All</a>            
+                <a onClick={showStateModal} className="apply-filter" >+ Show All</a>            
              </Panel>
             </Collapse>
             {/* state popup modal */}
@@ -58,7 +58,7 @@ const CountryStateCity = () => {
              <Checkbox onChange={onChange}>LOUISIANA</Checkbox>
              <Checkbox onChange={onChange}>MASSACHUSETTS</Checkbox>
              <Checkbox onChange={onChange}>MINNESOTA</Checkbox>           
-                    <a>Apply Filter</a>
+                    <a className="apply-filter">Apply Filter</a>
        </Modal>
 
         {/* Cities popup modal */}
@@ -72,7 +72,7 @@ const CountryStateCity = () => {
              <Checkbox onChange={onChange}>CERRITOS</Checkbox>
              <Checkbox onChange={onChange}>CHARLOTTE</Checkbox>
              <Checkbox onChange={onChange}>CHEHALIS</Checkbox>           
-                    <a>Apply Filter</a>
+                    <a className="apply-filter">Apply Filter</a>
        </Modal>
 
 
