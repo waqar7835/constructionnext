@@ -1,7 +1,14 @@
+import React, { useState } from 'react';
 import Detail from "./Detail";
 import { Form, Input, Button, Checkbox } from "antd";
+const { TextArea } = Input;
 
 const FormD = () => {
+  const [name, setName] = useState('');
+  const [company, setCompany] = useState('');
+  const [email, setEmail] = useState(' ');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState(' ');
   const onFinish = (values) => {
     console.log("Success:", values);
   };
@@ -9,6 +16,11 @@ const FormD = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  function handleSubmit(e){
+    e.preventDefault();
+    console.log("working form submit",name, company, email, phone, message);
+
+  }
 
   return (
     <div class="section-space-all">
@@ -30,6 +42,7 @@ const FormD = () => {
                 }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
+                onSubmit={handleSubmit}
               >
                 <Form.Item
                   class="col-md-6 col-sm-6 "
@@ -46,6 +59,7 @@ const FormD = () => {
                     class="form-control top-input"
                     data-error="Name field is required"
                     required=""
+                    value={name} onChange={(e)=> setName(e.target.value)}
                   />
                 </Form.Item>
 
@@ -64,6 +78,7 @@ const FormD = () => {
                     class="form-control top-input"
                     data-error="Name field is required"
                     required=""
+                    value={email} onChange={(e)=> setEmail(e.target.value)}
                   />
                 </Form.Item>
 
@@ -82,6 +97,7 @@ const FormD = () => {
                     class="form-control top-input"
                     data-error="Name field is required"
                     required=""
+                    value={company} onChange={(e)=> setCompany(e.target.value)}
                   />
                 </Form.Item>
 
@@ -100,6 +116,7 @@ const FormD = () => {
                     class="form-control top-input"
                     data-error="Name field is required"
                     required=""
+                    value={phone} onChange={(e)=> setPhone(e.target.value)}
                   />
                 </Form.Item>
 
@@ -113,11 +130,11 @@ const FormD = () => {
                     },
                   ]}
                 >
-                  <textarea
-                    class="form-control top-input"
-                    style={{ height: 170 }}
-                    data-error="Name field is required"
-                    required=""
+                  <TextArea
+                   
+                    style={{ height: 170 }}                   
+                   
+                    rows={4} value={message} onChange={(e)=> setMessage(e.target.value)}
                   />
                 </Form.Item>
 
@@ -125,6 +142,7 @@ const FormD = () => {
                   <Button
                     class="btn-primary-fill-ghost disabled"
                     type="submit"
+                    htmlType="submit"
                     style={{ paddingTop: 4, paddingBottom: 4 }}
                   >
                     <span style={{ fontSize: 16 }}>SUBMIT REQUEST</span>
