@@ -13261,7 +13261,10 @@ form.finace-fiance-from .input-group .btn-default {
 form.finace-fiance-from .input-group .btn-default:hover {
   background: #f57c00;
 }
- 
+.project-info-layout1 .pro-rt2-lft-video a,
+.pro-rt2-lft-title.rigth-side-detailp a {
+    color: #ff9800;
+ }
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
  
