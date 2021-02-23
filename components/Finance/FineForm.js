@@ -1,7 +1,6 @@
-import Detail from "./Detail";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button } from "antd";
 
-const FormD = () => {
+const Fine = () => {
   const onFinish = (values) => {
     console.log("Success:", values);
   };
@@ -14,7 +13,7 @@ const FormD = () => {
     <div class="section-space-all">
       <div class="container">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-12">
             <div class="section-title-primary">
               <h2>
                 Send Us a <span> Message</span>
@@ -42,9 +41,45 @@ const FormD = () => {
                   ]}
                 >
                   <Input
-                    placeholder="Name"
+                    placeholder="First Name"
                     class="form-control top-input"
                     data-error="Name field is required"
+                    required=""
+                  />
+                </Form.Item>
+
+                <Form.Item
+                  class="col-md-6 col-sm-6 "
+                  name="username"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your username!",
+                    },
+                  ]}
+                >
+                  <Input
+                    placeholder="Last Name"
+                    class="form-control top-input"
+                    data-error="Name field is required"
+                    required=""
+                  />
+                </Form.Item>
+
+                <Form.Item
+                  class="col-md-6 col-sm-6 "
+                  name="company"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your Company Name!",
+                    },
+                  ]}
+                >
+                  <Input
+                    placeholder="Comapny Name"
+                    class="form-control top-input"
+                    data-error="company field is required"
                     required=""
                   />
                 </Form.Item>
@@ -60,45 +95,45 @@ const FormD = () => {
                   ]}
                 >
                   <Input
-                    placeholder="Email Address"
+                    placeholder="Email"
                     class="form-control top-input"
-                    data-error="Name field is required"
-                    required=""
-                  />
-                </Form.Item>
-
-                <Form.Item
-                  class="col-md-6 col-sm-6  "
-                  name="company"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your Campany Name!",
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Company"
-                    class="form-control top-input"
-                    data-error="Name field is required"
+                    data-error="email field is required"
                     required=""
                   />
                 </Form.Item>
 
                 <Form.Item
                   class="col-md-6 col-sm-6 "
-                  name="Phone"
+                  name="price"
                   rules={[
                     {
                       required: true,
-                      message: "Please input your Phone Number!",
+                      message: "Please input price!",
                     },
                   ]}
                 >
                   <Input
-                    placeholder="Phone"
+                    placeholder="Equipment Price"
                     class="form-control top-input"
-                    data-error="Name field is required"
+                    data-error="price field is required"
+                    required=""
+                  />
+                </Form.Item>
+
+                <Form.Item
+                  class="col-md-6 col-sm-6 "
+                  name="location"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input location!",
+                    },
+                  ]}
+                >
+                  <Input
+                    placeholder="Equipment Location"
+                    class="form-control top-input"
+                    data-error="location field is required"
                     required=""
                   />
                 </Form.Item>
@@ -113,32 +148,18 @@ const FormD = () => {
                     },
                   ]}
                 >
-                  <textarea
-                    class="form-control top-input"
-                    style={{ height: 170 }}
-                    data-error="Name field is required"
-                    required=""
-                  />
+                  <Input.TextArea style={{ height: 170 }} />
                 </Form.Item>
 
-                <Form.Item class="col-lg-12 ">
-                  <Button
-                    class="btn-primary-fill-ghost disabled"
-                    type="submit"
-                    style={{ paddingTop: 4, paddingBottom: 4 }}
-                  >
-                    <span style={{ fontSize: 16 }}>SUBMIT REQUEST</span>
-                  </Button>
-                </Form.Item>
+                {/* <Form.Item name={["user", "introduction"]} label="Introduction">
+                  <Input.TextArea />
+                </Form.Item> */}
               </Form>
             </div>
-          </div>
-          <div className="col-md-4">
-            <Detail />
           </div>
         </div>
       </div>
     </div>
   );
 };
-export default FormD;
+export default Fine;
