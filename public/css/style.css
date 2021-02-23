@@ -4225,7 +4225,7 @@ ul.slider-btn li:last-child {
   margin-top: 15px;
 }
 .logo-area img {
-  
+
 }
 .logo-area.mt-28 {
   margin-top: 28px;
@@ -7440,7 +7440,7 @@ div ~ :last-child .features3-wrp-layout1 {
 .shape-service-layout1 h3 {
   text-align: center;
   padding-bottom: 15px;
-  margin: 0;
+  margin: 8px 0 0 0;
   text-transform: uppercase;
 }
 .shape-service-layout1 h3 a {
@@ -13158,7 +13158,7 @@ header .main-menu-area {
 }
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
-  .header .main-menu-area,
+ 
   .header-top-area1 {
     display: none;
   }
@@ -13175,7 +13175,7 @@ header .main-menu-area {
   #header-area-space {
     margin-top: 0;
   }
-  .main-menu-area,
+ 
   .header-search,
   .header-top-area1 {
     display: none;
@@ -13217,7 +13217,7 @@ header .main-menu-area {
   #header-area-space {
     margin-top: 0;
   }
-  .main-menu-area,
+ 
   .header-search,
   .header-top-area1 {
     display: none;
