@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Collapse, Checkbox,Modal, Form, Input, Divider } from 'antd';
 import YearFilter from './YearFilter';
+import PriceFilter from './PriceFilter';
 import CountryStateCity from './CountryStateCity';
 const { Panel } = Collapse;
 const CheckboxGroup = Checkbox.Group;
@@ -229,6 +230,9 @@ const Filters = () => {
              <Panel header="Year" key="4">
               <YearFilter/>
             </Panel>   
+            <Panel header="Price" key="7">
+              <PriceFilter/>
+            </Panel>  
             </Collapse>           
               <div className="countryStateCity"><CountryStateCity/></div>              
           

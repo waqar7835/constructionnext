@@ -5,7 +5,7 @@ import withRedux from "next-redux-wrapper";
 import { initStore } from "@store/configureStore";
 import Head from "next/head";
 import "antd/dist/antd.less";
-
+import 'rsuite/lib/styles/index.less';
 class AppCon extends App {
   static async getInitialProps({ Component, _router, ctx }) {
     let pageProps = {};

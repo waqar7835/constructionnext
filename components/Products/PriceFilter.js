@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {  InputNumber, Row, Col } from 'antd';
 import { Slider, RangeSlider,Input, InputGroup } from 'rsuite';
 
-const YearFilter = () => {
+const PriceFilter = () => {
   const [value, setValue] = React.useState([10, 50]);
   // const [min, setMin] = React.useState(3100);
   // const [max, setMax] = React.useState(158500);
@@ -45,4 +45,4 @@ const YearFilter = () => {
   );
 };
 
-export default YearFilter;
+export default PriceFilter;
