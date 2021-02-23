@@ -110,9 +110,8 @@ const List = () => {
                 <span>Price:</span>{ product.field_price }
               </div>
               <div className="invent-cus-purchas-cus">
-                <span>
-                  {" "}
-                  <i className="fas fa-money-bill-alt"></i>{" "}
+                <span>                 
+                  <i class="fa fa-money" aria-hidden="true"></i>
                 </span>
                 <a href="#"> </a>
               </div>
