@@ -10,8 +10,11 @@ const Index = () => {
       <div className="product-listing-page">
         <div className=" bg-common-style">
           <div className=" ">
-            <Equipments />
-            <EmailBlock />
+              <Equipments />
+            <div className="container">
+              <EmailBlock />
+            </div>
+            
             </div>
             <div className="container">
             <div className="filter-listing-block  ">
