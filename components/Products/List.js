@@ -153,7 +153,7 @@ const List = () => {
                 <Link href="/inventory/skid-steers-2/22">
                   <a>View Details</a>
                 </Link>
-                <a href="/inventory/listing/skid-steers-2"></a>
+                {/* <a href="/inventory/listing/skid-steers-2"></a> */}
                 <EmailSellerModal />
                 <VideoChatModal />
               </div>
