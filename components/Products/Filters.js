@@ -226,12 +226,12 @@ const Filters = () => {
                     </Form.Item>
                     <a onClick={showManModal} >+ Show All</a>  
              </Panel>          
-               
-            </Collapse>           
-              <div className="countryStateCity"><CountryStateCity/></div>              
-            <Panel header="Year" key="4">
+             <Panel header="Year" key="4">
               <YearFilter/>
             </Panel>   
+            </Collapse>           
+              <div className="countryStateCity"><CountryStateCity/></div>              
+          
          
             {/* <div className="js-form-item form-item custom-control js-form-type-select form-type-select js-form-item-category form-item-category">
                 <label for="edit-category" className="custom-control-label">Select Equipment</label>
