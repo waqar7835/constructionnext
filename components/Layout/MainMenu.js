@@ -26,11 +26,11 @@ const MainMenu = () => {
         </li>
 
         <li>
-          <a href="#">Products</a>
+          <a href="#">Inventory</a>
           <ul>
             <li>
               <Link href="/inventory/search">
-                <a>All Products</a>
+                <a>All Inventory</a>
               </Link>
             </li>
           </ul>
