@@ -45,7 +45,7 @@ const VideoChatModal = () => {
     return (
       <>
       <a onClick={showVideoModal}>Video Chat</a>
-        <Modal title="Email this to a friend"   visible={isVideoModalVisible}  onCancel={handleCancel} footer={[]} >
+        <Modal className="modal-filters" title="Email this to a friend"   visible={isVideoModalVisible}  onCancel={handleCancel} footer={[]} >
             <Form layout="vertical" onSubmit={handleSubmit} >
             <Form.Item label="First Name">
                 <Input placeholder="Enter your first name" value={firstName} onChange={(e)=> setFirstName(e.target.value)} />

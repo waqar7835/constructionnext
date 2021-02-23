@@ -46,7 +46,7 @@ const EmailSellerModal = () => {
     return (
       <>   
        <a onClick={showModal}>Email Seller</a>
-        <Modal title="Email this to a friend"   visible={isModalVisible}  onCancel={handleCancel} footer={[]} >
+        <Modal className="modal-filters" title="Email this to a friend"   visible={isModalVisible}  onCancel={handleCancel} footer={[]} >
             <Form layout="vertical" onSubmit={handleSubmit} >
             <Form.Item label="First Name">
                 <Input placeholder="Enter your first name" value={firstName} onChange={(e)=> setFirstName(e.target.value)} />

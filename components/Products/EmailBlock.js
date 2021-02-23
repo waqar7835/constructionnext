@@ -37,7 +37,7 @@ const EmailBlock = () => {
       <div className="email-block">
         <p><a onClick={showModal}> <i className="fa fa-envelope" aria-hidden="true"></i>Email</a></p>
         <p><a  > <i className="fa fa-print" aria-hidden="true"></i>  Print</a></p>
-        <Modal title="Email this to a friend"   visible={isModalVisible}  onCancel={handleCancel} footer={[]} >
+        <Modal className="modal-filters" title="Email this to a friend"   visible={isModalVisible}  onCancel={handleCancel} footer={[]} >
         <Form layout="vertical"  onSubmit={handleSubmit}  >
      <Form.Item label="First Name">
           <Input placeholder="Enter your first name" value={firstName} onChange={(e)=> setFirstName(e.target.value)} />
