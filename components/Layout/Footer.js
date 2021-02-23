@@ -13,7 +13,7 @@ export default function Footer() {
                   <img src="/images/logo.png" alt="logo" />
                 </div>
                 <div className="footer-newslatter">
-                  <h3 className="title-bar-footer">Newslatter</h3>
+                  <h3 className="title-bar-footer">Newsletter</h3>
                   <p>
                     Subscribe to get the latest news, update and offer
                     information.
