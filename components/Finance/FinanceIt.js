@@ -4,10 +4,7 @@ const Fineit = () => {
       <div className="container">
         <div className="row">
           <div className="region region-welcome-section">
-            <div
-              id="block-bootstrap-for-drupal-constructioncom-page-title"
-              className="block block-core block-page-title-block"
-            ></div>
+           
             <div
               id="block-welcome"
               className="section-space-less30 bg-gray2 bg-common-style block block-block-content block-block-content14bbc390-4504-40e5-b7df-9f691c2e1fa2"
@@ -71,39 +68,27 @@ const Fineit = () => {
                   call you right away.
                 </div>
 
-                <div
-                  className="field--type-email field--name-mail field--widget-email-default js-form-wrapper form-wrapper"
-                  id="edit-mail-wrapper"
+                <form className="finace-fiance-from" 
+                  
                 >
-                  <div className="js-form-item form-item custom-control custom-email js-form-type-email form-type-email js-form-item-mail-0-value form-item-mail-0-value">
-                    <label className="custom-control-label js-form-required form-required">
-                      Email
-                    </label>
+ 
+                  <div className="input-group">
+                    
 
                     <input
                       type="email"
                       id="edit-mail-0-value"
-                      value="Email us at: inventory-horsham@leaserv.com"
+                      placeholder="Email us at: inventory-horsham@leaserv.com"
                       className="form-email required form-control"
                       required="required"
                     />
+                    <span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="icofont icofont-paper-plane"></i></button></span>
                   </div>
-                </div>
-                <div
-                  className="field--type-simplenews-subscription field--name-subscriptions field--widget-simplenews-subscription-select js-form-wrapper form-wrapper"
-                  id="edit-subscriptions-wrapper"
-                ></div>
+                </form>
+               
+                
 
-                <div
-                  className="form-actions js-form-wrapper form-wrapper"
-                  id="edit-actions"
-                >
-                  <a href="#" className="btn btn-str-up2">
-                    {/* <i class="fa fa-arrow-right" aria-hidden="true"></i> */
-                    }
-                    Submit
-                  </a>
-                </div>
+                
               </form>
             </div>
           </div>

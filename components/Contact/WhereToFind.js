@@ -28,9 +28,7 @@ const Map = () => {
           <div class="section-title-primary text-center">
             <h2>where to find us</h2>
             <p>
-              Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-              te consec tetur, adipisci velit, sed quia non numquam eius modi
-              tempora incidunt
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis molestie nulla, quis ullamcorper leo tristique ut. Fusce suscipit eget mi in semper.
             </p>
           </div>
         </div>

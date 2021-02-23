@@ -176,7 +176,7 @@ const Fine = () => {
                     htmlType="submit"
                     style={{ paddingTop: 4, paddingBottom: 4 }}
                   >
-                    <span style={{ fontSize: 16 }}>Subscribe</span>
+                    <span style={{ fontSize: 16 }}>Submit</span>
                   </Button>
                 </Form.Item>
               </Form>

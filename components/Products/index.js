@@ -9,9 +9,12 @@ const Index = () => {
       <div id="header-area-space"></div>
       <div className="product-listing-page">
         <div className=" bg-common-style">
-          <div className="container">
-            <Equipments />
-            <EmailBlock />
+          <div className=" ">
+              <Equipments />
+            <div className="container">
+              <EmailBlock />
+            </div>
+            
             </div>
             <div className="container">
             <div className="filter-listing-block  ">

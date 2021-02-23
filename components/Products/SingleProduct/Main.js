@@ -94,10 +94,10 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                   <div className="pro-det-prbtn">
-                    <div className="pro-b2-gen-label">Price: </div>
-                    <div className="pro-det-prbtn rigth-side-detailp">
-                      {!!content && content.field_price}
-                    </div>
+                    <div className="pro-b2-gen-label">Price:  {!!content && content.field_price} </div>
+                    {/* <div className="pro-det-prbtn rigth-side-detailp">
+                     
+                    </div> */}
                   </div>
                   <div className="pro-det-btnp rigth-side-detailp">
                     <p>
