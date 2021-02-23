@@ -27,8 +27,8 @@ const About = () => {
           <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
           
             <div className="video-box-layout1">
-            <Modal title="About The Fabricate"   visible={isModalVisible}  onCancel={handleCancel} footer={[]} >
-              <ReactPlayer url="https://youtu.be/O_C5CN1L3Xo" />
+            <Modal   title="About The OneSource"   visible={isModalVisible}  onCancel={handleCancel} footer={[]} >
+              <ReactPlayer url="https://youtu.be/O_C5CN1L3Xo" width={'100%'} />
             </Modal>
               <img src="/images/about-4-1.png" alt="img" />
               {/* <a

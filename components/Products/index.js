@@ -14,7 +14,7 @@ const Index = () => {
             <EmailBlock />
             </div>
             <div className="container">
-            <div className="filter-listing-block row">
+            <div className="filter-listing-block  ">
               <Filters />
               <List />
             </div>

@@ -13204,9 +13204,35 @@ header .main-menu-area {
 .mobilemenu {
   display: none;
 }
+.video-box-layout1 a:hover {
+  color: transparent;
+}
 h2 {
   font-size: 36px;
   line-height: 1.2  !important;
+}
+.menusearch {
+  display: none;
+}
+.get-quote {
+ 
+  text-align: right;
+}
+.email-block p:nth-last-child(1) {
+  margin-right: 8px;
+}
+.email-block p a i {
+  margin-right: 3px;
+}
+.email-block p a:hover {
+  text-decoration: none;
+}
+.main-menu-area .d-md-flex::after ,
+.main-menu-area .d-md-flex::before {
+  display: none;
+}
+.main-menu-area .d-md-flex {
+  justify-content: space-between;
 }
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
@@ -13323,8 +13349,7 @@ h2 {
     right: 0;
   }
   #welcome-section-fluid {
-   
-    padding: 0 15px;
+    padding: 0 15px 30px;
   }
   #header-area-space {
     margin-top: 0;
