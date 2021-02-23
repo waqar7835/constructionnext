@@ -7909,6 +7909,7 @@ div ~ :last-child .features3-wrp-layout1 {
 .footer-area-top .footer-one-col .footer-logo img {
   margin-bottom: 0;
   max-width: 100%;
+  width: 200px;
 }
 .footer-area-top .footer-one-col .title-bar-footer {
   margin-bottom: 45px;

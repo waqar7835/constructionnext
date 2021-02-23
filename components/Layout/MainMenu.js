@@ -21,7 +21,7 @@ const MainMenu = () => {
       <ul className="text-left">
         <li>
           <Link href="/">
-            <a>Home</a>
+            <a>Welcome</a>
           </Link>
         </li>
 
@@ -35,10 +35,15 @@ const MainMenu = () => {
             </li>
           </ul>
         </li>
-
+        <li>
+        <Link href="/">
+            <a> Financing Available</a>
+        </Link> 
+        </li>
+       
         <li>
           <Link href="/contact">
-            <a>Contact</a>
+            <a>Contact Us</a>
           </Link>
         </li>
       </ul>
