@@ -12,7 +12,9 @@ const Index = () => {
           <div className="container">
             <Equipments />
             <EmailBlock />
-            <div className="filter-listing-block">
+            </div>
+            <div className="container">
+            <div className="filter-listing-block row">
               <Filters />
               <List />
             </div>
