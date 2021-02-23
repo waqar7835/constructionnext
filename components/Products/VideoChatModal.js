@@ -113,7 +113,7 @@ const VideoChatModal = () => {
                  <Dropdown overlay={timemenu} placement="bottomLeft" arrow>
                  <Button>Time</Button>
                  </Dropdown>
-                 <Dropdown overlay={timemenu} placement="bottomLeft" arrow>
+                 <Dropdown overlay={daymenu} placement="bottomLeft" arrow>
                  <Button>Day</Button>
                  </Dropdown>
                  </Form.Item>
