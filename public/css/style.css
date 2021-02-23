@@ -4225,7 +4225,7 @@ ul.slider-btn li:last-child {
   margin-top: 15px;
 }
 .logo-area img {
-
+  width: 133px;
 }
 .logo-area.mt-28 {
   margin-top: 28px;
@@ -7442,6 +7442,10 @@ div ~ :last-child .features3-wrp-layout1 {
   padding-bottom: 15px;
   margin: 8px 0 0 0;
   text-transform: uppercase;
+  font-size: 18px;
+}
+.shape-service-layout1 img {
+  width: 100px;
 }
 .shape-service-layout1 h3 a {
   color: #333333;
@@ -12836,7 +12840,7 @@ footer#page-footer .footer-area-top {
   text-align: center;
 }
 #welcome-section-fluid {
-  padding-bottom: 35px;
+  padding-bottom: 90px;
 }
 @font-face {
   font-family: "bicon";
