@@ -48,7 +48,7 @@ const CountryStateCity = () => {
              </Panel>
             </Collapse>
             {/* state popup modal */}
-            <Modal title="State"   visible={isStateModalVisible}  onCancel={handleCancelState} footer={[]} >
+            <Modal className="popup-filters" title="State"   visible={isStateModalVisible}  onCancel={handleCancelState} footer={[]} >
             <Input placeholder="Filter" />
              <Checkbox onChange={onChange}>CALIFORNIA</Checkbox>
              <Checkbox onChange={onChange}>COLORADO</Checkbox>
@@ -62,7 +62,7 @@ const CountryStateCity = () => {
        </Modal>
 
         {/* Cities popup modal */}
-        <Modal title="City"   visible={isCityModalVisible}  onCancel={handleCancelCity} footer={[]} >
+        <Modal title="City" className="popup-filters"  visible={isCityModalVisible}  onCancel={handleCancelCity} footer={[]} >
             <Input placeholder="Filter" />
              <Checkbox onChange={onChange}>ARLINGTON</Checkbox>
              <Checkbox onChange={onChange}>BEDFORD</Checkbox>

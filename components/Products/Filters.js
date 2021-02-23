@@ -187,6 +187,7 @@ const Filters = () => {
         visible={isCatModalVisible}
         onCancel={handleCancel}
         footer={[]}
+        className="popup-filters"
       >
         <Checkbox
           indeterminate={indeterminate}
@@ -212,6 +213,7 @@ const Filters = () => {
         visible={isManModalVisible}
         onCancel={handleCancelMan}
         footer={[]}
+        className="popup-filters"
       >
         <Form.Item label="Popular">
           <Checkbox onChange={onChange}>BOBCAT</Checkbox>
