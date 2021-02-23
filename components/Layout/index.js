@@ -28,6 +28,14 @@ const Layout = (props) => {
           <link rel="stylesheet" href={`/css/icofont.css`} />
           <link rel="stylesheet" href={`/css/font-awesome.min.css`} />
           <link rel="stylesheet" href={`/css/meanmenu.min.css`} />
+          {/* <script 
+                    src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+                    crossorigin="anonymous"
+                    />
+          <script 
+                    src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
+                    crossorigin="anonymous"
+                    /> */}
           {!!isRander && (
             <>
               {/* <script src={`/js/jquery-2.2.4.min.js`} /> */}
