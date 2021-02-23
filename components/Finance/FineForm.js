@@ -1,6 +1,14 @@
 import { Form, Input, Button } from "antd";
+import React, { useState } from 'react';
 
 const Fine = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState(' ');
+  const [message, setMessage] = useState(' ');
+  const [company, setCompany] = useState(' ');
+  const [price, setPrice] = useState(' ');
+  const [location, setLocation] = useState(' ');
   const onFinish = (values) => {
     console.log("Success:", values);
   };
@@ -8,6 +16,11 @@ const Fine = () => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  function handleSubmit(e){
+    e.preventDefault();
+    console.log("working form submit",firstName, lastName, email, price, company, message, location);
+
+  }
 
   return (
     <div class="section-space-all">
@@ -24,6 +37,7 @@ const Fine = () => {
                 }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
+                onSubmit={handleSubmit}
               >
                 <Form.Item
                   class="col-md-6 col-sm-6 "
@@ -40,6 +54,7 @@ const Fine = () => {
                     class="form-control top-input"
                     data-error="Name field is required"
                     required=""
+                    value={firstName} onChange={(e)=> setFirstName(e.target.value)}
                   />
                 </Form.Item>
 
@@ -58,6 +73,7 @@ const Fine = () => {
                     class="form-control top-input"
                     data-error="Name field is required"
                     required=""
+                    value={lastName} onChange={(e)=> setLastName(e.target.value)}
                   />
                 </Form.Item>
 
@@ -76,6 +92,7 @@ const Fine = () => {
                     class="form-control top-input"
                     data-error="company field is required"
                     required=""
+                    value={company} onChange={(e)=> setCompany(e.target.value)}
                   />
                 </Form.Item>
 
@@ -94,6 +111,7 @@ const Fine = () => {
                     class="form-control top-input"
                     data-error="email field is required"
                     required=""
+                    value={email} onChange={(e)=> setEmail(e.target.value)}
                   />
                 </Form.Item>
 
@@ -112,6 +130,7 @@ const Fine = () => {
                     class="form-control top-input"
                     data-error="price field is required"
                     required=""
+                    value={price} onChange={(e)=> setPrice(e.target.value)}
                   />
                 </Form.Item>
 
@@ -130,6 +149,7 @@ const Fine = () => {
                     class="form-control top-input"
                     data-error="location field is required"
                     required=""
+                    value={location} onChange={(e)=> setLocation(e.target.value)}
                   />
                 </Form.Item>
 
@@ -143,21 +163,22 @@ const Fine = () => {
                     },
                   ]}
                 >
-                  <Input.TextArea style={{ height: 170 }} />
+                  <Input.TextArea style={{ height: 170 }} value={message} onChange={(e)=> setMessage(e.target.value)} />
                 </Form.Item>
 
                 {/* <Form.Item name={["user", "introduction"]} label="Introduction">
                   <Input.TextArea />
                 </Form.Item> */}
-                <div
-                  className="form-actions js-form-wrapper form-wrapper"
-                  id="edit-actions"
-                >
-                  <a href="#" className="btn btn-str-up2">
-                    {" "}
-                    Subscribe
-                  </a>
-                </div>
+                <Form.Item class="col-lg-12 ">
+                  <Button
+                    class="btn-primary-fill-ghost disabled"
+                    type="submit"
+                    htmlType="submit"
+                    style={{ paddingTop: 4, paddingBottom: 4 }}
+                  >
+                    <span style={{ fontSize: 16 }}>Subscribe</span>
+                  </Button>
+                </Form.Item>
               </Form>
             </div>
           </div>
