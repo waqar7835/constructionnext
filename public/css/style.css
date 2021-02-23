@@ -13234,6 +13234,33 @@ h2 {
 .main-menu-area .d-md-flex {
   justify-content: space-between;
 }
+form.finace-fiance-from {
+  width: 30%;
+  margin: 0 auto;
+}
+form.finace-fiance-from .form-control {
+  background: #ffffff;
+    height: 57px;
+    border: 0;
+    box-shadow: none;
+    font-size: 16px;
+}
+form.finace-fiance-from .input-group .btn-default {
+  background: #ff9800;
+  height: 57px;
+  border: 0;
+  border-radius: 0 2px 2px 0;
+  box-shadow: none;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  color: #fff;
+}
+form.finace-fiance-from .input-group .btn-default:hover {
+  background: #f57c00;
+}
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
  
@@ -13246,6 +13273,19 @@ h2 {
  } 
 
  @media (min-width: 320px) and (max-width: 575.98px)  { 
+  form.finace-fiance-from {
+    width: 93%;
+  }
+   .mainfiance-section #welcome-section-fluid {
+    padding: 15px;
+    height: auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+   }
+   .mainfiance-section  .section-space-less30 {
+    padding: 62px 16px 38px;
+  }
    form.financeform {
      padding-bottom: 35px;
    }
@@ -13350,6 +13390,10 @@ h2 {
   }
   #welcome-section-fluid {
     padding: 0 15px 30px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   #header-area-space {
     margin-top: 0;
@@ -13425,6 +13469,16 @@ h2 {
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
+  form.finace-fiance-from {
+    width: 93%;
+  }
+   .mainfiance-section #welcome-section-fluid {
+    padding: 15px;
+    height: auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+   }
   form.financeform {
     padding-bottom: 35px;
   }
@@ -13567,7 +13621,10 @@ h2 {
     width: 100%;
   }
   #welcome-section-fluid {
-   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
     padding: 0 15px;
   }
   .simplenews-subscriber-form form .field--name-mail .custom-email input[type="email"] {

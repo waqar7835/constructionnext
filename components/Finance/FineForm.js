@@ -155,7 +155,7 @@ const Fine = () => {
                 >
                   <a href="#" className="btn btn-str-up2">
                     {" "}
-                    Subscribe
+                    Submit
                   </a>
                 </div>
               </Form>

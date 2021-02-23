@@ -4,7 +4,7 @@ import FineForm from "./FineForm";
 
 const Index = () => {
   return (
-    <div>
+    <div className="mainfiance-section">
       <div id="header-area-space"></div>
       <ImgFine />
       <FinanceIt />
