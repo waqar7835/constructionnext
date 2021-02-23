@@ -205,7 +205,7 @@ const Filters = () => {
                 Heavy Duty Trucks
                 </Checkbox>           
                 <CheckboxGroup options={plainOptions2}  onChange={onChange2} />  
-                <a onClick={showCatModal} >+ Show All</a>  
+                <a onClick={showCatModal} className="apply-filter">+ Show All</a>  
              </Panel>    
              <Panel header="Manufacturer" key="2">
                     <Form.Item label="Popular">
