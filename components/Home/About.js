@@ -46,32 +46,27 @@ const About = () => {
           <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div className="about-content-layout1">
               <h2>
-                About The <span>Fabricate</span>
+                About The <span>OneSource</span>
               </h2>
               <p>
                 <strong>
                   {" "}
-                  Fabrication generates objects in Ruby. Fabricators are
-                  schematics for your objects, and can be created as needed
-                  anywhere in your app or specs.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis molestie nulla, quis ullamcorper leo tristique ut. Fusce suscipit eget mi in semper.
                 </strong>
               </p>
               <ul>
                 <li>
-                  <a href="#">Alienum phaedrum torquatos necu</a>
+                  <a href="#"> Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
                 </li>
                 <li>
-                  <a href="#">Nihil expetendis in mei</a>
+                  <a href="#"> Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
                 </li>
                 <li>
                   <a href="#">Mei an pericula euripidispartem</a>
                 </li>
               </ul>
               <p className="off-mobile">
-                but has specific support for ActiveRecord Models, Mongoid
-                Documents. Sequel Models Sequel Modelsbut has for specific.
-                support for ActiveRecord Models, Mongoid Documents, ActiveRecord
-                Fabrication can generate anything
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis molestie nulla, quis ullamcorper leo tristique ut. Fusce suscipit eget mi in semper.
               </p>
               <div className="button-for-more text-left">
                 <a href="#" title="learn More" className="btn btn-str-up2">

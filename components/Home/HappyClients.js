@@ -20,9 +20,7 @@ const HappyClients = () => {
                 Happy Clients <span>Feedback</span>
               </h2>
               <p>
-                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                consec tetur, adipisci velit, sed quia non numquam eius modi
-                tempora
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis molestie nulla, quis ullamcorper leo tristique ut.
               </p>
             </div>
           </div>
