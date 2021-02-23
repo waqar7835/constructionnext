@@ -13388,12 +13388,18 @@ form.finace-fiance-from .input-group .btn-default:hover {
     margin-top: 15px;
     right: 0;
   }
+  .product-title-banner {
+    height: 150px;
+  }
+  .product-title-banner .page-title {
+    padding-top: 38px;
+  }
   #welcome-section-fluid {
     padding: 0 15px 30px;
-    height: 150px;
+    /* height: 150px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
   }
   #header-area-space {
     margin-top: 0;
@@ -13469,6 +13475,12 @@ form.finace-fiance-from .input-group .btn-default:hover {
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
+  .product-title-banner {
+    height: 150px;
+  }
+  .product-title-banner .page-title {
+    padding-top: 38px;
+  }
   form.finace-fiance-from {
     width: 93%;
   }
