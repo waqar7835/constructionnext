@@ -11602,12 +11602,19 @@ div ~ :last-child .features3-wrp-layout1 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url(../images/layer-16.jpg);
+  /* background-image: url(../images/layer-16.jpg); */
+  background-image: url('../images/header_image_1_2.webp');
 }
 .product-title-banner .page-title {
   text-transform: uppercase;
   color: #ffffff;
   text-align: center;
+}
+.finance-title {
+  padding-bottom: 10px;
+}
+.financeform .form-actions {
+  padding-top: 15px;
 }
 @media (max-width: 767px) {
   .portfolio-layout3 .content-box h3 {
@@ -13194,6 +13201,39 @@ header .main-menu-area {
 .feedback-review-layout1 .media-body h3 a {
   color: #ff9800;
 }
+.mobilemenu {
+  display: none;
+}
+.video-box-layout1 a:hover {
+  color: transparent;
+}
+h2 {
+  font-size: 36px;
+  line-height: 1.2  !important;
+}
+.menusearch {
+  display: none;
+}
+.get-quote {
+ 
+  text-align: right;
+}
+.email-block p:nth-last-child(1) {
+  margin-right: 8px;
+}
+.email-block p a i {
+  margin-right: 3px;
+}
+.email-block p a:hover {
+  text-decoration: none;
+}
+.main-menu-area .d-md-flex::after ,
+.main-menu-area .d-md-flex::before {
+  display: none;
+}
+.main-menu-area .d-md-flex {
+  justify-content: space-between;
+}
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
  
@@ -13206,6 +13246,84 @@ header .main-menu-area {
  } 
 
  @media (min-width: 320px) and (max-width: 575.98px)  { 
+   form.financeform {
+     padding-bottom: 35px;
+   }
+  header .mobilemenu  {
+    display: block;
+  }
+  header .mobilemenu .ant-btn-primary {
+    position: relative;
+    background-color: #f57c00;
+    border: 1px solid #f57c00;
+    padding: 2px 18px;
+    height: 32px;
+    border-radius: 2px;
+  } 
+  header .mobilemenu .ant-btn-primary span {
+    margin-bottom: 2px;
+  }
+  header .mobilemenu .mobilemenu-inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px 0 10px;
+  }
+  .mobilemenu-inner .mobilemenu-logo img {
+    width: 150px;
+  }
+  .mobilemenu-inner .mobilemenu-btnn {
+    justify-content: right;
+    margin-top: 12px;
+  }
+  .mobilemenu-inner .mobilemenu-btnn button span {
+    font-size: 0;
+    position: relative;
+  }
+  .mobilemenu-inner .mobilemenu-btnn button span::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background-color: #fff;
+    width: 22px;
+    top: -9px;
+    left: -11px;
+    right: 0;
+    margin: 0 auto;
+    padding: 1px;
+  }
+  .mobilemenu-inner .mobilemenu-btnn button span::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background-color: #fff;
+    width: 22px;
+    top: -2px;
+    left: -11px;
+    right: 0;
+    margin: 0 auto;
+    padding: 1px;
+  }
+  .mainmobile-ul .ant-drawer .ant-drawer-close i svg {
+    fill: orange ;
+  }
+  .mainmobile-ul .ant-drawer-content-wrapper nav#dropdown ul li {
+    padding: 8px 12px 8px 0;
+    border-bottom: 1px solid #f57c00;
+  }
+  .mainmobile-ul .ant-drawer-content-wrapper nav#dropdown ul li a {
+     color: #f57c00;
+  }
+  .mainmobile-ul .ant-drawer-content-wrapper nav#dropdown ul {
+    padding-left: 0;
+  }
+  .mainmobile-ul .ant-drawer-content-wrapper nav#dropdown ul li ul {
+    padding-left:  15px;
+  }
+  .mainmobile-ul .ant-drawer-content-wrapper nav#dropdown ul li ul li {
+    border-bottom: 0 solid #f57c00;
+    list-style: circle;
+  }
+
   .product-listing-page .listing-content .invent-pro-cus-lft,
   .product-listing-page .listing-content .invent-pro-cus-mid,
   .product-listing-page .listing-content .invent-pro-cus-rt  {
@@ -13231,8 +13349,7 @@ header .main-menu-area {
     right: 0;
   }
   #welcome-section-fluid {
-   
-    padding: 0 15px;
+    padding: 0 15px 30px;
   }
   #header-area-space {
     margin-top: 0;
@@ -13279,6 +13396,7 @@ header .main-menu-area {
   }
   header .main-menu-area {
     padding-bottom: 15px;
+    display: none;
   }
   .product-detail-section .for-product-deatil.col-md-3 {
     width: 100%;
@@ -13287,9 +13405,126 @@ header .main-menu-area {
   .product-detail-section img {
     width: 135px;
   }
+  .product-detail-section .product-detail-block2 .pro-b2-gen-flex {
+    display: unset;
+    margin-bottom: 6px;
+  }
+  .product-detail-section .product-detail-block2 .pro-b2-general {
+    margin-bottom: 30px;
+    padding: 15px;
+  }
+  .product-detail-section .product-detail-block2 .pro-b2-gen-flex .pro-b2-gen-value {
+    width: 100%;
+    margin-left: 0;
+  }
+  .product-detail-section .product-detail-block2 .pro-b2-gen-flex .pro-b2-gen-label {
+    width: 100%;
+    max-width: 100%;
+    min-width: 300px;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
+  form.financeform {
+    padding-bottom: 35px;
+  }
+  header .main-menu-area {
+    padding-bottom: 15px;
+    display: none;
+}
+  header .mobilemenu  {
+    display: block;
+  }
+  header .mobilemenu .ant-btn-primary {
+    position: relative;
+    background-color: #f57c00;
+    border: 1px solid #f57c00;
+    padding: 2px 18px;
+    height: 32px;
+    border-radius: 2px;
+  } 
+  header .mobilemenu .ant-btn-primary span {
+    margin-bottom: 2px;
+  }
+  header .mobilemenu .mobilemenu-inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px 0 10px;
+  }
+  .mobilemenu-inner .mobilemenu-logo img {
+    width: 150px;
+  }
+  .mobilemenu-inner .mobilemenu-btnn {
+    justify-content: right;
+    margin-top: 12px;
+  }
+  .mobilemenu-inner .mobilemenu-btnn button span {
+    font-size: 0;
+    position: relative;
+  }
+  .mobilemenu-inner .mobilemenu-btnn button span::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background-color: #fff;
+    width: 22px;
+    top: -9px;
+    left: -11px;
+    right: 0;
+    margin: 0 auto;
+    padding: 1px;
+  }
+  .mobilemenu-inner .mobilemenu-btnn button span::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background-color: #fff;
+    width: 22px;
+    top: -2px;
+    left: -11px;
+    right: 0;
+    margin: 0 auto;
+    padding: 1px;
+  }
+  .mainmobile-ul .ant-drawer .ant-drawer-close i svg {
+    fill: orange ;
+  }
+  .mainmobile-ul .ant-drawer-content-wrapper nav#dropdown ul li {
+    padding: 8px 12px 8px 0;
+    border-bottom: 1px solid #f57c00;
+  }
+  .mainmobile-ul .ant-drawer-content-wrapper nav#dropdown ul li a {
+     color: #f57c00;
+  }
+  .mainmobile-ul .ant-drawer-content-wrapper nav#dropdown ul {
+    padding-left: 0;
+  }
+  .mainmobile-ul .ant-drawer-content-wrapper nav#dropdown ul li ul {
+    padding-left:  15px;
+  }
+  .mainmobile-ul .ant-drawer-content-wrapper nav#dropdown ul li ul li {
+    border-bottom: 0 solid #f57c00;
+    list-style: circle;
+  }
+  .headermenu nav button {
+    position: absolute;
+    padding: 5px 20px;
+    margin-top: 15px;
+    right: 0;
+  }
+  .product-detail-section .product-detail-block2 .pro-b2-gen-flex .pro-b2-gen-value {
+    width: 100%;
+    margin-left: 0;
+  }
+  .product-detail-section .product-detail-block2 .pro-b2-gen-flex .pro-b2-gen-label {
+    width: 100%;
+    max-width: 100%;
+    min-width: 300px;
+  }
+  .product-detail-section .product-detail-block2 .pro-b2-general {
+    margin-bottom: 30px;
+    padding: 15px;
+  }
   .product-detail-section .product-detail-block2 .pro-b2-gen-flex {
     display: unset;
     margin-bottom: 6px;

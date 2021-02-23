@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MainMenu from "./MainMenu";
+import Mobilemenu from './Mobilemenu'
+
 import $ from 'jquery';
 
 const Header = () => {
@@ -219,7 +221,7 @@ const Header = () => {
               <div className="col-lg-8 col-md-9">
                 <MainMenu />
               </div>
-              <div className="col-lg-2 col-md-1">
+              {/* <div className="col-lg-2 col-md-1 menusearch">
                 <div className="header-search layout2">
                   <form>
                     <input
@@ -233,7 +235,7 @@ const Header = () => {
                     </a>
                   </form>
                 </div>
-              </div>
+              </div> */}
               <div className="col-lg-2 col-md-1 get-quote">
                 <a href="#" title="quote" className="btn quote-btn-grey">
                   Get A quote
@@ -243,6 +245,7 @@ const Header = () => {
           </div>
         </div>
       </div>
+      <Mobilemenu />
     </header>
   );
 };

@@ -12,7 +12,7 @@ const Fineit = () => {
               id="block-welcome"
               className="section-space-less30 bg-gray2 bg-common-style block block-block-content block-block-content14bbc390-4504-40e5-b7df-9f691c2e1fa2"
             >
-              <h2>Finance It!</h2>
+              <h2 className="finance-title">Finance It!</h2>
 
               <div className="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__items">
                 <div className="field__item">
@@ -46,6 +46,7 @@ const Fineit = () => {
                 action="/"
                 method="post"
                 id="simplenews-subscriptions-block-ce69e592-96f2-447a-a58d-3244b9d41b07"
+                className="financeform"
               >
                 <div
                   id="edit-message"
@@ -98,7 +99,9 @@ const Fineit = () => {
                   id="edit-actions"
                 >
                   <a href="#" className="btn btn-str-up2">
-                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    {/* <i class="fa fa-arrow-right" aria-hidden="true"></i> */
+                    }
+                    Submit
                   </a>
                 </div>
               </form>
