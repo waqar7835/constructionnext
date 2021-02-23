@@ -137,53 +137,49 @@ const Filters = () => {
         </Collapse>
         
 
-        <Collapse defaultActiveKey={["1"]} onChange={callback}>
-          <Panel header="Category" key="1">
-            <Checkbox
-              indeterminate={indeterminate}
-              onChange={onCheckAllChange}
-              checked={checkAll}
-            >
-              Semi-Trailers
-            </Checkbox>
-            <CheckboxGroup options={plainOptions} onChange={onChange} />
-            <Checkbox
-              indeterminate={indeterminate2}
-              onChange={onCheckAllChange2}
-              checked={checkAll2}
-            >
-              Heavy Duty Trucks
-            </Checkbox>
-            <CheckboxGroup options={plainOptions2} onChange={onChange2} />
-            <a onClick={showCatModal}>+ Show All</a>
-          </Panel>
-          <Panel header="Manufacturer" key="2">
-            <Form.Item label="Popular">
-              <Checkbox onChange={onChange}>BOBCAT</Checkbox>
-              <Checkbox onChange={onChange}>DOOSAN</Checkbox>
-              <Checkbox onChange={onChange}>KUBOTA</Checkbox>
-              <Checkbox onChange={onChange}>FREIGHTLINER</Checkbox>
-              <Checkbox onChange={onChange}>VIKING</Checkbox>
-            </Form.Item>
-            <a onClick={showManModal} className="apply-filter">
-              + Show All
-            </a>
-          </Panel>
-          <Panel header="Year" key="4">
-            <YearFilter />
-          </Panel>
-          <Panel header="Price" key="7">
-            <PriceFilter />
-          </Panel>
-        </Collapse>
-        <div className="countryStateCity">
-          <CountryStateCity />
-        </div>
-
-        {/* <div className="js-form-item form-item custom-control js-form-type-select form-type-select js-form-item-category form-item-category">
-                <label for="edit-category" className="custom-control-label">Select Equipment</label>
-                <select data-drupal-selector="edit-category" id="edit-category" name="category" className="form-select custom-select"><option value="All">- Any -</option><option value="4">Articulated Dump Trucks</option><option value="8">Attachments</option><option value="2">Excavators</option><option value="6">Material Handling</option><option value="7">Mowers</option><option value="1" selected="selected">Skid Steers</option><option value="10">Track Loaders</option><option value="3">Utility Vehicles</option><option value="5">Wheel Loaders</option></select>
-            </div> */}
+            <Collapse defaultActiveKey={['1']} onChange={callback}>
+             <Panel header="Category" key="1">
+                <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
+                    Semi-Trailers
+                </Checkbox>           
+                <CheckboxGroup options={plainOptions}  onChange={onChange} />
+                <Checkbox indeterminate={indeterminate2} onChange={onCheckAllChange2} checked={checkAll2}>
+                Heavy Duty Trucks
+                </Checkbox>           
+                <CheckboxGroup options={plainOptions2}  onChange={onChange2} />  
+                <a onClick={showCatModal} className="apply-filter">+ Show All</a>  
+             </Panel>    
+             <Panel header="Manufacturer" key="2">
+                    <Form.Item label="Popular">
+                        <Checkbox onChange={onChange}>
+                            BOBCAT
+                        </Checkbox> 
+                        <Checkbox onChange={onChange}>
+                              DOOSAN
+                        </Checkbox>
+                        <Checkbox onChange={onChange}>             
+                                KUBOTA
+                        </Checkbox>
+                        <Checkbox onChange={onChange}>
+                             FREIGHTLINER
+                        </Checkbox>
+                        <Checkbox onChange={onChange}>
+                                VIKING
+                        </Checkbox>
+                    </Form.Item>
+                    <a onClick={showManModal}  className="apply-filter">+ Show All</a>  
+             </Panel>          
+             <Panel header="Year" key="4">
+              <YearFilter/>
+            </Panel>   
+            <Panel header="Price" key="7">
+              <PriceFilter/>
+            </Panel>  
+            </Collapse>           
+              <div className="countryStateCity"><CountryStateCity/></div>              
+          
+         
+            
       </form>
       {/* Category Modal */}
       <Modal
