@@ -1,51 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Detail from "./Detail";
+import { useDispatch } from "react-redux";
 import { Form, Input, Button, Checkbox } from "antd";
+import submitContant from "@store/actions/forms/contact";
+
 const { TextArea } = Input;
 
 const FormD = () => {
-  const [name, setName] = useState('');
-  const [company, setCompany] = useState('');
-  const [email, setEmail] = useState(' ');
-  const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState(' ');
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log("working form submit",name, company, email, phone, message);
-
+    submitContant({name, address, email, phone, message})
+      .then((res) => console.log("Submit Response : ", res))
+      .catch((e) => console.log("Submit Error : ", e));
   }
 
   return (
-    <div class="section-space-all">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <div class="section-title-primary">
+    <div className="section-space-all">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8">
+            <div className="section-title-primary">
               <h2>
                 Send Us a <span> Message</span>
               </h2>
             </div>
-            <div class="contact-form-layout4 text-center">
+            <div className="contact-form-layout4 text-center">
               <Form
                 id="contact-form"
-                novalidate="true"
                 name="basic"
-                initialValues={{
-                  remember: true,
-                }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 onSubmit={handleSubmit}
               >
                 <Form.Item
-                  class="col-md-6 col-sm-6 "
+                  className="col-md-6 col-sm-6 "
                   name="username"
                   rules={[
                     {
@@ -56,15 +49,14 @@ const FormD = () => {
                 >
                   <Input
                     placeholder="Name"
-                    class="form-control top-input"
-                    data-error="Name field is required"
-                    required=""
-                    value={name} onChange={(e)=> setName(e.target.value)}
+                    className="form-control top-input"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </Form.Item>
 
                 <Form.Item
-                  class="col-md-6 col-sm-6 "
+                  className="col-md-6 col-sm-6 "
                   name="email"
                   rules={[
                     {
@@ -74,35 +66,34 @@ const FormD = () => {
                   ]}
                 >
                   <Input
-                    placeholder="Email Address"
-                    class="form-control top-input"
-                    data-error="Name field is required"
-                    required=""
-                    value={email} onChange={(e)=> setEmail(e.target.value)}
+                    placeholder="Email"
+                    className="form-control top-input"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </Form.Item>
 
                 <Form.Item
-                  class="col-md-6 col-sm-6  "
-                  name="company"
+                  className="col-md-6 col-sm-6  "
+                  name="address"
                   rules={[
                     {
                       required: true,
-                      message: "Please input your Campany Name!",
+                      message: "Please input your Address!",
                     },
                   ]}
                 >
                   <Input
-                    placeholder="Company"
-                    class="form-control top-input"
-                    data-error="Name field is required"
-                    required=""
-                    value={company} onChange={(e)=> setCompany(e.target.value)}
+                    placeholder="Address"
+                    className="form-control top-input"
+                   
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                   />
                 </Form.Item>
 
                 <Form.Item
-                  class="col-md-6 col-sm-6 "
+                  className="col-md-6 col-sm-6 "
                   name="Phone"
                   rules={[
                     {
@@ -113,15 +104,14 @@ const FormD = () => {
                 >
                   <Input
                     placeholder="Phone"
-                    class="form-control top-input"
-                    data-error="Name field is required"
-                    required=""
-                    value={phone} onChange={(e)=> setPhone(e.target.value)}
+                    className="form-control top-input"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                   />
                 </Form.Item>
 
                 <Form.Item
-                  class="col-lg-12 form-group"
+                  className="col-lg-12 form-group"
                   name="text-area"
                   rules={[
                     {
@@ -131,16 +121,16 @@ const FormD = () => {
                   ]}
                 >
                   <TextArea
-                   
-                    style={{ height: 170 }}                   
-                   
-                    rows={4} value={message} onChange={(e)=> setMessage(e.target.value)}
+                    style={{ height: 170 }}
+                    rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                   />
                 </Form.Item>
 
-                <Form.Item class="col-lg-12 ">
+                <Form.Item className="col-lg-12 ">
                   <Button
-                    class="btn-primary-fill-ghost disabled"
+                    className="btn-primary-fill-ghost"
                     type="submit"
                     htmlType="submit"
                     style={{ paddingTop: 4, paddingBottom: 4 }}

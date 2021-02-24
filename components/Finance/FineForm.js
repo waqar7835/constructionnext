@@ -9,13 +9,7 @@ const Fine = () => {
   const [company, setCompany] = useState(' ');
   const [price, setPrice] = useState(' ');
   const [location, setLocation] = useState(' ');
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
   function handleSubmit(e){
     e.preventDefault();
     console.log("working form submit",firstName, lastName, email, price, company, message, location);
@@ -30,13 +24,7 @@ const Fine = () => {
             <div class="contact-form-layout4 text-center">
               <Form
                 id="contact-form"
-                novalidate="true"
                 name="basic"
-                initialValues={{
-                  remember: true,
-                }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 onSubmit={handleSubmit}
               >
                 <Form.Item

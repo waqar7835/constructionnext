@@ -23,9 +23,9 @@ const MyMapComponent = withScriptjs(
 const Map = () => {
   return (
     <>
-      <div class="section-space-top">
-        <div class="container">
-          <div class="section-title-primary text-center">
+      <div className="section-space-top">
+        <div className="container">
+          <div className="section-title-primary text-center">
             <h2>where to find us</h2>
             <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis molestie nulla, quis ullamcorper leo tristique ut. Fusce suscipit eget mi in semper.

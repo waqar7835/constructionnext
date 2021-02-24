@@ -5,7 +5,7 @@ const getUrl = (endpoint) => `${baseURL}${endpoint}`;
 const getConfigs = (config) => ({
   headers: {
     Accept: "*/*",
-    "Content-Type": "application/hal+json; charset=utf-8",
+    "Content-Type": "application/json; charset=utf-8",
   },
   ...config,
 });
