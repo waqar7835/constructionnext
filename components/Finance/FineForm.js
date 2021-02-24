@@ -76,6 +76,7 @@ const Fine = () => {
                   ]}
                 >
                   <Input
+                    type="text"
                     placeholder="Comapny Name"
                     class="form-control top-input"
                     data-error="company field is required"
@@ -83,7 +84,7 @@ const Fine = () => {
                     value={company} onChange={(e)=> setCompany(e.target.value)}
                   />
                 </Form.Item>
-
+ 
                 <Form.Item
                   class="col-md-6 col-sm-6 "
                   name="email"
