@@ -13368,6 +13368,60 @@ form.finace-fiance-from .input-group .btn-default:hover {
  .invent-pro-cus-rt .products-info-btns a:hover {
    text-decoration: none;
  }
+ .custom-form-final .top-input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #d6d6d6;
+  margin-bottom: 30px;
+  box-shadow: none;
+  background: none;
+  line-height: 1.5;
+}
+.custom-form-final .btn-str-up2 {
+  color: #fff !important;
+  display: inline-block !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 1;
+  padding: 22px 45px !important;
+  position: relative !important;
+  text-transform: capitalize;
+  transform: perspective(1px) translateZ(0px);
+  transition: 0.3s;
+  vertical-align: middle;
+  background: #ff9800 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  height: auto !important;
+}
+.custom-form-final .btn-str-up2:before {
+  background: #f57c00;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: scaleY(0);
+  transform-origin: 50% 0 0;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+  z-index: -1;
+  border-radius: 0;
+}
+.custom-form-final .btn-str-up2:hover::before {
+  transform: scaley(1);
+}
+.popup-model-buttons .btn-str-up2 {
+  height: auto !important;
+}
+.popup-model-inputs  .top-input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #d6d6d6;
+  margin-bottom: 10px;
+}
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
  

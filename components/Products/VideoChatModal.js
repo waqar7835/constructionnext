@@ -10,6 +10,8 @@ import {
   Dropdown,
   Select,
 } from "antd";
+import submitContant from "@store/actions/forms/videochat";
+
 const { TextArea } = Input;
 const { Option } = Select;
 const VideoChatModal = () => {
@@ -18,9 +20,9 @@ const VideoChatModal = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState(" ");
   const [phone, setPhone] = useState("");
-  const [postalCode, setPostalCode] = useState(" ");
-  const [message, setMessage] = useState(" ");
-  const [policy, setPolicy] = useState(" ");
+  const [postalCode, setPostalCode] = useState("");
+  const [message, setMessage] = useState("");
+  const [policy, setPolicy] = useState("");
   const [service, setService] = useState(" service");
   const [time, setTime] = useState("Time ");
   const [day, setDay] = useState("Date ");
@@ -42,24 +44,28 @@ const VideoChatModal = () => {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(
-      "working form submit",
-      firstName,
-      lastName,
+    submitContant({
+      first_name: firstName,
+      last_name: lastName,
       email,
-      phone,
-      postalCode,
+      recipient_s_email : email,
       message,
-      policy,
-      service,
-      day,
-      time
-    );
+      phone,
+      postal_code: postalCode,
+      policy : policy,
+      video_chat_service : service,
+      when_would_you_like_to_video_chat_ : time,
+      when_would_you_like_to_video_chat_2 : day
+    })
+      .then((res) => console.log("Submit Response : ", res))
+      .catch((e) => console.log("Submit Error : ", e));
   }
 
   return (
     <>
-      <a onClick={showVideoModal}><i class="fa fa-video-camera" aria-hidden="true"></i> Video Chat</a>
+      <a onClick={showVideoModal}>
+        <i class="fa fa-video-camera" aria-hidden="true"></i> Video Chat
+      </a>
       <Modal
         className="modal-filters"
         title="Email this to a friend"
@@ -67,9 +73,14 @@ const VideoChatModal = () => {
         onCancel={handleCancel}
         footer={[]}
       >
-        <Form layout="vertical" onSubmit={handleSubmit}>
+        <Form
+          layout="vertical"
+          onSubmit={handleSubmit}
+          className="popup-model-buttons popup-model-inputs"
+        >
           <Form.Item label="First Name">
             <Input
+              className="form-control top-input"
               placeholder="Enter your first name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -77,6 +88,7 @@ const VideoChatModal = () => {
           </Form.Item>
           <Form.Item label="Last Name">
             <Input
+              className="form-control top-input"
               placeholder="Enter your last name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
@@ -84,6 +96,7 @@ const VideoChatModal = () => {
           </Form.Item>
           <Form.Item label="Email" rules={[{ type: "email" }]}>
             <Input
+              className="form-control top-input"
               placeholder="Enter your email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -91,6 +104,7 @@ const VideoChatModal = () => {
           </Form.Item>
           <Form.Item label="Phone">
             <Input
+              className="form-control top-input"
               placeholder="(000) 000-0000"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -98,6 +112,7 @@ const VideoChatModal = () => {
           </Form.Item>
           <Form.Item label="Postal Code">
             <Input
+              className="form-control top-input"
               placeholder="Enter your postal code"
               value={postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
@@ -119,7 +134,7 @@ const VideoChatModal = () => {
           </Form.Item>
           <Form.Item label="When would you like to video chat?">
             <Select
-              style={{ width: 120 }}
+              style={{ width: 120, marginRight: 5 }}
               value={time}
               onChange={(e) => setTime(e)}
             >
@@ -143,7 +158,11 @@ const VideoChatModal = () => {
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="btn btn-str-up2"
+            >
               Submit
             </Button>
           </Form.Item>

@@ -16,7 +16,7 @@ const FormD = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    submitContant({name, address, email, phone, message})
+    submitContant({ name, address, email, phone, message })
       .then((res) => console.log("Submit Response : ", res))
       .catch((e) => console.log("Submit Error : ", e));
   }
@@ -35,107 +35,113 @@ const FormD = () => {
               <Form
                 id="contact-form"
                 name="basic"
+                className="custom-form-final"
                 onSubmit={handleSubmit}
               >
-                <Form.Item
-                  className="col-md-6 col-sm-6 "
-                  name="username"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your username!",
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Name"
-                    className="form-control top-input"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </Form.Item>
-
-                <Form.Item
-                  className="col-md-6 col-sm-6 "
-                  name="email"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your email!",
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Email"
-                    className="form-control top-input"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </Form.Item>
-
-                <Form.Item
-                  className="col-md-6 col-sm-6  "
-                  name="address"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your Address!",
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Address"
-                    className="form-control top-input"
-                   
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                  />
-                </Form.Item>
-
-                <Form.Item
-                  className="col-md-6 col-sm-6 "
-                  name="Phone"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your Phone Number!",
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Phone"
-                    className="form-control top-input"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                </Form.Item>
-
-                <Form.Item
-                  className="col-lg-12 form-group"
-                  name="text-area"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your Phone Number!",
-                    },
-                  ]}
-                >
-                  <TextArea
-                    style={{ height: 170 }}
-                    rows={4}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                  />
-                </Form.Item>
+                <div className="col-md-6 colxs-12 ">
+                  <Form.Item
+                    name="username"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your username!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder="Name"
+                      className="form-control top-input"
+                      data-error="Name field is required"
+                      required=""
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
+                    />
+                  </Form.Item>
+                </div>
+                <div className="col-md-6 col-xs-12 ">
+                  <Form.Item
+                    name="email"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your email!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder="Email"
+                      className="form-control top-input"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </Form.Item>
+                </div>
+                <div className="col-md-6 col-xs-12 ">
+                  <Form.Item
+                    name="address"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Address!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder="Address"
+                      className="form-control top-input"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                      required
+                    />
+                  </Form.Item>
+                </div>
+                <div className="col-md-6 col-xs-12 ">
+                  <Form.Item
+                    name="Phone"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Phone Number!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder="Phone"
+                      className="form-control top-input"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                  </Form.Item>
+                </div>
+                <div className="col-md-12 ">
+                  <Form.Item
+                    className="col-lg-12 form-group"
+                    name="text-area"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Phone Number!",
+                      },
+                    ]}
+                  >
+                    <TextArea
+                      style={{ height: 170 }}
+                      rows={4}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                    />
+                  </Form.Item>
+                </div>
 
                 <Form.Item className="col-lg-12 ">
                   <Button
-                    className="btn-primary-fill-ghost"
+                    className="btn btn-str-up2"
                     type="submit"
                     htmlType="submit"
-                    style={{ paddingTop: 4, paddingBottom: 4 }}
                   >
-                    <span style={{ fontSize: 16 }}>SUBMIT REQUEST</span>
+                    <span>SUBMIT </span>
                   </Button>
                 </Form.Item>
               </Form>

@@ -1,171 +1,183 @@
 import { Form, Input, Button } from "antd";
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import submitContant from "@store/actions/forms/fiance";
 
 const Fine = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState(' ');
-  const [message, setMessage] = useState(' ');
-  const [company, setCompany] = useState(' ');
-  const [price, setPrice] = useState(' ');
-  const [location, setLocation] = useState(' ');
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [company_name, setCompany] = useState("");
+  const [equipment_price, setPrice] = useState("");
+  const [equipment_location, setLocation] = useState("");
 
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log("working form submit",firstName, lastName, email, price, company, message, location);
-
+    submitContant({  first_name, last_name, email, company_name, message, equipment_price, equipment_location })
+    .then((res) => console.log("Submit Response : ", res))
+    .catch((e) => console.log("Submit Error : ", e));
   }
 
   return (
-    <div class="section-space-all">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="contact-form-layout4 text-center">
+    <div className="section-space-all">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="contact-form-layout4 text-center">
               <Form
                 id="contact-form"
                 name="basic"
+                className="custom-form-final"
                 onSubmit={handleSubmit}
               >
-                <Form.Item
-                  class="col-md-6 col-sm-6 "
-                  name="username"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your username!",
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="First Name"
-                    class="form-control top-input"
-                    data-error="Name field is required"
-                    required=""
-                    value={firstName} onChange={(e)=> setFirstName(e.target.value)}
-                  />
-                </Form.Item>
+                <div className="col-md-6 col-sm-6 ">
+                  <Form.Item
+                    name="username"
+                    className=" "
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your username!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder="First Name"
+                      className="form-control top-input"
+                      value={first_name}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      required
+                    />
+                  </Form.Item>
+                </div>
+                <div className="col-md-6 col-sm-6 ">
+                  <Form.Item
+                    name="username"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your username!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder="Last Name"
+                      class="form-control top-input"
+                      value={last_name}
+                      onChange={(e) => setLastName(e.target.value)}
+                      required
+                    />
+                  </Form.Item>
+                </div>
+                <div className="col-md-6 col-sm-6 ">
+                  <Form.Item
+                    name="company"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Company Name!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      type="text"
+                      placeholder="Comapny Name"
+                      className="form-control top-input"
+                      data-error="company field is required"
+                      required=""
+                      value={company_name}
+                      onChange={(e) => setCompany(e.target.value)}
+                      required
+                    />
+                  </Form.Item>
+                </div>
+                <div className="col-md-6 col-sm-6 ">
+                  <Form.Item
+                    name="email"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your email!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder="Email"
+                      className="form-control top-input"
+                      data-error="email field is required"
+                      required=""
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </Form.Item>
+                </div>
+                <div className="col-md-6 col-sm-6 ">
+                  <Form.Item
+                    name="price"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input price!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder="Equipment Price"
+                      className="form-control top-input"
+                      value={equipment_price}
+                      onChange={(e) => setPrice(e.target.value)}
+                      required
+                    />
+                  </Form.Item>
+                </div>
 
-                <Form.Item
-                  class="col-md-6 col-sm-6 "
-                  name="username"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your username!",
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Last Name"
-                    class="form-control top-input"
-                    data-error="Name field is required"
-                    required=""
-                    value={lastName} onChange={(e)=> setLastName(e.target.value)}
-                  />
-                </Form.Item>
+                <div className="col-md-6 col-sm-6">
+                  <Form.Item
+                    name="location"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input location!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder="Equipment Location"
+                      className="form-control top-input"
+                      data-error="location field is required"
+                      required=""
+                      value={equipment_location}
+                      onChange={(e) => setLocation(e.target.value)}
+                    />
+                  </Form.Item>
+                </div>
 
-                <Form.Item
-                  class="col-md-6 col-sm-6 "
-                  name="company"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your Company Name!",
-                    },
-                  ]}
-                >
-                  <Input
-                    type="text"
-                    placeholder="Comapny Name"
-                    class="form-control top-input"
-                    data-error="company field is required"
-                    required=""
-                    value={company} onChange={(e)=> setCompany(e.target.value)}
-                  />
-                </Form.Item>
- 
-                <Form.Item
-                  class="col-md-6 col-sm-6 "
-                  name="email"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your email!",
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Email"
-                    class="form-control top-input"
-                    data-error="email field is required"
-                    required=""
-                    value={email} onChange={(e)=> setEmail(e.target.value)}
-                  />
-                </Form.Item>
+                <div className="col-md-12 ">
+                  <Form.Item
+                    name="text-area"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Phone Number!",
+                      },
+                    ]}
+                  >
+                    <Input.TextArea
+                      style={{ height: 170 }}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                    />
+                  </Form.Item>
+                </div>
 
-                <Form.Item
-                  class="col-md-6 col-sm-6 "
-                  name="price"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input price!",
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Equipment Price"
-                    class="form-control top-input"
-                    data-error="price field is required"
-                    required=""
-                    value={price} onChange={(e)=> setPrice(e.target.value)}
-                  />
-                </Form.Item>
-
-                <Form.Item
-                  class="col-md-6 col-sm-6 "
-                  name="location"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input location!",
-                    },
-                  ]}
-                >
-                  <Input
-                    placeholder="Equipment Location"
-                    class="form-control top-input"
-                    data-error="location field is required"
-                    required=""
-                    value={location} onChange={(e)=> setLocation(e.target.value)}
-                  />
-                </Form.Item>
-
-                <Form.Item
-                  class="col-lg-12 form-group"
-                  name="text-area"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your Phone Number!",
-                    },
-                  ]}
-                >
-                  <Input.TextArea style={{ height: 170 }} value={message} onChange={(e)=> setMessage(e.target.value)} />
-                </Form.Item>
-
-                {/* <Form.Item name={["user", "introduction"]} label="Introduction">
-                  <Input.TextArea />
-                </Form.Item> */}
-                <Form.Item class="col-lg-12 ">
+                <Form.Item className="col-lg-12 ">
                   <Button
-                    class="btn-primary-fill-ghost disabled"
+                    className=" btn btn-str-up2"
                     type="submit"
                     htmlType="submit"
-                    style={{ paddingTop: 4, paddingBottom: 4 }}
                   >
-                    <span style={{ fontSize: 16 }}>Submit</span>
+                    <span>Submit</span>
                   </Button>
                 </Form.Item>
               </Form>
