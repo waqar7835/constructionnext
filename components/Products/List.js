@@ -159,7 +159,7 @@ const List = () => {
                 </div>
                 <div className="products-info-btns">
                   <Link href={`/inventory/${product.title.replace(/[^a-z0-9_]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()}/${product.nid}`}>
-                    <a>View Details</a>
+                    <a><i class="fa fa-search" aria-hidden="true"></i> View Details</a>
                   </Link>
                   {/* <a href="/inventory/listing/skid-steers-2"></a> */}
                   <EmailSellerModal />

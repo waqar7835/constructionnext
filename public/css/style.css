@@ -13365,7 +13365,9 @@ form.finace-fiance-from .input-group .btn-default:hover {
  button[class*="styles_scroll-to-top"]:hover svg {
    fill: #fff !important;
  }
- 
+ .invent-pro-cus-rt .products-info-btns a:hover {
+   text-decoration: none;
+ }
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
  

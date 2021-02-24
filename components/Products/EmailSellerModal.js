@@ -45,7 +45,7 @@ const EmailSellerModal = () => {
    
     return (
       <>   
-       <a onClick={showModal}>Email Seller</a>
+       <a onClick={showModal}><i class="fa fa-envelope" aria-hidden="true"></i> Email Seller</a>
         <Modal className="modal-filters" title="Email this to a friend"   visible={isModalVisible}  onCancel={handleCancel} footer={[]} >
             <Form layout="vertical" onSubmit={handleSubmit} >
             <Form.Item label="First Name">

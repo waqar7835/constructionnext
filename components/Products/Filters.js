@@ -76,14 +76,12 @@ const Filters = () => {
           />
         </div>
 
-      
         <Collapse defaultActiveKey={["5"]} onChange={callback}>
           <Panel header="Listing Type" key="5">
             <fieldset
               id="edit-country--wrapper"
               className="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
             >
-              
               <div className="fieldset-wrapper">
                 <div id="edit-country" className="form-checkboxes">
                   <div className="form-checkboxes bef-nested">
@@ -111,7 +109,6 @@ const Filters = () => {
               id="edit-country--wrapper"
               className="fieldgroup form-composite js-form-item form-item js-form-wrapper form-wrapper"
             >
-              
               <div className="fieldset-wrapper">
                 <div id="edit-country" className="form-checkboxes">
                   <div className="form-checkboxes bef-nested">
@@ -135,51 +132,51 @@ const Filters = () => {
             </fieldset>
           </Panel>
         </Collapse>
-        
 
-            <Collapse defaultActiveKey={['1']} onChange={callback}>
-             <Panel header="Category" key="1">
-                <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
-                    Semi-Trailers
-                </Checkbox>           
-                <CheckboxGroup options={plainOptions}  onChange={onChange} />
-                <Checkbox indeterminate={indeterminate2} onChange={onCheckAllChange2} checked={checkAll2}>
-                Heavy Duty Trucks
-                </Checkbox>           
-                <CheckboxGroup options={plainOptions2}  onChange={onChange2} />  
-                <a onClick={showCatModal} className="apply-filter">+ Show All</a>  
-             </Panel>    
-             <Panel header="Manufacturer" key="2">
-                    <Form.Item label="Popular">
-                        <Checkbox onChange={onChange}>
-                            BOBCAT
-                        </Checkbox> 
-                        <Checkbox onChange={onChange}>
-                              DOOSAN
-                        </Checkbox>
-                        <Checkbox onChange={onChange}>             
-                                KUBOTA
-                        </Checkbox>
-                        <Checkbox onChange={onChange}>
-                             FREIGHTLINER
-                        </Checkbox>
-                        <Checkbox onChange={onChange}>
-                                VIKING
-                        </Checkbox>
-                    </Form.Item>
-                    <a onClick={showManModal}  className="apply-filter">+ Show All</a>  
-             </Panel>          
-             <Panel header="Year" key="4">
-              <YearFilter/>
-            </Panel>   
-            <Panel header="Price" key="7">
-              <PriceFilter/>
-            </Panel>  
-            </Collapse>           
-              <div className="countryStateCity"><CountryStateCity/></div>              
-          
-         
-            
+        <Collapse defaultActiveKey={["1"]} onChange={callback}>
+          <Panel header="Category" key="1">
+            <Checkbox
+              indeterminate={indeterminate}
+              onChange={onCheckAllChange}
+              checked={checkAll}
+            >
+              Semi-Trailers
+            </Checkbox>
+            <CheckboxGroup options={plainOptions} onChange={onChange} />
+            <Checkbox
+              indeterminate={indeterminate2}
+              onChange={onCheckAllChange2}
+              checked={checkAll2}
+            >
+              Heavy Duty Trucks
+            </Checkbox>
+            <CheckboxGroup options={plainOptions2} onChange={onChange2} />
+            <a onClick={showCatModal} className="apply-filter">
+              + Show All
+            </a>
+          </Panel>
+          <Panel header="Manufacturer" key="2">
+            <Form.Item label="Popular">
+              <Checkbox onChange={onChange}>BOBCAT</Checkbox>
+              <Checkbox onChange={onChange}>DOOSAN</Checkbox>
+              <Checkbox onChange={onChange}>KUBOTA</Checkbox>
+              <Checkbox onChange={onChange}>FREIGHTLINER</Checkbox>
+              <Checkbox onChange={onChange}>VIKING</Checkbox>
+            </Form.Item>
+            <a onClick={showManModal} className="apply-filter">
+              + Show All
+            </a>
+          </Panel>
+          <Panel header="Year" key="4">
+            <YearFilter />
+          </Panel>
+          <Panel header="Price" key="7">
+            <PriceFilter />
+          </Panel>
+        </Collapse>
+        <div className="countryStateCity">
+          <CountryStateCity />
+        </div>
       </form>
       {/* Category Modal */}
       <Modal
