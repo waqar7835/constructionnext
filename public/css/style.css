@@ -13355,24 +13355,17 @@ form.finace-fiance-from .input-group .btn-default:hover {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
-  position: relative;
  }
  button[class*="styles_scroll-to-top"] svg {
-   display: none;
-   position: relative;
+   width: 50%;
  }
- button[class*="styles_scroll-to-top"] svg::before {
-   padding: 6px;
-   font-size: 18px;
-   content: "\f102";
-   color: #ff9800;
-   display: block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ button[class*="styles_scroll-to-top"]:hover {
+   background-color: #ff9800;
  }
+ button[class*="styles_scroll-to-top"]:hover svg {
+   fill: #fff !important;
+ }
+ 
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
  

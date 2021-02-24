@@ -74,7 +74,7 @@ export default function Footer() {
       </div>
       
     </footer>
-     <ScrollToTop smooth />
+     <ScrollToTop smooth color={'#ff9800'}  />
      </>
   );
 }
