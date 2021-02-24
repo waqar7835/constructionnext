@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import MainMenu from "./MainMenu";
 import Mobilemenu from './Mobilemenu'
 
@@ -155,6 +156,7 @@ const Header = () => {
       style={{ top: topPosition }}
       className={`${isSticky ? "header-sticky" : ""}`}
     >
+     
       <div id="header-one" className=" header header-layout3 header-fixed">
         <div className="header-top-area1 header-top-bar bg-grey">
           <div className="container">

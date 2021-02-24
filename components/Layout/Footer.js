@@ -1,5 +1,7 @@
+import ScrollToTop from "react-scroll-to-top";
 export default function Footer() {
   return (
+    <>
     <footer
       className="py-3 py-lg-5 bg-secondary text-white-50 mt-2 mt-md-5 d-print-none"
       id="page-footer"
@@ -70,6 +72,9 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      
     </footer>
+     <ScrollToTop smooth />
+     </>
   );
 }
