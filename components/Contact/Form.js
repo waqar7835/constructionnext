@@ -3,6 +3,7 @@ import Detail from "./Detail";
 import { useDispatch } from "react-redux";
 import { Form, Input, Button, notification } from "antd";
 import submitContant from "@store/actions/forms/contact";
+import WrappedDemo from './contactdu';
 
 const { TextArea } = Input;
 
@@ -32,7 +33,8 @@ const FormD = () => {
         } else {
           setLoading(false);
           openErrorNotification();
-          console.log("Submit Error : ", e);
+          // console.log("Submit Error : ", e);
+          
         }
        
       })
@@ -192,6 +194,7 @@ const FormD = () => {
           <div className="col-md-4">
             <Detail />
           </div>
+          <WrappedDemo />
         </div>
       </div>
     </div>

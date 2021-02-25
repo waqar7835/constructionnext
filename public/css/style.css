@@ -13415,6 +13415,9 @@ form.finace-fiance-from .input-group .btn-default:hover {
   border: 1px solid #d6d6d6;
   margin-bottom: 10px;
 }
+.contact-form-layout4 form .top-input {
+  margin-bottom: 0;
+}
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
   .header-top-area1 {
