@@ -20,17 +20,25 @@ const FormD = () => {
     setLoading(true);
     submitContant({ name, address, email, phone, message })
       .then((res) => {
-        openNotification();
-        setName("");
-        setAddress("");
-        setEmail("");
-        setPhone("");
-        setMessage("");
-        setLoading(false);
-        console.log("Submit Response : ", res)
+        if(res.code == 200) {
+          openNotification();
+          setName("");
+          setAddress("");
+          setEmail("");
+          setPhone("");
+          setMessage("");
+          setLoading(false);
+          console.log("Submit Response : ", res)
+        } else {
+          setLoading(false);
+          openErrorNotification();
+          console.log("Submit Error : ", e);
+        }
+       
       })
       .catch((e) => {
         setLoading(false);
+        openErrorNotification();
         console.log("Submit Error : ", e);
       })
   }
@@ -42,6 +50,16 @@ const FormD = () => {
       duration: 5,
     };
     notification.success(args);
+  };
+  // for error handler 
+  const openErrorNotification = () => {
+    const args = {
+      message: 'Contact Us',
+      description:
+        'Something went wrong, Submit form again shortly.',
+      duration: 0,
+    };
+    notification.error(args);
   };
   return (
     <div className="section-space-all">

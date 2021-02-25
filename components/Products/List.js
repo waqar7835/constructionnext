@@ -111,7 +111,7 @@ const List = () => {
               </div>
               <div className="invent-cus-purchas-cus">
                 <span>                 
-                  <i class="fa fa-money" aria-hidden="true"></i>
+                  <i className="fa fa-money" aria-hidden="true"></i>
                 </span>
                 <a href="#"> </a>
               </div>
@@ -159,7 +159,7 @@ const List = () => {
                 </div>
                 <div className="products-info-btns">
                   <Link href={`/inventory/${product.title.replace(/[^a-z0-9_]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()}/${product.nid}`}>
-                    <a><i class="fa fa-search" aria-hidden="true"></i> View Details</a>
+                    <a><i className="fa fa-search" aria-hidden="true"></i> View Details</a>
                   </Link>
                   {/* <a href="/inventory/listing/skid-steers-2"></a> */}
                   <EmailSellerModal />

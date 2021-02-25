@@ -64,7 +64,7 @@ const VideoChatModal = () => {
   return (
     <>
       <a onClick={showVideoModal}>
-        <i class="fa fa-video-camera" aria-hidden="true"></i> Video Chat
+        <i className="fa fa-video-camera" aria-hidden="true"></i> Video Chat
       </a>
       <Modal
         className="modal-filters"

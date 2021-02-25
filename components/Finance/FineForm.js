@@ -1,4 +1,4 @@
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button , notification} from "antd";
 import React, { useState } from "react";
 import submitContant from "@store/actions/forms/fiance";
 
@@ -10,14 +10,57 @@ const Fine = () => {
   const [company_name, setCompany] = useState("");
   const [equipment_price, setPrice] = useState("");
   const [equipment_location, setLocation] = useState("");
+  const [loading, setLoading] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
+    // loading handler 
+    setLoading(true);
     submitContant({  first_name, last_name, email, company_name, message, equipment_price, equipment_location })
-    .then((res) => console.log("Submit Response : ", res))
-    .catch((e) => console.log("Submit Error : ", e));
+    .then((res) => { 
+      if(res.code == 200) {
+        openNotification();
+        setFirstName("");
+        setLastName
+        setEmail("");
+        setMessage("");
+        setCompany("");
+        setPrice("");
+        setLocation("");
+          setLoading(false);
+            console.log("Submit Response : ", res)
+      } else {
+        setLoading(false);
+        openErrorNotification();
+        console.log("Submit Error : ", e);
+      }
+    })  
+    .catch((e) => {
+      setLoading(false);
+      openErrorNotification();
+      console.log("Submit Error : ", e);
+    })
   }
-
+  // success handler 
+  const openNotification = () => {
+    const args = {
+      message: 'Fiance Information',
+      description:
+        'Thank you for your submission, we will contact you shortly.',
+      duration: 5,
+    };
+    notification.success(args);
+  };
+  // error handler 
+  const openErrorNotification = () => {
+    const args = {
+      message: 'Fiance Information',
+      description:
+        'Something went wrong, Submit form again shortly.',
+      duration: 0,
+    };
+    notification.error(args);
+  };
   return (
     <div className="section-space-all">
       <div className="container">
@@ -176,6 +219,8 @@ const Fine = () => {
                     className=" btn btn-str-up2"
                     type="submit"
                     htmlType="submit"
+                    loading={loading}
+                    disabled={loading}
                   >
                     <span>Submit</span>
                   </Button>
