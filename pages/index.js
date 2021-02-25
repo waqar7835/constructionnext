@@ -11,8 +11,7 @@ const Index = ({header, welcome, about, equipmentHeading, feedback}) => {
     </Layout>
   );
 };
-Index.getInitialProps = async ({ query }) => {
-  let targetURL = `${baseURL}/api/blocks/74?_format=hal_json`;
+Index.getInitialProps = async ({ query }) => { 
   const [header, welcome, about, equipmentHeading, feedback] = await Promise.all([
     fetch(`${baseURL}/api/blocks/74?_format=hal_json`).then(r => r.json()),
     fetch(`${baseURL}/api/blocks/77?_format=hal_json`).then(r => r.json()),
@@ -29,8 +28,7 @@ Index.getInitialProps = async ({ query }) => {
     feedback: !!feedback ? feedback[0] : {},
    };
 
-  // return { modsData, priceData };
-};
+ };
 // Index.getInitialProps = async ({ query }) => {
 //   let targetURL = `${baseURL}/api/blocks/77?_format=hal_json`;
 //   const result = await fetch(targetURL);

@@ -1,4 +1,5 @@
-const Fineit = () => {
+import ReactHtmlParser from "react-html-parser";
+const Fineit = ({finance}) => {
   return (
     <section className="bg-gray2" id="welcome-section-fluid">
       <div className="container">
@@ -9,29 +10,10 @@ const Fineit = () => {
               id="block-welcome"
               className="section-space-less30 bg-gray2 bg-common-style block block-block-content block-block-content14bbc390-4504-40e5-b7df-9f691c2e1fa2"
             >
-              <h2 className="finance-title">Finance It!</h2>
+              <h2 className="finance-title">{!!finance && finance.title}</h2>
 
               <div className="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__items">
-                <div className="field__item">
-                  <p>
-                    PNC Equipment Finance Construction experts are here to help
-                    you!
-                  </p>
-
-                  <p>
-                    Our Construction Team has years of experience in working
-                    with business owners to acquire the right equipment for the
-                    right job, at a monthly payment that is easy to budget.
-                  </p>
-                </div>
-                {/* <div className="field__item">
-                  <p>
-                    All pre-owned units have been well-maintained and inspected
-                    by a third party to ensure our high standards of quality and
-                    performance. For questions or additional product
-                    information, contact Matt McCleary at 267-399-7003.
-                  </p>
-                </div> */}
+                {ReactHtmlParser(!!finance && finance.body)}
               </div>
             </div>
 
@@ -45,7 +27,7 @@ const Fineit = () => {
                 id="simplenews-subscriptions-block-ce69e592-96f2-447a-a58d-3244b9d41b07"
                 className="financeform"
               >
-                <div
+                {/* <div
                   id="edit-message"
                   className="js-form-item form-item custom-control custom-item js-form-type-item form-type-item js-form-item-message form-item-message form-no-label"
                 >
@@ -66,7 +48,7 @@ const Fineit = () => {
                 >
                   Or simply complete our Quick Contact Request below and we'll
                   call you right away.
-                </div>
+                </div> */}
 
                 <form className="finace-fiance-from" 
                   

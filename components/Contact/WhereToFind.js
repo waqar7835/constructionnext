@@ -1,3 +1,4 @@
+import ReactHtmlParser from "react-html-parser";
 import {
   withScriptjs,
   withGoogleMap,
@@ -20,16 +21,14 @@ const MyMapComponent = withScriptjs(
     );
   })
 );
-const Map = () => {
+const Map = ({findUs}) => {
   return (
     <>
       <div className="section-space-top">
         <div className="container">
           <div className="section-title-primary text-center">
-            <h2>where to find us</h2>
-            <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis molestie nulla, quis ullamcorper leo tristique ut. Fusce suscipit eget mi in semper.
-            </p>
+            <h2>{!!findUs && findUs.title}</h2>
+            {ReactHtmlParser(!!findUs && findUs.body)}
           </div>
         </div>
       </div>
