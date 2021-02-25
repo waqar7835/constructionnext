@@ -4424,10 +4424,9 @@ ul.slider-btn li:last-child {
   width: 350px;
   background: rgba(255, 152, 0, 0.9);
   border: 1px solid #ff9800;
-  padding: 5px 30px 8px;
+  padding: 5px 30px 8px 12px;
   color: #ffffff;
   border-radius: 2px;
-  display: none;
 }
 .header-search input.search-input:focus {
   outline-width: 0;
@@ -4502,15 +4501,16 @@ ul.slider-btn li:last-child {
 }
 .header-search.layout2 .search-button {
   color: #ffffff;
-  background: transparent;
+  background: rgba(255, 152, 0, 0.9);
   text-align: center;
-  line-height: 55px;
+  line-height: 48px;
   border: 0;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   -ms-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
+  padding: 14px 12px 15px 12px;
 }
 .header-search.layout2 .search-button:hover {
   color: #ff9800;
@@ -13276,13 +13276,6 @@ h2 {
   font-size: 36px;
   line-height: 1.2  !important;
 }
-.menusearch {
-  display: none;
-}
-.get-quote {
- 
-  text-align: right;
-}
 .email-block p:nth-last-child(1) {
   margin-right: 8px;
 }
@@ -13424,12 +13417,14 @@ form.finace-fiance-from .input-group .btn-default:hover {
 }
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
- 
   .header-top-area1 {
     display: none;
   }
   #header-area-space {
     margin-top: 85px;
+  }
+  .header-search .search-input {
+    width: 219px;
   }
  } 
 
@@ -13457,7 +13452,7 @@ form.finace-fiance-from .input-group .btn-default:hover {
     position: relative;
     background-color: #f57c00;
     border: 1px solid #f57c00;
-    padding: 2px 18px;
+    padding: 2px 18px !important;
     height: 32px;
     border-radius: 2px;
   } 

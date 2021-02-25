@@ -16,7 +16,7 @@ const Main = ({ content }) => {
       setContentImages(images);
     }
   }, [content]);
-  console.log(content);
+  // console.log(content);
   return (
     <>
       <div id="header-area-space"></div>
