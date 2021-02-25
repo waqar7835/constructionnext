@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
 import ReactPlayer from 'react-player/youtube'
 import ReactHtmlParser from "react-html-parser";
-
+import { baseURL } from "@config/config";
 const About = ({about}) => {
+  
   const [isModalVisible, setIsModalVisible] = useState(false);
 
 
@@ -28,9 +29,9 @@ const About = ({about}) => {
           
             <div className="video-box-layout1">
             <Modal   title="About The OneSource"   visible={isModalVisible}  onCancel={handleCancel} footer={[]} >
-              <ReactPlayer url={!!about[0] && about[0].field_video} width={'100%'} />
+              <ReactPlayer url={!!about && about.field_video} width={'100%'} />
             </Modal>
-              <img src="/images/about-4-1.png" alt="img" />
+              <img src={baseURL + about.field__video_image_} alt="img" />
               {/* {!!about[0] && about[0].field__video_image_} */}
               {/* <a
                 className="primary-icon popup-youtube video-play-button"
@@ -47,9 +48,9 @@ const About = ({about}) => {
           <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div className="about-content-layout1">
               <h2>
-              {!!about[0] && about[0].title}
+              {!!about && about.title}
               </h2>
-              {ReactHtmlParser(!!about[0] && about[0].body)} 
+              {ReactHtmlParser(!!about && about.body)} 
             </div>
           </div>
         </div>

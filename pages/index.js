@@ -21,7 +21,13 @@ Index.getInitialProps = async ({ query }) => {
     fetch(`${baseURL}/api/blocks/80?_format=hal_json`).then(r => r.json())
   ]);
   
-  return {header, welcome, about, equipmentHeading, feedback };
+  return {
+    header: !!header ? header[0] : {},
+    welcome: !!welcome ? welcome[0] : {},
+    about: !!about ? about[0] : {},
+    equipmentHeading: !!equipmentHeading ? equipmentHeading[0] : {},
+    feedback: !!feedback ? feedback[0] : {},
+   };
 
   // return { modsData, priceData };
 };

@@ -16,9 +16,9 @@ const Equipments = ({equipmentHeading}) => {
       <div className="container">
         <div className="section-title text-center">
           <h2>
-         {!!equipmentHeading[0] && equipmentHeading[0].title}
+         {!!equipmentHeading && equipmentHeading.title}
           </h2>
-          {ReactHtmlParser(!!equipmentHeading[0] && equipmentHeading[0].body)} 
+          {ReactHtmlParser(!!equipmentHeading && equipmentHeading.body)} 
         </div>
       </div>
       <div className="container">

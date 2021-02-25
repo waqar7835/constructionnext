@@ -7,7 +7,7 @@ import Mobilemenu from './Mobilemenu'
 import $ from 'jquery';
 
 const Header = ({header}) => {
-console.log(header[0]);
+
   const dispatch = useDispatch();
   const [isSticky, setIsSticky] = useState(false);
   const [topPosition, setTopPosition] = useState(0);
@@ -182,8 +182,8 @@ console.log(header[0]);
                     <i className="icofont icofont-location-arrow"></i>
                   </div>
                   <div className="media-body">
-                  {!!header[0] && header[0].field_address_1}
-                    <h2 className="media-heading"> {!!header[0] && header[0].field_location}</h2>
+                  {!!header && header.field_address_1}
+                    <h2 className="media-heading"> {!!header && header.field_location}</h2>
                   </div>
                 </div>
               </div>
@@ -193,8 +193,8 @@ console.log(header[0]);
                     <i className="icofont icofont-clock-time"></i>
                   </div>
                   <div className="media-body">
-                    <p>{!!header[0] && header[0].field_hours_title}</p>
-                    <h2 className="media-heading">{!!header[0] && header[0].field_hours_value}</h2>
+                    <p>{!!header && header.field_hours_title}</p>
+                    <h2 className="media-heading">{!!header && header.field_hours_value}</h2>
                   </div>
                 </div>
               </div>
@@ -204,8 +204,8 @@ console.log(header[0]);
                     <i className="icofont icofont-phone"></i>
                   </div>
                   <div className="media-body">
-                    <p>{!!header[0] && header[0].field_phone_title}</p>
-                    <h2 className="media-heading">{!!header[0] && header[0].field_phone_number}</h2>
+                    <p>{!!header && header.field_phone_title}</p>
+                    <h2 className="media-heading">{!!header&& header.field_phone_number}</h2>
                   </div>
                 </div>
               </div>

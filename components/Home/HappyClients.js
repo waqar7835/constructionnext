@@ -5,7 +5,7 @@ import ReactHtmlParser from "react-html-parser";
 import { baseURL } from "@config/config";
 
 const HappyClients = ( {feedback}) => {
-  console.log(feedback[0]);
+  
   const dispatch = useDispatch();
   const clients = useSelector((state) => state.clients.clients);
   useEffect(() => {
@@ -18,9 +18,9 @@ const HappyClients = ( {feedback}) => {
           <div className="col-lg-12">
             <div className="section-title text-center">
               <h2>
-               {!!feedback[0] && feedback[0].title}
+               {!!feedback && feedback.title}
               </h2>             
-              {ReactHtmlParser(!!feedback[0] && feedback[0].body)}        
+              {ReactHtmlParser(!!feedback && feedback.body)}        
             </div>
           </div>
         </div>

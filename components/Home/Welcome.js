@@ -13,10 +13,10 @@ const Welcome = ({welcome}) => {
               id="block-welcome"
               className="section-space-less30 bg-gray2 bg-common-style block block-block-content block-block-content14bbc390-4504-40e5-b7df-9f691c2e1fa2"
             >
-              <h2>{!!welcome[0] && welcome[0].title}</h2>
+              <h2>{!!welcome && welcome.title}</h2>
 
               <div className="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__items">
-              {ReactHtmlParser(!!welcome[0] && welcome[0].body)} 
+              {ReactHtmlParser(!!welcome && welcome.body)} 
               </div>
             </div>
             <div
