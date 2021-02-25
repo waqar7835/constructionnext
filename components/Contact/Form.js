@@ -6,7 +6,7 @@ import submitContant from "@store/actions/forms/contact";
 
 const { TextArea } = Input;
 
-const FormD = () => {
+const FormD = ({header}) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -190,7 +190,7 @@ const FormD = () => {
             </div>
           </div>
           <div className="col-md-4">
-            <Detail />
+            <Detail header= { header } />
           </div>
         </div>
       </div>

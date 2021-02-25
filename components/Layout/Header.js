@@ -194,7 +194,7 @@ const Header = ({header}) => {
                   </div>
                   <div className="media-body">
                     <p>{!!header && header.field_hours_title}</p>
-                    <h2 className="media-heading">{!!header && header.field_hours_value}</h2>
+                    <h2 className="media-heading">{!!header && header.field_days}:{!!header && header.field_hours_value}</h2>
                   </div>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-const Detail = () => {
+const Detail = ({header}) => {
   return (
     <div>
       <div className="contact-info-layout3 shadow-equal">
@@ -8,18 +8,18 @@ const Detail = () => {
         <ul className="contact-address">
           <li>
             <i className="bi bi-location-pointer"></i>
-            <p>505 North State Street, London, United Kingdom</p>
+            <p>{!!header && header.field_address_1}</p>
           </li>
           <li>
             <i className="bi bi-phone"></i>
-            <p>9684 32 45 789</p>
+            <p>{!!header&& header.field_phone_number}</p>
           </li>
           <li>
             <i className="bi bi-envelop"></i>
-            <p>domain@info.com</p>
+            <p>{!!header&& header.field_site_e}</p>
           </li>
         </ul>
-        <p>Working hours 08:00 - 22:00</p>
+        <p>Working hours {!!header&& header.field_hours_value}</p>
         <ul className="contact-social">
           <li>
             <a href="#" title="facebook">
