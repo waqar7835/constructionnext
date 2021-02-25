@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  Modal,
-  Form,
-  Input,
-  Button,
-  Radio,
-  Checkbox,
-  Menu,
-  Dropdown,
-} from "antd";
+import { Modal, Form, Input, Button, Radio, Checkbox, Menu, Dropdown,  notification } from "antd";
 import submitContant from "@store/actions/forms/emailseller";
 
 
@@ -23,6 +14,8 @@ const EmailSellerModal = () => {
   const [postalCode, setPostalCode] = useState("");
   const [message, setMessage] = useState("");
   const [policy, setPolicy] = useState("");
+  // loading state 
+  const [loading, setLoading] = useState(false);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -44,10 +37,52 @@ const EmailSellerModal = () => {
   }
   function handleSubmit(e) {
     e.preventDefault();
+    // loading handler 
+    setLoading(true);
     submitContant({ first_name : firstName,last_name : lastName, email ,policy,  message, phone, postal_code : postalCode })
-      .then((res) => console.log("Submit Response : ", res))
-      .catch((e) => console.log("Submit Error : ", e));
+      .then((res) => {  
+      if(res.code == 200) {
+        openNotification();
+         setFirstName("");
+         setLastName("");
+         setEmail("");
+         setRecEmail("");
+         setMessage("");
+         setPolicy("");
+          setLoading(false);
+            console.log("Submit Response : ", res)
+      } else {
+        setLoading(false);
+        openErrorNotification();
+        console.log("Submit Error : ", e);
+      }
+    })
+      .catch((e) => { 
+        setLoading(false);
+        openErrorNotification();
+        console.log("Submit Error : ", e);
+    });
   }
+  // success handler 
+  const openNotification = () => {
+    const args = {
+      message: 'Fiance Information',
+      description:
+        'Thank you for your submission, we will contact you shortly.',
+      duration: 5,
+    };
+    notification.success(args);
+  };
+  // error handler 
+  const openErrorNotification = () => {
+    const args = {
+      message: 'Fiance Information',
+      description:
+        'Something went wrong, Submit form again shortly.',
+      duration: 0,
+    };
+    notification.error(args);
+  };
 
   return (
     <>
@@ -68,7 +103,7 @@ const EmailSellerModal = () => {
               placeholder="Enter your first name"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-            />
+            required />
           </Form.Item>
           <Form.Item label="Last Name">
             <Input
@@ -76,7 +111,7 @@ const EmailSellerModal = () => {
               placeholder="Enter your last name"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-            />
+            required />
           </Form.Item>
           <Form.Item label="Email" rules={[{ type: "email" }]}>
             <Input
@@ -84,7 +119,7 @@ const EmailSellerModal = () => {
               placeholder="Enter your email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            />
+            required />
           </Form.Item>
           <Form.Item label="Phone">
             <Input
@@ -92,7 +127,7 @@ const EmailSellerModal = () => {
               placeholder="(000) 000-0000"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-            />
+            required />
           </Form.Item>
           <Form.Item label="Postal Code">
             <Input
@@ -114,7 +149,12 @@ const EmailSellerModal = () => {
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="btn btn-str-up2">
+            <Button className=" btn btn-str-up2"
+                    type="primary"
+                    htmlType="submit"
+                    loading={loading}
+                    disabled={loading}
+                    >
               Submit
             </Button>
           </Form.Item>

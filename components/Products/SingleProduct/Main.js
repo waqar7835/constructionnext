@@ -17,6 +17,7 @@ const Main = ({ content }) => {
       setContentImages(images);
     }
   }, [content]);
+  // console.log(content);
   return (
     <>
       <div id="header-area-space"></div>
@@ -90,8 +91,8 @@ const Main = ({ content }) => {
                     {!!content && content.title}
                   </div>
                   <div className="pro-det-sub-title">
-                    <div className="field field--name-field-description field--type-string field--label-hidden field__item">
-                      Lorem ipsum dolor sit{" "}
+                    <div className="field field--name-field-description ">
+                    {!!content && content.field_description }
                     </div>
                   </div>
                   <div className="pro-det-prbtn">

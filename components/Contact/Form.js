@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Detail from "./Detail";
 import { useDispatch } from "react-redux";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, notification } from "antd";
 import submitContant from "@store/actions/forms/contact";
 
 const { TextArea } = Input;
@@ -13,14 +13,54 @@ const FormD = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
     submitContant({ name, address, email, phone, message })
-      .then((res) => console.log("Submit Response : ", res))
-      .catch((e) => console.log("Submit Error : ", e));
+      .then((res) => {
+        if(res.code == 200) {
+          openNotification();
+          setName("");
+          setAddress("");
+          setEmail("");
+          setPhone("");
+          setMessage("");
+          setLoading(false);
+          console.log("Submit Response : ", res)
+        } else {
+          setLoading(false);
+          openErrorNotification();
+          console.log("Submit Error : ", e);
+        }
+       
+      })
+      .catch((e) => {
+        setLoading(false);
+        openErrorNotification();
+        console.log("Submit Error : ", e);
+      })
   }
-
+  const openNotification = () => {
+    const args = {
+      message: 'Contact Us',
+      description:
+        'Thank you for your submission, we will contact you shortly.',
+      duration: 5,
+    };
+    notification.success(args);
+  };
+  // for error handler 
+  const openErrorNotification = () => {
+    const args = {
+      message: 'Contact Us',
+      description:
+        'Something went wrong, Submit form again shortly.',
+      duration: 0,
+    };
+    notification.error(args);
+  };
   return (
     <div className="section-space-all">
       <div className="container">
@@ -140,6 +180,8 @@ const FormD = () => {
                     className="btn btn-str-up2"
                     type="submit"
                     htmlType="submit"
+                    loading={loading}
+                    disabled={loading}
                   >
                     <span>SUBMIT </span>
                   </Button>

@@ -9,6 +9,7 @@ import {
   Menu,
   Dropdown,
   Select,
+  notification
 } from "antd";
 import submitContant from "@store/actions/forms/videochat";
 
@@ -26,6 +27,8 @@ const VideoChatModal = () => {
   const [service, setService] = useState(" service");
   const [time, setTime] = useState("Time ");
   const [day, setDay] = useState("Date ");
+  // lofing define 
+  const [loading, setLoading] = useState(false);
 
   const showVideoModal = () => {
     setIsVideoModalVisible(true);
@@ -44,6 +47,8 @@ const VideoChatModal = () => {
   }
   function handleSubmit(e) {
     e.preventDefault();
+    // loading handler 
+    setLoading(true);
     submitContant({
       first_name: firstName,
       last_name: lastName,
@@ -57,14 +62,57 @@ const VideoChatModal = () => {
       when_would_you_like_to_video_chat_ : time,
       when_would_you_like_to_video_chat_2 : day
     })
-      .then((res) => console.log("Submit Response : ", res))
-      .catch((e) => console.log("Submit Error : ", e));
+      .then((res) => { 
+        if(res.code == 200) {
+          openNotification();
+          setFirstName("");
+          setLastName("");
+          setEmail("");
+          setPhone("");
+          setPostalCode("");
+          setMessage("");
+          setPolicy("");
+          setService("");
+          setTime("");
+          setDay("");
+          setLoading(false);
+          console.log("Submit Response : ", res)
+        } else {
+          setLoading(false);
+          openErrorNotification();
+          console.log("Submit Error : ", e);
+        }
+      })
+      .catch((e) => {
+        setLoading(false);
+        openErrorNotification();
+        console.log("Submit Error : ", e);
+      });
   }
-
+   // success handler 
+   const openNotification = () => {
+    const args = {
+      message: 'Fiance Information',
+      description:
+        'Thank you for your submission, we will contact you shortly.',
+      duration: 5,
+    };
+    notification.success(args);
+  };
+  // error handler 
+  const openErrorNotification = () => {
+    const args = {
+      message: 'Fiance Information',
+      description:
+        'Something went wrong, Submit form again shortly.',
+      duration: 0,
+    };
+    notification.error(args);
+  };
   return (
     <>
       <a onClick={showVideoModal}>
-        <i class="fa fa-video-camera" aria-hidden="true"></i> Video Chat
+        <i className="fa fa-video-camera" aria-hidden="true"></i> Video Chat
       </a>
       <Modal
         className="modal-filters"
@@ -159,9 +207,11 @@ const VideoChatModal = () => {
           </Form.Item>
           <Form.Item>
             <Button
-              type="primary"
-              htmlType="submit"
-              className="btn btn-str-up2"
+               className=" btn btn-str-up2"
+               type="primary"
+               htmlType="submit"
+               loading={loading}
+               disabled={loading}
             >
               Submit
             </Button>

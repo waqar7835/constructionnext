@@ -224,7 +224,7 @@ console.log(header[0]);
               <div className="col-lg-8 col-md-9">
                 <MainMenu />
               </div>
-              {/* <div className="col-lg-2 col-md-1 menusearch">
+              <div className="col-lg-2 col-md-3 menusearch">
                 <div className="header-search layout2">
                   <form>
                     <input
@@ -238,12 +238,12 @@ console.log(header[0]);
                     </a>
                   </form>
                 </div>
-              </div> */}
-              <div className="col-lg-2 col-md-1 get-quote">
+              </div>
+              {/* <div className="col-lg-2 col-md-1 get-quote">
                 <a href="#" title="quote" className="btn quote-btn-grey">
                   Get A quote
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
