@@ -1,4 +1,5 @@
-const Welcome = () => {
+import ReactHtmlParser from "react-html-parser";
+const Welcome = ({welcome}) => {
   return (
     <section className="bg-gray2" id="welcome-section-fluid">
       <div className="container">
@@ -12,32 +13,10 @@ const Welcome = () => {
               id="block-welcome"
               className="section-space-less30 bg-gray2 bg-common-style block block-block-content block-block-content14bbc390-4504-40e5-b7df-9f691c2e1fa2"
             >
-              <h2>Welcome!</h2>
+              <h2>{!!welcome[0] && welcome[0].title}</h2>
 
               <div className="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__items">
-                <div className="field__item">
-                  <p>
-                    Thank you for visiting the PNC Equipment Finance Pre-Owned
-                    Construction Equipment Page.
-                  </p>
-
-                  <p>
-                    PNC Equipment Finance is your one stop for the used and
-                    pre-owned construction equipment and financing your business
-                    needs to stay productive and profitable. Browse our complete
-                    inventory of leading skid steers, excavators, track and
-                    wheel loaders, RTV's, articulated dump trucks, mowers and
-                    attachments.
-                  </p>
-                </div>
-                <div className="field__item">
-                  <p>
-                    All pre-owned units have been well-maintained and inspected
-                    by a third party to ensure our high standards of quality and
-                    performance. For questions or additional product
-                    information, contact Matt McCleary at 267-399-7003.
-                  </p>
-                </div>
+              {ReactHtmlParser(!!welcome[0] && welcome[0].body)} 
               </div>
             </div>
             <div

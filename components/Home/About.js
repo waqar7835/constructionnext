@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
 import ReactPlayer from 'react-player/youtube'
+import ReactHtmlParser from "react-html-parser";
 
-
-const About = () => {
+const About = ({about}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
 
@@ -28,9 +28,10 @@ const About = () => {
           
             <div className="video-box-layout1">
             <Modal   title="About The OneSource"   visible={isModalVisible}  onCancel={handleCancel} footer={[]} >
-              <ReactPlayer url="https://youtu.be/O_C5CN1L3Xo" width={'100%'} />
+              <ReactPlayer url={!!about[0] && about[0].field_video} width={'100%'} />
             </Modal>
               <img src="/images/about-4-1.png" alt="img" />
+              {/* {!!about[0] && about[0].field__video_image_} */}
               {/* <a
                 className="primary-icon popup-youtube video-play-button"
                 href="https://youtu.be/O_C5CN1L3Xo"
@@ -46,33 +47,9 @@ const About = () => {
           <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div className="about-content-layout1">
               <h2>
-                About The <span>OneSource</span>
+              {!!about[0] && about[0].title}
               </h2>
-              <p>
-                <strong>
-                  {" "}
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis molestie nulla, quis ullamcorper leo tristique ut. Fusce suscipit eget mi in semper.
-                </strong>
-              </p>
-              <ul>
-                <li>
-                  <a href="#"> Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-                </li>
-                <li>
-                  <a href="#"> Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-                </li>
-                <li>
-                  <a href="#">Mei an pericula euripidispartem</a>
-                </li>
-              </ul>
-              <p className="off-mobile">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis molestie nulla, quis ullamcorper leo tristique ut. Fusce suscipit eget mi in semper.
-              </p>
-              <div className="button-for-more text-left">
-                <a href="#" title="learn More" className="btn btn-str-up2">
-                  Read More
-                </a>
-              </div>
+              {ReactHtmlParser(!!about[0] && about[0].body)} 
             </div>
           </div>
         </div>

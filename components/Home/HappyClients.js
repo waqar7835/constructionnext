@@ -4,7 +4,8 @@ import getClients from "@store/actions/clients";
 import ReactHtmlParser from "react-html-parser";
 import { baseURL } from "@config/config";
 
-const HappyClients = () => {
+const HappyClients = ( {feedback}) => {
+  console.log(feedback[0]);
   const dispatch = useDispatch();
   const clients = useSelector((state) => state.clients.clients);
   useEffect(() => {
@@ -17,11 +18,9 @@ const HappyClients = () => {
           <div className="col-lg-12">
             <div className="section-title text-center">
               <h2>
-                Happy Clients <span>Feedback</span>
-              </h2>
-              <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis molestie nulla, quis ullamcorper leo tristique ut.
-              </p>
+               {!!feedback[0] && feedback[0].title}
+              </h2>             
+              {ReactHtmlParser(!!feedback[0] && feedback[0].body)}        
             </div>
           </div>
         </div>

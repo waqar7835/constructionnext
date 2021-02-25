@@ -59,7 +59,7 @@ const Layout = (props) => {
             </>
           )}
         </Head>
-        <Header />
+        <Header  header= { props.header }/>
         {props.children}
         <Footer />
       </div>

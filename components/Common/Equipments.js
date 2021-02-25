@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import Link from 'next/link'
 import { useDispatch, useSelector } from "react-redux";
 import getEquipmentsData from "@store/actions/equipments";
+import ReactHtmlParser from "react-html-parser";
 import { baseURL } from "@config/config";
 
-const Equipments = () => {
+const Equipments = ({equipmentHeading}) => {
   const dispatch = useDispatch();
   const equipmentsData = useSelector((state) => state.equipments.equipments);
   useEffect(() => {
@@ -15,11 +16,9 @@ const Equipments = () => {
       <div className="container">
         <div className="section-title text-center">
           <h2>
-          What Equipment Are <span>You Looking For?</span>
+         {!!equipmentHeading[0] && equipmentHeading[0].title}
           </h2>
-          <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis molestie nulla, quis ullamcorper leo tristique ut. Fusce suscipit eget mi in semper. Nulla in ornare nisl. Vestibulum eget sem sed orci tempus blandit. Cras vitae semper lectus. Curabitur quis auctor mi.
-          </p>
+          {ReactHtmlParser(!!equipmentHeading[0] && equipmentHeading[0].body)} 
         </div>
       </div>
       <div className="container">

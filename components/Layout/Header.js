@@ -6,7 +6,8 @@ import Mobilemenu from './Mobilemenu'
 
 import $ from 'jquery';
 
-const Header = () => {
+const Header = ({header}) => {
+console.log(header[0]);
   const dispatch = useDispatch();
   const [isSticky, setIsSticky] = useState(false);
   const [topPosition, setTopPosition] = useState(0);
@@ -181,8 +182,8 @@ const Header = () => {
                     <i className="icofont icofont-location-arrow"></i>
                   </div>
                   <div className="media-body">
-                    <p>505 North State Street, London</p>
-                    <h2 className="media-heading"> United Kingdom</h2>
+                  {!!header[0] && header[0].field_address_1}
+                    <h2 className="media-heading"> {!!header[0] && header[0].field_location}</h2>
                   </div>
                 </div>
               </div>
@@ -192,8 +193,8 @@ const Header = () => {
                     <i className="icofont icofont-clock-time"></i>
                   </div>
                   <div className="media-body">
-                    <p>Opening Hours:</p>
-                    <h2 className="media-heading">Mon -Fri: 9.00am - 5.00pm</h2>
+                    <p>{!!header[0] && header[0].field_hours_title}</p>
+                    <h2 className="media-heading">{!!header[0] && header[0].field_hours_value}</h2>
                   </div>
                 </div>
               </div>
@@ -203,8 +204,8 @@ const Header = () => {
                     <i className="icofont icofont-phone"></i>
                   </div>
                   <div className="media-body">
-                    <p>Call free:</p>
-                    <h2 className="media-heading">980-000-2512</h2>
+                    <p>{!!header[0] && header[0].field_phone_title}</p>
+                    <h2 className="media-heading">{!!header[0] && header[0].field_phone_number}</h2>
                   </div>
                 </div>
               </div>

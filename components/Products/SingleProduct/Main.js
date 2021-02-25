@@ -5,6 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 
 const Main = ({ content }) => {
+  console.log({content});
   const [images, setContentImages] = useState([]);
   useEffect(() => {
     if (
