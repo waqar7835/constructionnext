@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Form, Input, Button, Radio, Checkbox } from "antd";
+import { Modal, Form, Input, Button, Radio, Checkbox , notification } from "antd";
 const { TextArea } = Input;
 import submitContant from "@store/actions/forms/emailblock";
 
@@ -7,10 +7,12 @@ const EmailBlock = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState(" ");
-  const [recEmail, setRecEmail] = useState(" ");
-  const [message, setMessage] = useState(" ");
-  const [policy, setPolicy] = useState(" ");
+  const [email, setEmail] = useState("");
+  const [recEmail, setRecEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [policy, setPolicy] = useState("");
+  // loading state 
+  const [loading, setLoading] = useState(false);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -29,6 +31,8 @@ const EmailBlock = () => {
   }
   function handleSubmit(e) {
     e.preventDefault();
+    // loading handler 
+    setLoading(true);
     submitContant({
       first_name: firstName,
       last_name: lastName,
@@ -38,9 +42,49 @@ const EmailBlock = () => {
       policy
 
     })
-      .then((res) => console.log("Submit Response : ", res))
-      .catch((e) => console.log("Submit Error : ", e));
+      .then((res) => {
+        if(res.code == 200) {
+          openNotification();
+           setFirstName("");
+           setLastName("");
+           setEmail("");
+           setRecEmail("");
+           setMessage("");
+           setPolicy("");
+            setLoading(false);
+              console.log("Submit Response : ", res)
+        } else {
+          setLoading(false);
+          openErrorNotification();
+          console.log("Submit Error : ", e);
+        }
+      })
+      .catch((e) => { 
+        setLoading(false);
+        openErrorNotification();
+        console.log("Submit Error : ", e);
+      })
   }
+   // success handler 
+   const openNotification = () => {
+    const args = {
+      message: 'Fiance Information',
+      description:
+        'Thank you for your submission, we will contact you shortly.',
+      duration: 5,
+    };
+    notification.success(args);
+  };
+  // error handler 
+  const openErrorNotification = () => {
+    const args = {
+      message: 'Fiance Information',
+      description:
+        'Something went wrong, Submit form again shortly.',
+      duration: 0,
+    };
+    notification.error(args);
+  };
 
   return (
     <div className="email-block">
@@ -107,7 +151,12 @@ const EmailBlock = () => {
             />
           </Form.Item>
           <Form.Item>
-            <Button type="primary"  htmlType="submit"  className="btn btn-str-up2">
+            <Button type="primary"  
+                    htmlType="submit"  
+                    className="btn btn-str-up2"    
+                    loading={loading}
+                    disabled={loading}
+            >
               Submit
             </Button>
           </Form.Item>
