@@ -1,5 +1,7 @@
 import ReactHtmlParser from "react-html-parser";
-const Welcome = ({welcome}) => {
+import SubscribedForm from "./SubscribedForm";
+
+const Welcome = ({ welcome }) => {
   return (
     <section className="bg-gray2" id="welcome-section-fluid">
       <div className="container">
@@ -16,14 +18,16 @@ const Welcome = ({welcome}) => {
               <h2>{!!welcome && welcome.title}</h2>
 
               <div className="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__items">
-              {ReactHtmlParser(!!welcome && welcome.body)} 
+                {ReactHtmlParser(!!welcome && welcome.body)}
               </div>
             </div>
+            
             <div
-              className="simplenews-subscriptions-block-ce69e592-96f2-447a-a58d-3244b9d41b07 simplenews-subscriber-form block block-simplenews block-simplenews-subscription-block"
-              id="block-simplenewssubscription-2"
+              className="simplenews-subscriber-form contact-form-layout4"
+               
             >
-              <form
+              <SubscribedForm />
+              {/* <form
                 action="/"
                 method="post"
                 id="simplenews-subscriptions-block-ce69e592-96f2-447a-a58d-3244b9d41b07"
@@ -32,12 +36,8 @@ const Welcome = ({welcome}) => {
                   className="field--type-email field--name-mail field--widget-email-default js-form-wrapper form-wrapper"
                   id="edit-mail-wrapper"
                 >
-                   
                   <div className="js-form-item form-item custom-control custom-email js-form-type-email form-type-email js-form-item-mail-0-value form-item-mail-0-value">
-                    <label
-                     
-                      className="custom-control-label js-form-required form-required"
-                    >
+                    <label className="custom-control-label js-form-required form-required">
                       Email
                     </label>
 
@@ -68,19 +68,16 @@ const Welcome = ({welcome}) => {
                   Stay informed - subscribe to our newsletter.
                 </div>
 
-                
-               
-
                 <div
                   className="form-actions js-form-wrapper form-wrapper"
                   id="edit-actions"
                 >
-                  <a href="#"             
-                    
-                    className="btn btn-str-up2"
-                  > Subscribe</a>
+                  <a href="#" className="btn btn-str-up2">
+                    {" "}
+                    Subscribe
+                  </a>
                 </div>
-              </form>
+              </form> */}
             </div>
           </div>
         </div>

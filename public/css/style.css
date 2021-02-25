@@ -13418,6 +13418,54 @@ form.finace-fiance-from .input-group .btn-default:hover {
 .contact-form-layout4 form .top-input {
   margin-bottom: 0;
 }
+.contact-form-layout4 form .form-input-mb30 {
+  margin-bottom: 8px;
+}
+.contact-form-layout4 form .form-textarea-mb30 textarea,
+.contact-form-layout4 form .form-input-mb30 input {
+  margin-bottom: 5px;
+}
+.contact-form-layout4 form .form-textarea-mb30 .ant-form-explain,
+.contact-form-layout4 form .form-input-mb30 .ant-form-explain {
+  text-align: left;
+  text-transform: capitalize;
+}
+.subscribed-from .top-input {
+  background-color: #fff;
+}
+.contact-form-layout4 form .form-textarea-mb30 {
+  margin-bottom: 8px;
+}
+.contact-form-layout4 form .ant-form-item-control {
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.simplenews-subscriber-form {
+  text-align: center;
+}
+.custom-form-final.subscribed-from .form-input-mb30 {
+  margin: 0 auto;
+  float: none;
+}
+.custom-form-final.subscribed-from .form-input-mb30 input {
+  background: #fff;
+  border: none;
+  border-radius: 0;
+}
+.js-form-item-message.desp-custom {
+  color: #7d8f99 !important;
+  font-size: 16px !important;
+}
+.customant-popups .ant-modal-body {
+  overflow: hidden;
+  padding: 24px 0px;
+}
+.customant-popups .ant-modal-body button.btn-str-up2 {
+    margin-left: 15px;
+}
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
   .header-top-area1 {
