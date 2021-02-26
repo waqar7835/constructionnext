@@ -13466,6 +13466,36 @@ form.finace-fiance-from .input-group .btn-default:hover {
 .customant-popups .ant-modal-body button.btn-str-up2 {
     margin-left: 15px;
 }
+form.footer-subscribed .ant-row {
+  display: table-cell;
+}
+.footer-area-top .footer-subscribed .input-group {
+   width: 100%;
+}
+.footer-area-top .footer-one-col .footer-subscribed .input-group-btn .btn-str-up2 {
+  background: #ff9800;
+  height: 57px;
+  border: 0;
+  border-radius: 0 2px 2px 0;
+  box-shadow: none;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.footer-area-top .footer-one-col .footer-subscribed .input-group-btn .btn-str-up2 i {
+  font-size: 24px;
+  color: #ffffff;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.footer-area-top .footer-one-col .footer-subscribed .input-group-btn .btn-str-up2:hover {
+  background: #f57c00;
+}
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  
   .header-top-area1 {
