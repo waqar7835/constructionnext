@@ -1,4 +1,6 @@
 import ScrollToTop from "react-scroll-to-top";
+import Footersubscribe from '../Home/Footersubscribe';
+
 export default function Footer() {
   return (
     <>
@@ -20,7 +22,7 @@ export default function Footer() {
                     Subscribe to get the latest news, update and offer
                     information.
                   </p>
-                  <form>
+                  {/* <form>
                     <div className="input-group">
                       <input
                         type="text"
@@ -33,7 +35,8 @@ export default function Footer() {
                         </button>
                       </span>
                     </div>
-                  </form>
+                  </form> */}
+                  <Footersubscribe />
                   <ul className="contact-social">
                     <li>
                       <a href="#" title="facebook">
