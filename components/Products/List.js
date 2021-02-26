@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Input, Menu } from "antd";
 const { TextArea } = Input;
 import VideoChatModal from "./VideoChatModal";
+import VideoChatModalv from "./VideoChatModelv";
 import EmailSellerModal from "./EmailSellerModal";
 import EmailSellerModalv from './EmailSellerModalv'
 
@@ -166,6 +167,7 @@ const List = () => {
                   {/* <EmailSellerModal /> */}
                   <EmailSellerModalv />
                   <VideoChatModal />
+                  <VideoChatModalv />
                 </div>
               </div>
             </div>

@@ -21,7 +21,7 @@ const EmailSellerModalv = ({ form: { getFieldDecorator, validateFields } }) => {
               openNotification();
               setLoading(false);
               setIsModalVisible(false)
-              Form.resetFields();
+              form.resetFields();
             } else {
               setLoading(false);
               openErrorNotification();
