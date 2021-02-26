@@ -5,6 +5,8 @@ import PriceFilter from "./PriceFilter";
 import { useRouter } from 'next/router';
 import CountryStateCity from "./CountryStateCity";
 import { Slider, RangeSlider, InputGroup } from 'rsuite';
+import { useDispatch, useSelector } from "react-redux";
+import submitFilters from "@store/actions/filters";
 const { Panel } = Collapse;
 const CheckboxGroup = Checkbox.Group;
 
@@ -33,9 +35,9 @@ const Filters = () => {
   const [manufacturer, setManufacturer] = useState([]);
   const [listingType, setListingType] = useState([]);
   const [condition, setCondition] = useState([]);
-  const [year, setYear] = React.useState([10,20]);
-  const [price, setPrice] = React.useState([10,20]);
-  const [quickSearch, setQuickSearch] = React.useState();
+  const [year, setYear] = useState([10,20]);
+  const [price, setPrice] = useState([10,20]);
+  const [quickSearch, setQuickSearch] = useState();
   const [checked, setChecked] = useState(false);
 
 
@@ -92,9 +94,10 @@ const Filters = () => {
   };
   const onCheckAllCategoury = (e) => {
     setCatCheckedList(e.target.checked ? CategouryOptions1 : []);
-
     setCategoryIndet(false);
     setCheckAllCategoury(e.target.checked);
+    console.log(catCheckedList);
+    
   };
   const onCheckAllCategoury2 = (e) => {
     setCatCheckedList2(e.target.checked ? CategouryOptions2 : []);
@@ -111,6 +114,11 @@ const Filters = () => {
   //   setYear([value]);
    
   // }
+  function submitHandler(e){
+    e.preventDefault();
+    applyFilter({ quickSearch, city, state, country,categoury, manufacturer,listingType, condition, year, price });
+
+  }
   function onChangeCondition(value) {
     setCondition([value]);
     applyFilter({ condition: value, city, state, categoury, country,manufacturer, listingType, year, price, quickSearch })
@@ -143,40 +151,44 @@ const Filters = () => {
 
     // console.log(params);
     let str = '';
-    if (!!params.country.length) {
-      str += "&country=" + params.country.join(',');
+    if (!isEmpty(params.country)) {    
+      str += "&country[]=" + params.country.join(',');     
     }
-    if (!!params.city.length) {
-      str += "&city=" + params.city.join(',');
+    if (!isEmpty(params.city)) {
+      str += "&city[]=" + params.city.join(',');
     }
-    if (!!params.state.length) {
-      str += "&state=" + params.state.join(',');
+    if (!isEmpty(params.state)) {
+      str += "&state[]=" + params.state.join(',');
     }
-    if (!!params.categoury.length) {
-      str += "&categoury=" + params.categoury.join(',');
+    if (!isEmpty(params.categoury)) {
+      str += "&categoury[]=" + params.categoury.join(',');
     }
-    if (!!params.manufacturer.length) {
-      str += "&manufacturer=" + params.manufacturer.join(',');
+    if (!isEmpty(params.manufacturer)) {
+      str += "&manufacturer[]=" + params.manufacturer.join(',');
     }
-    if (!!params.listingType.length) { 
-      str += "&listingType=" + params.listingType.join(',');     
+    if (!isEmpty(params.listingType)) { 
+      str += "&listingType[]=" + params.listingType.join(',');     
     }
-    if (!!params.condition.length) {
-      str += "&condition=" + params.condition.join(',');
+    if (!isEmpty(params.condition)) {
+      str += "&condition[]=" + params.condition.join(',');
     }
-    if (!!params.year.length) {
+    if (!isEmpty(params.year)) {
       str += "&year=" + params.year.join(',');
     }
-    if (!!params.price.length) {
+    if (!isEmpty(params.price)) {
       str += "&price=" + params.price.join(',');
     }
-    if (!!params.quickSearch) {
-      str += "&quickSearch=" + params.quickSearch;
+    if (!isEmpty(params.quickSearch)) {
+      str += "&keywords=" + params.quickSearch;
     }
     str = setCharAt(str,0,'?');
-    
+    submitFilters({str });
     router.push(`/${str}`, `/inventory/search${str}`, { shallow: true }) 
   }
+  function isEmpty(array) {
+    return Array.isArray(array) && (array.length == 0 || array.every(isEmpty));
+  }
+ 
 
   return (
     <div className="filters-block left-side-filters col-md-3 col-xs-12">
@@ -188,9 +200,11 @@ const Filters = () => {
               value={quickSearch}
               onChange={(e) =>{ 
                 setQuickSearch(e.target.value);
-                applyFilter({ quickSearch: e.target.value, city, state, country,categoury, manufacturer,listingType, condition, year, price });
-}}
+               
+               }}
             />
+            <button className="apply-filter" onClick={ submitHandler}>Submit</button>
+
           </Form.Item>
 
         <Collapse defaultActiveKey={["5"]} onChange={callback}>
