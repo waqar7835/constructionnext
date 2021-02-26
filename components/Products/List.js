@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
-import { Input, Menu } from "antd";
-const { TextArea } = Input;
-import VideoChatModal from "./VideoChatModal";
+import { Menu } from "antd";
 import VideoChatModalv from "./VideoChatModelv";
-import EmailSellerModal from "./EmailSellerModal";
 import EmailSellerModalv from './EmailSellerModalv'
 
 import { useDispatch, useSelector } from "react-redux";
@@ -166,7 +163,6 @@ const List = () => {
                   {/* <a href="/inventory/listing/skid-steers-2"></a> */}
                   {/* <EmailSellerModal /> */}
                   <EmailSellerModalv />
-                  <VideoChatModal />
                   <VideoChatModalv />
                 </div>
               </div>

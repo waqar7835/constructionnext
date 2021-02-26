@@ -17,13 +17,11 @@ const { Option } = Select;
 const { TextArea } = Input;
 // antd v3
 const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
-  // const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [isVideoModalVisible, setIsVideoModalVisible] = useState(false);
   const onSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
     validateFields((err, values) => {
       if (!err) {
         const {
@@ -36,8 +34,8 @@ const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
           postal_code,
           policy,
           video_chat_service,
-          when_would_you_like_to_video_chat_,
-          when_would_you_like_to_video_chat_2,
+          time,
+          days,
         } = values;
         submitContant({
           first_name,
@@ -49,23 +47,23 @@ const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
           postal_code,
           policy,
           video_chat_service,
-          when_would_you_like_to_video_chat_,
-          when_would_you_like_to_video_chat_2,
+          time,
+          days,
         })
           .then((res) => {
             if (res.code == 200) {
               openNotification();
               setLoading(false);
-              setIsModalVisible(false);
-              form.resetFields();
+              setIsVideoModalVisible(false);
             } else {
               setLoading(false);
               openErrorNotification();
-              setIsModalVisible(true);
-              // console.log("Submit Error : ", e);
+              setIsVideoModalVisible(true);
+              console.log("Submit Error : ", e);
             }
           })
           .catch((e) => {
+            console.log("Submit Error : ", e);
             setLoading(false);
             openErrorNotification();
           });
@@ -76,7 +74,7 @@ const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
   };
   const openNotification = () => {
     const args = {
-      message: "Video Chat ",
+      message: "Video Chat",
       description:
         "Thank you for your submission, we will contact you shortly.",
       duration: 5,
@@ -180,7 +178,10 @@ const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
                   },
                 ],
               })(
-                <Input placeholder="Recipient Email " className="form-control top-input" />
+                <Input
+                  placeholder="Recipient Email "
+                  className="form-control top-input"
+                />
               )}
             </Form.Item>
           </div>
@@ -215,8 +216,7 @@ const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
               )}
             </Form.Item>
           </div>
-           
-           
+
           <div className="col-md-12  form-input-mb30">
             <Form.Item>
               {getFieldDecorator(
@@ -232,19 +232,18 @@ const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
           <div className="col-md-12  form-input-mb30">
             <label> Video Chat Service </label>
             <Form.Item>
-              {getFieldDecorator(
-                "video_chat_service",
-                {rules: [
-                    {
-                      required: true,
-                      message: "Enter Postal Code",
-                    },
-                  ],}
-              )(
+              {getFieldDecorator("video_chat_service", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Enter Postal Code",
+                  },
+                ],
+              })(
                 <Select style={{ width: 120 }} placeholder="Select Service">
-                  <Option value=" Apple"> Apple</Option>
-                  <Option value=" Android"> Android</Option>
-                  <Option value=" Other"> Other</Option>
+                  <Option value="Apple"> Apple</Option>
+                  <Option value="Android"> Android</Option>
+                  <Option value="Other"> Other</Option>
                 </Select>
               )}
             </Form.Item>
@@ -252,17 +251,14 @@ const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
           <div className="col-md-12  form-input-mb30 video-chat-timing">
             <label> When would you like to video chat? </label>
             <Form.Item>
-              {getFieldDecorator(
-                "when_would_you_like_to_video_chat_2",
-                {
-                    rules: [
-                        {
-                          required: true,
-                          message: "Select Time",
-                        },
-                      ],
-                }
-              )(
+              {getFieldDecorator("time", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Select Time",
+                  },
+                ],
+              })(
                 <Select style={{ width: 120 }} placeholder="Select Time">
                   <Option value="8am-12pm">8am-12pm</Option>
                   <Option value="12pm-3pm">12pm-3pm</Option>
@@ -271,19 +267,18 @@ const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
               )}
             </Form.Item>
             <Form.Item>
-              {getFieldDecorator(
-                "when_would_you_like_to_video_chat_",
-                {
-                    rules: [
-                        {
-                          required: true,
-                          message: "Select Day",
-                        },
-                      ],
-                }
-              )(
-                <Select style={{ width: 120, marginLeft: 10 }} placeholder="Select Day">
-                 
+              {getFieldDecorator("days", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Select Day",
+                  },
+                ],
+              })(
+                <Select
+                  style={{ width: 120, marginLeft: 10 }}
+                  placeholder="Select Day"
+                >
                   <Option value="Sunday-February 14">Sunday-February 14</Option>
                 </Select>
               )}

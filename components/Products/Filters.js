@@ -21,245 +21,236 @@ const CheckboxGroup = Checkbox.Group;
 const CategouryOptions1 = ["Log Trailers"];
 const CategouryOptions2 = ["Conventional Day Cab Trucks", "Dump Trucks"];
 const Filters = ({
-  city,
-  state,
-  country,
-  condition,
-  equipment,
-  listing_type,
-  manufacturer,
-  category,
+  city_trems,
+  state_trems,
+  country_trems,
+  condition_trems,
+  equipment_trems,
+  listing_type_trems,
+  manufacturer_trems,
+  category_trems,
 }) => {
-console.log({
-  city,
-  state,
-  country,
-  condition,
-  equipment,
-  listing_type,
-  manufacturer,
-  category,
-})
-  // const router = useRouter();
-  // const [categoryindet2, setCategoryIndet2] = React.useState(true);
-  // const [categoryindet, setCategoryIndet] = React.useState(true);
-  // const [checkAllcategoury2, setCheckAllCategoury2] = React.useState(false);
-  // const [checkAllcategoury, setCheckAllCategoury] = React.useState(false);
-  // const [catCheckedList, setCatCheckedList] = React.useState([]);
-  // const [catCheckedList2, setCatCheckedList2] = React.useState([]);
 
-  // const [isCatModalVisible, setIsCatModalVisible] = useState(false);
-  // const [isManModalVisible, setIsManModalVisible] = useState(false);
-  // const [isCityModalVisible, setIsCityModalVisible] = useState(false);
-  // const [isStateModalVisible, setIsStateModalVisible] = useState(false);
-  // const [country, setCountry] = useState([]);
-  // const [state, setState] = useState([]);
-  // const [city, setCity] = useState([]);
-  // const [categoury, setCategoury] = useState([]);
-  // const [manufacturer, setManufacturer] = useState([]);
-  // const [listingType, setListingType] = useState([]);
-  // const [condition, setCondition] = useState([]);
-  // const [year, setYear] = useState([10, 20]);
-  // const [price, setPrice] = useState([10, 20]);
-  // const [quickSearch, setQuickSearch] = useState();
-  // const [checked, setChecked] = useState(false);
+  const router = useRouter();
+  const [categoryindet2, setCategoryIndet2] = React.useState(true);
+  const [categoryindet, setCategoryIndet] = React.useState(true);
+  const [checkAllcategoury2, setCheckAllCategoury2] = React.useState(false);
+  const [checkAllcategoury, setCheckAllCategoury] = React.useState(false);
+  const [catCheckedList, setCatCheckedList] = React.useState([]);
+  const [catCheckedList2, setCatCheckedList2] = React.useState([]);
 
-  // const showCatModal = () => {
-  //   setIsCatModalVisible(true);
-  // };
-  // const showManModal = () => {
-  //   setIsManModalVisible(true);
-  // };
+  const [isCatModalVisible, setIsCatModalVisible] = useState(false);
+  const [isManModalVisible, setIsManModalVisible] = useState(false);
+  const [isCityModalVisible, setIsCityModalVisible] = useState(false);
+  const [isStateModalVisible, setIsStateModalVisible] = useState(false);
+  const [country, setCountry] = useState([]);
+  const [state, setState] = useState([]);
+  const [city, setCity] = useState([]);
+  const [categoury, setCategoury] = useState([]);
+  const [manufacturer, setManufacturer] = useState([]);
+  const [listingType, setListingType] = useState([]);
+  const [condition, setCondition] = useState([]);
+  const [year, setYear] = useState([10, 20]);
+  const [price, setPrice] = useState([10, 20]);
+  const [quickSearch, setQuickSearch] = useState();
+  const [checked, setChecked] = useState(false);
 
-  // const handleOk = () => {
-  //   setIsCatModalVisible(false);
-  // };
-  // const handleOkMan = () => {
-  //   setIsManModalVisible(true);
-  // };
-  // const showStateModal = () => {
-  //   setIsStateModalVisible(true);
-  // };
+  const showCatModal = () => {
+    setIsCatModalVisible(true);
+  };
+  const showManModal = () => {
+    setIsManModalVisible(true);
+  };
 
-  // const handleCancelCity = () => {
-  //   setIsCityModalVisible(false);
-  // };
-  // const handleCancelState = () => {
-  //   setIsStateModalVisible(false);
-  // };
-  // function callback(key) {
-  //   console.log(key);
-  // }
-  // const handleCancel = () => {
-  //   setIsCatModalVisible(false);
-  // };
-  // const handleCancelMan = () => {
-  //   setIsManModalVisible(false);
-  // };
+  const handleOk = () => {
+    setIsCatModalVisible(false);
+  };
+  const handleOkMan = () => {
+    setIsManModalVisible(true);
+  };
+  const showStateModal = () => {
+    setIsStateModalVisible(true);
+  };
 
-  // //  for group checkboxes of  category
+  const handleCancelCity = () => {
+    setIsCityModalVisible(false);
+  };
+  const handleCancelState = () => {
+    setIsStateModalVisible(false);
+  };
+  function callback(key) {
+    console.log(key);
+  }
+  const handleCancel = () => {
+    setIsCatModalVisible(false);
+  };
+  const handleCancelMan = () => {
+    setIsManModalVisible(false);
+  };
 
-  // const onChangeCategoury = (list) => {
-  //   setCatCheckedList(list);
-  //   setCategoryIndet(!!list.length && list.length < CategouryOptions1.length);
-  //   setCheckAllCategoury(list.length === CategouryOptions1.length);
-  //   setCategoury([list]);
-  //   applyFilter({
-  //     categoury: list,
-  //     city,
-  //     country,
-  //     state,
-  //     manufacturer,
-  //     listingType,
-  //     condition,
-  //     year,
-  //     price,
-  //     quickSearch,
-  //   });
-  // };
-  // const onChangeCategoury2 = (list) => {
-  //   setCatCheckedList2(list);
-  //   setCategoryIndet2(!!list.length && list.length < CategouryOptions2.length);
-  //   setCheckAllCategoury2(list.length === CategouryOptions2.length);
-  //   setCategoury([list]);
-  //   applyFilter({
-  //     categoury: list,
-  //     city,
-  //     country,
-  //     state,
-  //     manufacturer,
-  //     listingType,
-  //     condition,
-  //     year,
-  //     price,
-  //     quickSearch,
-  //   });
-  // };
-  // const onCheckAllCategoury = (e) => {
-  //   setCatCheckedList(e.target.checked ? CategouryOptions1 : []);
-  //   setCategoryIndet(false);
-  //   setCheckAllCategoury(e.target.checked);
-  //   console.log(catCheckedList);
-  // };
-  // const onCheckAllCategoury2 = (e) => {
-  //   setCatCheckedList2(e.target.checked ? CategouryOptions2 : []);
-  //   setCategoryIndet2(false);
-  //   setCheckAllCategoury2(e.target.checked);
-  // };
-  // function callback(key) {
-  //   console.log(key);
-  // }
+  //  for group checkboxes of  category
 
-  // //  for sending parameters to url
-  // // function onChangeYear(value) {
-  // //   setYear([value]);
+  const onChangeCategoury = (list) => {
+    setCatCheckedList(list);
+    setCategoryIndet(!!list.length && list.length < CategouryOptions1.length);
+    setCheckAllCategoury(list.length === CategouryOptions1.length);
+    setCategoury([list]);
+    applyFilter({
+      categoury: list,
+      city,
+      country,
+      state,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  };
+  const onChangeCategoury2 = (list) => {
+    setCatCheckedList2(list);
+    setCategoryIndet2(!!list.length && list.length < CategouryOptions2.length);
+    setCheckAllCategoury2(list.length === CategouryOptions2.length);
+    setCategoury([list]);
+    applyFilter({
+      categoury: list,
+      city,
+      country,
+      state,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  };
+  const onCheckAllCategoury = (e) => {
+    setCatCheckedList(e.target.checked ? CategouryOptions1 : []);
+    setCategoryIndet(false);
+    setCheckAllCategoury(e.target.checked);
+    console.log(catCheckedList);
+  };
+  const onCheckAllCategoury2 = (e) => {
+    setCatCheckedList2(e.target.checked ? CategouryOptions2 : []);
+    setCategoryIndet2(false);
+    setCheckAllCategoury2(e.target.checked);
+  };
+  function callback(key) {
+    console.log(key);
+  }
 
-  // // }
-  // function submitHandler(e) {
-  //   e.preventDefault();
-  //   applyFilter({
-  //     quickSearch,
-  //     city,
-  //     state,
-  //     country,
-  //     categoury,
-  //     manufacturer,
-  //     listingType,
-  //     condition,
-  //     year,
-  //     price,
-  //   });
+  //  for sending parameters to url
+  // function onChangeYear(value) {
+  //   setYear([value]);
+
   // }
-  // function onChangeCondition(value) {
-  //   setCondition([value]);
-  //   applyFilter({
-  //     condition: value,
-  //     city,
-  //     state,
-  //     categoury,
-  //     country,
-  //     manufacturer,
-  //     listingType,
-  //     year,
-  //     price,
-  //     quickSearch,
-  //   });
-  // }
-  // function onChangeListingType(value) {
-  //   setListingType([value]);
-  //   applyFilter({
-  //     listingType: value,
-  //     city,
-  //     state,
-  //     categoury,
-  //     country,
-  //     manufacturer,
-  //     condition,
-  //     year,
-  //     price,
-  //     quickSearch,
-  //   });
-  // }
-  // function onChangeManufacturer(value) {
-  //   setManufacturer([value]);
-  //   applyFilter({
-  //     manufacturer: value,
-  //     city,
-  //     state,
-  //     categoury,
-  //     country,
-  //     listingType,
-  //     condition,
-  //     year,
-  //     price,
-  //     quickSearch,
-  //   });
-  // }
-  // function onChangeCountry(value) {
-  //   setCountry([value]);
-  //   applyFilter({
-  //     country: value,
-  //     city,
-  //     state,
-  //     categoury,
-  //     manufacturer,
-  //     listingType,
-  //     condition,
-  //     year,
-  //     price,
-  //     quickSearch,
-  //   });
-  // }
-  // function onChangeState(value) {
-  //   setState([value]);
-  //   applyFilter({
-  //     state: value,
-  //     city,
-  //     country,
-  //     categoury,
-  //     manufacturer,
-  //     listingType,
-  //     condition,
-  //     year,
-  //     price,
-  //     quickSearch,
-  //   });
-  // }
-  // function onChangeCity(value) {
-  //   setCity([value]);
-  //   applyFilter({
-  //     city: value,
-  //     state,
-  //     country,
-  //     categoury,
-  //     manufacturer,
-  //     listingType,
-  //     condition,
-  //     year,
-  //     price,
-  //     quickSearch,
-  //   });
-  // }
+  function submitHandler(e) {
+    e.preventDefault();
+    applyFilter({
+      quickSearch,
+      city,
+      state,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+    });
+  }
+  function onChangeCondition(value) {
+    setCondition([value]);
+    applyFilter({
+      condition: value,
+      city,
+      state,
+      categoury,
+      country,
+      manufacturer,
+      listingType,
+      year,
+      price,
+      quickSearch,
+    });
+  }
+  function onChangeListingType(value) {
+    setListingType([value]);
+    applyFilter({
+      listingType: value,
+      city,
+      state,
+      categoury,
+      country,
+      manufacturer,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  }
+  function onChangeManufacturer(value) {
+    setManufacturer([value]);
+    applyFilter({
+      manufacturer: value,
+      city,
+      state,
+      categoury,
+      country,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  }
+  function onChangeCountry(value) {
+    setCountry([value]);
+    applyFilter({
+      country: value,
+      city,
+      state,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  }
+  function onChangeState(value) {
+    setState([value]);
+    applyFilter({
+      state: value,
+      city,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  }
+  function onChangeCity(value) {
+    setCity([value]);
+    applyFilter({
+      city: value,
+      state,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  }
   function setCharAt(str, index, chr) {
     if (index > str.length - 1) return str;
     return str.substring(0, index) + chr + str.substring(index + 1);
@@ -307,7 +298,7 @@ console.log({
 
   return (
     <div className="filters-block left-side-filters col-md-3 col-xs-12">
-      {/* <form className="views-exposed-form">
+      <form className="views-exposed-form">
         <Form.Item label="Quick Search">
           <Input
             className="form-control top-input"
@@ -584,7 +575,7 @@ console.log({
           </Panel>
         </Collapse>
         {/* state popup modal */}
-        {/* <Modal
+        <Modal
           className="popup-filters"
           title="State"
           visible={isStateModalVisible}
@@ -602,10 +593,10 @@ console.log({
             <Checkbox value="GEORGIA">GEORGIA</Checkbox>
           </Checkbox.Group>
           <a className="apply-filter">Apply Filter</a>
-        </Modal> */}
+        </Modal> 
 
         {/* Cities popup modal */}
-        {/* <Modal
+        <Modal
           title="City"
           className="popup-filters"
           visible={isCityModalVisible}
@@ -625,9 +616,9 @@ console.log({
           </Checkbox.Group>
           <a className="apply-filter">Apply Filter</a>
         </Modal>
-      </form> */}
+      </form> 
       {/* Category Modal */}
-      {/* <Modal
+      <Modal
         title="Categories"
         visible={isCatModalVisible}
         onCancel={handleCancel}
@@ -658,10 +649,10 @@ console.log({
           value={catCheckedList2}
           onChange={onChangeCategoury2}
         />
-      </Modal> */}
+      </Modal> 
 
       {/* Manufacturer Modal */}
-      {/* <Modal
+      <Modal
         title="Manufacturer"
         visible={isManModalVisible}
         onCancel={handleCancelMan}
@@ -682,7 +673,7 @@ console.log({
           </Form.Item>
         </Checkbox.Group>
         <a className="apply-filter">Apply Filter</a>
-      </Modal>  */}
+      </Modal>  
     </div>
   );
 };

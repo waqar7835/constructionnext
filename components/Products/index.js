@@ -30,14 +30,14 @@ const Index = ({
           <div className="container">
             <div className="filter-listing-block  ">
               <Filters
-                city={city}
-                state={state}
-                country={country}
-                condition={condition}
-                equipment={equipment}
-                listing_type={listing_type}
-                manufacturer={manufacturer}
-                category={category}
+                city_trems={city}
+                state_trems={state}
+                country_trems={country}
+                condition_trems={condition}
+                equipment_trems={equipment}
+                listing_type_trems={listing_type}
+                manufacturer_trems={manufacturer}
+                category_trems={category}
               />
               <List />
             </div>
