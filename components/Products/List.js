@@ -14,7 +14,7 @@ import { baseURL } from "@config/config";
 const List = () => {
   const dispatch = useDispatch();
   const productsData = useSelector((state) => state.products.products);
-  console.log("productsData : ", productsData);
+  // console.log("productsData : ", productsData);
   useEffect(() => {
     dispatch(getProductsData());
   }, []);
