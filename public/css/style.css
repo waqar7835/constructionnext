@@ -13178,11 +13178,11 @@ footer#page-footer .footer-area-top {
   width: 96%;
 }
 .ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner, .ant-checkbox-input:focus + .ant-checkbox-inner {
-  border-color: #ff9800;
+  border-color: #ff9800 !important;
 }
 .ant-checkbox-checked .ant-checkbox-inner {
-  background-color: #ff9800;
-  border-color: #ff9800;
+  background-color: #ff9800 !important;
+  border-color: #ff9800 !important;
 }
 .ant-collapse-item .ant-collapse-content-box .apply-filter {
   clear: both;
@@ -13495,6 +13495,12 @@ form.footer-subscribed .ant-row {
 }
 .footer-area-top .footer-one-col .footer-subscribed .input-group-btn .btn-str-up2:hover {
   background: #f57c00;
+}
+.custom-form-final .form-input-mb30 .top-input {
+  margin-bottom: 10px;
+}
+.ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover .ant-checkbox-inner, .ant-checkbox-input:focus + .ant-checkbox-inner {
+  border-color: #ff9800;
 }
 /* custom media query start  */
 @media (min-width: 768px) and (max-width: 1024px) {  

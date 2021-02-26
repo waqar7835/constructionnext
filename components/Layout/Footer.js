@@ -1,5 +1,5 @@
 import ScrollToTop from "react-scroll-to-top";
-import Footersubscribe from '../Home/Footersubscribe';
+import Footersubscribe from '@components/Layout/Footersubscribe';
 
 export default function Footer() {
   return (
