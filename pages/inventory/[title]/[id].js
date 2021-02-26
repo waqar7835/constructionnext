@@ -4,9 +4,9 @@ import Layout from "@components/Layout";
 import { baseURL } from "@config/config";
 import SingleProduct from "@components/Products/SingleProduct/Main";
 
-const Index = ({ content }) => {
+const Index = ({ header, content }) => {
   return (
-    <Layout>
+    <Layout header = { header }>
        <Head>
           {content && (
             <>
@@ -36,5 +36,16 @@ Index.getInitialProps = async ({ query }) => {
     content: !!data ? data[0] : {},
   };
 };
+Index.getInitialProps = async ({ query }) => { 
+  const [header, content] = await Promise.all([
+    fetch(`${baseURL}/api/blocks/74?_format=hal_json`).then(r => r.json()),
+    fetch(`${baseURL}/api/product-detail/${query.id}?_format=hal_json`).then(r => r.json()),   
+  ]);  
+  return {
+    header: !!header ? header[0] : {},
+    content: !!content ? content[0] : {},    
+   };
+
+ };
 
 export default Index;
