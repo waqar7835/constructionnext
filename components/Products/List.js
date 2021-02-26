@@ -4,6 +4,7 @@ import { Input, Menu } from "antd";
 const { TextArea } = Input;
 import VideoChatModal from "./VideoChatModal";
 import EmailSellerModal from "./EmailSellerModal";
+import EmailSellerModalv from './EmailSellerModalv'
 
 import { useDispatch, useSelector } from "react-redux";
 import getProductsData from "@store/actions/products";
@@ -162,7 +163,8 @@ const List = () => {
                     <a><i className="fa fa-search" aria-hidden="true"></i> View Details</a>
                   </Link>
                   {/* <a href="/inventory/listing/skid-steers-2"></a> */}
-                  <EmailSellerModal />
+                  {/* <EmailSellerModal /> */}
+                  <EmailSellerModalv />
                   <VideoChatModal />
                 </div>
               </div>
