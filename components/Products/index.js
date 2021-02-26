@@ -2,6 +2,7 @@ import Equipments from '../Common/Equipments';
 import List from './List';
 import Filters from './Filters';
 import EmailBlock from './EmailBlock';
+import EmailBlockv from './EmailBlockv'
 import './Listing_Page.css'
 const Index = () => {
   return (
@@ -12,7 +13,8 @@ const Index = () => {
           <div className=" ">
               <Equipments />
             <div className="container">
-              <EmailBlock />
+              <EmailBlockv />
+              {/* <EmailBlock /> */}
             </div>
             
             </div>

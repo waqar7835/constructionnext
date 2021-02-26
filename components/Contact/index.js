@@ -1,6 +1,6 @@
 import ImgContact from "./ImgContact";
 import WhereToFind from "./WhereToFind";
-import Form from "./Form";
+import FormContainer from "./FormContainer";
 
 const Index = ({findUs, header}) => {
   return (
@@ -8,7 +8,7 @@ const Index = ({findUs, header}) => {
       <div id="header-area-space"></div>
       <ImgContact />
       <WhereToFind  findUs= { findUs }/>
-      <Form header= { header } />
+      <FormContainer header= { header } />
     </>
   );
 };
