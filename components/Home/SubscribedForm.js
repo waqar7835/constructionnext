@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input, Button, notification } from "antd";
-import submitContant from "@store/actions/forms/contact";
+import submitContant from "@store/actions/forms/newsletter";
 // antd v3
 const Subscribed = ({ form: { getFieldDecorator, validateFields } }) => {
   const [loading, setLoading] = useState(false);

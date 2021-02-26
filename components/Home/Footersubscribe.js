@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Form, Input, Button, notification } from "antd";
-import submitContant from "@store/actions/forms/contact";
+import submitContant from "@store/actions/forms/newsletter";
+
 // antd v3
 const Footersubscribe = ({ form: { getFieldDecorator, validateFields } }) => {
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -30,6 +32,8 @@ const Footersubscribe = ({ form: { getFieldDecorator, validateFields } }) => {
         setLoading(false);
       }
     });
+
+
   };
   const openNotification = () => {
     const args = {
