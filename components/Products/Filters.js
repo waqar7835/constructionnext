@@ -248,13 +248,14 @@ const Filters = () => {
             min={0}
             max={100}
             value={year[0]}
+            disabled={true}
             onChange={nextValue => {
               const [start, end] = year;
               if (nextValue > end) {
                 return;
               }
               setYear([nextValue, end]);
-              applyFilter({ year: end, city, state, categoury, country,manufacturer, listingType, condition, price, quickSearch });
+              applyFilter({ year: [start, end], city, state, categoury, country,manufacturer, listingType, condition, price, quickSearch });
               console.log("input end", nextValue);
             }}
           />         
@@ -262,13 +263,14 @@ const Filters = () => {
             min={0}
             max={100}
             value={year[1]}
+            disabled={true}
             onChange={nextValue => {
               const [start, end] = year;
               if (start > nextValue) {
                 return;
               }
               setYear([start, nextValue]);
-              applyFilter({ year: start, city, state, categoury, country,manufacturer, listingType, condition, price, quickSearch });
+              applyFilter({ year: [start, nextValue], city, state, categoury, country,manufacturer, listingType, condition, price, quickSearch });
   console.log("input start", nextValue);
 
             }}
@@ -278,9 +280,10 @@ const Filters = () => {
           style={{ marginTop: 16 }}
           value={year}
           onChange={value => {
-            setYear(value);
-            applyFilter({ year: value, city, state, categoury, country,manufacturer, listingType, condition, price, quickSearch });
-  
+            setYear(value);  
+          }}
+          onMouseUp={()=> {           
+            applyFilter({ year: year, city, state, categoury, country,manufacturer, listingType, condition, price, quickSearch });
           }}
         />     
           </Panel>
@@ -289,13 +292,14 @@ const Filters = () => {
             min={0}
             max={100}
             value={price[0]}
+            disabled={true}
             onChange={nextValue => {
               const [start, end] = price;
               if (nextValue > end) {
                 return;
               }
               setPrice([nextValue, end]);
-              applyFilter({ price: start, city, state, categoury, country,manufacturer, listingType, condition, year, quickSearch });
+              applyFilter({ price: [nextValue, end], city, state, categoury, country,manufacturer, listingType, condition, year, quickSearch });
 
             }}
           />         
@@ -303,13 +307,14 @@ const Filters = () => {
             min={0}
             max={100}
             value={price[1]}
+            disabled={true}
             onChange={nextValue => {
               const [start, end] = price;
               if (start > nextValue) {
                 return;
               }
               setPrice([start, nextValue]);
-              applyFilter({ price: end, city, state, categoury, country,manufacturer, listingType, condition, year, quickSearch });
+              applyFilter({ price: [start, nextValue], city, state, categoury, country,manufacturer, listingType, condition, year, quickSearch });
 
             }}
           />        
@@ -318,8 +323,10 @@ const Filters = () => {
           style={{ marginTop: 16 }}
           value={price}
           onChange={value => {
-            setPrice(value);
-            applyFilter({ price: value, city, state, categoury, country,manufacturer, listingType, condition, year, quickSearch });
+            setPrice(value);           
+          }}
+          onMouseUp={()=> {
+            applyFilter({ price: price, city, state, categoury, country,manufacturer, listingType, condition, year, quickSearch });
 
           }}
         />     
