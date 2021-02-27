@@ -31,12 +31,10 @@ const Filters = ({
   category_trems,
 }) => {
   const router = useRouter();
-  const [categoryindet2, setCategoryIndet2] = React.useState(true);
-  const [categoryindet, setCategoryIndet] = React.useState(true);
-  const [checkAllcategoury2, setCheckAllCategoury2] = React.useState(false);
-  const [checkAllcategoury, setCheckAllCategoury] = React.useState(false);
-  const [catCheckedList, setCatCheckedList] = React.useState([]);
-  const [catCheckedList2, setCatCheckedList2] = React.useState([]);
+  const [indeterminateInPopup, setIndeterminateInPopup] = React.useState(true);
+  const [indeterminate, setIndeterminate] = React.useState(true);
+  const [checked, setCheckAll] = useState(false);
+
 
   const [isCatModalVisible, setIsCatModalVisible] = useState(false);
   const [isManModalVisible, setIsManModalVisible] = useState(false);
@@ -52,7 +50,7 @@ const Filters = ({
   const [year, setYear] = useState([10, 20]);
   const [price, setPrice] = useState([10, 20]);
   const [quickSearch, setQuickSearch] = useState();
-  const [checked, setChecked] = useState(false);
+
   const unflatten = (arr) => {
     var tree = [],
       mappedArr = {},
@@ -89,15 +87,7 @@ const Filters = ({
   const grouped_category_trems = !!category_trems
     ? unflatten(category_trems)
     : [];
-  // console.log("city_trems", city_trems);
-  // console.log("state_trems", state_trems);
-  // console.log("country_trems", country_trems);
-  // console.log("condition_trems", condition_trems);
-  // console.log("equipment_trems", equipment_trems);
-  // console.log("listing_type_trems", listing_type_trems);
-  // console.log("manufacturer_trems", manufacturer_trems);
-  // console.log("category_trems", category_trems);
-  // console.log("grouped_category_trems", grouped_category_trems);
+  
   const showCatModal = () => {
     setIsCatModalVisible(true);
   };
@@ -134,9 +124,6 @@ const Filters = ({
   //  for group checkboxes of  category
 
   const onChangeCategoury = (list) => {
-    setCatCheckedList(list);
-    setCategoryIndet(!!list.length && list.length < CategouryOptions1.length);
-    setCheckAllCategoury(list.length === CategouryOptions1.length);
     setCategoury([list]);
     applyFilter({
       categoury: list,
@@ -151,35 +138,7 @@ const Filters = ({
       quickSearch,
     });
   };
-  const onChangeCategoury2 = (list) => {
-    setCatCheckedList2(list);
-    setCategoryIndet2(!!list.length && list.length < CategouryOptions2.length);
-    setCheckAllCategoury2(list.length === CategouryOptions2.length);
-    setCategoury([list]);
-    applyFilter({
-      categoury: list,
-      city,
-      country,
-      state,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
-  };
-  const onCheckAllCategoury = (e) => {
-    setCatCheckedList(e.target.checked ? CategouryOptions1 : []);
-    setCategoryIndet(false);
-    setCheckAllCategoury(e.target.checked);
-    console.log(catCheckedList);
-  };
-  const onCheckAllCategoury2 = (e) => {
-    setCatCheckedList2(e.target.checked ? CategouryOptions2 : []);
-    setCategoryIndet2(false);
-    setCheckAllCategoury2(e.target.checked);
-  };
+
   function callback(key) {
     console.log(key);
   }
@@ -390,15 +349,20 @@ const Filters = ({
             {grouped_category_trems.slice(0, 2).map((item, key) => (
               <div key={key}>
                 <Checkbox
-                  indeterminate={categoryindet}
-                  onChange={onCheckAllCategoury}
-                  checked={checkAllcategoury}
+                  value={item.value}
+                  indeterminate={indeterminate}
+                  onChange={(e) => {
+                    console.log("parent value : ", e.target.value);
+                  }}
+                  checked={checked}
                 >
                   {item.label}
                 </Checkbox>
                 <CheckboxGroup
                   options={item.children}
-                  onChange={onChangeCategoury}
+                  onChange={(list) => {
+                    setCheckAll(item.children.length == list.length);
+                  }}
                 />
               </div>
             ))}
@@ -415,7 +379,9 @@ const Filters = ({
             >
               <Form.Item label="Popular">
                 {manufacturer_trems.slice(0, 4).map((item, key) => (
-                  <Checkbox key={key} value={item.tid}>{item.name}</Checkbox>
+                  <Checkbox key={key} value={item.tid}>
+                    {item.name}
+                  </Checkbox>
                 ))}
               </Form.Item>
             </Checkbox.Group>
@@ -678,16 +644,21 @@ const Filters = ({
         {grouped_category_trems.map((item, key) => (
           <div key={key}>
             <Checkbox
-              indeterminate={categoryindet}
-              onChange={onCheckAllCategoury}
-              checked={checkAllcategoury}
+              indeterminate={indeterminateInPopup}
+              onChange={() => {
+
+              }}
+              checked={checked}
             >
               {item.label}
             </Checkbox>
             <CheckboxGroup
               options={item.children}
-              onChange={onChangeCategoury}
+              onChange={() => {
+                setCheckAll(item.children.length == list.length);
+              }}
             />
+             <a className="apply-filter">Apply Filter</a>
           </div>
         ))}
       </Modal>
