@@ -341,7 +341,7 @@ const Filters = ({
 
   return (
     <div className="filters-block left-side-filters col-md-3 col-xs-12">
-      <form className="views-exposed-form">
+      <form className="views-exposed-form left-side-filterseach">
         <Form.Item label="Quick Search">
           <Input
             className="form-control top-input"
@@ -351,8 +351,8 @@ const Filters = ({
               setQuickSearch(e.target.value);
             }}
           />
-          <button className="apply-filter" onClick={submitHandler}>
-            Submit
+          <button className="apply-filter btn-str-up2" onClick={submitHandler}>
+          <i class="icofont icofont-search"></i>
           </button>
         </Form.Item>
 
@@ -423,7 +423,7 @@ const Filters = ({
               + Show All
             </a>
           </Panel>
-          <Panel header="Year" key="4">
+          <Panel header="Year" key="4" className="number-ranges">
             <InputNumber
               min={0}
               max={100}
@@ -499,7 +499,7 @@ const Filters = ({
               }}
             />
           </Panel>
-          <Panel header="Price" key="7">
+          <Panel header="Price" key="7" className="number-ranges">
             <InputNumber
               min={0}
               max={100}
@@ -629,7 +629,7 @@ const Filters = ({
           onCancel={handleCancelState}
           footer={[]}
         >
-          <Input placeholder="Filter" />
+          {/* <Input placeholder="Filter" /> */}
           <Checkbox.Group
             style={{ width: "100%" }}
             name="state"
@@ -652,7 +652,7 @@ const Filters = ({
           onCancel={handleCancelCity}
           footer={[]}
         >
-          <Input placeholder="Filter" />
+          {/* <Input placeholder="Filter" /> */}
           <Checkbox.Group
             style={{ width: "100%" }}
             name="city"
@@ -676,7 +676,7 @@ const Filters = ({
         className="popup-filters"
       >
         {grouped_category_trems.map((item, key) => (
-          <div key={key}>
+          <div key={key} className="antd-groupcheckbox-cus">
             <Checkbox
               indeterminate={categoryindet}
               onChange={onCheckAllCategoury}
