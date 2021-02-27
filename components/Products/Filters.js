@@ -1,31 +1,18 @@
-import React, { useState } from "react";
-import {
-  Collapse,
-  Checkbox,
-  Modal,
-  Form,
-  Input,
-  Divider,
-  InputNumber,
-} from "antd";
-import YearFilter from "./YearFilter";
-import PriceFilter from "./PriceFilter";
+import React, { useState, useEffect } from "react";
+import { Collapse, Checkbox, Modal, Form, Input, InputNumber } from "antd";
+
 import { useRouter } from "next/router";
-import CountryStateCity from "./CountryStateCity";
-import { Slider, RangeSlider, InputGroup } from "rsuite";
-import { useDispatch, useSelector } from "react-redux";
+import { RangeSlider } from "rsuite";
 import submitFilters from "@store/actions/filters";
+const initYear = [1980, 2021];
+const initPrice = [0, 50000];
 const { Panel } = Collapse;
 const CheckboxGroup = Checkbox.Group;
-
-const CategouryOptions1 = ["Log Trailers"];
-const CategouryOptions2 = ["Conventional Day Cab Trucks", "Dump Trucks"];
 const Filters = ({
   city_trems,
   state_trems,
   country_trems,
   condition_trems,
-  equipment_trems,
   listing_type_trems,
   manufacturer_trems,
   category_trems,
@@ -34,8 +21,6 @@ const Filters = ({
   const [indeterminateInPopup, setIndeterminateInPopup] = React.useState(true);
   const [indeterminate, setIndeterminate] = React.useState(true);
   const [checked, setCheckAll] = useState(false);
-
-
   const [isCatModalVisible, setIsCatModalVisible] = useState(false);
   const [isManModalVisible, setIsManModalVisible] = useState(false);
   const [isCityModalVisible, setIsCityModalVisible] = useState(false);
@@ -47,10 +32,16 @@ const Filters = ({
   const [manufacturer, setManufacturer] = useState([]);
   const [listingType, setListingType] = useState([]);
   const [condition, setCondition] = useState([]);
-  const [year, setYear] = useState([10, 20]);
-  const [price, setPrice] = useState([10, 20]);
+  const [year, setYear] = useState(initYear);
+  const [price, setPrice] = useState(initPrice);
   const [quickSearch, setQuickSearch] = useState();
 
+  useEffect(() => {
+   // console.log(router.query);
+  }, []);
+  useEffect(() => {
+    console.log(router.query);
+  }, [router.query]);
   const unflatten = (arr) => {
     var tree = [],
       mappedArr = {},
@@ -87,7 +78,7 @@ const Filters = ({
   const grouped_category_trems = !!category_trems
     ? unflatten(category_trems)
     : [];
-  
+
   const showCatModal = () => {
     setIsCatModalVisible(true);
   };
@@ -111,9 +102,7 @@ const Filters = ({
   const handleCancelState = () => {
     setIsStateModalVisible(false);
   };
-  function callback(key) {
-    console.log(key);
-  }
+
   const handleCancel = () => {
     setIsCatModalVisible(false);
   };
@@ -124,7 +113,7 @@ const Filters = ({
   //  for group checkboxes of  category
 
   const onChangeCategoury = (list) => {
-    setCategoury([list]);
+    setCategoury(list);
     applyFilter({
       categoury: list,
       city,
@@ -139,15 +128,6 @@ const Filters = ({
     });
   };
 
-  function callback(key) {
-    console.log(key);
-  }
-
-  //  for sending parameters to url
-  // function onChangeYear(value) {
-  //   setYear([value]);
-
-  // }
   function submitHandler(e) {
     e.preventDefault();
     applyFilter({
@@ -164,7 +144,7 @@ const Filters = ({
     });
   }
   function onChangeCondition(value) {
-    setCondition([value]);
+    setCondition(value);
     applyFilter({
       condition: value,
       city,
@@ -179,7 +159,7 @@ const Filters = ({
     });
   }
   function onChangeListingType(value) {
-    setListingType([value]);
+    setListingType(value);
     applyFilter({
       listingType: value,
       city,
@@ -194,7 +174,7 @@ const Filters = ({
     });
   }
   function onChangeManufacturer(value) {
-    setManufacturer([value]);
+    setManufacturer(value);
     applyFilter({
       manufacturer: value,
       city,
@@ -209,7 +189,7 @@ const Filters = ({
     });
   }
   function onChangeCountry(value) {
-    setCountry([value]);
+    setCountry(value);
     applyFilter({
       country: value,
       city,
@@ -224,7 +204,7 @@ const Filters = ({
     });
   }
   function onChangeState(value) {
-    setState([value]);
+    setState(value);
     applyFilter({
       state: value,
       city,
@@ -239,7 +219,7 @@ const Filters = ({
     });
   }
   function onChangeCity(value) {
-    setCity([value]);
+    setCity(value);
     applyFilter({
       city: value,
       state,
@@ -258,46 +238,87 @@ const Filters = ({
     return str.substring(0, index) + chr + str.substring(index + 1);
   }
   const applyFilter = (params) => {
-    // console.log(params);
+    const { equipment } = router.query;
     let str = "";
+    if (!!equipment) {
+      str = `?equipment=${equipment}`;
+    }
+
     if (!isEmpty(params.country)) {
-      str += "&country[]=" + params.country.join(",");
+      params.country.map((item) => {
+        str += `&country[]=${item}`;
+      });
     }
     if (!isEmpty(params.city)) {
-      str += "&city[]=" + params.city.join(",");
+      params.city.map((item) => {
+        str += `&city[]=${item}`;
+      });
     }
     if (!isEmpty(params.state)) {
-      str += "&state[]=" + params.state.join(",");
+      params.state.map((item) => {
+        str += `&state[]=${item}`;
+      });
     }
     if (!isEmpty(params.categoury)) {
-      str += "&categoury[]=" + params.categoury.join(",");
+      params.categoury.map((item) => {
+        str += `&categoury[]=${item}`;
+      });
     }
     if (!isEmpty(params.manufacturer)) {
-      str += "&manufacturer[]=" + params.manufacturer.join(",");
+      params.manufacturer.map((item) => {
+        str += `&manufacturer[]=${item}`;
+      });
     }
     if (!isEmpty(params.listingType)) {
-      str += "&listingType[]=" + params.listingType.join(",");
+      params.listingType.map((item) => {
+        str += `&listing_type[]=${item}`;
+      });
     }
     if (!isEmpty(params.condition)) {
-      str += "&condition[]=" + params.condition.join(",");
+      params.condition.map((item) => {
+        str += `&condition[]=${item}`;
+      });
     }
     if (!isEmpty(params.year)) {
-      str += "&year=" + params.year.join(",");
+      if (!arraysEqual(initYear, params.year)) {
+        const [year_min, year_max] = params.year;
+        str += `&year_min=${year_min}&year_max=${year_max}`;
+      }
     }
     if (!isEmpty(params.price)) {
-      str += "&price=" + params.price.join(",");
+      if (!arraysEqual(initPrice, params.price)) {
+        const [price_min, price_max] = params.price;
+        str += `&price_min=${price_min}&price_max=${price_max}`;
+      }
     }
+    // equipment
     if (!isEmpty(params.quickSearch)) {
-      str += "&keywords=" + params.quickSearch;
+      if (!!params.quickSearch) {
+        str += "&keywords=" + params.quickSearch;
+      }
     }
     str = setCharAt(str, 0, "?");
     submitFilters({ str });
     router.push(`/${str}`, `/inventory/search${str}`, { shallow: true });
   };
-  function isEmpty(array) {
+  const isEmpty = (array) => {
     return Array.isArray(array) && (array.length == 0 || array.every(isEmpty));
-  }
+  };
+  const arraysEqual = (a, b) => {
+    if (a === b) return true;
+    if (a == null || b == null) return false;
+    if (a.length !== b.length) return false;
 
+    // If you don't care about the order of the elements inside
+    // the array, you should sort both arrays here.
+    // Please note that calling sort on an array will modify that array.
+    // you might want to clone your array first.
+
+    for (var i = 0; i < a.length; ++i) {
+      if (a[i] !== b[i]) return false;
+    }
+    return true;
+  };
   return (
     <div className="filters-block left-side-filters col-md-3 col-xs-12">
       <form className="views-exposed-form left-side-filterseach">
@@ -311,11 +332,11 @@ const Filters = ({
             }}
           />
           <button className="apply-filter btn-str-up2" onClick={submitHandler}>
-          <i class="icofont icofont-search"></i>
+            <i className="icofont icofont-search"></i>
           </button>
         </Form.Item>
 
-        <Collapse defaultActiveKey={["5"]} onChange={callback}>
+        <Collapse defaultActiveKey={["5"]}>
           <Panel header="Listing Type" key="5">
             <Checkbox.Group
               style={{ width: "100%" }}
@@ -344,7 +365,7 @@ const Filters = ({
           </Panel>
         </Collapse>
 
-        <Collapse defaultActiveKey={["1"]} onChange={callback}>
+        <Collapse defaultActiveKey={["1"]}>
           <Panel header="Category" key="1">
             {grouped_category_trems.slice(0, 2).map((item, key) => (
               <div key={key}>
@@ -352,7 +373,6 @@ const Filters = ({
                   value={item.value}
                   indeterminate={indeterminate}
                   onChange={(e) => {
-                    console.log("parent value : ", e.target.value);
                   }}
                   checked={checked}
                 >
@@ -390,9 +410,10 @@ const Filters = ({
             </a>
           </Panel>
           <Panel header="Year" key="4" className="number-ranges">
+         
             <InputNumber
-              min={0}
-              max={100}
+              min={initYear[0]}
+              max={initYear[1]}
               value={year[0]}
               disabled={true}
               onChange={(nextValue) => {
@@ -413,12 +434,11 @@ const Filters = ({
                   price,
                   quickSearch,
                 });
-                console.log("input end", nextValue);
               }}
             />
             <InputNumber
-              min={0}
-              max={100}
+              min={initYear[0]}
+              max={initYear[1]}
               value={year[1]}
               disabled={true}
               onChange={(nextValue) => {
@@ -439,13 +459,11 @@ const Filters = ({
                   price,
                   quickSearch,
                 });
-                console.log("input start", nextValue);
               }}
             />
             <RangeSlider
               progress
               style={{ marginTop: 16 }}
-              value={year}
               onChange={(value) => {
                 setYear(value);
               }}
@@ -467,8 +485,8 @@ const Filters = ({
           </Panel>
           <Panel header="Price" key="7" className="number-ranges">
             <InputNumber
-              min={0}
-              max={100}
+              min={initPrice[0]}
+              max={initPrice[1]}
               value={price[0]}
               disabled={true}
               onChange={(nextValue) => {
@@ -492,8 +510,8 @@ const Filters = ({
               }}
             />
             <InputNumber
-              min={0}
-              max={100}
+              min={initPrice[0]}
+              max={initPrice[1]}
               value={price[1]}
               disabled={true}
               onChange={(nextValue) => {
@@ -540,7 +558,7 @@ const Filters = ({
             />
           </Panel>
         </Collapse>
-        <Collapse defaultActiveKey={["1"]} onChange={callback}>
+        <Collapse defaultActiveKey={["1"]}>
           <Panel header="Country" key="1">
             <Checkbox.Group
               style={{ width: "100%" }}
@@ -645,22 +663,21 @@ const Filters = ({
           <div key={key} className="antd-groupcheckbox-cus">
             <Checkbox
               indeterminate={indeterminateInPopup}
-              onChange={() => {
-
-              }}
+              onChange={() => {}}
               checked={checked}
             >
               {item.label}
             </Checkbox>
             <CheckboxGroup
               options={item.children}
-              onChange={() => {
+              onChange={(list) => {
                 setCheckAll(item.children.length == list.length);
               }}
             />
-             <a className="apply-filter">Apply Filter</a>
+           
           </div>
         ))}
+         <a className="apply-filter">Apply Filter</a>
       </Modal>
 
       {/* Manufacturer Modal */}

@@ -1,15 +1,16 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useRouter } from "next/router";
 import MainMenu from "./MainMenu";
 import Mobilemenu from './Mobilemenu'
 
 import $ from 'jquery';
 
 const Header = ({header}) => {
-
+  const router = useRouter();
   const dispatch = useDispatch();
   const [isSticky, setIsSticky] = useState(false);
+  const [keyword, setkeyword] = useState('');
   const [topPosition, setTopPosition] = useState(0);
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -228,12 +229,16 @@ const Header = ({header}) => {
                 <div className="header-search layout2">
                   <form>
                     <input
+                      value={keyword}
+                      onChange = {(e) => setkeyword(e.target.value)}
                       type="text"
                       className="search-input search-form"
                       placeholder="Search...."
                       required=""
                     />
-                    <a href="#" id="search-button" className="search-button">
+                    <a id="search-button" onClick={() => {
+                      router.push(`/inventory/search`, `/inventory/search?keywords=${keyword}`, { shallow: true });
+                    }}className="search-button">
                       <i className="icofont icofont-search"></i>
                     </a>
                   </form>

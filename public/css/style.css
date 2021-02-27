@@ -13523,7 +13523,7 @@ form.footer-subscribed .ant-row {
     border-top-right-radius: 0 !important;
 }
 form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-children {
-  display: flex;
+  /* display: flex; */
 } 
 .left-side-filterseach button.apply-filter {
   color: #fff !important;
@@ -14016,3 +14016,12 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
 }
 
  /* custom media query end  */
+ .loading{
+  width: 100%;
+  position: fixed;
+  height: 100%;
+  display: block;
+  z-index: 999;
+  background: url(/images/loading.gif) no-repeat center center;
+  background-color: rgba(255,255,255, 0.7);
+ }

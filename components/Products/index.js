@@ -10,7 +10,6 @@ const Index = ({
   state,
   country,
   condition,
-  equipment,
   listing_type,
   manufacturer,
   category,
@@ -34,7 +33,6 @@ const Index = ({
                 state_trems={state}
                 country_trems={country}
                 condition_trems={condition}
-                equipment_trems={equipment}
                 listing_type_trems={listing_type}
                 manufacturer_trems={manufacturer}
                 category_trems={category}

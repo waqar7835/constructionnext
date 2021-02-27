@@ -37,7 +37,7 @@ const Footersubscribe = ({ form: { getFieldDecorator, validateFields } }) => {
   };
   const openNotification = () => {
     const args = {
-      message: "Contact Us",
+      message: "Newsletter",
       description:
         "Thank you for your Subscribed , Stay informed - subscribe to our newsletter.",
       duration: 5,

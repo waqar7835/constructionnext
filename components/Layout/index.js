@@ -2,6 +2,7 @@ import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
 import { useEffect, useState } from 'react'
+import { useSelector } from "react-redux";
 import "./style.css";
 const layoutStyle = {
   margin: "auto",
@@ -12,6 +13,7 @@ const layoutStyle = {
 
 const Layout = (props) => {
   const [isRander , setIsRander] = useState(false);
+  const loader = useSelector((state) => state.loader.loader);
   useEffect(() => {
     // if(window){}
     setIsRander(!!window);
@@ -60,6 +62,7 @@ const Layout = (props) => {
           )}
         </Head>
         <Header  header= { props.header }/>
+         {loader && <div className='loading' ></div>}
         {props.children}
         <Footer />
       </div>

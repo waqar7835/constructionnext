@@ -31,7 +31,7 @@ const Equipments = ({equipmentHeading}) => {
                 alt={val.index}
                 title={val.name}
               />
-              <h3><Link href="/inventory/search">{val.name}</Link></h3>
+              <h3><Link href={`/inventory/search?equipment=${val.tid}`}>{val.name}</Link></h3>
               </div>
              
             </div>

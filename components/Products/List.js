@@ -3,21 +3,30 @@ import Link from "next/link";
 import { Menu } from "antd";
 import VideoChatModalv from "./VideoChatModelv";
 import EmailSellerModalv from './EmailSellerModalv'
-
+import { SET_LOADER } from "store/actions/type";
+import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import getProductsData from "@store/actions/products";
 import { baseURL } from "@config/config";
 
 const List = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const productsData = useSelector((state) => state.products.products);
-  // console.log("productsData : ", productsData);
+
+  // useEffect(() => {
+  //   dispatch(getProductsData());
+  // }, []);
   useEffect(() => {
-    dispatch(getProductsData());
-  }, []);
-  function onChange(e) {
-    console.log(`checked = ${e.target.checked}`);
-  }
+    let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : '';
+    console.log(req)
+    dispatch({
+      type: SET_LOADER,
+      payload: true,
+    });
+    dispatch(getProductsData(req));
+  }, [router.query]);
+
   const menu = (
     <Menu>
       <Menu.Item>
