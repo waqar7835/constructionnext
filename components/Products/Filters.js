@@ -30,7 +30,6 @@ const Filters = ({
   manufacturer_trems,
   category_trems,
 }) => {
-
   const router = useRouter();
   const [categoryindet2, setCategoryIndet2] = React.useState(true);
   const [categoryindet, setCategoryIndet] = React.useState(true);
@@ -54,7 +53,51 @@ const Filters = ({
   const [price, setPrice] = useState([10, 20]);
   const [quickSearch, setQuickSearch] = useState();
   const [checked, setChecked] = useState(false);
+  const unflatten = (arr) => {
+    var tree = [],
+      mappedArr = {},
+      arrElem,
+      mappedElem;
 
+    // First map the nodes of the array to an object -> create a hash table.
+    for (var i = 0, len = arr.length; i < len; i++) {
+      arrElem = arr[i];
+      mappedArr[arrElem.tid] = arrElem;
+      mappedArr[arrElem.tid]["children"] = [];
+    }
+
+    for (var tid in mappedArr) {
+      if (mappedArr.hasOwnProperty(tid)) {
+        mappedElem = mappedArr[tid];
+        mappedElem = {
+          label: mappedElem.name,
+          value: mappedElem.tid,
+          ...mappedElem,
+        };
+        // If the element is not at the root level, add it to its parent array of children.
+        if (mappedElem.pid) {
+          mappedArr[mappedElem["pid"]]["children"].push(mappedElem);
+        }
+        // If the element is at the root level, add it to first level elements array.
+        else {
+          tree.push(mappedElem);
+        }
+      }
+    }
+    return tree;
+  };
+  const grouped_category_trems = !!category_trems
+    ? unflatten(category_trems)
+    : [];
+  // console.log("city_trems", city_trems);
+  // console.log("state_trems", state_trems);
+  // console.log("country_trems", country_trems);
+  // console.log("condition_trems", condition_trems);
+  // console.log("equipment_trems", equipment_trems);
+  // console.log("listing_type_trems", listing_type_trems);
+  // console.log("manufacturer_trems", manufacturer_trems);
+  // console.log("category_trems", category_trems);
+  // console.log("grouped_category_trems", grouped_category_trems);
   const showCatModal = () => {
     setIsCatModalVisible(true);
   };
@@ -320,7 +363,11 @@ const Filters = ({
               name="listingType"
               onChange={onChangeListingType}
             >
-              <Checkbox value="forsale">For Sale</Checkbox>
+              {listing_type_trems.map((item, key) => (
+                <Checkbox key={key} value={item.tid}>
+                  {item.name}
+                </Checkbox>
+              ))}
             </Checkbox.Group>
           </Panel>
           <Panel header="Condition" key="6">
@@ -329,37 +376,33 @@ const Filters = ({
               name="condition"
               onChange={onChangeCondition}
             >
-              <Checkbox value="used">Used</Checkbox>
+              {condition_trems.map((item, key) => (
+                <Checkbox key={key} value={item.tid}>
+                  {item.name}
+                </Checkbox>
+              ))}
             </Checkbox.Group>
           </Panel>
         </Collapse>
 
         <Collapse defaultActiveKey={["1"]} onChange={callback}>
           <Panel header="Category" key="1">
-            <Checkbox
-              indeterminate={categoryindet}
-              onChange={onCheckAllCategoury}
-              checked={checkAllcategoury}
-            >
-              Semi-Trailers
-            </Checkbox>
-            <CheckboxGroup
-              options={CategouryOptions1}
-              value={catCheckedList}
-              onChange={onChangeCategoury}
-            />
-            <Checkbox
-              indeterminate={categoryindet2}
-              onChange={onCheckAllCategoury2}
-              checked={checkAllcategoury2}
-            >
-              Heavy Duty Trucks
-            </Checkbox>
-            <CheckboxGroup
-              options={CategouryOptions2}
-              value={catCheckedList2}
-              onChange={onChangeCategoury2}
-            />
+            {grouped_category_trems.slice(0, 2).map((item, key) => (
+              <div key={key}>
+                <Checkbox
+                  indeterminate={categoryindet}
+                  onChange={onCheckAllCategoury}
+                  checked={checkAllcategoury}
+                >
+                  {item.label}
+                </Checkbox>
+                <CheckboxGroup
+                  options={item.children}
+                  onChange={onChangeCategoury}
+                />
+              </div>
+            ))}
+
             <a onClick={showCatModal} className="apply-filter">
               + Show All
             </a>
@@ -371,11 +414,9 @@ const Filters = ({
               onChange={onChangeManufacturer}
             >
               <Form.Item label="Popular">
-                <Checkbox value="BOBCAT">BOBCAT</Checkbox>
-                <Checkbox value="DOOSAN">DOOSAN</Checkbox>
-                <Checkbox value="KUBOTA">KUBOTA</Checkbox>
-                <Checkbox value="FREIGHTLINER">FREIGHTLINER</Checkbox>
-                <Checkbox value="VIKING">VIKING</Checkbox>
+                {manufacturer_trems.slice(0, 4).map((item, key) => (
+                  <Checkbox key={key} value={item.tid}>{item.name}</Checkbox>
+                ))}
               </Form.Item>
             </Checkbox.Group>
             <a onClick={showManModal} className="apply-filter">
@@ -540,8 +581,11 @@ const Filters = ({
               name="country"
               onChange={onChangeCountry}
             >
-              <Checkbox value="USA">USA</Checkbox>
-              <Checkbox value="PAK">PAK</Checkbox>
+              {country_trems.slice(0, 4).map((item, key) => (
+                <Checkbox key={key} value={item.tid}>
+                  {item.name}
+                </Checkbox>
+              ))}
             </Checkbox.Group>
           </Panel>
           <Panel header="State" key="2">
@@ -550,9 +594,11 @@ const Filters = ({
               name="state"
               onChange={onChangeState}
             >
-              <Checkbox value="COLORADO">COLORADO</Checkbox>
-              <Checkbox value="FLORIDA">FLORIDA</Checkbox>
-              <Checkbox value="GEORGIA">GEORGIA</Checkbox>
+              {state_trems.slice(0, 4).map((item, key) => (
+                <Checkbox key={key} value={item.tid}>
+                  {item.name}
+                </Checkbox>
+              ))}
               <a onClick={showStateModal} className="apply-filter">
                 + Show All
               </a>
@@ -564,10 +610,11 @@ const Filters = ({
               name="city"
               onChange={onChangeCity}
             >
-              <Checkbox value="ARLINGTON">ARLINGTON</Checkbox>
-              <Checkbox value="BEDFORD">BEDFORD</Checkbox>
-              <Checkbox value="BIG LAKE">BIG LAKE</Checkbox>
-              <Checkbox value="BOWLING GREEN">BOWLING GREEN</Checkbox>
+              {city_trems.slice(0, 4).map((item, key) => (
+                <Checkbox key={key} value={item.tid}>
+                  {item.name}
+                </Checkbox>
+              ))}
               <a onClick={showStateModal} className="apply-filter">
                 + Show All
               </a>
@@ -588,12 +635,14 @@ const Filters = ({
             name="state"
             onChange={onChangeState}
           >
-            <Checkbox value="COLORADO">COLORADO</Checkbox>
-            <Checkbox value="FLORIDA">FLORIDA</Checkbox>
-            <Checkbox value="GEORGIA">GEORGIA</Checkbox>
+            {state_trems.map((item, key) => (
+              <Checkbox key={key} value={item.tid}>
+                {item.name}
+              </Checkbox>
+            ))}
           </Checkbox.Group>
           <a className="apply-filter">Apply Filter</a>
-        </Modal> 
+        </Modal>
 
         {/* Cities popup modal */}
         <Modal
@@ -609,14 +658,15 @@ const Filters = ({
             name="city"
             onChange={onChangeCity}
           >
-            <Checkbox value="ARLINGTON">ARLINGTON</Checkbox>
-            <Checkbox value="BEDFORD">BEDFORD</Checkbox>
-            <Checkbox value="BIG LAKE">BIG LAKE</Checkbox>
-            <Checkbox value="BOWLING GREEN">BOWLING GREEN</Checkbox>
+            {city_trems.map((item, key) => (
+              <Checkbox key={key} value={item.tid}>
+                {item.name}
+              </Checkbox>
+            ))}
           </Checkbox.Group>
           <a className="apply-filter">Apply Filter</a>
         </Modal>
-      </form> 
+      </form>
       {/* Category Modal */}
       <Modal
         title="Categories"
@@ -625,31 +675,22 @@ const Filters = ({
         footer={[]}
         className="popup-filters"
       >
-        <Checkbox
-          indeterminate={categoryindet}
-          onChange={onCheckAllCategoury}
-          checked={checkAllcategoury}
-        >
-          Semi-Trailers
-        </Checkbox>
-        <CheckboxGroup
-          options={CategouryOptions1}
-          value={catCheckedList}
-          onChange={onChangeCategoury}
-        />
-        <Checkbox
-          indeterminate={categoryindet2}
-          onChange={onCheckAllCategoury2}
-          checked={checkAllcategoury2}
-        >
-          Heavy Duty Trucks
-        </Checkbox>
-        <CheckboxGroup
-          options={CategouryOptions2}
-          value={catCheckedList2}
-          onChange={onChangeCategoury2}
-        />
-      </Modal> 
+        {grouped_category_trems.map((item, key) => (
+          <div key={key}>
+            <Checkbox
+              indeterminate={categoryindet}
+              onChange={onCheckAllCategoury}
+              checked={checkAllcategoury}
+            >
+              {item.label}
+            </Checkbox>
+            <CheckboxGroup
+              options={item.children}
+              onChange={onChangeCategoury}
+            />
+          </div>
+        ))}
+      </Modal>
 
       {/* Manufacturer Modal */}
       <Modal
@@ -665,15 +706,15 @@ const Filters = ({
           onChange={onChangeManufacturer}
         >
           <Form.Item label="Popular">
-            <Checkbox value="BOBCAT">BOBCAT</Checkbox>
-            <Checkbox value="DOOSAN">DOOSAN</Checkbox>
-            <Checkbox value="KUBOTA">KUBOTA</Checkbox>
-            <Checkbox value="FREIGHTLINER">FREIGHTLINER</Checkbox>
-            <Checkbox value="VIKING">VIKING</Checkbox>
+            {manufacturer_trems.map((item, key) => (
+              <Checkbox key={key} value={item.tid}>
+                {item.name}
+              </Checkbox>
+            ))}
           </Form.Item>
         </Checkbox.Group>
         <a className="apply-filter">Apply Filter</a>
-      </Modal>  
+      </Modal>
     </div>
   );
 };
