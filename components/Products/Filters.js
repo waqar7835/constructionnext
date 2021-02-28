@@ -20,7 +20,7 @@ const Filters = ({
   const router = useRouter();
   const [indeterminateInPopup, setIndeterminateInPopup] = React.useState(true);
   const [indeterminate, setIndeterminate] = React.useState(true);
-  const [checked, setCheckAll] = useState(false);
+  const [checked, setCheckAll] = useState([]);
   const [isCatModalVisible, setIsCatModalVisible] = useState(false);
   const [isManModalVisible, setIsManModalVisible] = useState(false);
   const [isCityModalVisible, setIsCityModalVisible] = useState(false);
@@ -37,10 +37,20 @@ const Filters = ({
   const [quickSearch, setQuickSearch] = useState();
 
   useEffect(() => {
-   // console.log(router.query);
+    // console.log(router.query);
   }, []);
   useEffect(() => {
     console.log(router.query);
+    if (router.query) {
+      setPrice([
+        router.query.price_min || initPrice[0],
+        router.query.price_max || initPrice[1],
+      ]);
+      setYear([
+        router.query.year_min || initYear[0],
+        router.query.year_max || initYear[1],
+      ]);
+    }
   }, [router.query]);
   const unflatten = (arr) => {
     var tree = [],
@@ -372,16 +382,19 @@ const Filters = ({
                 <Checkbox
                   value={item.value}
                   indeterminate={indeterminate}
-                  onChange={(e) => {
-                  }}
-                  checked={checked}
+                  onChange={(e) => {}}
+                  checked={checked.indexOf(item.tid) !== -1}
                 >
                   {item.label}
                 </Checkbox>
                 <CheckboxGroup
                   options={item.children}
                   onChange={(list) => {
-                    setCheckAll(item.children.length == list.length);
+                    if (item.children.length == list.length) {
+                      setCheckAll([...checked, item.tid]);
+                    } else {
+                      setCheckAll(checked.filter((tid) => tid != item.tid));
+                    }
                   }}
                 />
               </div>
@@ -410,7 +423,6 @@ const Filters = ({
             </a>
           </Panel>
           <Panel header="Year" key="4" className="number-ranges">
-         
             <InputNumber
               min={initYear[0]}
               max={initYear[1]}
@@ -463,7 +475,10 @@ const Filters = ({
             />
             <RangeSlider
               progress
+              min={initYear[0]}
+              max={initYear[1]}
               style={{ marginTop: 16 }}
+              value={year}
               onChange={(value) => {
                 setYear(value);
               }}
@@ -536,6 +551,8 @@ const Filters = ({
             />
             <RangeSlider
               progress
+              min={initPrice[0]}
+              max={initPrice[1]}
               style={{ marginTop: 16 }}
               value={price}
               onChange={(value) => {
@@ -664,20 +681,23 @@ const Filters = ({
             <Checkbox
               indeterminate={indeterminateInPopup}
               onChange={() => {}}
-              checked={checked}
+              checked={checked.indexOf(item.tid) !== -1}
             >
               {item.label}
             </Checkbox>
             <CheckboxGroup
               options={item.children}
               onChange={(list) => {
-                setCheckAll(item.children.length == list.length);
+                if (item.children.length == list.length) {
+                  setCheckAll([...checked, item.tid]);
+                } else {
+                  setCheckAll(checked.filter((tid) => tid != item.tid));
+                }
               }}
             />
-           
           </div>
         ))}
-         <a className="apply-filter">Apply Filter</a>
+        <a className="apply-filter">Apply Filter</a>
       </Modal>
 
       {/* Manufacturer Modal */}
