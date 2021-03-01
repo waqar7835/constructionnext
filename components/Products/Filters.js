@@ -41,9 +41,6 @@ const Filters = ({
   const [quickSearch, setQuickSearch] = useState();
 
   useEffect(() => {
-    // console.log(router.query);
-  }, []);
-  useEffect(() => {
     console.log(router.query);
     if (router.query) {
       setPrice([
@@ -55,7 +52,10 @@ const Filters = ({
         router.query.year_max || initYear[1],
       ]);
     }
+    if (router.query.categoury) {
+    }
   }, [router.query]);
+
   const unflatten = (arr) => {
     var tree = [],
       mappedArr = {},
@@ -92,6 +92,38 @@ const Filters = ({
   const grouped_category_trems = !!category_trems
     ? unflatten(category_trems)
     : [];
+
+  useEffect(() => {
+    const urlCategoryIds = Array.isArray(router.query["categoury[]"])
+      ? router.query["categoury[]"]
+      : [router.query["categoury[]"]];
+    if (
+      urlCategoryIds.length &&
+      grouped_category_trems.length &&
+      !Object.keys(checkedIds).length
+    ) {
+      urlCategoryIds.forEach((urlId) => {
+        let itemFound;
+        grouped_category_trems.forEach((category) => {
+          itemFound = category.children.find((x) => x.tid == urlId);
+          if (itemFound) {
+            let childIds = category.children.map((child) => child.tid);
+
+            var filtered = childIds.filter(function (e) {
+              return this.indexOf(e) > -1;
+            }, urlCategoryIds);
+            setCheckedIds((prev) => {
+              const updatedCats = {
+                ...prev,
+                [category.tid]: filtered,
+              };
+              return updatedCats;
+            });
+          }
+        });
+      });
+    }
+  }, []);
 
   const showCatModal = () => {
     setIsCatModalVisible(true);
@@ -134,6 +166,7 @@ const Filters = ({
     // ) {
     //   ids.push(...Object.keys(updatedCats));
     // }
+    setIsCatModalVisible(false);
     onChangeCategoury(ids);
     // applyFilter({
     //   categoury: list,
