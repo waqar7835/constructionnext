@@ -26,7 +26,7 @@ const List = () => {
     });
     dispatch(getProductsData(req));
   }, [router.query]);
-
+console.log("prod->", productsData);
   const menu = (
     <Menu>
       <Menu.Item>
@@ -84,6 +84,7 @@ const List = () => {
       </Menu.Item>
     </Menu>
   );
+  console.log("prod->",productsData);
   return (
     <div id="listing-content-results" className="listing-content col-md-9 col-xs-12">
       {productsData.map((product, index) => (
@@ -134,6 +135,9 @@ const List = () => {
               </div>
               <div className="invent-cus-cond bold">
                 <span>Condition:</span> {product.field_condition}
+              </div>
+              <div className="invent-cus-cond bold">
+                <span>ListingType:</span> {product.field_listing_type}
               </div>
               <div className="invent-cus-manuf bold">
                 <span>Manufacturer:</span> {product.field_category}

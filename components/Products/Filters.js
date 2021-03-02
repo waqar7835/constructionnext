@@ -4,6 +4,15 @@ import { Collapse, Checkbox, Modal, Form, Input, InputNumber } from "antd";
 import { useRouter } from "next/router";
 import { RangeSlider } from "rsuite";
 import submitFilters from "@store/actions/filters";
+import { useDispatch, useSelector } from "react-redux";
+import getCityCount from "@store/actions/filters/city";
+import getConditionCount from "@store/actions/filters/condition";
+import getCountryCount from "@store/actions/filters/country";
+import getListingTypeCount from "@store/actions/filters/listingtype";
+import getManufacturerCount from "@store/actions/filters/manufacturer";
+import getStateCount from "@store/actions/filters/statecount";
+import getCategoryCount from "@store/actions/filters/category";
+
 import e from "cors";
 const initYear = [1980, 2021];
 const initPrice = [0, 50000];
@@ -18,6 +27,24 @@ const Filters = ({
   manufacturer_trems,
   category_trems,
 }) => {
+  const dispatch = useDispatch();
+  const cityCount = useSelector((state) => state.city.city);
+  const conditionCount = useSelector((state) => state.condition.condition);
+  const countryCount = useSelector((state) => state.country.country);
+  const listingTypeCount = useSelector((state) => state.listingtype.listingtype);
+  const manufacturerCount = useSelector((state) => state.manufacturer.manufacturer);
+  const stateCount = useSelector((state) => state.statecount.statecount);
+  const categoryCount = useSelector((state) => state.category.category);
+  useEffect(() => {
+    dispatch(getCityCount());
+    dispatch(getConditionCount());
+    dispatch(getCountryCount());
+    dispatch(getListingTypeCount());
+    dispatch(getManufacturerCount());
+    dispatch(getStateCount());
+    dispatch(getCategoryCount());
+  }, []);
+
   const router = useRouter();
   const [indeterminateInPopup, setIndeterminateInPopup] = React.useState(true);
   const [indeterminate, setIndeterminate] = React.useState(true);
@@ -140,6 +167,9 @@ const Filters = ({
   };
   const showStateModal = () => {
     setIsStateModalVisible(true);
+  };
+  const showCityModal = () => {
+    setIsCityModalVisible(true);
   };
 
   const handleCancelCity = () => {
@@ -393,6 +423,13 @@ const Filters = ({
     }
     return true;
   };
+  console.log("city->",cityCount);
+  console.log("state->",stateCount);
+  console.log("country->",countryCount);
+  console.log("manufacturer->",manufacturerCount);
+  console.log("condition->",conditionCount);
+  console.log("listingType->",listingTypeCount);
+  console.log("category->",categoryCount);
   return (
     <div className="filters-block left-side-filters col-md-3 col-xs-12">
       <form className="views-exposed-form left-side-filterseach">
@@ -726,7 +763,7 @@ const Filters = ({
                   {item.name}
                 </Checkbox>
               ))}
-              <a onClick={showStateModal} className="apply-filter">
+              <a onClick={showCityModal} className="apply-filter">
                 + Show All
               </a>
             </Checkbox.Group>
