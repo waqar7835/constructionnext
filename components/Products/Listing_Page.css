@@ -203,3 +203,6 @@ form input[type='checkbox'] {
     border: 1px solid #ced4da;
     border-radius: 0.2rem;
     appearance: none;}
+    .bold span{
+        font-weight: 600;
+    }

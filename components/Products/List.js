@@ -123,47 +123,47 @@ const List = () => {
                 </span>
                 <a href="#"> </a>
               </div>
-              <div className="invent-cus-machloc">
+              <div className="invent-cus-machloc bold">
                 <span>Machine Location:</span> { product.field_machine_location }
               </div>
-              <div className="invent-cus-rhrs">
+              <div className="invent-cus-rhrs bold">
                 <span>Hours:</span> {product.field_hours}
               </div>
-              <div className="invent-cus-snum">
+              <div className="invent-cus-snum bold">
                 <span>Serial Numbers:</span> {product.field_serial_numbers}
               </div>
-              <div className="invent-cus-cond">
+              <div className="invent-cus-cond bold">
                 <span>Condition:</span> {product.field_condition}
               </div>
-              <div className="invent-cus-manuf">
+              <div className="invent-cus-manuf bold">
                 <span>Manufacturer:</span> {product.field_category}
               </div>
-              <div className="invent-cus-eq-cat">
+              <div className="invent-cus-eq-cat bold">
                 <span>Category:</span> {product.field_equipment_category}
               </div>
-              <div className="invent-cus-slc-cat">
+              <div className="invent-cus-slc-cat bold">
                 <span>Equipment:</span> {product.field_select_equipment}
               </div>
-              <div className="invent-cus-city">
+              <div className="invent-cus-city bold">
                 <span>city:</span> {product.field_city},
                 <span>state:</span> {product.field_state}               
               </div>
-              <div className="invent-cus-stnum">
+              <div className="invent-cus-stnum bold">
                 <span>Stock Number:</span> {product.field_stock_number}
               </div>
-              <div className="invent-cus-bucket">
+              <div className="invent-cus-bucket bold">
                 <span>Bucket:</span> {product.field_bucket}
               </div>
-              <div className="invent-cus-ac">
+              <div className="invent-cus-ac bold">
                 <span>A/C:</span> {product.field_a_c}
               </div>
-              <div className="invent-cus-heater">
+              <div className="invent-cus-heater bold">
                 <span>Heater:</span> {product.field_heater}
               </div>
-              <div className="invent-cus-rnum-fend">
+              <div className="invent-cus-rnum-fend bold">
                 <span>Number of Fanders:</span> {product.field_fenders}
               </div>
-              <div className="invent-cus-buc-cap">
+              <div className="invent-cus-buc-cap bold">
                 <span>Bucket Capacity</span> {product.field_bucket_capacity}
               </div>
             </div>
