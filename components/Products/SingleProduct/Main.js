@@ -176,6 +176,30 @@ const Main = ({ content }) => {
                   </div>
                 </div>
                 <div className="pro-b2-gen-flex">
+                  <div className="pro-b2-gen-label">Equipment</div>
+                  <div className="pro-b2-gen-value">
+                    <div className="field field--name-field-serial-numbers field--type-string field--label-hidden field__item">
+                      {!!content && content.field_select_equipment}
+                    </div>
+                  </div>
+                </div>
+                <div className="pro-b2-gen-flex">
+                  <div className="pro-b2-gen-label">Category</div>
+                  <div className="pro-b2-gen-value">
+                    <div className="field field--name-field-serial-numbers field--type-string field--label-hidden field__item">
+                      {!!content && content.field_equipment_category}
+                    </div>
+                  </div>
+                </div>
+                <div className="pro-b2-gen-flex">
+                  <div className="pro-b2-gen-label">Manufacturer</div>
+                  <div className="pro-b2-gen-value">
+                    <div className="field field--name-field-serial-numbers field--type-string field--label-hidden field__item">
+                      {!!content && content.field_category}
+                    </div>
+                  </div>
+                </div>
+                <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Condition</div>
                   <div className="pro-b2-gen-value">
                     <div className="field field--name-field-condition field--type-list-string field--label-hidden field__item">

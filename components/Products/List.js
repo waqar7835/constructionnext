@@ -135,6 +135,15 @@ const List = () => {
               <div className="invent-cus-cond">
                 <span>Condition:</span> {product.field_condition}
               </div>
+              <div className="invent-cus-manuf">
+                <span>Manufacturer:</span> {product.field_category}
+              </div>
+              <div className="invent-cus-eq-cat">
+                <span>Category:</span> {product.field_equipment_category}
+              </div>
+              <div className="invent-cus-slc-cat">
+                <span>Equipment:</span> {product.field_select_equipment}
+              </div>
               <div className="invent-cus-stnum">
                 <span>Stock Number:</span> {product.field_stock_number}
               </div>
