@@ -144,6 +144,10 @@ const List = () => {
               <div className="invent-cus-slc-cat">
                 <span>Equipment:</span> {product.field_select_equipment}
               </div>
+              <div className="invent-cus-city">
+                <span>city:</span> {product.field_city},
+                <span>state:</span> {product.field_state}               
+              </div>
               <div className="invent-cus-stnum">
                 <span>Stock Number:</span> {product.field_stock_number}
               </div>
