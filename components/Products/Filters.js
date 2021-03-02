@@ -29,12 +29,18 @@ const Filters = ({
 }) => {
   const dispatch = useDispatch();
   const cityCount = useSelector((state) => state.city.city);
+
   const conditionCount = useSelector((state) => state.condition.condition);
   const countryCount = useSelector((state) => state.country.country);
-  const listingTypeCount = useSelector((state) => state.listingtype.listingtype);
-  const manufacturerCount = useSelector((state) => state.manufacturer.manufacturer);
+  const listingTypeCount = useSelector(
+    (state) => state.listingtype.listingtype
+  );
+  const manufacturerCount = useSelector(
+    (state) => state.manufacturer.manufacturer
+  );
   const stateCount = useSelector((state) => state.statecount.statecount);
   const categoryCount = useSelector((state) => state.category.category);
+
   useEffect(() => {
     dispatch(getCityCount());
     dispatch(getConditionCount());
@@ -66,6 +72,7 @@ const Filters = ({
   const [year, setYear] = useState(initYear);
   const [price, setPrice] = useState(initPrice);
   const [quickSearch, setQuickSearch] = useState();
+  const [grouped_category_trems, setGroupedCategoryTrems] = useState([]);
 
   useEffect(() => {
     console.log(router.query);
@@ -82,7 +89,17 @@ const Filters = ({
     if (router.query.categoury) {
     }
   }, [router.query]);
-
+  useEffect(() => {
+    let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
+    console.log(req);
+    dispatch(getCityCount(req));
+    dispatch(getConditionCount(req));
+    dispatch(getCountryCount(req));
+    dispatch(getListingTypeCount(req));
+    dispatch(getManufacturerCount(req));
+    dispatch(getStateCount(req));
+    dispatch(getCategoryCount(req));
+  }, [router.query]);
   const unflatten = (arr) => {
     var tree = [],
       mappedArr = {},
@@ -100,7 +117,7 @@ const Filters = ({
       if (mappedArr.hasOwnProperty(tid)) {
         mappedElem = mappedArr[tid];
         mappedElem = {
-          label: mappedElem.name,
+          label: `${mappedElem.name} ${mappedElem.count}`,
           value: mappedElem.tid,
           ...mappedElem,
         };
@@ -116,10 +133,13 @@ const Filters = ({
     }
     return tree;
   };
-  const grouped_category_trems = !!category_trems
-    ? unflatten(category_trems)
-    : [];
-
+  useEffect(() => {
+    if (!!categoryCount && !!categoryCount.length) {
+      setGroupedCategoryTrems(unflatten(categoryCount));
+    } else {
+      setGroupedCategoryTrems([]);
+    }
+  }, [categoryCount]);
   useEffect(() => {
     const urlCategoryIds = Array.isArray(router.query["categoury[]"])
       ? router.query["categoury[]"]
@@ -423,13 +443,13 @@ const Filters = ({
     }
     return true;
   };
-  console.log("city->",cityCount);
-  console.log("state->",stateCount);
-  console.log("country->",countryCount);
-  console.log("manufacturer->",manufacturerCount);
-  console.log("condition->",conditionCount);
-  console.log("listingType->",listingTypeCount);
-  console.log("category->",categoryCount);
+  // console.log("city->",cityCount);
+  // console.log("state->",stateCount);
+  // console.log("country->",countryCount);
+  // console.log("manufacturer->",manufacturerCount);
+  // console.log("condition->",conditionCount);
+  // console.log("listingType->",listingTypeCount);
+  // console.log("category->",categoryCount);
   return (
     <div className="filters-block left-side-filters col-md-3 col-xs-12">
       <form className="views-exposed-form left-side-filterseach">
@@ -446,129 +466,141 @@ const Filters = ({
             <i className="icofont icofont-search"></i>
           </button>
         </Form.Item>
-
-        <Collapse defaultActiveKey={["5"]}>
-          <Panel header="Listing Type" key="5">
-            <Checkbox.Group
-              style={{ width: "100%" }}
-              name="listingType"
-              onChange={onChangeListingType}
-            >
-              {listing_type_trems.map((item, key) => (
-                <Checkbox key={key} value={item.tid}>
-                  {item.name}
-                </Checkbox>
-              ))}
-            </Checkbox.Group>
-          </Panel>
-          <Panel header="Condition" key="6">
-            <Checkbox.Group
-              style={{ width: "100%" }}
-              name="condition"
-              onChange={onChangeCondition}
-            >
-              {condition_trems.map((item, key) => (
-                <Checkbox key={key} value={item.tid}>
-                  {item.name}
-                </Checkbox>
-              ))}
-            </Checkbox.Group>
-          </Panel>
-        </Collapse>
-
+        {(!!listingTypeCount.length || !!conditionCount.length) && (
+          <Collapse
+            defaultActiveKey={!!listingTypeCount.length ? ["5"] : ["6"]}
+          >
+            {!!listingTypeCount.length && (
+              <Panel header="Listing Type" key="5">
+                <Checkbox.Group
+                  style={{ width: "100%" }}
+                  name="listingType"
+                  onChange={onChangeListingType}
+                >
+                  {listingTypeCount.map((item, key) => (
+                    <Checkbox key={key} value={item.value}>
+                      {`${item.label} ${item.count}`}
+                    </Checkbox>
+                  ))}
+                </Checkbox.Group>
+              </Panel>
+            )}
+            {!!conditionCount.length && (
+              <Panel header="Condition" key="6">
+                <Checkbox.Group
+                  style={{ width: "100%" }}
+                  name="condition"
+                  onChange={onChangeCondition}
+                >
+                  {conditionCount.map((item, key) => (
+                    <Checkbox key={key} value={item.value}>
+                      {`${item.label} ${item.count}`}
+                    </Checkbox>
+                  ))}
+                </Checkbox.Group>
+              </Panel>
+            )}
+          </Collapse>
+        )}
         <Collapse defaultActiveKey={["1"]}>
-          <Panel header="Category" key="1">
-            {grouped_category_trems.slice(0, 2).map((item, key) => (
-              <div key={key}>
-                <Checkbox
-                  value={item.value}
-                  indeterminate={indeterminate}
-                  onChange={(e) => {
-                    if (e.target.checked) {
-                      const parentId = item.tid;
-                      const childIds = item.children.map((child) => child.tid);
-                      setCheckedIds((prev) => {
-                        const updatedCats = { ...prev, [parentId]: childIds };
+          {!!grouped_category_trems.length && (
+            <Panel header="Category" key="1">
+              {grouped_category_trems.slice(0, 2).map((item, key) => (
+                <div key={key}>
+                  <Checkbox
+                    value={item.value}
+                    indeterminate={indeterminate}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        const parentId = item.tid;
+                        const childIds = item.children.map(
+                          (child) => child.tid
+                        );
+                        setCheckedIds((prev) => {
+                          const updatedCats = { ...prev, [parentId]: childIds };
+                          let ids = [];
+                          Object.keys(updatedCats).forEach((key) =>
+                            ids.push(...updatedCats[key])
+                          );
+                          ids.push(...Object.keys(updatedCats));
+                          onChangeCategoury(ids);
+                          return updatedCats;
+                        });
+                      } else {
+                        const updatedCats = Object.keys(checkedIds)
+                          .filter((key) => key !== item.tid)
+                          .reduce(
+                            (res, key) => ((res[key] = checkedIds[key]), res),
+                            {}
+                          );
                         let ids = [];
                         Object.keys(updatedCats).forEach((key) =>
                           ids.push(...updatedCats[key])
                         );
                         ids.push(...Object.keys(updatedCats));
                         onChangeCategoury(ids);
+                        setCheckedIds(updatedCats);
+                      }
+                    }}
+                    checked={
+                      Object.keys(checkedIds) &&
+                      checkedIds[item.tid] &&
+                      checkedIds[item.tid].length == item.children.length
+                    }
+                  >
+                    {item.label}
+                  </Checkbox>
+                  <CheckboxGroup
+                    value={checkedIds[item.tid]}
+                    options={item.children}
+                    onChange={(list) => {
+                      let parentId = item.tid;
+                      setCheckedIds((prev) => {
+                        const updatedCats = { ...prev, [parentId]: list };
+                        let ids = [];
+                        Object.keys(updatedCats).forEach((key) =>
+                          ids.push(...updatedCats[key])
+                        );
+                        if (
+                          Object.keys(updatedCats) &&
+                          updatedCats[item.tid] &&
+                          updatedCats[item.tid].length == item.children.length
+                        ) {
+                          ids.push(...Object.keys(updatedCats));
+                        }
+                        onChangeCategoury(ids);
                         return updatedCats;
                       });
-                    } else {
-                      const updatedCats = Object.keys(checkedIds)
-                        .filter((key) => key !== item.tid)
-                        .reduce(
-                          (res, key) => ((res[key] = checkedIds[key]), res),
-                          {}
-                        );
-                      let ids = [];
-                      Object.keys(updatedCats).forEach((key) =>
-                        ids.push(...updatedCats[key])
-                      );
-                      ids.push(...Object.keys(updatedCats));
-                      onChangeCategoury(ids);
-                      setCheckedIds(updatedCats);
-                    }
-                  }}
-                  checked={
-                    Object.keys(checkedIds) &&
-                    checkedIds[item.tid] &&
-                    checkedIds[item.tid].length == item.children.length
-                  }
-                >
-                  {item.label}
-                </Checkbox>
-                <CheckboxGroup
-                  value={checkedIds[item.tid]}
-                  options={item.children}
-                  onChange={(list) => {
-                    let parentId = item.tid;
-                    setCheckedIds((prev) => {
-                      const updatedCats = { ...prev, [parentId]: list };
-                      let ids = [];
-                      Object.keys(updatedCats).forEach((key) =>
-                        ids.push(...updatedCats[key])
-                      );
-                      if (
-                        Object.keys(updatedCats) &&
-                        updatedCats[item.tid] &&
-                        updatedCats[item.tid].length == item.children.length
-                      ) {
-                        ids.push(...Object.keys(updatedCats));
-                      }
-                      onChangeCategoury(ids);
-                      return updatedCats;
-                    });
-                  }}
-                />
-              </div>
-            ))}
+                    }}
+                  />
+                </div>
+              ))}
 
-            <a onClick={showCatModal} className="apply-filter">
-              + Show All
-            </a>
-          </Panel>
-          <Panel header="Manufacturer" key="2">
-            <Checkbox.Group
-              style={{ width: "100%" }}
-              name="manufacturer"
-              onChange={onChangeManufacturer}
-            >
-              <Form.Item label="Popular">
-                {manufacturer_trems.slice(0, 4).map((item, key) => (
-                  <Checkbox key={key} value={item.tid}>
-                    {item.name}
-                  </Checkbox>
-                ))}
-              </Form.Item>
-            </Checkbox.Group>
-            <a onClick={showManModal} className="apply-filter">
-              + Show All
-            </a>
-          </Panel>
+              <a onClick={showCatModal} className="apply-filter">
+                + Show All
+              </a>
+            </Panel>
+          )}
+          {!!manufacturerCount.length && (
+            <Panel header="Manufacturer" key="2">
+              <Checkbox.Group
+                style={{ width: "100%" }}
+                name="manufacturer"
+                onChange={onChangeManufacturer}
+              >
+                <Form.Item label="Popular">
+                  {manufacturerCount.slice(0, 4).map((item, key) => (
+                    <Checkbox key={key} value={item.value}>
+                      {`${item.label} ${item.count}`}
+                    </Checkbox>
+                  ))}
+                </Form.Item>
+              </Checkbox.Group>
+              <a onClick={showManModal} className="apply-filter">
+                + Show All
+              </a>
+            </Panel>
+          )}
           <Panel header="Year" key="4" className="number-ranges">
             <InputNumber
               min={initYear[0]}
@@ -722,53 +754,71 @@ const Filters = ({
             />
           </Panel>
         </Collapse>
-        <Collapse defaultActiveKey={["1"]}>
-          <Panel header="Country" key="1">
-            <Checkbox.Group
-              style={{ width: "100%" }}
-              name="country"
-              onChange={onChangeCountry}
-            >
-              {country_trems.slice(0, 4).map((item, key) => (
-                <Checkbox key={key} value={item.tid}>
-                  {item.name}
-                </Checkbox>
-              ))}
-            </Checkbox.Group>
-          </Panel>
-          <Panel header="State" key="2">
-            <Checkbox.Group
-              style={{ width: "100%" }}
-              name="state"
-              onChange={onChangeState}
-            >
-              {state_trems.slice(0, 4).map((item, key) => (
-                <Checkbox key={key} value={item.tid}>
-                  {item.name}
-                </Checkbox>
-              ))}
-              <a onClick={showStateModal} className="apply-filter">
-                + Show All
-              </a>
-            </Checkbox.Group>
-          </Panel>
-          <Panel header="City" key="3">
-            <Checkbox.Group
-              style={{ width: "100%" }}
-              name="city"
-              onChange={onChangeCity}
-            >
-              {city_trems.slice(0, 4).map((item, key) => (
-                <Checkbox key={key} value={item.tid}>
-                  {item.name}
-                </Checkbox>
-              ))}
-              <a onClick={showCityModal} className="apply-filter">
-                + Show All
-              </a>
-            </Checkbox.Group>
-          </Panel>
-        </Collapse>
+        {(!!countryCount.length ||
+          !!stateCount.length ||
+          !!cityCount.length) && (
+          <Collapse
+            defaultActiveKey={
+              !!countryCount.length
+                ? ["1"]
+                : !!stateCount.length
+                ? ["2"]
+                : ["3"]
+            }
+          >
+            {!!countryCount.length && (
+              <Panel header="Country" key="1">
+                <Checkbox.Group
+                  style={{ width: "100%" }}
+                  name="country"
+                  onChange={onChangeCountry}
+                >
+                  {countryCount.slice(0, 4).map((item, key) => (
+                    <Checkbox key={key} value={item.value}>
+                      {`${item.label} ${item.count}`}
+                    </Checkbox>
+                  ))}
+                </Checkbox.Group>
+              </Panel>
+            )}
+            {!!stateCount.length && (
+              <Panel header="State" key="2">
+                <Checkbox.Group
+                  style={{ width: "100%" }}
+                  name="state"
+                  onChange={onChangeState}
+                >
+                  {stateCount.slice(0, 4).map((item, key) => (
+                    <Checkbox key={key} value={item.value}>
+                      {`${item.label} ${item.count}`}
+                    </Checkbox>
+                  ))}
+                  <a onClick={showStateModal} className="apply-filter">
+                    + Show All
+                  </a>
+                </Checkbox.Group>
+              </Panel>
+            )}
+            {!!cityCount.length && (
+              <Panel header="City" key="3">
+                <Checkbox.Group
+                  style={{ width: "100%" }}
+                  name="city"
+                  onChange={onChangeCity}
+                >
+                  {cityCount.slice(0, 4).map((item, key) => (
+                    <Checkbox key={key} value={item.value}>
+                      {`${item.label} ${item.count}`}
+                    </Checkbox>
+                  ))}
+                  <a onClick={showCityModal} className="apply-filter">
+                    + Show All
+                  </a>
+                </Checkbox.Group>
+              </Panel>
+            )}
+          </Collapse>
+        )}
         {/* state popup modal */}
         <Modal
           className="popup-filters"
@@ -783,9 +833,9 @@ const Filters = ({
             name="state"
             onChange={onChangeState}
           >
-            {state_trems.map((item, key) => (
-              <Checkbox key={key} value={item.tid}>
-                {item.name}
+            {stateCount.map((item, key) => (
+              <Checkbox key={key} value={item.value}>
+                {`${item.label} ${item.count}`}
               </Checkbox>
             ))}
           </Checkbox.Group>
@@ -806,9 +856,9 @@ const Filters = ({
             name="city"
             onChange={onChangeCity}
           >
-            {city_trems.map((item, key) => (
-              <Checkbox key={key} value={item.tid}>
-                {item.name}
+            {cityCount.map((item, key) => (
+              <Checkbox key={key} value={item.value}>
+                {`${item.label} ${item.count}`}
               </Checkbox>
             ))}
           </Checkbox.Group>
@@ -892,9 +942,9 @@ const Filters = ({
           onChange={onChangeManufacturer}
         >
           <Form.Item label="Popular">
-            {manufacturer_trems.map((item, key) => (
-              <Checkbox key={key} value={item.tid}>
-                {item.name}
+            {manufacturerCount.map((item, key) => (
+              <Checkbox key={key} value={item.value}>
+                {`${item.label} ${item.count}`}
               </Checkbox>
             ))}
           </Form.Item>
