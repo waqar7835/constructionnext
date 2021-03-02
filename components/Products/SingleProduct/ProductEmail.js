@@ -12,7 +12,7 @@ const { TextArea } = Input;
 import submitContant from "@store/actions/forms/emailblock";
 
 // antd v3
-const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
+const ProductEmail = ({ form: { getFieldDecorator, validateFields } }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const showModal = () => {
@@ -22,20 +22,6 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
   const handleOk = () => {
     setIsModalVisible(false);
   };
-  const handlePrint = () => {
-    var prtContent = document.getElementById("listing-content-results");
-    var WinPrint = window.open(
-      "",
-      "",
-      "left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0"
-    );
-    WinPrint.document.write(prtContent.innerHTML);
-    WinPrint.document.close();
-    WinPrint.focus();
-    WinPrint.print();
-    WinPrint.close();
-  };
-
   const handleCancel = () => {
     setIsModalVisible(false);
   };
@@ -106,15 +92,12 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
   return (
     <div className="email-block">
       <p>
-        <a onClick={showModal}>
-          {" "}
-          <i className="fa fa-envelope" aria-hidden="true"></i>Email
-        </a>
-      </p>
-      <p>
-        <a onClick={handlePrint}>
-          {" "}
-          <i className="fa fa-print" aria-hidden="true"></i> Print
+        <a
+          onClick={showModal}
+          className="cboxElement"
+          data-colorbox-inline=".webform-submission-email-seller-form"
+        >
+          <i className="fa fa-envelope" aria-hidden="true"></i> SEND EMAIL
         </a>
       </p>
       <Modal
@@ -235,4 +218,4 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
     </div>
   );
 };
-export default Form.create()(EmailBlockv);
+export default Form.create()(ProductEmail);

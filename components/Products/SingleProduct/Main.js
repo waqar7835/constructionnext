@@ -3,10 +3,27 @@ import Equipments from "@components/Common/Equipments";
 import { baseURL } from "@config/config";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-
+import ProductEmail from "./ProductEmail";
+import ProductVideoChat from "./ProductVideoChat";
+import ProductDetailSellerMail from "./ProductDetailSellerMail";
 const Main = ({ content }) => {
-  console.log({content});
+  console.log({ content });
   const [images, setContentImages] = useState([]);
+
+  const handlePrint = () => {
+    var prtContent = document.getElementById("listing-content-results");
+    var WinPrint = window.open(
+      "",
+      "",
+      "left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0"
+    );
+    WinPrint.document.write(prtContent.innerHTML);
+    WinPrint.document.close();
+    WinPrint.focus();
+    WinPrint.print();
+    WinPrint.close();
+  };
+
   useEffect(() => {
     if (
       !!content &&
@@ -92,19 +109,19 @@ const Main = ({ content }) => {
                   </div>
                   <div className="pro-det-sub-title">
                     <div className="field field--name-field-description ">
-                    {!!content && content.field_description }
+                      {!!content && content.field_description}
                     </div>
                   </div>
                   <div className="pro-det-prbtn">
-                    <div className="pro-b2-gen-label">Price:  {!!content && content.field_price} </div>
+                    <div className="pro-b2-gen-label">
+                      Price: {!!content && content.field_price}{" "}
+                    </div>
                     {/* <div className="pro-det-prbtn rigth-side-detailp">
                      
                     </div> */}
                   </div>
                   <div className="pro-det-btnp rigth-side-detailp">
-                    <p>
-                      <a className="btn btn-str-up2">Make an Offer</a>
-                    </p>
+                    <ProductDetailSellerMail />
                   </div>
                   <div className="pro-b2-purchase-value"></div>
                   <div className="pro-rt2-lft-title rigth-side-detailp">
@@ -121,14 +138,7 @@ const Main = ({ content }) => {
                     </p>
                   </div>
                   <div className="pro-rt2-lft-video rigth-side-detailp">
-                    <p>
-                      <a
-                        className="cboxElement"
-                        data-colorbox-inline=".webform-submission-video-chat-form"
-                      >
-                        Video Chat With This Dealer
-                      </a>
-                    </p>
+                    <ProductVideoChat />
                   </div>
                   <div className="pro-rt2-lft-loc rigth-side-detailp">
                     <p>Machine Location:</p>
@@ -139,19 +149,7 @@ const Main = ({ content }) => {
                     <p></p>
                   </div>
                   <div className="pro-send-emailbtn rigth-side-detailp">
-                    <p>
-                      <a
-                        className="cboxElement"
-                        data-colorbox-inline=".webform-submission-email-seller-form"
-                      >
-                        {/* {!!content && content.field_heater} */}
-                        <i
-                          className="fa fa-envelope"
-                          aria-hidden="true"
-                        ></i>{" "}
-                        SEND EMAIL
-                      </a>
-                    </p>
+                    <ProductEmail />
                   </div>
                 </div>
               </div>

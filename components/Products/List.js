@@ -85,7 +85,7 @@ const List = () => {
     </Menu>
   );
   return (
-    <div className="listing-content col-md-9 col-xs-12">
+    <div id="listing-content-results" className="listing-content col-md-9 col-xs-12">
       {productsData.map((product, index) => (
         <div key={index} className="views-row">
           <div className="invent-pro-cus">

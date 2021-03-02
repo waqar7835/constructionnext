@@ -1,53 +1,27 @@
 import React, { useState } from "react";
 import {
   Modal,
+  Select,
   Form,
   Input,
   Button,
   Radio,
   Checkbox,
+  Menu,
+  Dropdown,
   notification,
 } from "antd";
+import submitContant from "@store/actions/forms/videochat";
+
+const { Option } = Select;
 const { TextArea } = Input;
-import submitContant from "@store/actions/forms/emailblock";
-
 // antd v3
-const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+const VideoChat = ({ form: { getFieldDecorator, validateFields } }) => {
   const [loading, setLoading] = useState(false);
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-  const handlePrint = () => {
-    var prtContent = document.getElementById("listing-content-results");
-    var WinPrint = window.open(
-      "",
-      "",
-      "left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0"
-    );
-    WinPrint.document.write(prtContent.innerHTML);
-    WinPrint.document.close();
-    WinPrint.focus();
-    WinPrint.print();
-    WinPrint.close();
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-  function onChange(e) {
-    console.log(`checked = ${e.target.checked}`);
-    setPolicy(e.target.checked);
-  }
-
+  const [isVideoModalVisible, setIsVideoModalVisible] = useState(false);
   const onSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
     validateFields((err, values) => {
       if (!err) {
         const {
@@ -56,7 +30,12 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
           email,
           recipient_s_email,
           message,
+          phone,
+          postal_code,
           policy,
+          video_chat_service,
+          time,
+          days,
         } = values;
         submitContant({
           first_name,
@@ -64,19 +43,27 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
           email,
           recipient_s_email,
           message,
+          phone,
+          postal_code,
           policy,
+          video_chat_service,
+          time,
+          days,
         })
           .then((res) => {
             if (res.code == 200) {
               openNotification();
               setLoading(false);
+              setIsVideoModalVisible(false);
             } else {
               setLoading(false);
               openErrorNotification();
-              // console.log("Submit Error : ", e);
+              setIsVideoModalVisible(true);
+              console.log("Submit Error : ", e);
             }
           })
           .catch((e) => {
+            console.log("Submit Error : ", e);
             setLoading(false);
             openErrorNotification();
           });
@@ -87,7 +74,7 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
   };
   const openNotification = () => {
     const args = {
-      message: "Email Friend",
+      message: "Video Chat",
       description:
         "Thank you for your submission, we will contact you shortly.",
       duration: 5,
@@ -97,30 +84,43 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
   // for error handler
   const openErrorNotification = () => {
     const args = {
-      message: "Email Friend",
+      message: "Video Chat",
       description: "Something went wrong, Submit form again shortly.",
       duration: 0,
     };
     notification.error(args);
   };
+  const showVideoModal = () => {
+    setIsVideoModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsVideoModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsVideoModalVisible(false);
+  };
+  function onChange(e) {
+    console.log(`checked = ${e.target.checked}`);
+    setPolicy(e.target.checked);
+  }
   return (
-    <div className="email-block">
+    <>
       <p>
-        <a onClick={showModal}>
-          {" "}
-          <i className="fa fa-envelope" aria-hidden="true"></i>Email
+        <a
+          onClick={showVideoModal}
+          className="cboxElement"
+          data-colorbox-inline=".webform-submission-video-chat-form"
+        >
+          Video Chat With This Dealer
         </a>
       </p>
-      <p>
-        <a onClick={handlePrint}>
-          {" "}
-          <i className="fa fa-print" aria-hidden="true"></i> Print
-        </a>
-      </p>
+
       <Modal
-        className="modal-filters customant-popups"
+        className="modal-filters customant-popups video-chat-model"
         title="Email this to a friend"
-        visible={isModalVisible}
+        visible={isVideoModalVisible}
         onCancel={handleCancel}
         footer={[]}
       >
@@ -174,7 +174,6 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
               )}
             </Form.Item>
           </div>
-
           <div className="col-md-6 col-xs-12  form-input-mb30">
             <Form.Item>
               {getFieldDecorator("recipient_s_email", {
@@ -187,12 +186,44 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
                 ],
               })(
                 <Input
-                  placeholder="Recipient's Email"
+                  placeholder="Recipient Email "
                   className="form-control top-input"
                 />
               )}
             </Form.Item>
           </div>
+          <div className="col-md-6 col-xs-12  form-input-mb30">
+            <Form.Item>
+              {getFieldDecorator("phone", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Enter Phone Number",
+                  },
+                ],
+              })(
+                <Input placeholder="Phone" className="form-control top-input" />
+              )}
+            </Form.Item>
+          </div>
+          <div className="col-md-6 col-xs-12  form-input-mb30">
+            <Form.Item>
+              {getFieldDecorator("postal_code", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Enter Postal Code",
+                  },
+                ],
+              })(
+                <Input
+                  placeholder="Postal Code"
+                  className="form-control top-input"
+                />
+              )}
+            </Form.Item>
+          </div>
+
           <div className="col-md-12  form-input-mb30">
             <Form.Item>
               {getFieldDecorator(
@@ -205,14 +236,73 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
               )}
             </Form.Item>
           </div>
-
+          <div className="col-md-12  form-input-mb30">
+            <label> Video Chat Service </label>
+            <Form.Item>
+              {getFieldDecorator("video_chat_service", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Enter Postal Code",
+                  },
+                ],
+              })(
+                <Select style={{ width: 120 }} placeholder="Select Service">
+                  <Option value="Apple"> Apple</Option>
+                  <Option value="Android"> Android</Option>
+                  <Option value="Other"> Other</Option>
+                </Select>
+              )}
+            </Form.Item>
+          </div>
+          <div className="col-md-12  form-input-mb30 video-chat-timing">
+            <label> When would you like to video chat? </label>
+            <Form.Item>
+              {getFieldDecorator("time", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Select Time",
+                  },
+                ],
+              })(
+                <Select style={{ width: 120 }} placeholder="Select Time">
+                  <Option value="8am-12pm">8am-12pm</Option>
+                  <Option value="12pm-3pm">12pm-3pm</Option>
+                  <Option value="3pm-6pm"> 3pm-6pm</Option>
+                </Select>
+              )}
+            </Form.Item>
+            <Form.Item>
+              {getFieldDecorator("days", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Select Day",
+                  },
+                ],
+              })(
+                <Select
+                  style={{ width: 120, marginLeft: 10 }}
+                  placeholder="Select Day"
+                >
+                  <Option value="Sunday-February 14">Sunday-February 14</Option>
+                </Select>
+              )}
+            </Form.Item>
+          </div>
           <div className="col-md-12 form-textarea-mb30">
             <Form.Item>
               {getFieldDecorator("message", {
-                rules: [{ required: true }],
+                rules: [
+                  {
+                    required: true,
+                    message: "Enter Message ",
+                  },
+                ],
               })(
-                <Input.TextArea
-                  rows={4}
+                <TextArea
+                  row={6}
                   placeholder="Message"
                   className="form-control message-box"
                 />
@@ -232,7 +322,7 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
           </Form.Item>
         </Form>
       </Modal>
-    </div>
+    </>
   );
 };
-export default Form.create()(EmailBlockv);
+export default Form.create()(VideoChat);

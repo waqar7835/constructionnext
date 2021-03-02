@@ -6,44 +6,18 @@ import {
   Button,
   Radio,
   Checkbox,
+  Menu,
+  Dropdown,
   notification,
 } from "antd";
-const { TextArea } = Input;
-import submitContant from "@store/actions/forms/emailblock";
+import submitContant from "@store/actions/forms/emailseller";
 
 // antd v3
-const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+const ProductDetailSellerMail = ({
+  form: { getFieldDecorator, validateFields },
+}) => {
   const [loading, setLoading] = useState(false);
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-  const handlePrint = () => {
-    var prtContent = document.getElementById("listing-content-results");
-    var WinPrint = window.open(
-      "",
-      "",
-      "left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0"
-    );
-    WinPrint.document.write(prtContent.innerHTML);
-    WinPrint.document.close();
-    WinPrint.focus();
-    WinPrint.print();
-    WinPrint.close();
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-  function onChange(e) {
-    console.log(`checked = ${e.target.checked}`);
-    setPolicy(e.target.checked);
-  }
-
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const onSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -54,30 +28,35 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
           first_name,
           last_name,
           email,
-          recipient_s_email,
-          message,
           policy,
+          message,
+          phone,
+          postal_code,
         } = values;
         submitContant({
           first_name,
           last_name,
           email,
-          recipient_s_email,
-          message,
           policy,
+          message,
+          phone,
+          postal_code,
         })
           .then((res) => {
             if (res.code == 200) {
               openNotification();
               setLoading(false);
+              setIsModalVisible(false);
             } else {
               setLoading(false);
               openErrorNotification();
+              setIsModalVisible(true);
               // console.log("Submit Error : ", e);
             }
           })
           .catch((e) => {
             setLoading(false);
+            console.log("Submit Error : ", e);
             openErrorNotification();
           });
       } else {
@@ -87,7 +66,7 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
   };
   const openNotification = () => {
     const args = {
-      message: "Email Friend",
+      message: "Email Seller",
       description:
         "Thank you for your submission, we will contact you shortly.",
       duration: 5,
@@ -97,26 +76,38 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
   // for error handler
   const openErrorNotification = () => {
     const args = {
-      message: "Email Friend",
+      message: "Email Seller",
       description: "Something went wrong, Submit form again shortly.",
       duration: 0,
     };
     notification.error(args);
   };
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const showVideoModal = () => {
+    setIsVideoModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  function onChange(e) {
+    console.log(`checked = ${e.target.checked}`);
+    setPolicy(e.target.checked);
+  }
   return (
-    <div className="email-block">
+    <>
       <p>
-        <a onClick={showModal}>
-          {" "}
-          <i className="fa fa-envelope" aria-hidden="true"></i>Email
+        <a onClick={showModal} className="btn btn-str-up2">
+          Make an Offer
         </a>
       </p>
-      <p>
-        <a onClick={handlePrint}>
-          {" "}
-          <i className="fa fa-print" aria-hidden="true"></i> Print
-        </a>
-      </p>
+
       <Modal
         className="modal-filters customant-popups"
         title="Email this to a friend"
@@ -159,7 +150,7 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
               )}
             </Form.Item>
           </div>
-          <div className="col-md-6 col-xs-12  form-input-mb30">
+          <div className="col-md-12 col-xs-12  form-input-mb30">
             <Form.Item>
               {getFieldDecorator("email", {
                 rules: [
@@ -174,20 +165,32 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
               )}
             </Form.Item>
           </div>
-
           <div className="col-md-6 col-xs-12  form-input-mb30">
             <Form.Item>
-              {getFieldDecorator("recipient_s_email", {
+              {getFieldDecorator("phone", {
                 rules: [
                   {
                     required: true,
-                    type: "email",
-                    message: "Please enter a valid email address",
+                    message: "Enter Phone Number",
+                  },
+                ],
+              })(
+                <Input placeholder="Phone" className="form-control top-input" />
+              )}
+            </Form.Item>
+          </div>
+          <div className="col-md-6 col-xs-12  form-input-mb30">
+            <Form.Item>
+              {getFieldDecorator("postal_code", {
+                rules: [
+                  {
+                    required: true,
+                    message: "Enter Postal Code",
                   },
                 ],
               })(
                 <Input
-                  placeholder="Recipient's Email"
+                  placeholder="Postal Code"
                   className="form-control top-input"
                 />
               )}
@@ -205,14 +208,18 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
               )}
             </Form.Item>
           </div>
-
           <div className="col-md-12 form-textarea-mb30">
             <Form.Item>
               {getFieldDecorator("message", {
-                rules: [{ required: true }],
+                rules: [
+                  {
+                    required: true,
+                    message: "Enter Message ",
+                  },
+                ],
               })(
                 <Input.TextArea
-                  rows={4}
+                  row={6}
                   placeholder="Message"
                   className="form-control message-box"
                 />
@@ -232,7 +239,7 @@ const EmailBlockv = ({ form: { getFieldDecorator, validateFields } }) => {
           </Form.Item>
         </Form>
       </Modal>
-    </div>
+    </>
   );
 };
-export default Form.create()(EmailBlockv);
+export default Form.create()(ProductDetailSellerMail);

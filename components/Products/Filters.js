@@ -399,7 +399,7 @@ const Filters = ({
         <Form.Item label="Quick Search">
           <Input
             className="form-control top-input"
-            placeholder="Enter your postal code"
+            placeholder="Enter your search keyword"
             value={quickSearch}
             onChange={(e) => {
               setQuickSearch(e.target.value);

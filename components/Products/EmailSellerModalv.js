@@ -5,7 +5,6 @@ import submitContant from "@store/actions/forms/emailseller";
 // antd v3
 const EmailSellerModalv = ({ form: { getFieldDecorator, validateFields } }) => {
 
-    // const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const onSubmit = (e) => {
@@ -21,7 +20,6 @@ const EmailSellerModalv = ({ form: { getFieldDecorator, validateFields } }) => {
               openNotification();
               setLoading(false);
               setIsModalVisible(false)
-              form.resetFields();
             } else {
               setLoading(false);
               openErrorNotification();
@@ -31,6 +29,7 @@ const EmailSellerModalv = ({ form: { getFieldDecorator, validateFields } }) => {
           })
           .catch((e) => {
             setLoading(false);
+            console.log("Submit Error : ", e);
             openErrorNotification();
           });
       } else {
