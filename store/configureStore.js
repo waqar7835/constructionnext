@@ -14,6 +14,10 @@ import listingtype from './reducers/filters/listingtype';
 import manufacturer from './reducers/filters/manufacturer';
 import statecount from './reducers/filters/statecount';
 import category from './reducers/filters/category';
+import minprice from './reducers/filters/minprice';
+import maxprice from './reducers/filters/maxprice';
+import minyear from './reducers/filters/minyear';
+import maxyear from './reducers/filters/maxyear';
 const reducers = combineReducers({
   slider,
   equipments,
@@ -26,7 +30,11 @@ const reducers = combineReducers({
   listingtype,
   manufacturer,
   statecount,
-  category
+  category,
+  minprice,
+  maxprice,
+  minyear,
+  maxyear
 });
 
 export const initStore = (initialState = {}) => {

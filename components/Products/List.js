@@ -26,7 +26,7 @@ const List = () => {
     });
     dispatch(getProductsData(req));
   }, [router.query]);
-console.log("prod->", productsData);
+// console.log("prod->", productsData);
   const menu = (
     <Menu>
       <Menu.Item>
@@ -84,7 +84,7 @@ console.log("prod->", productsData);
       </Menu.Item>
     </Menu>
   );
-  console.log("prod->",productsData);
+   console.log("prod->",productsData);
   return (
     <div id="listing-content-results" className="listing-content col-md-9 col-xs-12">
       {productsData.map((product, index) => (

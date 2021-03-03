@@ -12,10 +12,15 @@ import getListingTypeCount from "@store/actions/filters/listingtype";
 import getManufacturerCount from "@store/actions/filters/manufacturer";
 import getStateCount from "@store/actions/filters/statecount";
 import getCategoryCount from "@store/actions/filters/category";
+import getMinPrice from "@store/actions/filters/minprice";
+import getMaxPrice from "@store/actions/filters/maxprice";
+import getMinYear from "@store/actions/filters/minyear";
+import getMaxYear from "@store/actions/filters/maxyear";
+
 
 import e from "cors";
-const initYear = [1980, 2021];
-const initPrice = [0, 50000];
+
+
 const { Panel } = Collapse;
 const CheckboxGroup = Checkbox.Group;
 const Filters = ({
@@ -27,6 +32,7 @@ const Filters = ({
   manufacturer_trems,
   category_trems,
 }) => {
+
   const dispatch = useDispatch();
   const cityCount = useSelector((state) => state.city.city);
 
@@ -40,7 +46,12 @@ const Filters = ({
   );
   const stateCount = useSelector((state) => state.statecount.statecount);
   const categoryCount = useSelector((state) => state.category.category);
-
+  const minPrice = useSelector((state) => state.minprice.minprice);
+  const maxPrice = useSelector((state) => state.maxprice.maxprice);
+  const minYear = useSelector((state) => state.minyear.minyear);
+  const maxYear = useSelector((state) => state.maxyear.maxyear);
+const initYear = [1980, 2021];
+const initPrice = [0, 50000];
   useEffect(() => {
     dispatch(getCityCount());
     dispatch(getConditionCount());
@@ -49,6 +60,10 @@ const Filters = ({
     dispatch(getManufacturerCount());
     dispatch(getStateCount());
     dispatch(getCategoryCount());
+    dispatch(getMinPrice());
+    dispatch(getMaxPrice());
+    dispatch(getMinYear());
+    dispatch(getMaxYear());
   }, []);
 
   const router = useRouter();
@@ -111,18 +126,21 @@ const Filters = ({
       arrElem = arr[i];
       mappedArr[arrElem.tid] = arrElem;
       mappedArr[arrElem.tid]["children"] = [];
+     // console.log("mappedArr ++++++++ ", mappedArr)
     }
 
     for (var tid in mappedArr) {
       if (mappedArr.hasOwnProperty(tid)) {
         mappedElem = mappedArr[tid];
         mappedElem = {
-          label: `${mappedElem.name} ${mappedElem.count}`,
+          label: `${mappedElem.name} (${mappedElem.count})`,
           value: mappedElem.tid,
           ...mappedElem,
         };
         // If the element is not at the root level, add it to its parent array of children.
         if (mappedElem.pid) {
+          // console.log("mappedElem ++++++++ ", mappedElem)
+          // console.log(" mappedArr[mappedElem[pid]] ++++++++ ",  mappedElem["pid"])
           mappedArr[mappedElem["pid"]]["children"].push(mappedElem);
         }
         // If the element is at the root level, add it to first level elements array.
@@ -230,6 +248,18 @@ const Filters = ({
     //   price,
     //   quickSearch,
     // });
+  };
+  const onClickApplyManufFilter = () => { 
+    setIsManModalVisible(false);
+    onChangeManufacturer(manufacturer);   
+  };
+  const onClickApplyCityFilter = () => { 
+    setIsCityModalVisible(false);
+    onChangeCity(city);   
+  };
+  const onClickApplyStateFilter = () => { 
+    setIsStateModalVisible(false);
+    onChangeState(state);   
   };
 
   //  for group checkboxes of  category
@@ -449,7 +479,9 @@ const Filters = ({
   // console.log("manufacturer->",manufacturerCount);
   // console.log("condition->",conditionCount);
   // console.log("listingType->",listingTypeCount);
-  // console.log("category->",categoryCount);
+    //console.log("category->",categoryCount);
+    console.log("minprice->",minPrice);
+    console.log("maxprice->",maxPrice);
   return (
     <div className="filters-block left-side-filters col-md-3 col-xs-12">
       <form className="views-exposed-form left-side-filterseach">
@@ -505,13 +537,21 @@ const Filters = ({
         <Collapse defaultActiveKey={["1"]}>
           {!!grouped_category_trems.length && (
             <Panel header="Category" key="1">
-              {grouped_category_trems.slice(0, 2).map((item, key) => (
-                <div key={key}>
+              {grouped_category_trems.slice(0, 2).map((item, key) => { 
+                let count = 0;
+                  item.children.map((child, key) => {                   
+                    count = count + parseInt(child.count)
+                    return(                       
+                       count
+                     )})         
+                return(   
+                  <div key={key}>                
                   <Checkbox
                     value={item.value}
                     indeterminate={indeterminate}
                     onChange={(e) => {
                       if (e.target.checked) {
+                        console.log(item);
                         const parentId = item.tid;
                         const childIds = item.children.map(
                           (child) => child.tid
@@ -548,8 +588,10 @@ const Filters = ({
                       checkedIds[item.tid].length == item.children.length
                     }
                   >
-                    {item.label}
+
+                   { `${item.name} (${count})`}
                   </Checkbox>
+                  
                   <CheckboxGroup
                     value={checkedIds[item.tid]}
                     options={item.children}
@@ -574,7 +616,8 @@ const Filters = ({
                     }}
                   />
                 </div>
-              ))}
+                     )
+                  })}
 
               <a onClick={showCatModal} className="apply-filter">
                 + Show All
@@ -831,7 +874,9 @@ const Filters = ({
           <Checkbox.Group
             style={{ width: "100%" }}
             name="state"
-            onChange={onChangeState}
+            onChange={(e)=>{
+              setState(e);
+            }}
           >
             {stateCount.map((item, key) => (
               <Checkbox key={key} value={item.value}>
@@ -839,7 +884,7 @@ const Filters = ({
               </Checkbox>
             ))}
           </Checkbox.Group>
-          <a className="apply-filter">Apply Filter</a>
+          <a onClick={onClickApplyStateFilter} className="apply-filter">Apply Filter</a>
         </Modal>
 
         {/* Cities popup modal */}
@@ -854,7 +899,9 @@ const Filters = ({
           <Checkbox.Group
             style={{ width: "100%" }}
             name="city"
-            onChange={onChangeCity}
+            onChange={(e)=>{
+              setCity(e);
+            }}
           >
             {cityCount.map((item, key) => (
               <Checkbox key={key} value={item.value}>
@@ -862,7 +909,7 @@ const Filters = ({
               </Checkbox>
             ))}
           </Checkbox.Group>
-          <a className="apply-filter">Apply Filter</a>
+          <a onClick={onClickApplyCityFilter} className="apply-filter">Apply Filter</a>
         </Modal>
       </form>
       {/* Category Modal */}
@@ -873,7 +920,14 @@ const Filters = ({
         footer={[]}
         className="popup-filters"
       >
-        {grouped_category_trems.map((item, key) => (
+        {grouped_category_trems.map((item, key) => {
+           let count = 0;
+           item.children.map((child, key) => {                   
+             count = count + parseInt(child.count);
+             return(                       
+                count
+              )})         
+        return(   
           <div key={key} className="antd-groupcheckbox-cus">
             <Checkbox
               indeterminate={indeterminateInPopup}
@@ -905,7 +959,7 @@ const Filters = ({
                 checkedIds[item.tid].length == item.children.length
               }
             >
-              {item.label}
+               { `${item.name} (${count})`}
             </Checkbox>
             <CheckboxGroup
               value={checkedIds[item.tid]}
@@ -922,7 +976,8 @@ const Filters = ({
               }}
             />
           </div>
-        ))}
+              )
+            })}
         <a onClick={onClickApplyCatFilter} className="apply-filter">
           Apply Filter
         </a>
@@ -939,7 +994,10 @@ const Filters = ({
         <Checkbox.Group
           style={{ width: "100%" }}
           name="manufacturer"
-          onChange={onChangeManufacturer}
+           onChange={(e)=>{
+             console.log(e);
+             setManufacturer(e)
+           }}
         >
           <Form.Item label="Popular">
             {manufacturerCount.map((item, key) => (
@@ -949,7 +1007,7 @@ const Filters = ({
             ))}
           </Form.Item>
         </Checkbox.Group>
-        <a className="apply-filter">Apply Filter</a>
+        <a onClick={onClickApplyManufFilter} className="apply-filter">Apply Filter</a>
       </Modal>
     </div>
   );
