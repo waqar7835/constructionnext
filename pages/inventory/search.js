@@ -1,62 +1,33 @@
 import Layout from "@components/Layout";
 import Products from "@components/Products";
 import { baseURL } from "@config/config";
-const Index = ({
-  header,
-  city,
-  state,
-  country,
-  condition,
-  equipment,
-  listing_type,
-  manufacturer,
-  category,
-}) => {
+const Index = ({ header, year_min, year_max, price_min, price_max }) => {
   return (
     <Layout header={header}>
       <Products
-        city={city}
-        state={state}
-        country={country}
-        condition={condition}
-        equipment={equipment}
-        listing_type={listing_type}
-        manufacturer={manufacturer}
-        category={category}
+        year_min={year_min}
+        year_max={year_max}
+        price_min={price_min}
+        price_max={price_max}
       />
     </Layout>
   );
 };
 
 Index.getInitialProps = async ({ query }) => {
-  const [
-    header,
-    city,
-    state,
-    country,
-    condition,
-    listing_type,
-    manufacturer,
-    category,
-  ] = await Promise.all([
+  const [header, year_min, year_max, price_min, price_max] = await Promise.all([
     fetch(`${baseURL}/api/blocks/74?_format=hal_json`).then((r) => r.json()),
-    fetch(`${baseURL}/api/terms?_format=hal_json&vid=city`).then((r) => r.json()),
-    fetch(`${baseURL}/api/terms?_format=hal_json&vid=state`).then((r) => r.json()),
-    fetch(`${baseURL}/api/terms?_format=hal_json&vid=country`).then((r) => r.json()),
-    fetch(`${baseURL}/api/terms?_format=hal_json&vid=condition`).then((r) => r.json()),
-    fetch(`${baseURL}/api/terms?_format=hal_json&vid=listing_t`).then((r) => r.json()),
-    fetch(`${baseURL}/api/terms?_format=hal_json&vid=manufacturer`).then((r) => r.json()),
-    fetch(`${baseURL}/api/terms?_format=hal_json&vid=category`).then((r) => r.json()),
+    fetch(`${baseURL}/api/yearmin?_format=hal_json`).then((r) => r.json()),
+    fetch(`${baseURL}/api/yearmax?_format=hal_json`).then((r) => r.json()),
+    fetch(`${baseURL}/api/pricemin?_format=hal_json`).then((r) => r.json()),
+    fetch(`${baseURL}/api/pricemax?_format=hal_json`).then((r) => r.json()),
   ]);
   return {
     header: !!header ? header[0] : {},
-    city: !!city ? city : [],
-    state: !!state ? state : [],
-    country: !!country ? country : [],
-    condition: !!condition ? condition : [],
-    listing_type: !!listing_type ? listing_type : [],
-    manufacturer: !!manufacturer ? manufacturer : [],
-    category: !!category ? category : [],
+    year_min: !!year_min ?parseInt(year_min[0].field_year)  : 1970,
+    year_max: !!year_max ? parseInt(year_max[0].field_year)  : 2021,
+    price_min: !!price_min ? parseInt(price_min[0].field_price) : 0,
+    price_max: !!price_max ? parseInt(price_max[0].field_price) : 500000,
   };
 };
 

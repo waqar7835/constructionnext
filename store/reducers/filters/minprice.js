@@ -8,7 +8,7 @@ const MinPrice = (state = initialState, action) => {
   switch (action.type) {
     case GET_MINPRICE_COUNT:
       return {
-        minprice: action.payload,
+        minprice: !!action.payload[0] ? parseInt(action.payload[0].field_price)  : 0,
       };
     default:
       return state;

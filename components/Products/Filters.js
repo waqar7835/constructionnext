@@ -12,27 +12,15 @@ import getListingTypeCount from "@store/actions/filters/listingtype";
 import getManufacturerCount from "@store/actions/filters/manufacturer";
 import getStateCount from "@store/actions/filters/statecount";
 import getCategoryCount from "@store/actions/filters/category";
-import getMinPrice from "@store/actions/filters/minprice";
-import getMaxPrice from "@store/actions/filters/maxprice";
 import getMinYear from "@store/actions/filters/minyear";
 import getMaxYear from "@store/actions/filters/maxyear";
-
+import getMinPrice from "@store/actions/filters/minprice";
+import getMaxPrice from "@store/actions/filters/maxprice";
 
 import e from "cors";
-
-
 const { Panel } = Collapse;
 const CheckboxGroup = Checkbox.Group;
-const Filters = ({
-  city_trems,
-  state_trems,
-  country_trems,
-  condition_trems,
-  listing_type_trems,
-  manufacturer_trems,
-  category_trems,
-}) => {
-
+const Filters = () => {
   const dispatch = useDispatch();
   const cityCount = useSelector((state) => state.city.city);
 
@@ -46,12 +34,14 @@ const Filters = ({
   );
   const stateCount = useSelector((state) => state.statecount.statecount);
   const categoryCount = useSelector((state) => state.category.category);
-  const minPrice = useSelector((state) => state.minprice.minprice);
-  const maxPrice = useSelector((state) => state.maxprice.maxprice);
-  const minYear = useSelector((state) => state.minyear.minyear);
-  const maxYear = useSelector((state) => state.maxyear.maxyear);
-const initYear = [1980, 2021];
-const initPrice = [0, 50000];
+
+  const minyear = useSelector((state) => state.minyear.minyear);
+  const maxyear = useSelector((state) => state.maxyear.maxyear);
+  const minprice = useSelector((state) => state.minprice.minprice);
+  const maxprice = useSelector((state) => state.maxprice.maxprice);
+
+  
+  
   useEffect(() => {
     dispatch(getCityCount());
     dispatch(getConditionCount());
@@ -60,10 +50,10 @@ const initPrice = [0, 50000];
     dispatch(getManufacturerCount());
     dispatch(getStateCount());
     dispatch(getCategoryCount());
-    dispatch(getMinPrice());
-    dispatch(getMaxPrice());
     dispatch(getMinYear());
     dispatch(getMaxYear());
+    dispatch(getMinPrice());
+    dispatch(getMaxPrice());
   }, []);
 
   const router = useRouter();
@@ -84,21 +74,20 @@ const initPrice = [0, 50000];
   const [manufacturer, setManufacturer] = useState([]);
   const [listingType, setListingType] = useState([]);
   const [condition, setCondition] = useState([]);
-  const [year, setYear] = useState(initYear);
-  const [price, setPrice] = useState(initPrice);
+  const [year, setYear] = useState([minyear, maxyear]);
+  const [price, setPrice] = useState([minprice, maxprice]);
   const [quickSearch, setQuickSearch] = useState();
   const [grouped_category_trems, setGroupedCategoryTrems] = useState([]);
 
   useEffect(() => {
-    console.log(router.query);
     if (router.query) {
       setPrice([
-        router.query.price_min || initPrice[0],
-        router.query.price_max || initPrice[1],
+        router.query.price_min || minprice,
+        router.query.price_max || maxprice,
       ]);
       setYear([
-        router.query.year_min || initYear[0],
-        router.query.year_max || initYear[1],
+        router.query.year_min || minyear,
+        router.query.year_max || maxyear,
       ]);
     }
     if (router.query.categoury) {
@@ -106,7 +95,6 @@ const initPrice = [0, 50000];
   }, [router.query]);
   useEffect(() => {
     let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
-    console.log(req);
     dispatch(getCityCount(req));
     dispatch(getConditionCount(req));
     dispatch(getCountryCount(req));
@@ -114,6 +102,10 @@ const initPrice = [0, 50000];
     dispatch(getManufacturerCount(req));
     dispatch(getStateCount(req));
     dispatch(getCategoryCount(req));
+    dispatch(getMinYear(req));
+    dispatch(getMaxYear(req));
+    dispatch(getMinPrice(req));
+    dispatch(getMaxPrice(req));
   }, [router.query]);
   const unflatten = (arr) => {
     var tree = [],
@@ -126,21 +118,18 @@ const initPrice = [0, 50000];
       arrElem = arr[i];
       mappedArr[arrElem.tid] = arrElem;
       mappedArr[arrElem.tid]["children"] = [];
-     // console.log("mappedArr ++++++++ ", mappedArr)
     }
 
     for (var tid in mappedArr) {
       if (mappedArr.hasOwnProperty(tid)) {
         mappedElem = mappedArr[tid];
         mappedElem = {
-          label: `${mappedElem.name} (${mappedElem.count})`,
+          label: `${mappedElem.name} ${mappedElem.count}`,
           value: mappedElem.tid,
           ...mappedElem,
         };
         // If the element is not at the root level, add it to its parent array of children.
         if (mappedElem.pid) {
-          // console.log("mappedElem ++++++++ ", mappedElem)
-          // console.log(" mappedArr[mappedElem[pid]] ++++++++ ",  mappedElem["pid"])
           mappedArr[mappedElem["pid"]]["children"].push(mappedElem);
         }
         // If the element is at the root level, add it to first level elements array.
@@ -248,18 +237,6 @@ const initPrice = [0, 50000];
     //   price,
     //   quickSearch,
     // });
-  };
-  const onClickApplyManufFilter = () => { 
-    setIsManModalVisible(false);
-    onChangeManufacturer(manufacturer);   
-  };
-  const onClickApplyCityFilter = () => { 
-    setIsCityModalVisible(false);
-    onChangeCity(city);   
-  };
-  const onClickApplyStateFilter = () => { 
-    setIsStateModalVisible(false);
-    onChangeState(state);   
   };
 
   //  for group checkboxes of  category
@@ -431,13 +408,13 @@ const initPrice = [0, 50000];
       });
     }
     if (!isEmpty(params.year)) {
-      if (!arraysEqual(initYear, params.year)) {
+      if (!arraysEqual([minyear, maxyear], params.year)) {
         const [year_min, year_max] = params.year;
         str += `&year_min=${year_min}&year_max=${year_max}`;
       }
     }
     if (!isEmpty(params.price)) {
-      if (!arraysEqual(initPrice, params.price)) {
+      if (!arraysEqual([minprice, maxprice], params.price)) {
         const [price_min, price_max] = params.price;
         str += `&price_min=${price_min}&price_max=${price_max}`;
       }
@@ -473,15 +450,7 @@ const initPrice = [0, 50000];
     }
     return true;
   };
-  // console.log("city->",cityCount);
-  // console.log("state->",stateCount);
-  // console.log("country->",countryCount);
-  // console.log("manufacturer->",manufacturerCount);
-  // console.log("condition->",conditionCount);
-  // console.log("listingType->",listingTypeCount);
-    //console.log("category->",categoryCount);
-    console.log("minprice->",minPrice);
-    console.log("maxprice->",maxPrice);
+
   return (
     <div className="filters-block left-side-filters col-md-3 col-xs-12">
       <form className="views-exposed-form left-side-filterseach">
@@ -537,21 +506,13 @@ const initPrice = [0, 50000];
         <Collapse defaultActiveKey={["1"]}>
           {!!grouped_category_trems.length && (
             <Panel header="Category" key="1">
-              {grouped_category_trems.slice(0, 2).map((item, key) => { 
-                let count = 0;
-                  item.children.map((child, key) => {                   
-                    count = count + parseInt(child.count)
-                    return(                       
-                       count
-                     )})         
-                return(   
-                  <div key={key}>                
+              {grouped_category_trems.slice(0, 2).map((item, key) => (
+                <div key={key}>
                   <Checkbox
                     value={item.value}
                     indeterminate={indeterminate}
                     onChange={(e) => {
                       if (e.target.checked) {
-                        console.log(item);
                         const parentId = item.tid;
                         const childIds = item.children.map(
                           (child) => child.tid
@@ -588,10 +549,8 @@ const initPrice = [0, 50000];
                       checkedIds[item.tid].length == item.children.length
                     }
                   >
-
-                   { `${item.name} (${count})`}
+                    {item.label}
                   </Checkbox>
-                  
                   <CheckboxGroup
                     value={checkedIds[item.tid]}
                     options={item.children}
@@ -616,8 +575,7 @@ const initPrice = [0, 50000];
                     }}
                   />
                 </div>
-                     )
-                  })}
+              ))}
 
               <a onClick={showCatModal} className="apply-filter">
                 + Show All
@@ -646,8 +604,8 @@ const initPrice = [0, 50000];
           )}
           <Panel header="Year" key="4" className="number-ranges">
             <InputNumber
-              min={initYear[0]}
-              max={initYear[1]}
+              min={minyear}
+              max={maxyear}
               value={year[0]}
               disabled={true}
               onChange={(nextValue) => {
@@ -671,8 +629,8 @@ const initPrice = [0, 50000];
               }}
             />
             <InputNumber
-              min={initYear[0]}
-              max={initYear[1]}
+              min={minyear}
+              max={maxyear}
               value={year[1]}
               disabled={true}
               onChange={(nextValue) => {
@@ -697,8 +655,8 @@ const initPrice = [0, 50000];
             />
             <RangeSlider
               progress
-              min={initYear[0]}
-              max={initYear[1]}
+              min={minyear}
+              max={maxyear}
               style={{ marginTop: 16 }}
               value={year}
               onChange={(value) => {
@@ -722,8 +680,8 @@ const initPrice = [0, 50000];
           </Panel>
           <Panel header="Price" key="7" className="number-ranges">
             <InputNumber
-              min={initPrice[0]}
-              max={initPrice[1]}
+              min={minprice}
+              max={maxprice}
               value={price[0]}
               disabled={true}
               onChange={(nextValue) => {
@@ -747,8 +705,8 @@ const initPrice = [0, 50000];
               }}
             />
             <InputNumber
-              min={initPrice[0]}
-              max={initPrice[1]}
+              min={minprice}
+              max={maxprice}
               value={price[1]}
               disabled={true}
               onChange={(nextValue) => {
@@ -773,8 +731,8 @@ const initPrice = [0, 50000];
             />
             <RangeSlider
               progress
-              min={initPrice[0]}
-              max={initPrice[1]}
+              min={minprice}
+              max={maxprice}
               style={{ marginTop: 16 }}
               value={price}
               onChange={(value) => {
@@ -874,9 +832,7 @@ const initPrice = [0, 50000];
           <Checkbox.Group
             style={{ width: "100%" }}
             name="state"
-            onChange={(e)=>{
-              setState(e);
-            }}
+            onChange={onChangeState}
           >
             {stateCount.map((item, key) => (
               <Checkbox key={key} value={item.value}>
@@ -884,7 +840,7 @@ const initPrice = [0, 50000];
               </Checkbox>
             ))}
           </Checkbox.Group>
-          <a onClick={onClickApplyStateFilter} className="apply-filter">Apply Filter</a>
+          <a className="apply-filter">Apply Filter</a>
         </Modal>
 
         {/* Cities popup modal */}
@@ -899,9 +855,7 @@ const initPrice = [0, 50000];
           <Checkbox.Group
             style={{ width: "100%" }}
             name="city"
-            onChange={(e)=>{
-              setCity(e);
-            }}
+            onChange={onChangeCity}
           >
             {cityCount.map((item, key) => (
               <Checkbox key={key} value={item.value}>
@@ -909,7 +863,7 @@ const initPrice = [0, 50000];
               </Checkbox>
             ))}
           </Checkbox.Group>
-          <a onClick={onClickApplyCityFilter} className="apply-filter">Apply Filter</a>
+          <a className="apply-filter">Apply Filter</a>
         </Modal>
       </form>
       {/* Category Modal */}
@@ -920,14 +874,7 @@ const initPrice = [0, 50000];
         footer={[]}
         className="popup-filters"
       >
-        {grouped_category_trems.map((item, key) => {
-           let count = 0;
-           item.children.map((child, key) => {                   
-             count = count + parseInt(child.count);
-             return(                       
-                count
-              )})         
-        return(   
+        {grouped_category_trems.map((item, key) => (
           <div key={key} className="antd-groupcheckbox-cus">
             <Checkbox
               indeterminate={indeterminateInPopup}
@@ -959,7 +906,7 @@ const initPrice = [0, 50000];
                 checkedIds[item.tid].length == item.children.length
               }
             >
-               { `${item.name} (${count})`}
+              {item.label}
             </Checkbox>
             <CheckboxGroup
               value={checkedIds[item.tid]}
@@ -976,8 +923,7 @@ const initPrice = [0, 50000];
               }}
             />
           </div>
-              )
-            })}
+        ))}
         <a onClick={onClickApplyCatFilter} className="apply-filter">
           Apply Filter
         </a>
@@ -994,10 +940,7 @@ const initPrice = [0, 50000];
         <Checkbox.Group
           style={{ width: "100%" }}
           name="manufacturer"
-           onChange={(e)=>{
-             console.log(e);
-             setManufacturer(e)
-           }}
+          onChange={onChangeManufacturer}
         >
           <Form.Item label="Popular">
             {manufacturerCount.map((item, key) => (
@@ -1007,7 +950,7 @@ const initPrice = [0, 50000];
             ))}
           </Form.Item>
         </Checkbox.Group>
-        <a onClick={onClickApplyManufFilter} className="apply-filter">Apply Filter</a>
+        <a className="apply-filter">Apply Filter</a>
       </Modal>
     </div>
   );

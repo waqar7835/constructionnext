@@ -5,15 +5,7 @@ import EmailBlock from "./EmailBlock";
 import EmailBlockv from "./EmailBlockv";
 import "./Listing_Page.css";
 
-const Index = ({
-  city,
-  state,
-  country,
-  condition,
-  listing_type,
-  manufacturer,
-  category,
-}) => {
+const Index = ({ year_min, year_max, price_min, price_max }) => {
   return (
     <>
       <div id="header-area-space"></div>
@@ -29,13 +21,10 @@ const Index = ({
           <div className="container">
             <div className="filter-listing-block  ">
               <Filters
-                city_trems={city}
-                state_trems={state}
-                country_trems={country}
-                condition_trems={condition}
-                listing_type_trems={listing_type}
-                manufacturer_trems={manufacturer}
-                category_trems={category}
+                year_min={year_min}
+                year_max={year_max}
+                price_min={price_min}
+                price_max={price_max}
               />
               <List />
             </div>
