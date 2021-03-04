@@ -16,6 +16,7 @@ import getMinYear from "@store/actions/filters/minyear";
 import getMaxYear from "@store/actions/filters/maxyear";
 import getMinPrice from "@store/actions/filters/minprice";
 import getMaxPrice from "@store/actions/filters/maxprice";
+import scrollToHeader from "@store/actions/scroll";
 
 import e from "cors";
 const { Panel } = Collapse;
@@ -35,17 +36,11 @@ const Filters = () => {
   const stateCount = useSelector((state) => state.statecount.statecount);
   const categoryCount = useSelector((state) => state.category.category);
 
-  const minyear1 = useSelector((state) => state.minyear.minyear);
-  const maxyear1 = useSelector((state) => state.maxyear.maxyear);
-  const minprice1 = useSelector((state) => state.minprice.minprice);
-  const maxprice1 = useSelector((state) => state.maxprice.maxprice);
+  const minyear = useSelector((state) => state.minyear.minyear);
+  const maxyear = useSelector((state) => state.maxyear.maxyear);
+  const minprice = useSelector((state) => state.minprice.minprice);
+  const maxprice = useSelector((state) => state.maxprice.maxprice);
 
-  const minyear = parseInt(minyear1);
-  const maxyear = parseInt(maxyear1);
-  const minprice = parseInt(minprice1);
-  const maxprice = parseInt(maxprice1);
-
-  
   useEffect(() => {
     dispatch(getCityCount());
     dispatch(getConditionCount());
@@ -430,7 +425,7 @@ const Filters = () => {
       }
     }
     str = setCharAt(str, 0, "?");
-    submitFilters({ str });
+    dispatch(scrollToHeader());
     // router.push(`/${str}`, `/inventory/search${str}`, { shallow: true });
     router.push(`/inventory/search${str}`, `/inventory/search${str}`, {
       shallow: true,
@@ -511,84 +506,91 @@ const Filters = () => {
           {!!grouped_category_trems.length && (
             <Panel header="Category" key="1">
               {grouped_category_trems.slice(0, 2).map((item, key) => {
-                let count = 0 ;
-                {item.children.map((intc,key) =>{
+                let count = 0;
+                {
+                  item.children.map((intc, key) => {
                     let int = parseInt(intc.count);
                     count = count + int;
-                    return{
-                      count
-                    }
-                 })}
-               
-               return (<div key={key}>
-                  <Checkbox
-                    value={item.value}
-                    indeterminate={indeterminate}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        const parentId = item.tid;
-                        const childIds = item.children.map(
-                          (child) => child.tid
-                        );
-                        setCheckedIds((prev) => {
-                          const updatedCats = { ...prev, [parentId]: childIds };
+                    return {
+                      count,
+                    };
+                  });
+                }
+
+                return (
+                  <div key={key}>
+                    <Checkbox
+                      value={item.value}
+                      indeterminate={indeterminate}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          const parentId = item.tid;
+                          const childIds = item.children.map(
+                            (child) => child.tid
+                          );
+                          setCheckedIds((prev) => {
+                            const updatedCats = {
+                              ...prev,
+                              [parentId]: childIds,
+                            };
+                            let ids = [];
+                            Object.keys(updatedCats).forEach((key) =>
+                              ids.push(...updatedCats[key])
+                            );
+                            ids.push(...Object.keys(updatedCats));
+                            onChangeCategoury(ids);
+                            return updatedCats;
+                          });
+                        } else {
+                          const updatedCats = Object.keys(checkedIds)
+                            .filter((key) => key !== item.tid)
+                            .reduce(
+                              (res, key) => ((res[key] = checkedIds[key]), res),
+                              {}
+                            );
                           let ids = [];
                           Object.keys(updatedCats).forEach((key) =>
                             ids.push(...updatedCats[key])
                           );
                           ids.push(...Object.keys(updatedCats));
                           onChangeCategoury(ids);
+                          setCheckedIds(updatedCats);
+                        }
+                      }}
+                      checked={
+                        Object.keys(checkedIds) &&
+                        checkedIds[item.tid] &&
+                        checkedIds[item.tid].length == item.children.length
+                      }
+                    >
+                      {`${item.name} (${count})`}
+                    </Checkbox>
+                    <CheckboxGroup
+                      value={checkedIds[item.tid]}
+                      options={item.children}
+                      onChange={(list) => {
+                        let parentId = item.tid;
+                        setCheckedIds((prev) => {
+                          const updatedCats = { ...prev, [parentId]: list };
+                          let ids = [];
+                          Object.keys(updatedCats).forEach((key) =>
+                            ids.push(...updatedCats[key])
+                          );
+                          if (
+                            Object.keys(updatedCats) &&
+                            updatedCats[item.tid] &&
+                            updatedCats[item.tid].length == item.children.length
+                          ) {
+                            ids.push(...Object.keys(updatedCats));
+                          }
+                          onChangeCategoury(ids);
                           return updatedCats;
                         });
-                      } else {
-                        const updatedCats = Object.keys(checkedIds)
-                          .filter((key) => key !== item.tid)
-                          .reduce(
-                            (res, key) => ((res[key] = checkedIds[key]), res),
-                            {}
-                          );
-                        let ids = [];
-                        Object.keys(updatedCats).forEach((key) =>
-                          ids.push(...updatedCats[key])
-                        );
-                        ids.push(...Object.keys(updatedCats));
-                        onChangeCategoury(ids);
-                        setCheckedIds(updatedCats);
-                      }
-                    }}
-                    checked={
-                      Object.keys(checkedIds) &&
-                      checkedIds[item.tid] &&
-                      checkedIds[item.tid].length == item.children.length
-                    }
-                  >
-                     {`${item.name} (${count})`}
-                  </Checkbox>
-                  <CheckboxGroup
-                    value={checkedIds[item.tid]}
-                    options={item.children}
-                    onChange={(list) => {
-                      let parentId = item.tid;
-                      setCheckedIds((prev) => {
-                        const updatedCats = { ...prev, [parentId]: list };
-                        let ids = [];
-                        Object.keys(updatedCats).forEach((key) =>
-                          ids.push(...updatedCats[key])
-                        );
-                        if (
-                          Object.keys(updatedCats) &&
-                          updatedCats[item.tid] &&
-                          updatedCats[item.tid].length == item.children.length
-                        ) {
-                          ids.push(...Object.keys(updatedCats));
-                        }
-                        onChangeCategoury(ids);
-                        return updatedCats;
-                      });
-                    }}
-                  />
-                </div>)
-})}
+                      }}
+                    />
+                  </div>
+                );
+              })}
 
               <a onClick={showCatModal} className="apply-filter">
                 + Show All
@@ -617,8 +619,8 @@ const Filters = () => {
           )}
           <Panel header="Year" key="4" className="number-ranges">
             <InputNumber
-              min={minyear}
-              max={maxyear}
+              min={parseInt(minyear)}
+              max={parseInt(maxyear)}
               value={year[0]}
               disabled={true}
               onChange={(nextValue) => {
@@ -642,8 +644,8 @@ const Filters = () => {
               }}
             />
             <InputNumber
-              min={minyear}
-              max={maxyear}
+              min={parseInt(minyear)}
+              max={parseInt(maxyear)}
               value={year[1]}
               disabled={true}
               onChange={(nextValue) => {
@@ -668,8 +670,8 @@ const Filters = () => {
             />
             <RangeSlider
               progress
-              min={minyear}
-              max={maxyear}
+              min={parseInt(minyear)}
+              max={parseInt(maxyear)}
               style={{ marginTop: 16 }}
               value={year}
               onChange={(value) => {
@@ -693,8 +695,8 @@ const Filters = () => {
           </Panel>
           <Panel header="Price" key="7" className="number-ranges">
             <InputNumber
-              min={minprice}
-              max={maxprice}
+              min={parseInt(minprice)}
+              max={parseInt(maxprice)}
               value={price[0]}
               disabled={true}
               onChange={(nextValue) => {
@@ -718,8 +720,8 @@ const Filters = () => {
               }}
             />
             <InputNumber
-              min={minprice}
-              max={maxprice}
+              min={parseInt(minprice)}
+              max={parseInt(maxprice)}
               value={price[1]}
               disabled={true}
               onChange={(nextValue) => {
@@ -744,8 +746,8 @@ const Filters = () => {
             />
             <RangeSlider
               progress
-              min={minprice}
-              max={maxprice}
+              min={parseInt(minprice)}
+              max={parseInt(maxprice)}
               style={{ marginTop: 16 }}
               value={price}
               onChange={(value) => {
@@ -888,64 +890,67 @@ const Filters = () => {
         className="popup-filters"
       >
         {grouped_category_trems.map((item, key) => {
-           let count = 0 ;
-           {item.children.map((intc,key) =>{
-               let int = parseInt(intc.count);
-               count = count + int;
-               return{
-                 count
-               }
-            })}            
-         return( 
-           <div key={key} className="antd-groupcheckbox-cus">
-            <Checkbox
-              indeterminate={indeterminateInPopup}
-              onChange={(e) => {
-                if (e.target.checked) {
-                  const parentId = item.tid;
-                  const childIds = item.children.map((child) => child.tid);
+          let count = 0;
+          {
+            item.children.map((intc, key) => {
+              let int = parseInt(intc.count);
+              count = count + int;
+              return {
+                count,
+              };
+            });
+          }
+          return (
+            <div key={key} className="antd-groupcheckbox-cus">
+              <Checkbox
+                indeterminate={indeterminateInPopup}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    const parentId = item.tid;
+                    const childIds = item.children.map((child) => child.tid);
+                    if (Object.keys(checkedIds).length) {
+                      setCheckedIds((prev) => {
+                        return { ...prev, [parentId]: childIds };
+                      });
+                    } else {
+                      setCheckedIds({ [parentId]: childIds });
+                    }
+                  } else {
+                    setCheckedIds(
+                      Object.keys(checkedIds)
+                        .filter((key) => key !== item.tid)
+                        .reduce(
+                          (res, key) => ((res[key] = checkedIds[key]), res),
+                          {}
+                        )
+                    );
+                  }
+                }}
+                checked={
+                  Object.keys(checkedIds) &&
+                  checkedIds[item.tid] &&
+                  checkedIds[item.tid].length == item.children.length
+                }
+              >
+                {item.label}
+              </Checkbox>
+              <CheckboxGroup
+                value={checkedIds[item.tid]}
+                options={item.children}
+                onChange={(list) => {
+                  let parentId = item.tid;
                   if (Object.keys(checkedIds).length) {
                     setCheckedIds((prev) => {
-                      return { ...prev, [parentId]: childIds };
+                      return { ...prev, [parentId]: list };
                     });
                   } else {
-                    setCheckedIds({ [parentId]: childIds });
+                    setCheckedIds({ [parentId]: list });
                   }
-                } else {
-                  setCheckedIds(
-                    Object.keys(checkedIds)
-                      .filter((key) => key !== item.tid)
-                      .reduce(
-                        (res, key) => ((res[key] = checkedIds[key]), res),
-                        {}
-                      )
-                  );
-                }
-              }}
-              checked={
-                Object.keys(checkedIds) &&
-                checkedIds[item.tid] &&
-                checkedIds[item.tid].length == item.children.length
-              }
-            >
-              {item.label}
-            </Checkbox>
-            <CheckboxGroup
-              value={checkedIds[item.tid]}
-              options={item.children}
-              onChange={(list) => {
-                let parentId = item.tid;
-                if (Object.keys(checkedIds).length) {
-                  setCheckedIds((prev) => {
-                    return { ...prev, [parentId]: list };
-                  });
-                } else {
-                  setCheckedIds({ [parentId]: list });
-                }
-              }}
-            />
-          </div>
-          )})}
+                }}
+              />
+            </div>
+          );
+        })}
         <a onClick={onClickApplyCatFilter} className="apply-filter">
           Apply Filter
         </a>

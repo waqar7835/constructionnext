@@ -2,33 +2,33 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { Menu } from "antd";
 import VideoChatModalv from "./VideoChatModelv";
-import EmailSellerModalv from './EmailSellerModalv'
+import EmailSellerModalv from "./EmailSellerModalv";
 import { SET_LOADER } from "store/actions/type";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import getProductsData from "@store/actions/products";
 import { baseURL } from "@config/config";
-import Pagination from 'next-pagination';
-import 'next-pagination/dist/index.css'
+import { Pagination } from "antd";
+import scrollToHeader from "@store/actions/scroll";
 
 const List = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const productsData = useSelector((state) => state.products.products);
-let array = [];
+  let array = [];
   // useEffect(() => {
   //   dispatch(getProductsData());
   // }, []);
   useEffect(() => {
-    let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : '';
-    console.log(req)
+    let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
+    console.log(req);
     dispatch({
       type: SET_LOADER,
       payload: true,
     });
     dispatch(getProductsData(req));
   }, [router.query]);
-// console.log("prod->", productsData);
+  // console.log("prod->", productsData);
   const menu = (
     <Menu>
       <Menu.Item>
@@ -86,121 +86,179 @@ let array = [];
       </Menu.Item>
     </Menu>
   );
-   console.log("prod->",productsData);
+  const gettitle = () => {
+    const {
+      current_page = 0,
+      items_per_page = 0,
+      total_items = 0,
+    } = productsData.pager;
+    let current = parseInt(current_page);
+    let per_page = parseInt(items_per_page);
+    let total = parseInt(total_items);
+    return (
+      <>
+        <span class="list-title-text">Equipment For Sale </span>
+        <span class="list-listings-count">
+          {current * per_page + 1} -{" "}
+          {(current + 1) * per_page > total
+            ? total_items
+            : (current + 1) * per_page}{" "}
+          of {total_items} Listings
+        </span>
+      </>
+    );
+  };
 
   return (
-    <div id="listing-content-results" className="listing-content col-md-9 col-xs-12">
-      {!!productsData.rows && productsData.rows.map((product, index) => (
-        <div key={index} className="views-row">
-          <div className="invent-pro-cus">
-            <div className="invent-pro-cus-lft">
-              <div className="invent-cus-img">
-                <img
-                  src={baseURL + product.field_image}
-                  width="1064"
-                  height="768"
-                  alt={product.title}
-                  loading="lazy"
-                  typeof="Image"
-                />
-              </div>
-              <div className="invent-cus-created">
-                updated: Mon, 02/15/2021 - 15:53
-              </div>
-              <div className="invent-cus-body">
-                <p>
-                  Lorem Ipsum has been the industry's standard dummy text ever
-                  since the 1500s, when an
-                </p>
-              </div>
-            </div>
+    <div
+      id="listing-content-results"
+      className="listing-content col-md-9 col-xs-12"
+    >
+      <div className="views-header">
+        <h3 class="list-title">{gettitle()}</h3>
+      </div>
+      <div className="views-row-main">
+        {!!productsData.rows &&
+          productsData.rows.map((product, index) => (
+            <div key={index} className="views-row">
+              <div className="invent-pro-cus">
+                <div className="invent-pro-cus-lft">
+                  <div className="invent-cus-img">
+                    <img
+                      src={baseURL + product.field_image}
+                      width="1064"
+                      height="768"
+                      alt={product.title}
+                      loading="lazy"
+                      typeof="Image"
+                    />
+                  </div>
+                  <div className="invent-cus-created">
+                    updated: Mon, 02/15/2021 - 15:53
+                  </div>
+                  <div className="invent-cus-body">
+                    <p>
+                      Lorem Ipsum has been the industry's standard dummy text
+                      ever since the 1500s, when an
+                    </p>
+                  </div>
+                </div>
 
-            <div className="invent-pro-cus-mid">
-              <div className="invent-cus-title">{product.title}</div>
-              <div className="invent-cus-des">{product.field_description}</div>
-              <div className="invent-cus-price">
-                <span>Price:</span>{ product.field_price }
-              </div>
-              <div className="invent-cus-purchas-cus">
-                <span>                 
-                  <i className="fa fa-money" aria-hidden="true"></i>
-                </span>
-                <a href="#"> </a>
-              </div>
-              <div className="invent-cus-machloc bold">
-                <span>Machine Location:</span> { product.field_machine_location }
-              </div>
-              <div className="invent-cus-rhrs bold">
-                <span>Hours:</span> {product.field_hours}
-              </div>
-              <div className="invent-cus-snum bold">
-                <span>Serial Numbers:</span> {product.field_serial_numbers}
-              </div>
-              <div className="invent-cus-cond bold">
-                <span>Condition:</span> {product.field_condition}
-              </div>
-              <div className="invent-cus-cond bold">
-                <span>ListingType:</span> {product.field_listing_type}
-              </div>
-              <div className="invent-cus-manuf bold">
-                <span>Manufacturer:</span> {product.field_category}
-              </div>
-              <div className="invent-cus-eq-cat bold">
-                <span>Category:</span> {product.field_equipment_category}
-              </div>
-              <div className="invent-cus-slc-cat bold">
-                <span>Equipment:</span> {product.field_select_equipment}
-              </div>
-              <div className="invent-cus-city bold">
-                <span>city:</span> {product.field_city},
-                <span>state:</span> {product.field_state}               
-              </div>
-              <div className="invent-cus-stnum bold">
-                <span>Stock Number:</span> {product.field_stock_number}
-              </div>
-              <div className="invent-cus-bucket bold">
-                <span>Bucket:</span> {product.field_bucket}
-              </div>
-              <div className="invent-cus-ac bold">
-                <span>A/C:</span> {product.field_a_c}
-              </div>
-              <div className="invent-cus-heater bold">
-                <span>Heater:</span> {product.field_heater}
-              </div>
-              <div className="invent-cus-rnum-fend bold">
-                <span>Number of Fanders:</span> {product.field_fenders}
-              </div>
-              <div className="invent-cus-buc-cap bold">
-                <span>Bucket Capacity</span> {product.field_bucket_capacity}
+                <div className="invent-pro-cus-mid">
+                  <div className="invent-cus-title">{product.title}</div>
+                  <div className="invent-cus-des">
+                    {product.field_description}
+                  </div>
+                  <div className="invent-cus-price">
+                    <span>Price:</span>
+                    {product.field_price}
+                  </div>
+                  <div className="invent-cus-purchas-cus">
+                    <span>
+                      <i className="fa fa-money" aria-hidden="true"></i>
+                    </span>
+                    <a href="#"> </a>
+                  </div>
+                  <div className="invent-cus-machloc bold">
+                    <span>Machine Location:</span>{" "}
+                    {product.field_machine_location}
+                  </div>
+                  <div className="invent-cus-rhrs bold">
+                    <span>Hours:</span> {product.field_hours}
+                  </div>
+                  <div className="invent-cus-snum bold">
+                    <span>Serial Numbers:</span> {product.field_serial_numbers}
+                  </div>
+                  <div className="invent-cus-cond bold">
+                    <span>Condition:</span> {product.field_condition}
+                  </div>
+                  <div className="invent-cus-cond bold">
+                    <span>ListingType:</span> {product.field_listing_type}
+                  </div>
+                  <div className="invent-cus-manuf bold">
+                    <span>Manufacturer:</span> {product.field_category}
+                  </div>
+                  <div className="invent-cus-eq-cat bold">
+                    <span>Category:</span> {product.field_equipment_category}
+                  </div>
+                  <div className="invent-cus-slc-cat bold">
+                    <span>Equipment:</span> {product.field_select_equipment}
+                  </div>
+                  <div className="invent-cus-city bold">
+                    <span>city:</span> {product.field_city},<span>state:</span>{" "}
+                    {product.field_state}
+                  </div>
+                  <div className="invent-cus-stnum bold">
+                    <span>Stock Number:</span> {product.field_stock_number}
+                  </div>
+                  <div className="invent-cus-bucket bold">
+                    <span>Bucket:</span> {product.field_bucket}
+                  </div>
+                  <div className="invent-cus-ac bold">
+                    <span>A/C:</span> {product.field_a_c}
+                  </div>
+                  <div className="invent-cus-heater bold">
+                    <span>Heater:</span> {product.field_heater}
+                  </div>
+                  <div className="invent-cus-rnum-fend bold">
+                    <span>Number of Fanders:</span> {product.field_fenders}
+                  </div>
+                  <div className="invent-cus-buc-cap bold">
+                    <span>Bucket Capacity</span> {product.field_bucket_capacity}
+                  </div>
+                </div>
+                <div className="invent-pro-cus-rt">
+                  <div className="manf-detail">
+                    <div className="lister-dealer-info">
+                      <p>
+                        <a href="#">Lorem Ipsum has</a>
+                      </p>
+                      <p>Lorem Ipsum has has t</p>
+                      <p>
+                        <span>Phone:</span> 7483804
+                      </p>
+                    </div>
+                    <div className="products-info-btns">
+                      <Link
+                        href={`/inventory/${product.title
+                          .replace(/[^a-z0-9_]+/gi, "-")
+                          .replace(/^-|-$/g, "")
+                          .toLowerCase()}/${product.nid}`}
+                      >
+                        <a>
+                          <i className="fa fa-search" aria-hidden="true"></i>{" "}
+                          View Details
+                        </a>
+                      </Link>
+                      {/* <a href="/inventory/listing/skid-steers-2"></a> */}
+                      {/* <EmailSellerModal /> */}
+                      <EmailSellerModalv />
+                      <VideoChatModalv />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="invent-pro-cus-rt">
-              <div className="manf-detail">
-                <div className="lister-dealer-info">
-                  <p>
-                    <a href="#">Lorem Ipsum has</a>
-                  </p>
-                  <p>Lorem Ipsum has has t</p>
-                  <p>
-                    <span>Phone:</span> 7483804
-                  </p>
-                </div>
-                <div className="products-info-btns">
-                  <Link href={`/inventory/${product.title.replace(/[^a-z0-9_]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()}/${product.nid}`}>
-                    <a><i className="fa fa-search" aria-hidden="true"></i> View Details</a>
-                  </Link>
-                  {/* <a href="/inventory/listing/skid-steers-2"></a> */}
-                  {/* <EmailSellerModal /> */}
-                  <EmailSellerModalv />
-                  <VideoChatModalv />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-      <div >
-      <Pagination total={10} />
+          ))}
+      </div>
+      <div className="view-footer">
+        {!!productsData.pager && (
+          <Pagination
+            current={parseInt(productsData.pager.current_page) + 1}
+            total={parseInt(productsData.pager.total_items)}
+            pageSize={parseInt(productsData.pager.items_per_page)}
+            onChange={(value) => {
+              const basePath = router.asPath.split("?")[0] || Router.asPath;
+              let query = { ...router.query, page: value - 1 };
+              const url = { pathname: router.pathname, query };
+              const urlAs = { pathname: basePath, query };
+              dispatch(scrollToHeader());
+              router.push(url, urlAs, {
+                shallow: true,
+              });
+            }}
+          />
+        )}
       </div>
     </div>
   );

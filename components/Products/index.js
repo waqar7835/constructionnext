@@ -11,15 +11,15 @@ const Index = ({ year_min, year_max, price_min, price_max }) => {
       <div id="header-area-space"></div>
       <div className="product-listing-page">
         <div className=" bg-common-style">
-          <div className=" ">
+          <div className="" id='filter-scroll'>
             <Equipments />
             <div className="container">
               <EmailBlockv />
               {/* <EmailBlock /> */}
             </div>
           </div>
-          <div className="container">
-            <div className="filter-listing-block  ">
+          <div className="container" id='filter-listing-block-main'>
+            <div className="filter-listing-block">
               <Filters
                 year_min={year_min}
                 year_max={year_max}
