@@ -87,23 +87,29 @@ const List = () => {
     </Menu>
   );
   const gettitle = () => {
-    const {
-      current_page = 0,
-      items_per_page = 0,
-      total_items = 0,
-    } = productsData.pager;
-    let current = parseInt(current_page);
-    let per_page = parseInt(items_per_page);
-    let total = parseInt(total_items);
+    let current = 0;
+    let per_page = 0;
+    let total = 0;
+    if (!!productsData.pager) {
+      const {
+        current_page = 0,
+        items_per_page = 0,
+        total_items = 0,
+      } = productsData.pager;
+      current = parseInt(current_page);
+      per_page = parseInt(items_per_page);
+      total = parseInt(total_items);
+    }
+
     return (
       <>
         <span class="list-title-text">Equipment For Sale </span>
         <span class="list-listings-count">
           {current * per_page + 1} -{" "}
           {(current + 1) * per_page > total
-            ? total_items
+            ? total
             : (current + 1) * per_page}{" "}
-          of {total_items} Listings
+          of {total} Listings
         </span>
       </>
     );
