@@ -8,12 +8,14 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import getProductsData from "@store/actions/products";
 import { baseURL } from "@config/config";
+import Pagination from 'next-pagination';
+import 'next-pagination/dist/index.css'
 
 const List = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const productsData = useSelector((state) => state.products.products);
-
+let array = [];
   // useEffect(() => {
   //   dispatch(getProductsData());
   // }, []);
@@ -85,9 +87,10 @@ const List = () => {
     </Menu>
   );
    console.log("prod->",productsData);
+
   return (
     <div id="listing-content-results" className="listing-content col-md-9 col-xs-12">
-      {productsData.map((product, index) => (
+      {!!productsData.rows && productsData.rows.map((product, index) => (
         <div key={index} className="views-row">
           <div className="invent-pro-cus">
             <div className="invent-pro-cus-lft">
@@ -196,6 +199,9 @@ const List = () => {
           </div>
         </div>
       ))}
+      <div >
+      <Pagination total={10} />
+      </div>
     </div>
   );
 };

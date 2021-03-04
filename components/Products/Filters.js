@@ -40,7 +40,7 @@ const Filters = () => {
   const minprice = useSelector((state) => state.minprice.minprice);
   const maxprice = useSelector((state) => state.maxprice.maxprice);
 
-  
+  console.log("minYear->",minyear);
   
   useEffect(() => {
     dispatch(getCityCount());

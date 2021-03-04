@@ -16,7 +16,22 @@ const MainMenu = () => {
           <a href="#">Inventory</a>
           <ul>
             <li>
-              <a href="/inventory/search">All Inventory</a>
+              <a href="/inventory/search">Construction</a>
+            </li>
+            <li>
+              <a href="/inventory/search">Ag</a>
+            </li>
+            <li>
+              <a href="/inventory/search">Trucks</a>
+            </li>
+            <li>
+              <a href="/inventory/search">Trailers</a>
+            </li>
+            <li>
+              <a href="/inventory/search">Material Handling</a>
+            </li>
+            <li>
+              <a href="/inventory/search">Attachments</a>
             </li>
           </ul>
         </li>
