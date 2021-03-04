@@ -12,7 +12,7 @@ const HappyClients = ( {feedback}) => {
     dispatch(getClients());
   }, []);
   return (
-    <div className="section-space-default bg-common-style">
+    <div className="section-space-default bg-common-style bg-gray2">
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
