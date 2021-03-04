@@ -35,12 +35,16 @@ const Filters = () => {
   const stateCount = useSelector((state) => state.statecount.statecount);
   const categoryCount = useSelector((state) => state.category.category);
 
-  const minyear = useSelector((state) => state.minyear.minyear);
-  const maxyear = useSelector((state) => state.maxyear.maxyear);
-  const minprice = useSelector((state) => state.minprice.minprice);
-  const maxprice = useSelector((state) => state.maxprice.maxprice);
+  const minyear1 = useSelector((state) => state.minyear.minyear);
+  const maxyear1 = useSelector((state) => state.maxyear.maxyear);
+  const minprice1 = useSelector((state) => state.minprice.minprice);
+  const maxprice1 = useSelector((state) => state.maxprice.maxprice);
 
-  console.log("minYear->",minyear);
+  const minyear = parseInt(minyear1);
+  const maxyear = parseInt(maxyear1);
+  const minprice = parseInt(minprice1);
+  const maxprice = parseInt(maxprice1);
+
   
   useEffect(() => {
     dispatch(getCityCount());
@@ -124,7 +128,7 @@ const Filters = () => {
       if (mappedArr.hasOwnProperty(tid)) {
         mappedElem = mappedArr[tid];
         mappedElem = {
-          label: `${mappedElem.name} ${mappedElem.count}`,
+          label: `${mappedElem.name} (${mappedElem.count})`,
           value: mappedElem.tid,
           ...mappedElem,
         };
@@ -506,8 +510,17 @@ const Filters = () => {
         <Collapse defaultActiveKey={["1"]}>
           {!!grouped_category_trems.length && (
             <Panel header="Category" key="1">
-              {grouped_category_trems.slice(0, 2).map((item, key) => (
-                <div key={key}>
+              {grouped_category_trems.slice(0, 2).map((item, key) => {
+                let count = 0 ;
+                {item.children.map((intc,key) =>{
+                    let int = parseInt(intc.count);
+                    count = count + int;
+                    return{
+                      count
+                    }
+                 })}
+               
+               return (<div key={key}>
                   <Checkbox
                     value={item.value}
                     indeterminate={indeterminate}
@@ -549,7 +562,7 @@ const Filters = () => {
                       checkedIds[item.tid].length == item.children.length
                     }
                   >
-                    {item.label}
+                     {`${item.name} (${count})`}
                   </Checkbox>
                   <CheckboxGroup
                     value={checkedIds[item.tid]}
@@ -574,8 +587,8 @@ const Filters = () => {
                       });
                     }}
                   />
-                </div>
-              ))}
+                </div>)
+})}
 
               <a onClick={showCatModal} className="apply-filter">
                 + Show All
@@ -874,8 +887,17 @@ const Filters = () => {
         footer={[]}
         className="popup-filters"
       >
-        {grouped_category_trems.map((item, key) => (
-          <div key={key} className="antd-groupcheckbox-cus">
+        {grouped_category_trems.map((item, key) => {
+           let count = 0 ;
+           {item.children.map((intc,key) =>{
+               let int = parseInt(intc.count);
+               count = count + int;
+               return{
+                 count
+               }
+            })}            
+         return( 
+           <div key={key} className="antd-groupcheckbox-cus">
             <Checkbox
               indeterminate={indeterminateInPopup}
               onChange={(e) => {
@@ -923,7 +945,7 @@ const Filters = () => {
               }}
             />
           </div>
-        ))}
+          )})}
         <a onClick={onClickApplyCatFilter} className="apply-filter">
           Apply Filter
         </a>
