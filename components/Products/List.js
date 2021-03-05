@@ -21,7 +21,7 @@ const List = () => {
   // }, []);
   useEffect(() => {
     let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
-    console.log(req);
+  //  console.log(req);
     dispatch({
       type: SET_LOADER,
       payload: true,
@@ -86,43 +86,43 @@ const List = () => {
       </Menu.Item>
     </Menu>
   );
-  const gettitle = () => {
-    let current = 0;
-    let per_page = 0;
-    let total = 0;
-    if (!!productsData.pager) {
-      const {
-        current_page = 0,
-        items_per_page = 0,
-        total_items = 0,
-      } = productsData.pager;
-      current = parseInt(current_page);
-      per_page = parseInt(items_per_page);
-      total = parseInt(total_items);
-    }
+  // const gettitle = () => {
+  //   let current = 0;
+  //   let per_page = 0;
+  //   let total = 0;
+  //   if (!!productsData.pager) {
+  //     const {
+  //       current_page = 0,
+  //       items_per_page = 0,
+  //       total_items = 0,
+  //     } = productsData.pager;
+  //     current = parseInt(current_page);
+  //     per_page = parseInt(items_per_page);
+  //     total = parseInt(total_items);
+  //   }
 
-    return (
-      <>
-        <span class="list-title-text">Equipment For Sale </span>
-        <span class="list-listings-count">
-          {current * per_page + 1} -{" "}
-          {(current + 1) * per_page > total
-            ? total
-            : (current + 1) * per_page}{" "}
-          of {total} Listings
-        </span>
-      </>
-    );
-  };
+  //   return (
+  //     <>
+  //       <span className="list-title-text">Equipment For Sale </span>
+  //       <span className="list-listings-count">
+  //         {current * per_page + 1} -{" "}
+  //         {(current + 1) * per_page > total
+  //           ? total
+  //           : (current + 1) * per_page}{" "}
+  //         of {total} Listings
+  //       </span>
+  //     </>
+  //   );
+  // };
 
   return (
     <div
       id="listing-content-results"
       className="listing-content col-md-9 col-xs-12"
     >
-      <div className="views-header">
-        <h3 class="list-title">{gettitle()}</h3>
-      </div>
+      {/* <div className="views-header">
+        <h3 className="list-title">{gettitle()}</h3>
+      </div> */}
       <div className="views-row-main">
         {!!productsData.rows &&
           productsData.rows.map((product, index) => (

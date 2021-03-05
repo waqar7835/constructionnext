@@ -17,6 +17,7 @@ import getMaxYear from "@store/actions/filters/maxyear";
 import getMinPrice from "@store/actions/filters/minprice";
 import getMaxPrice from "@store/actions/filters/maxprice";
 import scrollToHeader from "@store/actions/scroll";
+import getProductsData from "@store/actions/products";
 
 import e from "cors";
 const { Panel } = Collapse;
@@ -24,6 +25,13 @@ const CheckboxGroup = Checkbox.Group;
 const Filters = () => {
   const dispatch = useDispatch();
   const cityCount = useSelector((state) => state.city.city);
+  var num = 0;
+  var num2 = 0;
+ var test = 0;
+  var num3 =0;
+  var num4 = 0;
+  let manufApply = '';
+
 
   const conditionCount = useSelector((state) => state.condition.condition);
   const countryCount = useSelector((state) => state.country.country);
@@ -40,6 +48,9 @@ const Filters = () => {
   const maxyear = useSelector((state) => state.maxyear.maxyear);
   const minprice = useSelector((state) => state.minprice.minprice);
   const maxprice = useSelector((state) => state.maxprice.maxprice);
+  const productsData = useSelector((state) => state.products.products);
+
+  
 
   useEffect(() => {
     dispatch(getCityCount());
@@ -54,7 +65,7 @@ const Filters = () => {
     dispatch(getMinPrice());
     dispatch(getMaxPrice());
   }, []);
-
+ 
   const router = useRouter();
   const [indeterminateInPopup, setIndeterminateInPopup] = React.useState(true);
   const [indeterminate, setIndeterminate] = React.useState(true);
@@ -77,6 +88,10 @@ const Filters = () => {
   const [price, setPrice] = useState([minprice, maxprice]);
   const [quickSearch, setQuickSearch] = useState();
   const [grouped_category_trems, setGroupedCategoryTrems] = useState([]);
+  const [appliedFilters, setAppliedFilters] = useState([]);
+  const [date, setDate] = useState(30);
+  const [checkDate, setCheckDate] = useState();
+  
 
   useEffect(() => {
     if (router.query) {
@@ -140,6 +155,7 @@ const Filters = () => {
     return tree;
   };
   useEffect(() => {
+   
     if (!!categoryCount && !!categoryCount.length) {
       setGroupedCategoryTrems(unflatten(categoryCount));
     } else {
@@ -241,8 +257,11 @@ const Filters = () => {
   //  for group checkboxes of  category
   const onChangeCategoury = (list) => {
     setCategoury(list);
+
     applyFilter({
       categoury: list,
+      date,
+      checkDate,
       city,
       country,
       state,
@@ -259,6 +278,8 @@ const Filters = () => {
     e.preventDefault();
     applyFilter({
       quickSearch,
+      date,
+      checkDate,
       city,
       state,
       country,
@@ -275,6 +296,8 @@ const Filters = () => {
     applyFilter({
       condition: value,
       city,
+      checkDate,
+      date,
       state,
       categoury,
       country,
@@ -286,9 +309,11 @@ const Filters = () => {
     });
   }
   function onChangeListingType(value) {
-    setListingType(value);
+   
     applyFilter({
       listingType: value,
+      date,
+      checkDate,
       city,
       state,
       categoury,
@@ -302,8 +327,12 @@ const Filters = () => {
   }
   function onChangeManufacturer(value) {
     setManufacturer(value);
+    console.log(value);
+   
     applyFilter({
       manufacturer: value,
+      date,
+      checkDate,
       city,
       state,
       categoury,
@@ -319,7 +348,9 @@ const Filters = () => {
     setCountry(value);
     applyFilter({
       country: value,
+      date,
       city,
+      checkDate,
       state,
       categoury,
       manufacturer,
@@ -334,6 +365,8 @@ const Filters = () => {
     setState(value);
     applyFilter({
       state: value,
+      date,
+      checkDate,
       city,
       country,
       categoury,
@@ -349,6 +382,8 @@ const Filters = () => {
     setCity(value);
     applyFilter({
       city: value,
+      date,
+      checkDate,
       state,
       country,
       categoury,
@@ -360,6 +395,24 @@ const Filters = () => {
       quickSearch,
     });
   }
+  // function onChangeDate(e) {  
+  //   console.log(date); 
+  //   setCheckDate(e.target.checked) 
+     
+  //   applyFilter({
+  //     date: date,
+  //     city,
+  //     state,
+  //     country,
+  //     categoury,
+  //     manufacturer,
+  //     listingType,
+  //     condition,
+  //     year,
+  //     price,
+  //     quickSearch,
+  //   });
+  // }
   function setCharAt(str, index, chr) {
     if (index > str.length - 1) return str;
     return str.substring(0, index) + chr + str.substring(index + 1);
@@ -381,6 +434,7 @@ const Filters = () => {
         str += `&city[]=${item}`;
       });
     }
+   
     if (!isEmpty(params.state)) {
       params.state.map((item) => {
         str += `&state[]=${item}`;
@@ -393,7 +447,7 @@ const Filters = () => {
     }
     if (!isEmpty(params.manufacturer)) {
       params.manufacturer.map((item) => {
-        str += `&manufacturer[]=${item}`;
+        str += `&manufacturer[]=${item}`;        
       });
     }
     if (!isEmpty(params.listingType)) {
@@ -424,6 +478,11 @@ const Filters = () => {
         str += "&keywords=" + params.quickSearch;
       }
     }
+    if ((params.checkDate) == true) {
+      if (!!params.date) {       
+        str += "&created=" + params.date;      
+      }
+    }
     str = setCharAt(str, 0, "?");
     dispatch(scrollToHeader());
     // router.push(`/${str}`, `/inventory/search${str}`, { shallow: true });
@@ -449,9 +508,202 @@ const Filters = () => {
     }
     return true;
   };
+  
+  const gettitle = () => {  
+    let current = 0;
+    let per_page = 0;
+    let total = 0;
+    let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
+    //console.log(req);
+    let manuf= '';
+    let catg= '';  
+    let catgpid= ''; 
+    let pcatg = ''; 
+    if(req.includes(`manufacturer[]=`)){   
+         var tid =  parseInt(manufacturer) 
+          //  if(num == 0){
+                num = num + 1;        
+       manufacturerCount.map((item, key) => {
+          if(item.value == tid) {
+           manuf = item.label;           
+           }
+          return (
+            manuf
+          )
+          })
+        // }
+         
+         console.log(manuf);     
+    }
+    if(req.includes(`categoury[]=`)){          
+      var mid =  parseInt(categoury)     
+      //  if(num2 == 0){
+         num2 = num2 + 1; 
+         
+       categoryCount.map((item, key) => {
+         //console.log(item);
+           if(item.tid == mid) {
+            catg = item.name;
+            catgpid = item.pid; 
+                      
+            }
+           return (
+             catg
+           )
+      
+           })
+           console.log(catg);
+           categoryCount.map((item, key) => {
+         //   console.log(item);
+            if (catgpid){
+              if(item.tid == catgpid) {
+               pcatg = item.name;                         
+               }}
+              return (
+                pcatg
+              )
+            
+              })
+          // }
+          // console.log(pcatg);
+          //  console.log(catg);
+     }
+    if (!!productsData.pager) {
+      const {
+        current_page = 0,
+        items_per_page = 0,
+        total_items = 0,
+      } = productsData.pager;
+      current = parseInt(current_page);
+      per_page = parseInt(items_per_page);
+      total = parseInt(total_items);
+     
+    }
+
+    return (
+      <>
+      { 
+         (((num >= 1)|| (num2 >= 1) )&&(manuf || catg))?
+         <span className="list-title-text">{manuf}{" "}{catg}{" "}Equipment For Sale </span>
+         : <span className="list-title-text">Equipment For Sale </span>
+        
+         }
+        <span className="list-listings-count">
+          {current * per_page + 1} -{" "}
+          {(current + 1) * per_page > total
+            ? total
+            : (current + 1) * per_page}{" "}
+          of {total} Listings
+        </span>
+      </>
+    );
+  };
+
+  // const getAppliedFilters = () => {  
+  
+  //   let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
+  //  // console.log(req); 
+  //   let catg= '';  
+  //   let catgpid= ''; 
+  //   let pcatg = ''; 
+  //   if(req.includes(`manufacturer[]=`)){    
+     
+  //   //  var tid =  parseInt(manufacturer)
+  //   //   console.log(manufacturer  );
+     
+  //   var tid = 0;
+  //     // if(num3 == 0){
+  //     //   num3 = num3 + 1;
+  //       var test;
+       
+  // manufApply =    manufacturerCount.map((item, key) => { 
+  //   // console.log(item);      
+  //      tid = manufacturer[num3] ; 
+  //     // console.log(tid);    
+  //      num3 = num3 + 1;     
+  //      tid = parseInt(tid);       
+  //         if(item.value == tid) {
+  //         //  manufApply += `${item.label},` ;
+  //         //    manufApply2= manufApply.split(',')
+  //         // console.log(item.name);
+
+  //      test += item.label;
+        
+  //         } 
+  //         return (
+  //           test
+  //         )
+          
+  //         })
+          
+  //       // }
+       
+  //         console.log(manufApply);
+     
+  //   }
+  //   if(req.includes(`categoury[]=`)){          
+  //     var mid =  parseInt(categoury)     
+  //      if(num4 == 0){
+  //        num4 = num4 + 1;
+  //        console.log("yes o");
+  //      categoryCount.map((item, key) => {
+  //        console.log(item);
+  //          if(item.tid == mid) {
+  //           catg = item.name;
+  //           catgpid = item.pid;            
+  //           }
+  //          return (
+  //            catg
+  //          )
+          
+  //          })
+  //          categoryCount.map((item, key) => {
+  //           console.log(item);
+  //           if (catgpid){
+  //             if(item.tid == catgpid) {
+  //              pcatg = item.name;                         
+  //              }}
+  //             return (
+  //               pcatg
+  //             )
+            
+  //             })
+  //         }
+  //         console.log(pcatg);
+  //          console.log(catg);
+  //    }
+    
+  
+
+  //   return (
+  //     <>
+  
+  //     { 
+        
+  //        (manufApply || catg)?
+  //         manufApply.map((item,key)=>{
+  //           <span >{item}<a onClick={cancelFilter}>x</a></span>
+  //         }) 
+  //         : ""
+        
+  //        }
+       
+  //     </>
+  //   );
+  // };
+  const cancelFilter = () =>{
+    setManufacturer(false);
+  }
 
   return (
+    <>
+     <div className="views-header">
+        <h6 className="list-title">{gettitle()}</h6>
+      </div>
     <div className="filters-block left-side-filters col-md-3 col-xs-12">
+    {/* <div className="views-header">
+        <p className="list-title">{getAppliedFilters()}</p>
+      </div> */}
       <form className="views-exposed-form left-side-filterseach">
         <Form.Item label="Quick Search">
           <Input
@@ -631,6 +883,8 @@ const Filters = () => {
                 setYear([nextValue, end]);
                 applyFilter({
                   year: [start, end],
+                  date,
+                  checkDate,
                   city,
                   state,
                   categoury,
@@ -656,6 +910,8 @@ const Filters = () => {
                 setYear([start, nextValue]);
                 applyFilter({
                   year: [start, nextValue],
+                  date,
+                  checkDate,
                   city,
                   state,
                   categoury,
@@ -680,6 +936,8 @@ const Filters = () => {
               onMouseUp={() => {
                 applyFilter({
                   year: year,
+                  date,
+                  checkDate,
                   city,
                   state,
                   categoury,
@@ -707,6 +965,8 @@ const Filters = () => {
                 setPrice([nextValue, end]);
                 applyFilter({
                   price: [nextValue, end],
+                  date,
+                  checkDate,
                   city,
                   state,
                   categoury,
@@ -732,6 +992,8 @@ const Filters = () => {
                 setPrice([start, nextValue]);
                 applyFilter({
                   price: [start, nextValue],
+                  date,
+                  checkDate,
                   city,
                   state,
                   categoury,
@@ -756,6 +1018,8 @@ const Filters = () => {
               onMouseUp={() => {
                 applyFilter({
                   price: price,
+                  date,
+                  checkDate,
                   city,
                   state,
                   categoury,
@@ -833,6 +1097,50 @@ const Filters = () => {
                 </Checkbox.Group>
               </Panel>
             )}
+             <Panel header="Search Results By Date" key="10">
+             <Checkbox onChange={ (e)=>{
+                 setCheckDate(e.target.checked) 
+                  applyFilter({
+                    checkDate:e.target.checked,
+                    date,
+                    price,
+                    city,
+                    state,
+                    categoury,
+                    country,
+                    manufacturer,
+                    listingType,
+                    condition,
+                    year,
+                    quickSearch,
+                  });
+             }             
+               
+               }>
+               Show listings added in the last               
+             </Checkbox>
+             <InputNumber
+                value={date}                
+                onChange={(value) => {                                   
+                  setDate(value); 
+                  if(checkDate == true){
+                  applyFilter({
+                    date: value,
+                    checkDate,
+                    price,
+                    city,
+                    state,
+                    categoury,
+                    country,
+                    manufacturer,
+                    listingType,
+                    condition,
+                    year,
+                    quickSearch,
+                  });}
+                }}
+               />days              
+             </Panel>
           </Collapse>
         )}
         {/* state popup modal */}
@@ -980,6 +1288,7 @@ const Filters = () => {
         <a className="apply-filter">Apply Filter</a>
       </Modal>
     </div>
+    </>
   );
 };
 
