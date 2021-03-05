@@ -194,13 +194,13 @@ const List = () => {
                     <span>city:</span> {product.field_city},<span>state:</span>{" "}
                     {product.field_state}
                   </div>
-                  <div className="invent-cus-stnum bold">
+                  {/* <div className="invent-cus-stnum bold">
                     <span>Stock Number:</span> {product.field_stock_number}
-                  </div>
-                  <div className="invent-cus-bucket bold">
+                  </div> */}
+                  {/* <div className="invent-cus-bucket bold">
                     <span>Bucket:</span> {product.field_bucket}
-                  </div>
-                  <div className="invent-cus-ac bold">
+                  </div> */}
+                  {/* <div className="invent-cus-ac bold">
                     <span>A/C:</span> {product.field_a_c}
                   </div>
                   <div className="invent-cus-heater bold">
@@ -211,7 +211,7 @@ const List = () => {
                   </div>
                   <div className="invent-cus-buc-cap bold">
                     <span>Bucket Capacity</span> {product.field_bucket_capacity}
-                  </div>
+                  </div> */}
                 </div>
                 <div className="invent-pro-cus-rt">
                   <div className="manf-detail">

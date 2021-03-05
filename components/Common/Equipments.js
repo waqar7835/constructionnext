@@ -12,7 +12,7 @@ const Equipments = ({equipmentHeading}) => {
     dispatch(getEquipmentsData());
   }, []);
   return (
-    <div className="section-space-less30 bg-gray2 bg-common-style">
+    <div className="section-space-less30 bg-gray2 bg-common-style equipmentsData-section">
       <div className="container">
         <div className="section-title text-center">
           <h2>

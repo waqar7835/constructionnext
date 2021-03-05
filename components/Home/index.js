@@ -10,8 +10,12 @@ const Index = ({welcome, about, equipmentHeading, feedback}) => {
       
       <Slider />
       <Welcome  welcome = { welcome } />
+      <div className="eq-for-front">
+          <Equipments equipmentHeading = { equipmentHeading } /> 
+      </div>
+         
       <About about = { about } />
-      <Equipments equipmentHeading = { equipmentHeading } />    
+      
       <HappyClients feedback = { feedback } />
     </div>
   );

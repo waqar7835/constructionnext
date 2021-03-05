@@ -3,7 +3,7 @@ import SubscribedForm from "./SubscribedForm";
 
 const Welcome = ({ welcome }) => {
   return (
-    <section className="bg-gray2" id="welcome-section-fluid">
+    <section className="bg-gray21 " id="welcome-section-fluid">
       <div className="container">
         <div className="row">
           <div className="region region-welcome-section">
@@ -13,7 +13,7 @@ const Welcome = ({ welcome }) => {
             ></div>
             <div
               id="block-welcome"
-              className="section-space-less30 bg-gray2 bg-common-style block block-block-content block-block-content14bbc390-4504-40e5-b7df-9f691c2e1fa2"
+              className=" bg-common-style block block-block-content block-block-content14bbc390-4504-40e5-b7df-9f691c2e1fa2"
             >
               <h2>{!!welcome && welcome.title}</h2>
 
@@ -26,7 +26,7 @@ const Welcome = ({ welcome }) => {
               className="simplenews-subscriber-form contact-form-layout4"
                
             >
-              <SubscribedForm />
+              {/* <SubscribedForm /> */}
               {/* <form
                 action="/"
                 method="post"
