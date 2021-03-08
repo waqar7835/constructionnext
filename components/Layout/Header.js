@@ -233,7 +233,7 @@ const Header = ({header}) => {
                       onChange = {(e) => setkeyword(e.target.value)}
                       type="text"
                       className="search-input search-form"
-                      placeholder="Search for Equipments for sale"
+                      placeholder="Search for equipments for sale"
                       required=""
                     />
                     <a id="search-button" onClick={() => {

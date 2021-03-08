@@ -32,6 +32,8 @@ const Filters = () => {
   var num4 = 0;
   let manufApply = "";
   let cityApply = "";
+  let keywords="";
+  let dateRange="";
 
   let stateApply = "";
   let counApply = "";
@@ -471,6 +473,8 @@ const Filters = () => {
   //     quickSearch,
   //   });
   // }
+   
+
   function setCharAt(str, index, chr) {
     if (index > str.length - 1) return str;
     return str.substring(0, index) + chr + str.substring(index + 1);
@@ -537,8 +541,19 @@ const Filters = () => {
       }
     }
     if (params.checkDate == true) {
-      if (!!params.date) {
-        str += "&created=" + params.date;
+       if (!!params.date) {
+        let newdate = new Date();
+        let last = new Date(newdate .getTime() - (params.date * 24 * 60 * 60 * 1000));
+        let date_day =last.getDate();
+        let date_month =last.getMonth()+1;
+        let date_year =last.getFullYear();
+       
+      //   params.date= date_day - params.date
+       // if(params.date.includes("-")){
+         // month_row = month_row -1;
+       // }
+       // str += "&created=" + params.date;
+       str += `&created=${date_year}-${date_month}-${date_day}`;
       }
     }
     str = setCharAt(str, 0, "?");
@@ -548,6 +563,9 @@ const Filters = () => {
       shallow: true,
     });
   };
+ 
+
+  // console.log(`${yeard}-${month_raw}-${date_raw}`);
   const isEmpty = (array) => {
     return Array.isArray(array) && (array.length == 0 || array.every(isEmpty));
   };
@@ -577,6 +595,7 @@ const Filters = () => {
     let catg = "";
     let catgpid = "";
     let pcatg = "";
+    let equipment = "";
     if (req.includes(`manufacturer[]=`)) {
       var tid = parseInt(manufacturer);
       //  if(num == 0){
@@ -604,7 +623,7 @@ const Filters = () => {
         }
         return catg;
       });
-      console.log(catg);
+      // console.log(catg);
       categoryCount.map((item, key) => {
         //   console.log(item);
         if (catgpid) {
@@ -618,6 +637,18 @@ const Filters = () => {
       // console.log(pcatg);
       //  console.log(catg);
     }
+
+
+    if (req.includes(`equipment=`)) {    
+      !!productsData.rows && productsData.rows.map((item, key) => {       
+        equipment = item.field_select_equipment;       
+        return equipment;
+      });
+      
+
+        console.log(equipment);
+    }
+
     if (!!productsData.pager) {
       const {
         current_page = 0,
@@ -631,13 +662,15 @@ const Filters = () => {
 
     return (
       <>
-        {(num >= 1 || num2 >= 1) && (manuf || catg) ? (
+        { (manuf || catg || equipment ) ? (
           <span className="list-title-text">
-            {manuf} {catg} Equipment For Sale{" "}
+           {catg}  {manuf} {equipment} Equipment For Sale{" "}
           </span>
         ) : (
           <span className="list-title-text">Equipment For Sale </span>
         )}
+        
+
         <span className="list-listings-count">
           {current * per_page + 1} -{" "}
           {(current + 1) * per_page > total ? total : (current + 1) * per_page}{" "}
@@ -651,6 +684,7 @@ const Filters = () => {
   }
 
   const getAppliedFilters = () => {
+   
     let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
     if (req.includes(`manufacturer[]=`)) {
       manufApply = manufacturerCount.map((item, key) => {
@@ -664,6 +698,12 @@ const Filters = () => {
         return manufApply;
       });
       manufApply = manufApply.filter(onlyUnique);
+    }
+    if (req.includes(`keywords=`)) {
+      keywords="keywords";
+    }
+    if (req.includes(`created=`)) {
+      dateRange="Date Ranges";
     }
     if (req.includes(`condition[]=`)) {
       conditionApply = conditionCount.map((item, key) => {
@@ -690,19 +730,25 @@ const Filters = () => {
         return listApply;
       });
       listApply = listApply.filter(onlyUnique);
+      console.log(listApply);
     }
     if (req.includes(`categoury[]=`)) {
       catApply = categoryCount.map((item, key) => {
+        console.log(item);
         categoury.map((id, key) => {
+//console.log(id);
           id = parseInt(id);
-          if (item.value == id) {
-            catApply = item.label;
+          console.log(id);
+          if (item.tid == id) {
+            console.log(item.label);
+            catApply = item.name;
             return catApply;
           }
         });
         return catApply;
       });
       catApply = catApply.filter(onlyUnique);
+     // console.log(catApply);
     }
     if (req.includes(`country[]=`)) {
       counApply = countryCount.map((item, key) => {
@@ -755,6 +801,20 @@ const Filters = () => {
               </span>
             ))
           : ""}
+          {keywords
+          ?    <span className="list-title-text">
+                <a onClick={() => cancelKeywordFilter(null)}>x</a>
+                {keywords}               
+              </span>
+            : ""
+          }
+           {dateRange
+          ?    <span className="list-title-text">
+                <a onClick={() => cancelDateRangeFilter(null)}>x</a>
+                {dateRange}               
+              </span>
+            : ""
+          }
         {conditionApply
           ? conditionApply.map((item, key) => (
               <span className="list-title-text">
@@ -811,7 +871,30 @@ const Filters = () => {
     );
   };
   const cancelAllFilters = () => {
-    //  setState(" ");
+    setState([]);
+    setCity([]);
+    setCountry([]);
+    setManufacturer([]);
+    setCategoury([]);
+    setCondition([]);
+    setListingType([]);    
+    setQuickSearch([]);
+    setDate([]);
+    setCheckDate(false);
+    applyFilter({
+      city:[],
+      date:[],
+      checkDate:[],
+      state:[],
+      country:[],
+      categoury:[],
+      manufacturer:[],
+      listingType:[],
+      condition:[],
+      year:[],
+      price:[],
+      quickSearch:[],
+    });
   };
   const cancelListingTypeFilter = (label) => {
     let selectedListTData = listingTypeCount.filter(
@@ -858,6 +941,41 @@ const Filters = () => {
       manufacturer,
       listingType,
       condition: conditionApply,
+      year,
+      price,
+      quickSearch,
+    });
+  };
+  const cancelKeywordFilter = (label) => {   
+    setQuickSearch();
+    applyFilter({
+      city,
+      date,
+      checkDate,
+      state,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  };
+  const cancelDateRangeFilter = (label) => {   
+    setDate();
+    setCheckDate(false);
+    applyFilter({
+      city,
+      date,
+      checkDate:false,
+      state,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
       year,
       price,
       quickSearch,
@@ -999,7 +1117,7 @@ const Filters = () => {
       <div className="filters-block left-side-filters col-md-3 col-xs-12">
         {/* {appliedFilters} */}
         <div className="views-header">
-          <a onClick={() => cancelAllFilters()} classNmae="clear-all-filters"> Clear All</a>
+         {(manufApply || conditionApply || counApply || catApply || cityApply || stateApply  )?<span><a onClick={cancelAllFilters} classNmae="clear-all-filters"> Clear y All</a></span>: 't'} 
           <p className="list-title">{getAppliedFilters()}</p>
         </div>
         <form className="views-exposed-form left-side-filterseach">
