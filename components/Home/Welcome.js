@@ -22,11 +22,11 @@ const Welcome = ({ welcome }) => {
               </div>
             </div>
             
-            <div
+           {/* <div
               className="simplenews-subscriber-form contact-form-layout4"
                
             >
-              {/* <SubscribedForm /> */}
+               <SubscribedForm /> */}
               {/* <form
                 action="/"
                 method="post"
@@ -77,8 +77,8 @@ const Welcome = ({ welcome }) => {
                     Subscribe
                   </a>
                 </div>
-              </form> */}
-            </div>
+              </form> 
+            </div>*/}
           </div>
         </div>
       </div>

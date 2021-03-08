@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Collapse, Checkbox, Modal, Form, Input, InputNumber } from "antd";
+import EmailBlockv from './EmailBlockv';
 
 import { useRouter } from "next/router";
 import { RangeSlider } from "rsuite";
@@ -767,8 +768,8 @@ const Filters = () => {
         {listApply != " "
           ? listApply.map((item, key) => (
               <span className="badge badge-secondary">
-                <a onClick={() => cancelListingTypeFilter(item)}>x</a>
-                {item}
+               {item} <a onClick={() => cancelListingTypeFilter(item)}>x</a>
+                
               </span>
             ))
           : ""}
@@ -792,8 +793,8 @@ const Filters = () => {
         {stateApply
           ? stateApply.map((item, key) => (
               <span className="badge badge-secondary">
-                 <a onClick={() => cancelStateFilter(item)}>x</a>
-                {item}
+                {item} <a onClick={() => cancelStateFilter(item)}>x</a>
+                
                
               </span>
             ))
@@ -993,8 +994,9 @@ const Filters = () => {
 
   return (
     <>
-      <div className="views-header">
+      <div className="views-header emailand-title">
         <h6 className="list-title">{gettitle()}</h6>
+        <div className="email-right"><EmailBlockv /></div>
       </div>
       <div className="filters-block left-side-filters col-md-3 col-xs-12">
         {/* {appliedFilters} */}

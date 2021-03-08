@@ -50,7 +50,7 @@
 }
 .listing-content .invent-pro-cus-mid {
     font-size: 12px;
-    width: 33%;
+    width: 44%;
     padding: 0 15px;
 }
 .invent-pro-cus-mid .invent-cus-title {
@@ -58,6 +58,18 @@
     font-weight: 700;
     line-height: 20px;
     word-break: break-word;
+}
+.listing-content .invent-pro-cus-mid .eqinfo {
+    display: flex;
+    flex-wrap: wrap;
+}
+.listing-content .invent-pro-cus-mid .eqinfo .eq-label {
+    text-align: left;
+    flex: 1;
+}
+.listing-content .invent-pro-cus-mid .eqinfo .eq-info {
+    text-align: right;
+    flex: 1;
 }
 .invent-pro-cus-mid .invent-cus-des {
     margin-top: 3px;
@@ -69,7 +81,7 @@
     font-weight: 600;
 }
 .listing-content .invent-pro-cus-rt {
-    width: 33%;
+    width: 23%;
     padding: 0 0 0 15px;
 }
 .invent-pro-cus-rt .lister-dealer-info {
@@ -78,7 +90,7 @@
 }
 .invent-pro-cus-rt .lister-dealer-info p {
     text-align: right !important;
-    line-height: 14px;
+    line-height: 18px;
 }
 .invent-pro-cus-rt .lister-dealer-info p:nth-child(1) a {
     font-size: 14px;
@@ -122,7 +134,7 @@
     display: flex;
     justify-content: flex-end;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 

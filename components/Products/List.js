@@ -155,44 +155,59 @@ const List = () => {
                   <div className="invent-cus-des">
                     {product.field_description}
                   </div>
-                  <div className="invent-cus-price">
-                    <span>Price:</span>
-                    {product.field_price}
+                  <div className="invent-cus-price eqinfo">
+                    <span className="eq-label">Price:</span>
+                    <span className="eq-info">{product.field_price}</span>
                   </div>
-                  <div className="invent-cus-purchas-cus">
+                  <div className="invent-cus-purchas-cus eqinfo">
                     <span>
                       <i className="fa fa-money" aria-hidden="true"></i>
                     </span>
                     <a href="#"> </a>
                   </div>
-                  <div className="invent-cus-machloc bold">
-                    <span>Machine Location:</span>{" "}
-                    {product.field_machine_location}
+                  <div className="invent-cus-machloc bold eqinfo">
+                    <span className="eq-label">Machine Location:</span>{" "}
+                    <span className="eq-info"> {product.field_machine_location}</span>
                   </div>
-                  <div className="invent-cus-rhrs bold">
-                    <span>Hours:</span> {product.field_hours}
+                  <div className="invent-cus-rhrs bold eqinfo">
+                    <span className="eq-label">Hours:</span> 
+                    <span className="eq-info">{product.field_hours}</span>
                   </div>
-                  <div className="invent-cus-snum bold">
-                    <span>Serial Numbers:</span> {product.field_serial_numbers}
+                  <div className="invent-cus-snum bold eqinfo">
+                    <span className="eq-label">Serial Numbers:</span> 
+                    <span className="eq-info">{product.field_serial_numbers}</span>
                   </div>
-                  <div className="invent-cus-cond bold">
-                    <span>Condition:</span> {product.field_condition}
+                  <div className="invent-cus-cond bold eqinfo">
+                    <span className="eq-label">Condition:</span> 
+                    <span className="eq-info">{product.field_condition}</span>
                   </div>
-                  <div className="invent-cus-cond bold">
-                    <span>ListingType:</span> {product.field_listing_type}
+                  <div className="invent-cus-cond bold eqinfo">
+                    <span className="eq-label">ListingType:</span> 
+                    <span className="eq-info">{product.field_listing_type}</span>
                   </div>
-                  <div className="invent-cus-manuf bold">
-                    <span>Manufacturer:</span> {product.field_category}
+                  <div className="invent-cus-manuf bold eqinfo">
+                    <span className="eq-label">Manufacturer:</span>
+                    <span className="eq-info">{product.field_category}</span> 
                   </div>
-                  <div className="invent-cus-eq-cat bold">
-                    <span>Category:</span> {product.field_equipment_category}
+                  <div className="invent-cus-eq-cat bold eqinfo">
+                    <span className="eq-label">Category:</span>
+                    <span className="eq-info">{product.field_equipment_category}</span> 
                   </div>
-                  <div className="invent-cus-slc-cat bold">
-                    <span>Equipment:</span> {product.field_select_equipment}
+                  <div className="invent-cus-slc-cat bold eqinfo">
+                    <span className="eq-label">Equipment:</span>
+                    <span className="eq-info">{product.field_select_equipment}</span> 
                   </div>
-                  <div className="invent-cus-city bold">
-                    <span>city:</span> {product.field_city},<span>state:</span>{" "}
-                    {product.field_state}
+                  <div className="invent-cus-city bold eqinfo">
+                    <span className="eq-label">city:</span>
+                    
+                     <span className="eq-info">{product.field_city}</span>
+                    
+                  </div>
+                  <div className="invent-cus-city bold eqinfo">
+                    <span className="eq-label">state:</span>
+                     <span>:</span>{" "}
+                     <span className="eq-info">{product.field_state}</span>
+                    
                   </div>
                   {/* <div className="invent-cus-stnum bold">
                     <span>Stock Number:</span> {product.field_stock_number}

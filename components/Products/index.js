@@ -17,7 +17,7 @@ const Index = ({ year_min, year_max, price_min, price_max }) => {
             </div>
            
             <div className="container emialblock-m">
-              <EmailBlockv />
+              {/* <EmailBlockv /> */}
               {/* <EmailBlock /> */}
             </div>
             <div className="container" id='filter-listing-block-main'>
