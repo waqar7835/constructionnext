@@ -749,24 +749,24 @@ const Filters = () => {
       <>
         {manufApply
           ? manufApply.map((item, key) => (
-              <span className="list-title-text">
-                <a onClick={() => cancelManufactureFilter(item)}>x</a>
-                {item}               
+              <span className="badge badge-secondary">
+               {item}<a onClick={() => cancelManufactureFilter(item)}>x</a>
+                            
               </span>
             ))
           : ""}
         {conditionApply
           ? conditionApply.map((item, key) => (
-              <span className="list-title-text">
-                 <a onClick={() => cancelConditionFilter(item)}>x</a>
-                {item}
+              <span className="badge badge-secondary">
+                 {item}<a onClick={() => cancelConditionFilter(item)}>x</a>
+                
                
               </span>
             ))
           : ""}
         {listApply != " "
           ? listApply.map((item, key) => (
-              <span className="list-title-text">
+              <span className="badge badge-secondary">
                 <a onClick={() => cancelListingTypeFilter(item)}>x</a>
                 {item}
               </span>
@@ -774,24 +774,24 @@ const Filters = () => {
           : ""}
         {catApply
           ? catApply.map((item, key) => (
-              <span className="list-title-text">
-                 <a onClick={() => cancelCategoryFilter(item)}>x</a>
-                {item}
+              <span className="badge badge-secondary">
+                {item} <a onClick={() => cancelCategoryFilter(item)}>x</a>
+                
                
               </span>
             ))
           : ""}
         {counApply
           ? counApply.map((item, key) => (
-              <span className="list-title-text">
-                <a onClick={() => cancelCountryFilter(item)}>x</a>
-                {item}
+              <span className="badge badge-secondary">
+               {item} <a onClick={() => cancelCountryFilter(item)}>x</a>
+                
               </span>
             ))
           : ""}
         {stateApply
           ? stateApply.map((item, key) => (
-              <span className="list-title-text">
+              <span className="badge badge-secondary">
                  <a onClick={() => cancelStateFilter(item)}>x</a>
                 {item}
                
@@ -800,9 +800,9 @@ const Filters = () => {
           : ""}
         {cityApply
           ? cityApply.map((item, key) => (
-              <span className="list-title-text">
-                 <a onClick={() => cancelCityFilter(item)}>x</a>
-                {item}
+              <span className="badge badge-secondary">
+                {item}<a onClick={() => cancelCityFilter(item)}>x</a>
+                
                
               </span>
             ))
@@ -999,8 +999,9 @@ const Filters = () => {
       <div className="filters-block left-side-filters col-md-3 col-xs-12">
         {/* {appliedFilters} */}
         <div className="views-header">
-          <a onClick={() => cancelAllFilters()} classNmae="clear-all-filters"> Clear All</a>
-          <p className="list-title">{getAppliedFilters()}</p>
+          <a onClick={() => cancelAllFilters()} className="clear-all-filters"> Clear All</a>
+          <p className="list-title">
+             {getAppliedFilters()}  </p>
         </div>
         <form className="views-exposed-form left-side-filterseach">
           <Form.Item label="Quick Search">

@@ -13349,9 +13349,9 @@ h2 {
   text-decoration: none;
 }
 .filters-block.left-side-filters .views-header {
-  padding-top: 10px;
+  padding-top: 22px;
 }
-.filters-block.left-side-filters .views-header a.clearall-filter {
+.filters-block.left-side-filters .views-header a.clear-all-filters {
   color: var(--main-font-color);
     background-color: var(--background-white);
     border: 1px solid var(--main-border-color);
@@ -13360,7 +13360,14 @@ h2 {
     text-align: center;
     font-size: 14px;
 }
-.filters-block.left-side-filters .views-header a.clearall-filter:hover {
+.filters-block.left-side-filters .views-header .list-title span.badge {
+   background-color: var(--main-font-color);
+}
+.filters-block.left-side-filters .views-header .list-title span.badge a {
+  color: var(--background-white);
+  margin-left: 3px;
+}
+.filters-block.left-side-filters .views-header a.clear-all-filters:hover {
   background-color: var(--main-font-color);
   color: var(--background-white);
 }
