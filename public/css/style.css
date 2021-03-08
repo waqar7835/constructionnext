@@ -13364,6 +13364,10 @@ h2 {
   background-color: var(--main-font-color);
   color: var(--background-white);
 }
+.product-detail-section .for-product-deatil img {
+  width: 54px;
+  height: 36px;
+}
 .main-menu-area .d-md-flex::after ,
 .main-menu-area .d-md-flex::before {
   display: none;
