@@ -6,6 +6,7 @@ import { Carousel } from "react-responsive-carousel";
 import ProductEmail from "./ProductEmail";
 import ProductVideoChat from "./ProductVideoChat";
 import ProductDetailSellerMail from "./ProductDetailSellerMail";
+import ReactHtmlParser from "react-html-parser";
 const Main = ({ content }) => {
   console.log({ content });
   const [images, setContentImages] = useState([]);
@@ -34,7 +35,7 @@ const Main = ({ content }) => {
       setContentImages(images);
     }
   }, [content]);
-  // console.log(content);
+   console.log(content);
   return (
     <>
       <div id="header-area-space"></div>
@@ -156,7 +157,12 @@ const Main = ({ content }) => {
             </div>
             {/* product right side end  */}
             {/* product description start  */}
+            
             <div className="product-detail-block2">
+            <div className="body-description">
+              <h3>Description</h3>
+              {ReactHtmlParser(!!content && content.body)} 
+            </div>
               <div className="pro-b2-general showMe">
                 <h2>General</h2>
                 <div className="pro-b2-gen-flex">
