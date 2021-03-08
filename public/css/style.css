@@ -13206,6 +13206,13 @@ footer#page-footer .footer-area-top {
     opacity: 1;
     transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
     content: ' ';
+    width: 5.71428571px;
+    height: 9.14285714px;
+    top: 50%;
+    left: 22%;
+}
+.ant-checkbox-wrapper .ant-checkbox-inner:hover .ant-checkbox-checked::after {
+  border: 1px solid var(--main-font-color);
 }
 .product-listing-page .filters-block form.views-exposed-form .ant-collapse .ant-checkbox-checked .ant-checkbox-inner {
   background-color: #ff9800;
