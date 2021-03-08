@@ -27,16 +27,16 @@ const Filters = () => {
   const cityCount = useSelector((state) => state.city.city);
   var num = 0;
   var num2 = 0;
- var test = 0;
-  var num3 =0;
+  var test = 0;
+  var num3 = 0;
   var num4 = 0;
-  let manufApply = '';
-  let cityApply= '';
-  
-  let stateApply= '';
-  let counApply= '';
-  let catApply= '';
-  let conditionApply = '';
+  let manufApply = "";
+  let cityApply = "";
+
+  let stateApply = "";
+  let counApply = "";
+  let catApply = "";
+  let conditionApply = "";
   let listApply = " ";
 
   const conditionCount = useSelector((state) => state.condition.condition);
@@ -71,7 +71,7 @@ const Filters = () => {
     dispatch(getMinPrice());
     dispatch(getMaxPrice());
   }, []);
- 
+
   const router = useRouter();
   const [indeterminateInPopup, setIndeterminateInPopup] = React.useState(true);
   const [indeterminate, setIndeterminate] = React.useState(true);
@@ -97,7 +97,6 @@ const Filters = () => {
   const [appliedFilters, setAppliedFilters] = useState([]);
   const [date, setDate] = useState(30);
   const [checkDate, setCheckDate] = useState();
-  
 
   // useEffect(() => {
   //   if (router.query) {
@@ -161,7 +160,6 @@ const Filters = () => {
     return tree;
   };
   useEffect(() => {
-   
     if (!!categoryCount && !!categoryCount.length) {
       setGroupedCategoryTrems(unflatten(categoryCount));
     } else {
@@ -260,9 +258,9 @@ const Filters = () => {
     // });
   };
 
-  const onClickApplyStateFilter = () => {  
+  const onClickApplyStateFilter = () => {
     setIsStateModalVisible(false);
-    // onChangeState();    
+    // onChangeState();
   };
 
   //  for group checkboxes of  category
@@ -321,7 +319,7 @@ const Filters = () => {
     });
   }
   function onChangeListingType(value) {
-    setListingType(value); 
+    setListingType(value);
     applyFilter({
       listingType: value,
       date,
@@ -339,7 +337,7 @@ const Filters = () => {
   }
   function onChangeManufacturer(value) {
     setManufacturer(value);
-   
+
     setAppliedFilters(value);
     applyFilter({
       manufacturer: value,
@@ -407,12 +405,11 @@ const Filters = () => {
       quickSearch,
     });
   }
-  
- 
-  // function onChangeDate(e) {  
-  //   console.log(date); 
-  //   setCheckDate(e.target.checked) 
-     
+
+  // function onChangeDate(e) {
+  //   console.log(date);
+  //   setCheckDate(e.target.checked)
+
   //   applyFilter({
   //     date: date,
   //     city,
@@ -431,7 +428,7 @@ const Filters = () => {
     if (index > str.length - 1) return str;
     return str.substring(0, index) + chr + str.substring(index + 1);
   }
-  const applyFilter = (params) => {   
+  const applyFilter = (params) => {
     const { equipment } = router.query;
     let str = "";
     if (!!equipment) {
@@ -448,7 +445,7 @@ const Filters = () => {
         str += `&city[]=${item}`;
       });
     }
-   
+
     if (!isEmpty(params.state)) {
       params.state.map((item) => {
         str += `&state[]=${item}`;
@@ -461,7 +458,7 @@ const Filters = () => {
     }
     if (!isEmpty(params.manufacturer)) {
       params.manufacturer.map((item) => {
-        str += `&manufacturer[]=${item}`;        
+        str += `&manufacturer[]=${item}`;
       });
     }
     if (!isEmpty(params.listingType)) {
@@ -492,9 +489,9 @@ const Filters = () => {
         str += "&keywords=" + params.quickSearch;
       }
     }
-    if ((params.checkDate) == true) {
-      if (!!params.date) {       
-        str += "&created=" + params.date;      
+    if (params.checkDate == true) {
+      if (!!params.date) {
+        str += "&created=" + params.date;
       }
     }
     str = setCharAt(str, 0, "?");
@@ -522,66 +519,58 @@ const Filters = () => {
     }
     return true;
   };
-  
-  const gettitle = () => {  
+
+  const gettitle = () => {
     let current = 0;
     let per_page = 0;
     let total = 0;
     let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
     //console.log(req);
-    let manuf= '';
-    let catg= '';  
-    let catgpid= ''; 
-    let pcatg = ''; 
-    if(req.includes(`manufacturer[]=`)){   
-         var tid =  parseInt(manufacturer) 
-          //  if(num == 0){
-                num = num + 1;        
-       manufacturerCount.map((item, key) => {
-          if(item.value == tid) {
-           manuf = item.label;           
-           }
-          return (
-            manuf
-          )
-          })
-        // }
-         
-        //  console.log(manuf);     
+    let manuf = "";
+    let catg = "";
+    let catgpid = "";
+    let pcatg = "";
+    if (req.includes(`manufacturer[]=`)) {
+      var tid = parseInt(manufacturer);
+      //  if(num == 0){
+      num = num + 1;
+      manufacturerCount.map((item, key) => {
+        if (item.value == tid) {
+          manuf = item.label;
+        }
+        return manuf;
+      });
+      // }
+
+      //  console.log(manuf);
     }
-    if(req.includes(`categoury[]=`)){          
-      var mid =  parseInt(categoury)     
+    if (req.includes(`categoury[]=`)) {
+      var mid = parseInt(categoury);
       //  if(num2 == 0){
-         num2 = num2 + 1; 
-         
-       categoryCount.map((item, key) => {
-         //console.log(item);
-           if(item.tid == mid) {
-            catg = item.name;
-            catgpid = item.pid; 
-                      
-            }
-           return (
-             catg
-           )
-      
-           })
-           console.log(catg);
-           categoryCount.map((item, key) => {
-         //   console.log(item);
-            if (catgpid){
-              if(item.tid == catgpid) {
-               pcatg = item.name;                         
-               }}
-              return (
-                pcatg
-              )
-            
-              })
-          // }
-          // console.log(pcatg);
-          //  console.log(catg);
-     }
+      num2 = num2 + 1;
+
+      categoryCount.map((item, key) => {
+        //console.log(item);
+        if (item.tid == mid) {
+          catg = item.name;
+          catgpid = item.pid;
+        }
+        return catg;
+      });
+      console.log(catg);
+      categoryCount.map((item, key) => {
+        //   console.log(item);
+        if (catgpid) {
+          if (item.tid == catgpid) {
+            pcatg = item.name;
+          }
+        }
+        return pcatg;
+      });
+      // }
+      // console.log(pcatg);
+      //  console.log(catg);
+    }
     if (!!productsData.pager) {
       const {
         current_page = 0,
@@ -591,22 +580,20 @@ const Filters = () => {
       current = parseInt(current_page);
       per_page = parseInt(items_per_page);
       total = parseInt(total_items);
-     
     }
 
     return (
       <>
-      { 
-         (((num >= 1)|| (num2 >= 1) )&&(manuf || catg))?
-         <span className="list-title-text">{manuf}{" "}{catg}{" "}Equipment For Sale </span>
-         : <span className="list-title-text">Equipment For Sale </span>
-        
-         }
+        {(num >= 1 || num2 >= 1) && (manuf || catg) ? (
+          <span className="list-title-text">
+            {manuf} {catg} Equipment For Sale{" "}
+          </span>
+        ) : (
+          <span className="list-title-text">Equipment For Sale </span>
+        )}
         <span className="list-listings-count">
           {current * per_page + 1} -{" "}
-          {(current + 1) * per_page > total
-            ? total
-            : (current + 1) * per_page}{" "}
+          {(current + 1) * per_page > total ? total : (current + 1) * per_page}{" "}
           of {total} Listings
         </span>
       </>
@@ -616,202 +603,177 @@ const Filters = () => {
     return self.indexOf(value) === index;
   }
 
-  const getAppliedFilters = () => {  
+  const getAppliedFilters = () => {
     let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
-    if(req.includes(`manufacturer[]=`)){       
-       manufApply= manufacturerCount.map((item, key) => {
-        manufacturer.map((id,key)=>{        
-          id =  parseInt(id) 
-        if(item.value == id) {
-         manufApply = item.label; 
-         return (
-          manufApply
-        )          
-         }
-       
-        })
-        return manufApply
-       })
-       manufApply = manufApply.filter(onlyUnique);
-      } 
-        if(req.includes(`condition[]=`)){        
-        conditionApply= conditionCount.map((item, key) => {
-          condition.map((id,key)=>{        
-            id =  parseInt(id) 
-          if(item.value == id) {
-            conditionApply = item.label;           
-            return (
-              conditionApply
-            )
+    if (req.includes(`manufacturer[]=`)) {
+      manufApply = manufacturerCount.map((item, key) => {
+        manufacturer.map((id, key) => {
+          id = parseInt(id);
+          if (item.value == id) {
+            manufApply = item.label;
+            return manufApply;
           }
-         
-         })  
-         return  conditionApply
-        })
-        conditionApply = conditionApply.filter(onlyUnique);
-        }
-        if(req.includes(`listing_type[]=`)){  
-          listApply= listingTypeCount.map((item, key) => {
-           listingType.map((id,key)=>{        
-            id =  parseInt(id) 
-          if(item.value == id) {
-            listApply = item.label;           
-           return (
-            listApply
-          ) 
-        }
-         
-         }) 
-         return listApply  
-        })
-        listApply = listApply.filter(onlyUnique);
-        }
-        if(req.includes(`categoury[]=`)){            
-        catApply= categoryCount.map((item, key) => {
-          categoury.map((id,key)=>{        
-            id =  parseInt(id) 
-          if(item.value == id) {
-            catApply = item.label;           
-           return (
-            catApply
-          ) 
-        }
-         
-         }) 
-         return catApply  
-        })
-        catApply = catApply.filter(onlyUnique);
-        }
-        if(req.includes(`country[]=`)){          
-        counApply= countryCount.map((item, key) => {
-          country.map((id,key)=>{        
-            id =  parseInt(id) 
-          if(item.value == id) {
-            counApply = item.label;   
-            return (
-              counApply
-            )        
-           }         
-         }) 
-         return  counApply 
-        })
-        counApply = counApply.filter(onlyUnique);
-        }
-        if(req.includes(`city[]=`)){               
-        cityApply = cityCount.map((item, key) => {
-          city.map((id,key)=>{  
-            id =  parseInt(id) 
-          if(item.value == id) {
-            cityApply = item.label;    
-            return (
-              cityApply
-            )       
-           }
-         
-         })   
-         return cityApply
-        })
-         cityApply = cityApply.filter(onlyUnique);
+        });
+        return manufApply;
+      });
+      manufApply = manufApply.filter(onlyUnique);
+    }
+    if (req.includes(`condition[]=`)) {
+      conditionApply = conditionCount.map((item, key) => {
+        condition.map((id, key) => {
+          id = parseInt(id);
+          if (item.value == id) {
+            conditionApply = item.label;
+            return conditionApply;
+          }
+        });
+        return conditionApply;
+      });
+      conditionApply = conditionApply.filter(onlyUnique);
+    }
+    if (req.includes(`listing_type[]=`)) {
+      listApply = listingTypeCount.map((item, key) => {
+        listingType.map((id, key) => {
+          id = parseInt(id);
+          if (item.value == id) {
+            listApply = item.label;
+            return listApply;
+          }
+        });
+        return listApply;
+      });
+      listApply = listApply.filter(onlyUnique);
+    }
+    if (req.includes(`categoury[]=`)) {
+      catApply = categoryCount.map((item, key) => {
+        categoury.map((id, key) => {
+          id = parseInt(id);
+          if (item.value == id) {
+            catApply = item.label;
+            return catApply;
+          }
+        });
+        return catApply;
+      });
+      catApply = catApply.filter(onlyUnique);
+    }
+    if (req.includes(`country[]=`)) {
+      counApply = countryCount.map((item, key) => {
+        country.map((id, key) => {
+          id = parseInt(id);
+          if (item.value == id) {
+            counApply = item.label;
+            return counApply;
+          }
+        });
+        return counApply;
+      });
+      counApply = counApply.filter(onlyUnique);
+    }
+    if (req.includes(`city[]=`)) {
+      cityApply = cityCount.map((item, key) => {
+        city.map((id, key) => {
+          id = parseInt(id);
+          if (item.value == id) {
+            cityApply = item.label;
+            return cityApply;
+          }
+        });
+        return cityApply;
+      });
+      cityApply = cityApply.filter(onlyUnique);
+    }
 
-        }
-      
-        if(req.includes(`state[]=`)){                
-        stateApply= stateCount.map((item, key) => {
-          state.map((id,key)=>{ 
-            id =  parseInt(id) 
-          if(item.value == id) {
+    if (req.includes(`state[]=`)) {
+      stateApply = stateCount.map((item, key) => {
+        state.map((id, key) => {
+          id = parseInt(id);
+          if (item.value == id) {
             stateApply = item.label;
-            return (
-              stateApply
-            )           
-           }         
-         }) 
-         return stateApply  
-        })
-        stateApply = stateApply.filter(onlyUnique);
-        }
+            return stateApply;
+          }
+        });
+        return stateApply;
+      });
+      stateApply = stateApply.filter(onlyUnique);
+    }
 
     return (
       <>
-  
-      { 
-        
-       (manufApply)? 
-       manufApply.map((item,key)=>(
-       <span className="list-title-text"><a onClick={()=>cancelManufactureFilter(item)}>x</a>{item}<a onClick={()=>cancelManufactureFilter(item)}>x</a></span>
-      ))
-      : ''
-    }
-    {
-
-       (conditionApply)?
-       conditionApply.map((item,key)=>(
-       <span className="list-title-text">{item}<a onClick={()=>cancelConditionFilter(item)}>x</a></span>
-      ))
-      : ''
-         }
-          {
-
-        (listApply !=" ")?
-        listApply.map((item,key)=>(
-        <span className="list-title-text"><a onClick={()=>cancelListingTypeFilter(item)}>x</a>{item}</span>
-        ))
-        : ''
-  }
-   {
-
-      (catApply)?
-      catApply.map((item,key)=>(
-      <span className="list-title-text">{item}<a onClick={()=>cancelCategoryFilter(item)}>x</a></span>
-      ))
-      : ''
-  }
-   {
-
-    (counApply)?
-    counApply.map((item,key)=>(
-    <span className="list-title-text"><a onClick={()=>cancelCountryFilter(item)}>x</a>{item}</span>
-    ))
-    : ''
-  }
-   {
-
-    (stateApply)?
-    stateApply.map((item,key)=>(
-    <span className="list-title-text">{item}<a onClick={()=>cancelStateFilter(item)}>x</a></span>
-    ))
-    : ''
-  }
-   {
-
-    (cityApply)?
-    cityApply.map((item,key)=>(
-    <span className="list-title-text">{item}<a onClick={()=>cancelCityFilter(item)}>x</a></span>
-    ))
-    : ''
-  }
-       
+        {manufApply
+          ? manufApply.map((item, key) => (
+              <span className="list-title-text">
+                <a onClick={() => cancelManufactureFilter(item)}>x</a>
+                {item}
+                <a onClick={() => cancelManufactureFilter(item)}>x</a>
+              </span>
+            ))
+          : ""}
+        {conditionApply
+          ? conditionApply.map((item, key) => (
+              <span className="list-title-text">
+                {item}
+                <a onClick={() => cancelConditionFilter(item)}>x</a>
+              </span>
+            ))
+          : ""}
+        {listApply != " "
+          ? listApply.map((item, key) => (
+              <span className="list-title-text">
+                <a onClick={() => cancelListingTypeFilter(item)}>x</a>
+                {item}
+              </span>
+            ))
+          : ""}
+        {catApply
+          ? catApply.map((item, key) => (
+              <span className="list-title-text">
+                {item}
+                <a onClick={() => cancelCategoryFilter(item)}>x</a>
+              </span>
+            ))
+          : ""}
+        {counApply
+          ? counApply.map((item, key) => (
+              <span className="list-title-text">
+                <a onClick={() => cancelCountryFilter(item)}>x</a>
+                {item}
+              </span>
+            ))
+          : ""}
+        {stateApply
+          ? stateApply.map((item, key) => (
+              <span className="list-title-text">
+                {item}
+                <a onClick={() => cancelStateFilter(item)}>x</a>
+              </span>
+            ))
+          : ""}
+        {cityApply
+          ? cityApply.map((item, key) => (
+              <span className="list-title-text">
+                {item}
+                <a onClick={() => cancelCityFilter(item)}>x</a>
+              </span>
+            ))
+          : ""}
       </>
     );
   };
-  const cancelAllFilters = () =>{
-  //  setState(" ");
-  }
-  const cancelListingTypeFilter = (label) =>{
-  
+  const cancelAllFilters = () => {
+    //  setState(" ");
+  };
+  const cancelListingTypeFilter = (label) => {
     listApply = listingTypeCount.map((item, key) => {
-     if(item.label == label) {
-      listApply = item.value;           
+      if (item.label == label) {
+        listApply = item.value;
       }
-     return (
-      listApply
-     )
-
-     })
+      return listApply;
+    });
     //  listApply =  listApply.filter(onlyUnique);
-     listApply= listingType.filter(name => name!=listApply);  
-     setListingType(listApply);
-     applyFilter({
+    listApply = listingType.filter((name) => name != listApply);
+    setListingType(listApply);
+    applyFilter({
       city,
       date,
       checkDate,
@@ -824,23 +786,20 @@ const Filters = () => {
       year,
       price,
       quickSearch,
-     })    
-}
-  const cancelConditionFilter = (label) =>{  
+    });
+  };
+  const cancelConditionFilter = (label) => {
     conditionApply = conditionCount.map((item, key) => {
-     if(item.label == label) {
-      conditionApply = item.value;           
+      if (item.label == label) {
+        conditionApply = item.value;
       }
-     return (
-      conditionApply
-     )
-
-     })
+      return conditionApply;
+    });
     //  conditionApply =  conditionApply.filter(onlyUnique);
-     conditionApply= condition.filter(name => name!=conditionApply);
-     
-     setCondition(conditionApply);
-     applyFilter({
+    conditionApply = condition.filter((name) => name != conditionApply);
+
+    setCondition(conditionApply);
+    applyFilter({
       city,
       date,
       checkDate,
@@ -853,586 +812,434 @@ const Filters = () => {
       year,
       price,
       quickSearch,
-     })
-    
-}
-const cancelCategoryFilter = (label) =>{
-  
-  catApply = categoryCount.map((item, key) => {
-   if(item.label == label) {
-    catApply = item.value;           
-    }
-   return (
-    catApply
-   )
+    });
+  };
+  const cancelCategoryFilter = (label) => {
+    catApply = categoryCount.map((item, key) => {
+      if (item.label == label) {
+        catApply = item.value;
+      }
+      return catApply;
+    });
+    //  catApply =  catApply.filter(onlyUnique);
+    catApply = categoury.filter((name) => name != catApply);
 
-   })
-  //  catApply =  catApply.filter(onlyUnique);
-   catApply= categoury.filter(name => name!=catApply);
-   
-   setCategoury(catApply);
-   applyFilter({
-    city,
-    date,
-    checkDate,
-    state,
-    country,
-    categoury: catApply,
-    manufacturer,
-    listingType,
-    condition,
-    year,
-    price,
-    quickSearch,
-   })
-  
-}
-const cancelManufactureFilter = (label) =>{
-  
-  manufApply = manufacturerCount.map((item, key) => {
-   if(item.label == label) {
-    manufApply = item.value;           
-    }
-   return (
-     manufApply
-   )
+    setCategoury(catApply);
+    applyFilter({
+      city,
+      date,
+      checkDate,
+      state,
+      country,
+      categoury: catApply,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  };
+  const cancelManufactureFilter = (label) => {
+    manufApply = manufacturerCount.map((item, key) => {
+      if (item.label == label) {
+        manufApply = item.value;
+      }
+      return manufApply;
+    });
+    manufApply = manufApply.filter(onlyUnique);
+    manufApply = manufacturer.filter((name) => name != manufApply);
+    console.log(manufApply);
+    setManufacturer(manufApply);
+    applyFilter({
+      city,
+      date,
+      checkDate,
+      state,
+      country,
+      categoury,
+      manufacturer: manufApply,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  };
+  const cancelCountryFilter = (label) => {
+    counApply = countryCount.map((item, key) => {
+      if (item.label == label) {
+        counApply = item.value;
+      }
+      return counApply;
+    });
+    counApply = counApply.filter(onlyUnique);
+    counApply = country.filter((name) => name != counApply);
 
-   })
-   manufApply = manufApply.filter(onlyUnique);
-   manufApply= manufacturer.filter(name => name!=manufApply);
-   console.log(manufApply);
-   setManufacturer(manufApply);
-   applyFilter({
-    city,
-    date,
-    checkDate,
-    state,
-    country,
-    categoury,
-    manufacturer: manufApply,
-    listingType,
-    condition,
-    year,
-    price,
-    quickSearch,
-   })
-  
-}
-const cancelCountryFilter = (label) =>{
-  
-  counApply = countryCount.map((item, key) => {
-   if(item.label == label) {
-    counApply = item.value;           
-    }
-   return (
-    counApply
-   )
+    setCountry(counApply);
+    applyFilter({
+      city,
+      date,
+      checkDate,
+      state,
+      country: counApply,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  };
+  const cancelStateFilter = (label) => {
+    stateApply = stateCount.map((item, key) => {
+      if (item.label == label) {
+        stateApply = item.value;
+      }
+      return stateApply;
+    });
+    stateApply = stateApply.filter(onlyUnique);
+    stateApply = state.filter((name) => name != stateApply);
 
-   })
-   counApply = counApply.filter(onlyUnique);
-   counApply= country.filter(name => name!=counApply);
-  
-   setCountry(counApply);
-   applyFilter({
-    city,
-    date,
-    checkDate,
-    state,
-    country: counApply,
-    categoury,
-    manufacturer,
-    listingType,
-    condition,
-    year,
-    price,
-    quickSearch,
-   })
-  
-}
-const cancelStateFilter = (label) =>{
-  
-  stateApply = stateCount.map((item, key) => {
-   if(item.label == label) {
-    stateApply = item.value;           
-    }
-   return (
-    stateApply
-   )
+    setState(stateApply);
+    applyFilter({
+      city,
+      date,
+      checkDate,
+      state: stateApply,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  };
+  const cancelCityFilter = (label) => {
+    // cityApply = cityCount.map((item, key) => {
+    //   if (item.label == label) {
+    //     cityApply = item.value;
+    //     console.log("value", item.value);
+    //     return cityApply;
+    //   }
+    //   return cityApply;
+    // });
 
-   })
-   stateApply = stateApply.filter(onlyUnique);
-   stateApply= state.filter(name => name!=stateApply);
-  
-   setState(stateApply);
-   applyFilter({
-    city,
-    date,
-    checkDate,
-    state: stateApply,
-    country,
-    categoury,
-    manufacturer,
-    listingType,
-    condition,
-    year,
-    price,
-    quickSearch,
-   })
-  
-}
-const cancelCityFilter = (label) =>{
-  
-   cityApply = cityCount.map((item, key) => {
-   if(item.label == label) {
-    cityApply = item.value;
-    console.log("value", item.value)   
-    return (
-      cityApply
-     )        
-    }
-   return (
-    cityApply
-   )
-   })
- 
-   cityApply = cityApply.filter(onlyUnique);
-  
-   cityApply =  cityApply.map((item,key)=>{
-  return  city.filter(name => name!=item);
-   })  
-   setCity(cityApply);
-   console.log("->",cityApply);
-   console.log("1->",cityApply[1]);
-   applyFilter({
-    city: cityApply,
-    date,
-    checkDate,
-    state,
-    country,
-    categoury,
-    manufacturer,
-    listingType,
-    condition,
-    year,
-    price,
-    quickSearch,
-   })
-  
-}
+    let selectedCitiesData = cityCount.filter(
+      (singleCityData) => city.indexOf(singleCityData.value) > -1
+    );
 
+    let filteredCityData = selectedCitiesData.filter(
+      (cityData) => cityData.label != label
+    );
 
+    cityApply = filteredCityData.map((city) => city.value);
+
+    // cityApply = cityApply.map((item, key) => {
+    //   return city.filter((name) => name != item);
+    // });
+    setCity(cityApply);
+    console.log("->", filteredCityData, cityApply);
+    // console.log("1->", cityApply[1]);
+    applyFilter({
+      city: cityApply,
+      date,
+      checkDate,
+      state,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  };
 
   return (
     <>
-     <div className="views-header">
+      <div className="views-header">
         <h6 className="list-title">{gettitle()}</h6>
       </div>
-    <div className="filters-block left-side-filters col-md-3 col-xs-12">
-      {/* {appliedFilters} */}
-    <div className="views-header">
-      <a onClick={()=>cancelAllFilters()}> Clear All</a>
-        <p className="list-title">{getAppliedFilters()}</p>
-      </div>
-      <form className="views-exposed-form left-side-filterseach">
-        <Form.Item label="Quick Search">
-          <Input
-            className="form-control top-input"
-            placeholder="Enter your search keyword"
-            value={quickSearch}
-            onChange={(e) => {
-              setQuickSearch(e.target.value);
-            }}
-          />
-          <button className="apply-filter btn-str-up2" onClick={submitHandler}>
-            <i className="icofont icofont-search"></i>
-          </button>
-        </Form.Item>
-        {(!!listingTypeCount.length || !!conditionCount.length) && (
-          <Collapse
-            defaultActiveKey={!!listingTypeCount.length ? ["5"] : ["6"]}
-          >
-            {!!listingTypeCount.length && (
-              <Panel header="Listing Type" key="5">
-                <Checkbox.Group
-                  style={{ width: "100%" }}
-                  name="listingType"
-                  onChange={onChangeListingType}
-                >
-                  {listingTypeCount.map((item, key) => (
-                    <Checkbox key={key} value={item.value}>
-                      {`${item.label} ${item.count}`}
-                    </Checkbox>
-                  ))}
-                </Checkbox.Group>
-              </Panel>
-            )}
-            {!!conditionCount.length && (
-              <Panel header="Condition" key="6">
-                <Checkbox.Group
-                  style={{ width: "100%" }}
-                  name="condition"
-                  onChange={onChangeCondition}
-                >
-                  {conditionCount.map((item, key) => (
-                    <Checkbox key={key} value={item.value}>
-                      {`${item.label} ${item.count}`}
-                    </Checkbox>
-                  ))}
-                </Checkbox.Group>
-              </Panel>
-            )}
-          </Collapse>
-        )}
-        <Collapse defaultActiveKey={["1"]}>
-          {!!grouped_category_trems.length && (
-            <Panel header="Category" key="1">
-              {grouped_category_trems.slice(0, 2).map((item, key) => {
-                let count = 0;
-                {
-                  item.children.map((intc, key) => {
-                    let int = parseInt(intc.count);
-                    count = count + int;
-                    return {
-                      count,
-                    };
-                  });
-                }
+      <div className="filters-block left-side-filters col-md-3 col-xs-12">
+        {/* {appliedFilters} */}
+        <div className="views-header">
+          <a onClick={() => cancelAllFilters()}> Clear All</a>
+          <p className="list-title">{getAppliedFilters()}</p>
+        </div>
+        <form className="views-exposed-form left-side-filterseach">
+          <Form.Item label="Quick Search">
+            <Input
+              className="form-control top-input"
+              placeholder="Enter your search keyword"
+              value={quickSearch}
+              onChange={(e) => {
+                setQuickSearch(e.target.value);
+              }}
+            />
+            <button
+              className="apply-filter btn-str-up2"
+              onClick={submitHandler}
+            >
+              <i className="icofont icofont-search"></i>
+            </button>
+          </Form.Item>
+          {(!!listingTypeCount.length || !!conditionCount.length) && (
+            <Collapse
+              defaultActiveKey={!!listingTypeCount.length ? ["5"] : ["6"]}
+            >
+              {!!listingTypeCount.length && (
+                <Panel header="Listing Type" key="5">
+                  <Checkbox.Group
+                    style={{ width: "100%" }}
+                    name="listingType"
+                    onChange={onChangeListingType}
+                  >
+                    {listingTypeCount.map((item, key) => (
+                      <Checkbox key={key} value={item.value}>
+                        {`${item.label} ${item.count}`}
+                      </Checkbox>
+                    ))}
+                  </Checkbox.Group>
+                </Panel>
+              )}
+              {!!conditionCount.length && (
+                <Panel header="Condition" key="6">
+                  <Checkbox.Group
+                    style={{ width: "100%" }}
+                    name="condition"
+                    onChange={onChangeCondition}
+                  >
+                    {conditionCount.map((item, key) => (
+                      <Checkbox key={key} value={item.value}>
+                        {`${item.label} ${item.count}`}
+                      </Checkbox>
+                    ))}
+                  </Checkbox.Group>
+                </Panel>
+              )}
+            </Collapse>
+          )}
+          <Collapse defaultActiveKey={["1"]}>
+            {!!grouped_category_trems.length && (
+              <Panel header="Category" key="1">
+                {grouped_category_trems.slice(0, 2).map((item, key) => {
+                  let count = 0;
+                  {
+                    item.children.map((intc, key) => {
+                      let int = parseInt(intc.count);
+                      count = count + int;
+                      return {
+                        count,
+                      };
+                    });
+                  }
 
-                return (
-                  <div key={key}>
-                    <Checkbox
-                      value={item.value}
-                      indeterminate={indeterminate}
-                      onChange={(e) => {
-                        if (e.target.checked) {
-                          const parentId = item.tid;
-                          const childIds = item.children.map(
-                            (child) => child.tid
-                          );
-                          setCheckedIds((prev) => {
-                            const updatedCats = {
-                              ...prev,
-                              [parentId]: childIds,
-                            };
+                  return (
+                    <div key={key}>
+                      <Checkbox
+                        value={item.value}
+                        indeterminate={indeterminate}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            const parentId = item.tid;
+                            const childIds = item.children.map(
+                              (child) => child.tid
+                            );
+                            setCheckedIds((prev) => {
+                              const updatedCats = {
+                                ...prev,
+                                [parentId]: childIds,
+                              };
+                              let ids = [];
+                              Object.keys(updatedCats).forEach((key) =>
+                                ids.push(...updatedCats[key])
+                              );
+                              ids.push(...Object.keys(updatedCats));
+                              onChangeCategoury(ids);
+                              return updatedCats;
+                            });
+                          } else {
+                            const updatedCats = Object.keys(checkedIds)
+                              .filter((key) => key !== item.tid)
+                              .reduce(
+                                (res, key) => (
+                                  (res[key] = checkedIds[key]), res
+                                ),
+                                {}
+                              );
                             let ids = [];
                             Object.keys(updatedCats).forEach((key) =>
                               ids.push(...updatedCats[key])
                             );
                             ids.push(...Object.keys(updatedCats));
                             onChangeCategoury(ids);
+                            setCheckedIds(updatedCats);
+                          }
+                        }}
+                        checked={
+                          Object.keys(checkedIds) &&
+                          checkedIds[item.tid] &&
+                          checkedIds[item.tid].length == item.children.length
+                        }
+                      >
+                        {`${item.name} (${count})`}
+                      </Checkbox>
+                      <CheckboxGroup
+                        value={checkedIds[item.tid]}
+                        options={item.children}
+                        onChange={(list) => {
+                          let parentId = item.tid;
+                          setCheckedIds((prev) => {
+                            const updatedCats = { ...prev, [parentId]: list };
+                            let ids = [];
+                            Object.keys(updatedCats).forEach((key) =>
+                              ids.push(...updatedCats[key])
+                            );
+                            if (
+                              Object.keys(updatedCats) &&
+                              updatedCats[item.tid] &&
+                              updatedCats[item.tid].length ==
+                                item.children.length
+                            ) {
+                              ids.push(...Object.keys(updatedCats));
+                            }
+                            onChangeCategoury(ids);
                             return updatedCats;
                           });
-                        } else {
-                          const updatedCats = Object.keys(checkedIds)
-                            .filter((key) => key !== item.tid)
-                            .reduce(
-                              (res, key) => ((res[key] = checkedIds[key]), res),
-                              {}
-                            );
-                          let ids = [];
-                          Object.keys(updatedCats).forEach((key) =>
-                            ids.push(...updatedCats[key])
-                          );
-                          ids.push(...Object.keys(updatedCats));
-                          onChangeCategoury(ids);
-                          setCheckedIds(updatedCats);
-                        }
-                      }}
-                      checked={
-                        Object.keys(checkedIds) &&
-                        checkedIds[item.tid] &&
-                        checkedIds[item.tid].length == item.children.length
-                      }
-                    >
-                      {`${item.name} (${count})`}
-                    </Checkbox>
-                    <CheckboxGroup
-                      value={checkedIds[item.tid]}
-                      options={item.children}
-                      onChange={(list) => {
-                        let parentId = item.tid;
-                        setCheckedIds((prev) => {
-                          const updatedCats = { ...prev, [parentId]: list };
-                          let ids = [];
-                          Object.keys(updatedCats).forEach((key) =>
-                            ids.push(...updatedCats[key])
-                          );
-                          if (
-                            Object.keys(updatedCats) &&
-                            updatedCats[item.tid] &&
-                            updatedCats[item.tid].length == item.children.length
-                          ) {
-                            ids.push(...Object.keys(updatedCats));
-                          }
-                          onChangeCategoury(ids);
-                          return updatedCats;
-                        });
-                      }}
-                    />
-                  </div>
-                );
-              })}
+                        }}
+                      />
+                    </div>
+                  );
+                })}
 
-              <a onClick={showCatModal} className="apply-filter">
-                + Show All
-              </a>
-            </Panel>
-          )}
-          {!!manufacturerCount.length && (
-            <Panel header="Manufacturer" key="2">
-              <Checkbox.Group
-                style={{ width: "100%" }}
-                name="manufacturer"
-                onChange={onChangeManufacturer}
-              >
-                <Form.Item label="Popular">
-                  {manufacturerCount.slice(0, 4).map((item, key) => (
-                    <Checkbox key={key} value={item.value}>
-                      {`${item.label} ${item.count}`}
-                    </Checkbox>
-                  ))}
-                </Form.Item>
-              </Checkbox.Group>
-              <a onClick={showManModal} className="apply-filter">
-                + Show All
-              </a>
-            </Panel>
-          )}
-          <Panel header="Year" key="4" className="number-ranges">
-            <InputNumber
-              min={parseInt(minyear)}
-              max={parseInt(maxyear)}
-              value={year[0]}
-              disabled={true}
-              onChange={(nextValue) => {
-                const [start, end] = year;
-                if (nextValue > end) {
-                  return;
-                }
-                setYear([nextValue, end]);
-                applyFilter({
-                  year: [start, end],
-                  date,
-                  checkDate,
-                  city,
-                  state,
-                  categoury,
-                  country,
-                  manufacturer,
-                  listingType,
-                  condition,
-                  price,
-                  quickSearch,
-                });
-              }}
-            />
-            <InputNumber
-              min={parseInt(minyear)}
-              max={parseInt(maxyear)}
-              value={year[1]}
-              disabled={true}
-              onChange={(nextValue) => {
-                const [start, end] = year;
-                if (start > nextValue) {
-                  return;
-                }
-                setYear([start, nextValue]);
-                applyFilter({
-                  year: [start, nextValue],
-                  date,
-                  checkDate,
-                  city,
-                  state,
-                  categoury,
-                  country,
-                  manufacturer,
-                  listingType,
-                  condition,
-                  price,
-                  quickSearch,
-                });
-              }}
-            />
-            <RangeSlider
-              progress
-              min={parseInt(minyear)}
-              max={parseInt(maxyear)}
-              style={{ marginTop: 16 }}
-              value={year}
-              onChange={(value) => {
-                setYear(value);
-              }}
-              onMouseUp={() => {
-                applyFilter({
-                  year: year,
-                  date,
-                  checkDate,
-                  city,
-                  state,
-                  categoury,
-                  country,
-                  manufacturer,
-                  listingType,
-                  condition,
-                  price,
-                  quickSearch,
-                });
-              }}
-            />
-          </Panel>
-          <Panel header="Price" key="7" className="number-ranges">
-            <InputNumber
-              min={parseInt(minprice)}
-              max={parseInt(maxprice)}
-              value={price[0]}
-              disabled={true}
-              onChange={(nextValue) => {
-                const [start, end] = price;
-                if (nextValue > end) {
-                  return;
-                }
-                setPrice([nextValue, end]);
-                applyFilter({
-                  price: [nextValue, end],
-                  date,
-                  checkDate,
-                  city,
-                  state,
-                  categoury,
-                  country,
-                  manufacturer,
-                  listingType,
-                  condition,
-                  year,
-                  quickSearch,
-                });
-              }}
-            />
-            <InputNumber
-              min={parseInt(minprice)}
-              max={parseInt(maxprice)}
-              value={price[1]}
-              disabled={true}
-              onChange={(nextValue) => {
-                const [start, end] = price;
-                if (start > nextValue) {
-                  return;
-                }
-                setPrice([start, nextValue]);
-                applyFilter({
-                  price: [start, nextValue],
-                  date,
-                  checkDate,
-                  city,
-                  state,
-                  categoury,
-                  country,
-                  manufacturer,
-                  listingType,
-                  condition,
-                  year,
-                  quickSearch,
-                });
-              }}
-            />
-            <RangeSlider
-              progress
-              min={parseInt(minprice)}
-              max={parseInt(maxprice)}
-              style={{ marginTop: 16 }}
-              value={price}
-              onChange={(value) => {
-                setPrice(value);
-              }}
-              onMouseUp={() => {
-                applyFilter({
-                  price: price,
-                  date,
-                  checkDate,
-                  city,
-                  state,
-                  categoury,
-                  country,
-                  manufacturer,
-                  listingType,
-                  condition,
-                  year,
-                  quickSearch,
-                });
-              }}
-            />
-          </Panel>
-        </Collapse>
-        {(!!countryCount.length ||
-          !!stateCount.length ||
-          !!cityCount.length) && (
-          <Collapse
-            defaultActiveKey={
-              !!countryCount.length
-                ? ["1"]
-                : !!stateCount.length
-                ? ["2"]
-                : ["3"]
-            }
-          >
-            {!!countryCount.length && (
-              <Panel header="Country" key="1">
-                <Checkbox.Group
-                  style={{ width: "100%" }}
-                  name="country"
-                  onChange={onChangeCountry}
-                >
-                  {countryCount.slice(0, 4).map((item, key) => (
-                    <Checkbox key={key} value={item.value}>
-                      {`${item.label} ${item.count}`}
-                    </Checkbox>
-                  ))}
-                </Checkbox.Group>
+                <a onClick={showCatModal} className="apply-filter">
+                  + Show All
+                </a>
               </Panel>
             )}
-            {!!stateCount.length && (
-              <Panel header="State" key="2">
+            {!!manufacturerCount.length && (
+              <Panel header="Manufacturer" key="2">
                 <Checkbox.Group
                   style={{ width: "100%" }}
-                  name="state"
-                  onChange={onChangeState}
+                  name="manufacturer"
+                  onChange={onChangeManufacturer}
                 >
-                  {stateCount.slice(0, 4).map((item, key) => (
-                    <Checkbox key={key} value={item.value}>
-                      {`${item.label} ${item.count}`}
-                    </Checkbox>
-                  ))}
-                  <a onClick={showStateModal} className="apply-filter">
-                    + Show All
-                  </a>
+                  <Form.Item label="Popular">
+                    {manufacturerCount.slice(0, 4).map((item, key) => (
+                      <Checkbox key={key} value={item.value}>
+                        {`${item.label} ${item.count}`}
+                      </Checkbox>
+                    ))}
+                  </Form.Item>
                 </Checkbox.Group>
+                <a onClick={showManModal} className="apply-filter">
+                  + Show All
+                </a>
               </Panel>
             )}
-            {!!cityCount.length && (
-              <Panel header="City" key="3">
-                <Checkbox.Group
-                  style={{ width: "100%" }}
-                  name="city"
-                  onChange={onChangeCity}
-                >
-                  {cityCount.slice(0, 4).map((item, key) => (
-                    <Checkbox key={key} value={item.value}>
-                      {`${item.label} ${item.count}`}
-                    </Checkbox>
-                  ))}
-                  <a onClick={showCityModal} className="apply-filter">
-                    + Show All
-                  </a>
-                </Checkbox.Group>
-              </Panel>
-            )}
-             <Panel header="Search Results By Date" key="10">
-             <Checkbox onChange={ (e)=>{
-                 setCheckDate(e.target.checked) 
+            <Panel header="Year" key="4" className="number-ranges">
+              <InputNumber
+                min={parseInt(minyear)}
+                max={parseInt(maxyear)}
+                value={year[0]}
+                disabled={true}
+                onChange={(nextValue) => {
+                  const [start, end] = year;
+                  if (nextValue > end) {
+                    return;
+                  }
+                  setYear([nextValue, end]);
                   applyFilter({
-                    checkDate:e.target.checked,
+                    year: [start, end],
                     date,
+                    checkDate,
+                    city,
+                    state,
+                    categoury,
+                    country,
+                    manufacturer,
+                    listingType,
+                    condition,
                     price,
+                    quickSearch,
+                  });
+                }}
+              />
+              <InputNumber
+                min={parseInt(minyear)}
+                max={parseInt(maxyear)}
+                value={year[1]}
+                disabled={true}
+                onChange={(nextValue) => {
+                  const [start, end] = year;
+                  if (start > nextValue) {
+                    return;
+                  }
+                  setYear([start, nextValue]);
+                  applyFilter({
+                    year: [start, nextValue],
+                    date,
+                    checkDate,
+                    city,
+                    state,
+                    categoury,
+                    country,
+                    manufacturer,
+                    listingType,
+                    condition,
+                    price,
+                    quickSearch,
+                  });
+                }}
+              />
+              <RangeSlider
+                progress
+                min={parseInt(minyear)}
+                max={parseInt(maxyear)}
+                style={{ marginTop: 16 }}
+                value={year}
+                onChange={(value) => {
+                  setYear(value);
+                }}
+                onMouseUp={() => {
+                  applyFilter({
+                    year: year,
+                    date,
+                    checkDate,
+                    city,
+                    state,
+                    categoury,
+                    country,
+                    manufacturer,
+                    listingType,
+                    condition,
+                    price,
+                    quickSearch,
+                  });
+                }}
+              />
+            </Panel>
+            <Panel header="Price" key="7" className="number-ranges">
+              <InputNumber
+                min={parseInt(minprice)}
+                max={parseInt(maxprice)}
+                value={price[0]}
+                disabled={true}
+                onChange={(nextValue) => {
+                  const [start, end] = price;
+                  if (nextValue > end) {
+                    return;
+                  }
+                  setPrice([nextValue, end]);
+                  applyFilter({
+                    price: [nextValue, end],
+                    date,
+                    checkDate,
                     city,
                     state,
                     categoury,
@@ -1443,20 +1250,23 @@ const cancelCityFilter = (label) =>{
                     year,
                     quickSearch,
                   });
-             }             
-               
-               }>
-               Show listings added in the last               
-             </Checkbox>
-             <InputNumber
-                value={date}                
-                onChange={(value) => {                                   
-                  setDate(value); 
-                  if(checkDate == true){
+                }}
+              />
+              <InputNumber
+                min={parseInt(minprice)}
+                max={parseInt(maxprice)}
+                value={price[1]}
+                disabled={true}
+                onChange={(nextValue) => {
+                  const [start, end] = price;
+                  if (start > nextValue) {
+                    return;
+                  }
+                  setPrice([start, nextValue]);
                   applyFilter({
-                    date: value,
+                    price: [start, nextValue],
+                    date,
                     checkDate,
-                    price,
                     city,
                     state,
                     categoury,
@@ -1466,157 +1276,299 @@ const cancelCityFilter = (label) =>{
                     condition,
                     year,
                     quickSearch,
-                  });}
+                  });
                 }}
-               />days              
-             </Panel>
+              />
+              <RangeSlider
+                progress
+                min={parseInt(minprice)}
+                max={parseInt(maxprice)}
+                style={{ marginTop: 16 }}
+                value={price}
+                onChange={(value) => {
+                  setPrice(value);
+                }}
+                onMouseUp={() => {
+                  applyFilter({
+                    price: price,
+                    date,
+                    checkDate,
+                    city,
+                    state,
+                    categoury,
+                    country,
+                    manufacturer,
+                    listingType,
+                    condition,
+                    year,
+                    quickSearch,
+                  });
+                }}
+              />
+            </Panel>
           </Collapse>
-        )}
-        {/* state popup modal */}
-        <Modal
-          className="popup-filters"
-          title="State"
-          visible={isStateModalVisible}
-          onCancel={handleCancelState}
-          footer={[]}
-        >
-          {/* <Input placeholder="Filter" /> */}
-          <Checkbox.Group
-            style={{ width: "100%" }}
-            name="state"
-            // onChange={onChangeState}
+          {(!!countryCount.length ||
+            !!stateCount.length ||
+            !!cityCount.length) && (
+            <Collapse
+              defaultActiveKey={
+                !!countryCount.length
+                  ? ["1"]
+                  : !!stateCount.length
+                  ? ["2"]
+                  : ["3"]
+              }
+            >
+              {!!countryCount.length && (
+                <Panel header="Country" key="1">
+                  <Checkbox.Group
+                    style={{ width: "100%" }}
+                    name="country"
+                    onChange={onChangeCountry}
+                  >
+                    {countryCount.slice(0, 4).map((item, key) => (
+                      <Checkbox key={key} value={item.value}>
+                        {`${item.label} ${item.count}`}
+                      </Checkbox>
+                    ))}
+                  </Checkbox.Group>
+                </Panel>
+              )}
+              {!!stateCount.length && (
+                <Panel header="State" key="2">
+                  <Checkbox.Group
+                    style={{ width: "100%" }}
+                    name="state"
+                    onChange={onChangeState}
+                  >
+                    {stateCount.slice(0, 4).map((item, key) => (
+                      <Checkbox key={key} value={item.value}>
+                        {`${item.label} ${item.count}`}
+                      </Checkbox>
+                    ))}
+                    <a onClick={showStateModal} className="apply-filter">
+                      + Show All
+                    </a>
+                  </Checkbox.Group>
+                </Panel>
+              )}
+              {!!cityCount.length && (
+                <Panel header="City" key="3">
+                  <Checkbox.Group
+                    style={{ width: "100%" }}
+                    name="city"
+                    onChange={onChangeCity}
+                  >
+                    {cityCount.slice(0, 4).map((item, key) => (
+                      <Checkbox
+                        key={key}
+                        value={item.value}
+                        // checked={city.indexOf(item.value) > -1}
+                      >
+                        {`${item.label} ${item.count}`}
+                      </Checkbox>
+                    ))}
+                    <a onClick={showCityModal} className="apply-filter">
+                      + Show All
+                    </a>
+                  </Checkbox.Group>
+                </Panel>
+              )}
+              <Panel header="Search Results By Date" key="10">
+                <Checkbox
+                  onChange={(e) => {
+                    setCheckDate(e.target.checked);
+                    applyFilter({
+                      checkDate: e.target.checked,
+                      date,
+                      price,
+                      city,
+                      state,
+                      categoury,
+                      country,
+                      manufacturer,
+                      listingType,
+                      condition,
+                      year,
+                      quickSearch,
+                    });
+                  }}
+                >
+                  Show listings added in the last
+                </Checkbox>
+                <InputNumber
+                  value={date}
+                  onChange={(value) => {
+                    setDate(value);
+                    if (checkDate == true) {
+                      applyFilter({
+                        date: value,
+                        checkDate,
+                        price,
+                        city,
+                        state,
+                        categoury,
+                        country,
+                        manufacturer,
+                        listingType,
+                        condition,
+                        year,
+                        quickSearch,
+                      });
+                    }
+                  }}
+                />
+                days
+              </Panel>
+            </Collapse>
+          )}
+          {/* state popup modal */}
+          <Modal
+            className="popup-filters"
+            title="State"
+            visible={isStateModalVisible}
+            onCancel={handleCancelState}
+            footer={[]}
           >
-            {stateCount.map((item, key) => (
-              <Checkbox key={key} value={item.value}>
-                {`${item.label} ${item.count}`}
-              </Checkbox>
-            ))}
-          </Checkbox.Group>
-          <a className="apply-filter" onClick={onClickApplyStateFilter}>Apply Filter</a>
+            {/* <Input placeholder="Filter" /> */}
+            <Checkbox.Group
+              style={{ width: "100%" }}
+              name="state"
+              // onChange={onChangeState}
+            >
+              {stateCount.map((item, key) => (
+                <Checkbox key={key} value={item.value}>
+                  {`${item.label} ${item.count}`}
+                </Checkbox>
+              ))}
+            </Checkbox.Group>
+            <a className="apply-filter" onClick={onClickApplyStateFilter}>
+              Apply Filter
+            </a>
+          </Modal>
+
+          {/* Cities popup modal */}
+          <Modal
+            title="City"
+            className="popup-filters"
+            visible={isCityModalVisible}
+            onCancel={handleCancelCity}
+            footer={[]}
+          >
+            {/* <Input placeholder="Filter" /> */}
+            <Checkbox.Group
+              style={{ width: "100%" }}
+              name="city"
+              onChange={onChangeCity}
+            >
+              {cityCount.map((item, key) => (
+                <Checkbox key={key} value={item.value}>
+                  {`${item.label} ${item.count}`}
+                </Checkbox>
+              ))}
+            </Checkbox.Group>
+            <a className="apply-filter">Apply Filter</a>
+          </Modal>
+        </form>
+        {/* Category Modal */}
+        <Modal
+          title="Categories"
+          visible={isCatModalVisible}
+          onCancel={handleCancel}
+          footer={[]}
+          className="popup-filters"
+        >
+          {grouped_category_trems.map((item, key) => {
+            let count = 0;
+            {
+              item.children.map((intc, key) => {
+                let int = parseInt(intc.count);
+                count = count + int;
+                return {
+                  count,
+                };
+              });
+            }
+            return (
+              <div key={key} className="antd-groupcheckbox-cus">
+                <Checkbox
+                  indeterminate={indeterminateInPopup}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      const parentId = item.tid;
+                      const childIds = item.children.map((child) => child.tid);
+                      if (Object.keys(checkedIds).length) {
+                        setCheckedIds((prev) => {
+                          return { ...prev, [parentId]: childIds };
+                        });
+                      } else {
+                        setCheckedIds({ [parentId]: childIds });
+                      }
+                    } else {
+                      setCheckedIds(
+                        Object.keys(checkedIds)
+                          .filter((key) => key !== item.tid)
+                          .reduce(
+                            (res, key) => ((res[key] = checkedIds[key]), res),
+                            {}
+                          )
+                      );
+                    }
+                  }}
+                  checked={
+                    Object.keys(checkedIds) &&
+                    checkedIds[item.tid] &&
+                    checkedIds[item.tid].length == item.children.length
+                  }
+                >
+                  {item.label}
+                </Checkbox>
+                <CheckboxGroup
+                  value={checkedIds[item.tid]}
+                  options={item.children}
+                  onChange={(list) => {
+                    let parentId = item.tid;
+                    if (Object.keys(checkedIds).length) {
+                      setCheckedIds((prev) => {
+                        return { ...prev, [parentId]: list };
+                      });
+                    } else {
+                      setCheckedIds({ [parentId]: list });
+                    }
+                  }}
+                />
+              </div>
+            );
+          })}
+          <a onClick={onClickApplyCatFilter} className="apply-filter">
+            Apply Filter
+          </a>
         </Modal>
 
-        {/* Cities popup modal */}
+        {/* Manufacturer Modal */}
         <Modal
-          title="City"
-          className="popup-filters"
-          visible={isCityModalVisible}
-          onCancel={handleCancelCity}
+          title="Manufacturer"
+          visible={isManModalVisible}
+          onCancel={handleCancelMan}
           footer={[]}
+          className="popup-filters"
         >
-          {/* <Input placeholder="Filter" /> */}
           <Checkbox.Group
             style={{ width: "100%" }}
-            name="city"
-            onChange={onChangeCity}
+            name="manufacturer"
+            onChange={onChangeManufacturer}
           >
-            {cityCount.map((item, key) => (
-              <Checkbox key={key} value={item.value}>
-                {`${item.label} ${item.count}`}
-              </Checkbox>
-            ))}
+            <Form.Item label="Popular">
+              {manufacturerCount.map((item, key) => (
+                <Checkbox key={key} value={item.value}>
+                  {`${item.label} ${item.count}`}
+                </Checkbox>
+              ))}
+            </Form.Item>
           </Checkbox.Group>
           <a className="apply-filter">Apply Filter</a>
         </Modal>
-      </form>
-      {/* Category Modal */}
-      <Modal
-        title="Categories"
-        visible={isCatModalVisible}
-        onCancel={handleCancel}
-        footer={[]}
-        className="popup-filters"
-      >
-        {grouped_category_trems.map((item, key) => {
-          let count = 0;
-          {
-            item.children.map((intc, key) => {
-              let int = parseInt(intc.count);
-              count = count + int;
-              return {
-                count,
-              };
-            });
-          }
-          return (
-            <div key={key} className="antd-groupcheckbox-cus">
-              <Checkbox
-                indeterminate={indeterminateInPopup}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    const parentId = item.tid;
-                    const childIds = item.children.map((child) => child.tid);
-                    if (Object.keys(checkedIds).length) {
-                      setCheckedIds((prev) => {
-                        return { ...prev, [parentId]: childIds };
-                      });
-                    } else {
-                      setCheckedIds({ [parentId]: childIds });
-                    }
-                  } else {
-                    setCheckedIds(
-                      Object.keys(checkedIds)
-                        .filter((key) => key !== item.tid)
-                        .reduce(
-                          (res, key) => ((res[key] = checkedIds[key]), res),
-                          {}
-                        )
-                    );
-                  }
-                }}
-                checked={
-                  Object.keys(checkedIds) &&
-                  checkedIds[item.tid] &&
-                  checkedIds[item.tid].length == item.children.length
-                }
-              >
-                {item.label}
-              </Checkbox>
-              <CheckboxGroup
-                value={checkedIds[item.tid]}
-                options={item.children}
-                onChange={(list) => {
-                  let parentId = item.tid;
-                  if (Object.keys(checkedIds).length) {
-                    setCheckedIds((prev) => {
-                      return { ...prev, [parentId]: list };
-                    });
-                  } else {
-                    setCheckedIds({ [parentId]: list });
-                  }
-                }}
-              />
-            </div>
-          );
-        })}
-        <a onClick={onClickApplyCatFilter} className="apply-filter">
-          Apply Filter
-        </a>
-      </Modal>
-
-      {/* Manufacturer Modal */}
-      <Modal
-        title="Manufacturer"
-        visible={isManModalVisible}
-        onCancel={handleCancelMan}
-        footer={[]}
-        className="popup-filters"
-      >
-        <Checkbox.Group
-          style={{ width: "100%" }}
-          name="manufacturer"
-          onChange={onChangeManufacturer}
-        >
-          <Form.Item label="Popular">
-            {manufacturerCount.map((item, key) => (
-              <Checkbox key={key} value={item.value}>
-                {`${item.label} ${item.count}`}
-              </Checkbox>
-            ))}
-          </Form.Item>
-        </Checkbox.Group>
-        <a className="apply-filter">Apply Filter</a>
-      </Modal>
-    </div>
+      </div>
     </>
   );
 };
