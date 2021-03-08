@@ -70,6 +70,8 @@
 .listing-content .invent-pro-cus-mid .eqinfo .eq-info {
     text-align: right;
     flex: 1;
+    margin-right: 0;
+    font-weight: 300;
 }
 .invent-pro-cus-mid .invent-cus-des {
     margin-top: 3px;

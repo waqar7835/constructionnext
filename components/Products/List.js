@@ -205,7 +205,7 @@ const List = () => {
                   </div>
                   <div className="invent-cus-city bold eqinfo">
                     <span className="eq-label">state:</span>
-                     <span>:</span>{" "}
+                    
                      <span className="eq-info">{product.field_state}</span>
                     
                   </div>
