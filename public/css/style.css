@@ -13130,6 +13130,7 @@ footer#page-footer .footer-area-top {
 .product-listing-page .shape-service-layout1 {
   min-height: 133px;
   padding: 16px 6px;
+  margin-bottom: 10px;
 }
 .product-listing-page .shape-service-layout1:after {
   border-bottom: 25px solid #f57c00;
@@ -13141,12 +13142,16 @@ footer#page-footer .footer-area-top {
 }
 .product-listing-page .shape-service-layout1 img {
   width: 54px;
+  height: 36px;
 }
 .product-listing-page .shape-service-layout1 h3 {
   font-size: 14px;
   text-align: center; 
   margin-top: 8px;
   line-height: 18px;
+}
+.product-detail-section .product-detail-block2 {
+  clear: both;
 }
 .product-detail-section .section-space-less30 {
   padding: 11px 0 0px;
