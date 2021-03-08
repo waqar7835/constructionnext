@@ -31,7 +31,13 @@ const Filters = () => {
   var num3 =0;
   var num4 = 0;
   let manufApply = '';
-
+  let cityApply= '';
+  
+  let stateApply= '';
+  let counApply= '';
+  let catApply= '';
+  let conditionApply = '';
+  let listApply = " ";
 
   const conditionCount = useSelector((state) => state.condition.condition);
   const countryCount = useSelector((state) => state.country.country);
@@ -50,7 +56,7 @@ const Filters = () => {
   const maxprice = useSelector((state) => state.maxprice.maxprice);
   const productsData = useSelector((state) => state.products.products);
 
-  
+  // console.log(conditionCount);
 
   useEffect(() => {
     dispatch(getCityCount());
@@ -93,20 +99,20 @@ const Filters = () => {
   const [checkDate, setCheckDate] = useState();
   
 
-  useEffect(() => {
-    if (router.query) {
-      setPrice([
-        router.query.price_min || minprice,
-        router.query.price_max || maxprice,
-      ]);
-      setYear([
-        router.query.year_min || minyear,
-        router.query.year_max || maxyear,
-      ]);
-    }
-    if (router.query.categoury) {
-    }
-  }, [router.query]);
+  // useEffect(() => {
+  //   if (router.query) {
+  //     setPrice([
+  //       router.query.price_min || minprice,
+  //       router.query.price_max || maxprice,
+  //     ]);
+  //     setYear([
+  //       router.query.year_min || minyear,
+  //       router.query.year_max || maxyear,
+  //     ]);
+  //   }
+  //   if (router.query.categoury) {
+  //   }
+  // }, [router.query]);
   useEffect(() => {
     let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
     dispatch(getCityCount(req));
@@ -254,6 +260,11 @@ const Filters = () => {
     // });
   };
 
+  const onClickApplyStateFilter = () => {  
+    setIsStateModalVisible(false);
+    // onChangeState();    
+  };
+
   //  for group checkboxes of  category
   const onChangeCategoury = (list) => {
     setCategoury(list);
@@ -293,6 +304,7 @@ const Filters = () => {
   }
   function onChangeCondition(value) {
     setCondition(value);
+    setAppliedFilters(value);
     applyFilter({
       condition: value,
       city,
@@ -309,7 +321,7 @@ const Filters = () => {
     });
   }
   function onChangeListingType(value) {
-   
+    setListingType(value); 
     applyFilter({
       listingType: value,
       date,
@@ -327,8 +339,8 @@ const Filters = () => {
   }
   function onChangeManufacturer(value) {
     setManufacturer(value);
-    console.log(value);
    
+    setAppliedFilters(value);
     applyFilter({
       manufacturer: value,
       date,
@@ -395,6 +407,8 @@ const Filters = () => {
       quickSearch,
     });
   }
+  
+ 
   // function onChangeDate(e) {  
   //   console.log(date); 
   //   setCheckDate(e.target.checked) 
@@ -417,7 +431,7 @@ const Filters = () => {
     if (index > str.length - 1) return str;
     return str.substring(0, index) + chr + str.substring(index + 1);
   }
-  const applyFilter = (params) => {
+  const applyFilter = (params) => {   
     const { equipment } = router.query;
     let str = "";
     if (!!equipment) {
@@ -533,7 +547,7 @@ const Filters = () => {
           })
         // }
          
-         console.log(manuf);     
+        //  console.log(manuf);     
     }
     if(req.includes(`categoury[]=`)){          
       var mid =  parseInt(categoury)     
@@ -598,102 +612,415 @@ const Filters = () => {
       </>
     );
   };
-
-  // const getAppliedFilters = () => {  
-  
-  //   let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
-  //  // console.log(req); 
-  //   let catg= '';  
-  //   let catgpid= ''; 
-  //   let pcatg = ''; 
-  //   if(req.includes(`manufacturer[]=`)){    
-     
-  //   //  var tid =  parseInt(manufacturer)
-  //   //   console.log(manufacturer  );
-     
-  //   var tid = 0;
-  //     // if(num3 == 0){
-  //     //   num3 = num3 + 1;
-  //       var test;
-       
-  // manufApply =    manufacturerCount.map((item, key) => { 
-  //   // console.log(item);      
-  //      tid = manufacturer[num3] ; 
-  //     // console.log(tid);    
-  //      num3 = num3 + 1;     
-  //      tid = parseInt(tid);       
-  //         if(item.value == tid) {
-  //         //  manufApply += `${item.label},` ;
-  //         //    manufApply2= manufApply.split(',')
-  //         // console.log(item.name);
-
-  //      test += item.label;
-        
-  //         } 
-  //         return (
-  //           test
-  //         )
-          
-  //         })
-          
-  //       // }
-       
-  //         console.log(manufApply);
-     
-  //   }
-  //   if(req.includes(`categoury[]=`)){          
-  //     var mid =  parseInt(categoury)     
-  //      if(num4 == 0){
-  //        num4 = num4 + 1;
-  //        console.log("yes o");
-  //      categoryCount.map((item, key) => {
-  //        console.log(item);
-  //          if(item.tid == mid) {
-  //           catg = item.name;
-  //           catgpid = item.pid;            
-  //           }
-  //          return (
-  //            catg
-  //          )
-          
-  //          })
-  //          categoryCount.map((item, key) => {
-  //           console.log(item);
-  //           if (catgpid){
-  //             if(item.tid == catgpid) {
-  //              pcatg = item.name;                         
-  //              }}
-  //             return (
-  //               pcatg
-  //             )
-            
-  //             })
-  //         }
-  //         console.log(pcatg);
-  //          console.log(catg);
-  //    }
-    
-  
-
-  //   return (
-  //     <>
-  
-  //     { 
-        
-  //        (manufApply || catg)?
-  //         manufApply.map((item,key)=>{
-  //           <span >{item}<a onClick={cancelFilter}>x</a></span>
-  //         }) 
-  //         : ""
-        
-  //        }
-       
-  //     </>
-  //   );
-  // };
-  const cancelFilter = () =>{
-    setManufacturer(false);
+  function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
   }
+
+  const getAppliedFilters = () => {  
+    let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
+    if(req.includes(`manufacturer[]=`)){       
+       manufApply= manufacturerCount.map((item, key) => {
+        manufacturer.map((id,key)=>{        
+          id =  parseInt(id) 
+        if(item.value == id) {
+         manufApply = item.label; 
+         return (
+          manufApply
+        )          
+         }
+       
+        })
+        return manufApply
+       })
+       manufApply = manufApply.filter(onlyUnique);
+      } 
+        if(req.includes(`condition[]=`)){        
+        conditionApply= conditionCount.map((item, key) => {
+          condition.map((id,key)=>{        
+            id =  parseInt(id) 
+          if(item.value == id) {
+            conditionApply = item.label;           
+            return (
+              conditionApply
+            )
+          }
+         
+         })  
+         return  conditionApply
+        })
+        conditionApply = conditionApply.filter(onlyUnique);
+        }
+        if(req.includes(`listing_type[]=`)){  
+          listApply= listingTypeCount.map((item, key) => {
+           listingType.map((id,key)=>{        
+            id =  parseInt(id) 
+          if(item.value == id) {
+            listApply = item.label;           
+           return (
+            listApply
+          ) 
+        }
+         
+         }) 
+         return listApply  
+        })
+        listApply = listApply.filter(onlyUnique);
+        }
+        // if(req.includes(`categoury[]=`)){            
+        // catApply= categoryCount.map((item, key) => {
+        //   categoury.map((id,key)=>{        
+        //     id =  parseInt(id) 
+        //   if(item.value == id) {
+        //     catApply = item.label;           
+        //    return (
+        //     catApply
+        //   ) 
+        // }
+         
+        //  }) 
+        //  return catApply  
+        // })
+        // catApply = catApply.filter(onlyUnique);
+        // }
+        if(req.includes(`country[]=`)){          
+        counApply= countryCount.map((item, key) => {
+          country.map((id,key)=>{        
+            id =  parseInt(id) 
+          if(item.value == id) {
+            counApply = item.label;   
+            return (
+              counApply
+            )        
+           }         
+         }) 
+         return  counApply 
+        })
+        counApply = counApply.filter(onlyUnique);
+        }
+        // if(req.includes(`city[]=`)){               
+        // cityApply = cityCount.map((item, key) => {
+        //   city.map((id,key)=>{  
+        //     id =  parseInt(id) 
+        //   if(item.value == id) {
+        //     cityApply = item.label;    
+        //     return (
+        //       cityApply
+        //     )       
+        //    }
+         
+        //  })   
+        //  return cityApply
+        // })
+        //  cityApply = cityApply.filter(onlyUnique);
+
+        // }
+      
+        // if(req.includes(`state[]=`)){                
+        // stateApply= stateCount.map((item, key) => {
+        //   state.map((id,key)=>{ 
+        //     id =  parseInt(id) 
+        //   if(item.value == id) {
+        //     stateApply = item.label;
+        //     return (
+        //       stateApply
+        //     )           
+        //    }         
+        //  }) 
+        //  return stateApply  
+        // })
+        // stateApply = stateApply.filter(onlyUnique);
+        // }
+
+    return (
+      <>
+  
+      { 
+        
+       (manufApply)? 
+       manufApply.map((item,key)=>(
+       <span className="list-title-text"><a onClick={()=>cancelManufactureFilter(item)}>x</a>{item}<a onClick={()=>cancelManufactureFilter(item)}>x</a></span>
+      ))
+      : ''
+    }
+    {/* {
+
+       (conditionApply)?
+       conditionApply.map((item,key)=>(
+       <span className="list-title-text">{item}<a onClick={()=>cancelConditionFilter(item)}>x</a></span>
+      ))
+      : ''
+         } */}
+          {
+
+        (listApply !=" ")?
+        listApply.map((item,key)=>(
+        <span className="list-title-text"><a onClick={()=>cancelListingTypeFilter(item)}>x</a>{item}</span>
+        ))
+        : ''
+  }
+   {/* {
+
+      (catApply)?
+      catApply.map((item,key)=>(
+      <span className="list-title-text">{item}<a onClick={()=>cancelCategoryFilter(item)}>x</a></span>
+      ))
+      : ''
+  } */}
+   {
+
+    (counApply)?
+    counApply.map((item,key)=>(
+    <span className="list-title-text"><a onClick={()=>cancelCountryFilter(item)}>x</a>{item}</span>
+    ))
+    : ''
+  }
+   {/* {
+
+    (stateApply)?
+    stateApply.map((item,key)=>(
+    <span className="list-title-text">{item}<a onClick={()=>cancelStateFilter(item)}>x</a></span>
+    ))
+    : ''
+  }
+   {
+
+    (cityApply)?
+    cityApply.map((item,key)=>(
+    <span className="list-title-text">{item}<a onClick={()=>cancelCityFilter(item)}>x</a></span>
+    ))
+    : ''
+  } */}
+       
+      </>
+    );
+  };
+  const cancelAllFilters = () =>{
+  //  setState(" ");
+  }
+  const cancelListingTypeFilter = (label) =>{
+  
+    listApply = listingTypeCount.map((item, key) => {
+     if(item.label == label) {
+      listApply = item.value;           
+      }
+     return (
+      listApply
+     )
+
+     })
+    //  listApply =  listApply.filter(onlyUnique);
+     listApply= listingType.filter(name => name!=listApply);  
+     setListingType(listApply);
+     applyFilter({
+      city,
+      date,
+      checkDate,
+      state,
+      country,
+      categoury,
+      manufacturer,
+      listingType: listApply,
+      condition,
+      year,
+      price,
+      quickSearch,
+     })    
+}
+//   const cancelConditionFilter = (label) =>{  
+//     conditionApply = conditionCount.map((item, key) => {
+//      if(item.label == label) {
+//       conditionApply = item.value;           
+//       }
+//      return (
+//       conditionApply
+//      )
+
+//      })
+//     //  conditionApply =  conditionApply.filter(onlyUnique);
+//      conditionApply= condition.filter(name => name!=conditionApply);
+     
+//      setCondition(conditionApply);
+//      applyFilter({
+//       city,
+//       date,
+//       checkDate,
+//       state,
+//       country,
+//       categoury,
+//       manufacturer,
+//       listingType,
+//       condition: conditionApply,
+//       year,
+//       price,
+//       quickSearch,
+//      })
+    
+// }
+// const cancelCategoryFilter = (label) =>{
+  
+//   catApply = categoryCount.map((item, key) => {
+//    if(item.label == label) {
+//     catApply = item.value;           
+//     }
+//    return (
+//     catApply
+//    )
+
+//    })
+//   //  catApply =  catApply.filter(onlyUnique);
+//    catApply= categoury.filter(name => name!=catApply);
+   
+//    setCategoury(catApply);
+//    applyFilter({
+//     city,
+//     date,
+//     checkDate,
+//     state,
+//     country,
+//     categoury: catApply,
+//     manufacturer,
+//     listingType,
+//     condition,
+//     year,
+//     price,
+//     quickSearch,
+//    })
+  
+// }
+const cancelManufactureFilter = (label) =>{
+  
+  manufApply = manufacturerCount.map((item, key) => {
+   if(item.label == label) {
+    manufApply = item.value;           
+    }
+   return (
+     manufApply
+   )
+
+   })
+   manufApply = manufApply.filter(onlyUnique);
+   manufApply= manufacturer.filter(name => name!=manufApply);
+   console.log(manufApply);
+   setManufacturer(manufApply);
+   applyFilter({
+    city,
+    date,
+    checkDate,
+    state,
+    country,
+    categoury,
+    manufacturer: manufApply,
+    listingType,
+    condition,
+    year,
+    price,
+    quickSearch,
+   })
+  
+}
+const cancelCountryFilter = (label) =>{
+  
+  counApply = countryCount.map((item, key) => {
+   if(item.label == label) {
+    counApply = item.value;           
+    }
+   return (
+    counApply
+   )
+
+   })
+   counApply = counApply.filter(onlyUnique);
+   counApply= country.filter(name => name!=counApply);
+  
+   setCountry(counApply);
+   applyFilter({
+    city,
+    date,
+    checkDate,
+    state,
+    country: counApply,
+    categoury,
+    manufacturer,
+    listingType,
+    condition,
+    year,
+    price,
+    quickSearch,
+   })
+  
+}
+const cancelStateFilter = (label) =>{
+  
+  stateApply = stateCount.map((item, key) => {
+   if(item.label == label) {
+    stateApply = item.value;           
+    }
+   return (
+    stateApply
+   )
+
+   })
+   stateApply = stateApply.filter(onlyUnique);
+   stateApply= state.filter(name => name!=stateApply);
+  
+   setState(stateApply);
+   applyFilter({
+    city,
+    date,
+    checkDate,
+    state: stateApply,
+    country,
+    categoury,
+    manufacturer,
+    listingType,
+    condition,
+    year,
+    price,
+    quickSearch,
+   })
+  
+}
+const cancelCityFilter = (label) =>{
+  
+   cityApply = cityCount.map((item, key) => {
+   if(item.label == label) {
+    cityApply = item.value;
+    console.log("value", item.value)   
+    return (
+      cityApply
+     )        
+    }
+   return (
+    cityApply
+   )
+   })
+ 
+   cityApply = cityApply.filter(onlyUnique);
+  
+   cityApply =  cityApply.map((item,key)=>{
+  return  city.filter(name => name!=item);
+   })  
+   setCity(cityApply);
+   console.log("->",cityApply);
+   console.log("1->",cityApply[1]);
+   applyFilter({
+    city: cityApply,
+    date,
+    checkDate,
+    state,
+    country,
+    categoury,
+    manufacturer,
+    listingType,
+    condition,
+    year,
+    price,
+    quickSearch,
+   })
+  
+}
+
+
 
   return (
     <>
@@ -701,9 +1028,11 @@ const Filters = () => {
         <h6 className="list-title">{gettitle()}</h6>
       </div>
     <div className="filters-block left-side-filters col-md-3 col-xs-12">
-    {/* <div className="views-header">
+      {/* {appliedFilters} */}
+    <div className="views-header">
+      <a onClick={()=>cancelAllFilters()}> Clear All</a>
         <p className="list-title">{getAppliedFilters()}</p>
-      </div> */}
+      </div>
       <form className="views-exposed-form left-side-filterseach">
         <Form.Item label="Quick Search">
           <Input
@@ -1155,7 +1484,7 @@ const Filters = () => {
           <Checkbox.Group
             style={{ width: "100%" }}
             name="state"
-            onChange={onChangeState}
+            // onChange={onChangeState}
           >
             {stateCount.map((item, key) => (
               <Checkbox key={key} value={item.value}>
@@ -1163,7 +1492,7 @@ const Filters = () => {
               </Checkbox>
             ))}
           </Checkbox.Group>
-          <a className="apply-filter">Apply Filter</a>
+          <a className="apply-filter" onClick={onClickApplyStateFilter}>Apply Filter</a>
         </Modal>
 
         {/* Cities popup modal */}
