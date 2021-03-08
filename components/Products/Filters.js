@@ -258,9 +258,56 @@ const Filters = () => {
     // });
   };
 
-  const onClickApplyStateFilter = () => {
+  const onClickApplyStateFilter = () => {  
     setIsStateModalVisible(false);
-    // onChangeState();
+    applyFilter({
+      state,
+      date,
+      checkDate,
+      city,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  };
+  const onClickApplyCityFilter = () => {  
+    setIsCityModalVisible(false);
+    applyFilter({
+      city,
+      date,
+      checkDate,
+      state,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
+  };
+  const onClickApplyManuFilter = () => {  
+    setIsManModalVisible(false);
+    applyFilter({
+      city,
+      date,
+      checkDate,
+      state,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price,
+      quickSearch,
+    });
   };
 
   //  for group checkboxes of  category
@@ -704,16 +751,16 @@ const Filters = () => {
           ? manufApply.map((item, key) => (
               <span className="list-title-text">
                 <a onClick={() => cancelManufactureFilter(item)}>x</a>
-                {item}
-                <a onClick={() => cancelManufactureFilter(item)}>x</a>
+                {item}               
               </span>
             ))
           : ""}
         {conditionApply
           ? conditionApply.map((item, key) => (
               <span className="list-title-text">
+                 <a onClick={() => cancelConditionFilter(item)}>x</a>
                 {item}
-                <a onClick={() => cancelConditionFilter(item)}>x</a>
+               
               </span>
             ))
           : ""}
@@ -728,8 +775,9 @@ const Filters = () => {
         {catApply
           ? catApply.map((item, key) => (
               <span className="list-title-text">
+                 <a onClick={() => cancelCategoryFilter(item)}>x</a>
                 {item}
-                <a onClick={() => cancelCategoryFilter(item)}>x</a>
+               
               </span>
             ))
           : ""}
@@ -744,16 +792,18 @@ const Filters = () => {
         {stateApply
           ? stateApply.map((item, key) => (
               <span className="list-title-text">
+                 <a onClick={() => cancelStateFilter(item)}>x</a>
                 {item}
-                <a onClick={() => cancelStateFilter(item)}>x</a>
+               
               </span>
             ))
           : ""}
         {cityApply
           ? cityApply.map((item, key) => (
               <span className="list-title-text">
+                 <a onClick={() => cancelCityFilter(item)}>x</a>
                 {item}
-                <a onClick={() => cancelCityFilter(item)}>x</a>
+               
               </span>
             ))
           : ""}
@@ -764,14 +814,14 @@ const Filters = () => {
     //  setState(" ");
   };
   const cancelListingTypeFilter = (label) => {
-    listApply = listingTypeCount.map((item, key) => {
-      if (item.label == label) {
-        listApply = item.value;
-      }
-      return listApply;
-    });
-    //  listApply =  listApply.filter(onlyUnique);
-    listApply = listingType.filter((name) => name != listApply);
+    let selectedListTData = listingTypeCount.filter(
+      (singleListTData) => listingType.indexOf(singleListTData.value) > -1
+    );
+
+    let filteredltData = selectedListTData.filter(
+      (listTData) => listTData.label != label
+    );
+    listApply = filteredltData.map((listApply) => listApply.value);
     setListingType(listApply);
     applyFilter({
       city,
@@ -789,15 +839,14 @@ const Filters = () => {
     });
   };
   const cancelConditionFilter = (label) => {
-    conditionApply = conditionCount.map((item, key) => {
-      if (item.label == label) {
-        conditionApply = item.value;
-      }
-      return conditionApply;
-    });
-    //  conditionApply =  conditionApply.filter(onlyUnique);
-    conditionApply = condition.filter((name) => name != conditionApply);
+    let selectedCondData = conditionCount.filter(
+      (singleConData) => condition.indexOf(singleConData.value) > -1
+    );
 
+    let filteredConData = selectedCondData.filter(
+      (conData) => conData.label != label
+    );
+    conditionApply = filteredConData.map((condition) => condition.value);
     setCondition(conditionApply);
     applyFilter({
       city,
@@ -815,15 +864,14 @@ const Filters = () => {
     });
   };
   const cancelCategoryFilter = (label) => {
-    catApply = categoryCount.map((item, key) => {
-      if (item.label == label) {
-        catApply = item.value;
-      }
-      return catApply;
-    });
-    //  catApply =  catApply.filter(onlyUnique);
-    catApply = categoury.filter((name) => name != catApply);
+    let selectedCatgData = categoryCount.filter(
+      (singleCatData) => categoury.indexOf(singleCatData.value) > -1
+    );
 
+    let filteredCatData = selectedCatgData.filter(
+      (catData) => catData.label != label
+    );
+    catApply = filteredCatData.map((cat) => cat.value);
     setCategoury(catApply);
     applyFilter({
       city,
@@ -841,15 +889,14 @@ const Filters = () => {
     });
   };
   const cancelManufactureFilter = (label) => {
-    manufApply = manufacturerCount.map((item, key) => {
-      if (item.label == label) {
-        manufApply = item.value;
-      }
-      return manufApply;
-    });
-    manufApply = manufApply.filter(onlyUnique);
-    manufApply = manufacturer.filter((name) => name != manufApply);
-    console.log(manufApply);
+    let selectedManufData = manufacturerCount.filter(
+      (singleManufData) => manufacturer.indexOf(singleManufData.value) > -1
+    );
+
+    let filteredManuData = selectedManufData.filter(
+      (manufData) => manufData.label != label
+    );
+    manufApply = filteredManuData.map((manuf) => manuf.value);
     setManufacturer(manufApply);
     applyFilter({
       city,
@@ -867,15 +914,15 @@ const Filters = () => {
     });
   };
   const cancelCountryFilter = (label) => {
-    counApply = countryCount.map((item, key) => {
-      if (item.label == label) {
-        counApply = item.value;
-      }
-      return counApply;
-    });
-    counApply = counApply.filter(onlyUnique);
-    counApply = country.filter((name) => name != counApply);
+    let selectedCountData = countryCount.filter(
+      (singleCounData) => country.indexOf(singleCounData.value) > -1
+    );
 
+    let filteredCounData = selectedCountData.filter(
+      (counData) => counData.label != label
+    );
+    counApply = filteredCounData.map((country) => country.value);
+   
     setCountry(counApply);
     applyFilter({
       city,
@@ -893,16 +940,15 @@ const Filters = () => {
     });
   };
   const cancelStateFilter = (label) => {
-    stateApply = stateCount.map((item, key) => {
-      if (item.label == label) {
-        stateApply = item.value;
-      }
-      return stateApply;
-    });
-    stateApply = stateApply.filter(onlyUnique);
-    stateApply = state.filter((name) => name != stateApply);
+    let selectedStatesData = stateCount.filter(
+      (singleStateData) => state.indexOf(singleStateData.value) > -1
+    );
 
-    setState(stateApply);
+    let filteredStateData = selectedStatesData.filter(
+      (stateData) => stateData.label != label
+    );
+    stateApply = filteredStateData.map((state) => state.value);
+    setState(stateApply);  
     applyFilter({
       city,
       date,
@@ -918,16 +964,7 @@ const Filters = () => {
       quickSearch,
     });
   };
-  const cancelCityFilter = (label) => {
-    // cityApply = cityCount.map((item, key) => {
-    //   if (item.label == label) {
-    //     cityApply = item.value;
-    //     console.log("value", item.value);
-    //     return cityApply;
-    //   }
-    //   return cityApply;
-    // });
-
+  const cancelCityFilter = (label) => {   
     let selectedCitiesData = cityCount.filter(
       (singleCityData) => city.indexOf(singleCityData.value) > -1
     );
@@ -935,15 +972,9 @@ const Filters = () => {
     let filteredCityData = selectedCitiesData.filter(
       (cityData) => cityData.label != label
     );
-
     cityApply = filteredCityData.map((city) => city.value);
-
-    // cityApply = cityApply.map((item, key) => {
-    //   return city.filter((name) => name != item);
-    // });
     setCity(cityApply);
-    console.log("->", filteredCityData, cityApply);
-    // console.log("1->", cityApply[1]);
+    console.log("->", filteredCityData, cityApply);   
     applyFilter({
       city: cityApply,
       date,
@@ -968,7 +999,7 @@ const Filters = () => {
       <div className="filters-block left-side-filters col-md-3 col-xs-12">
         {/* {appliedFilters} */}
         <div className="views-header">
-          <a onClick={() => cancelAllFilters()}> Clear All</a>
+          <a onClick={() => cancelAllFilters()} classNmae="clear-all-filters"> Clear All</a>
           <p className="list-title">{getAppliedFilters()}</p>
         </div>
         <form className="views-exposed-form left-side-filterseach">
@@ -1434,7 +1465,9 @@ const Filters = () => {
             <Checkbox.Group
               style={{ width: "100%" }}
               name="state"
-              // onChange={onChangeState}
+              onChange={(value)=>{
+                setState(value)
+              }}
             >
               {stateCount.map((item, key) => (
                 <Checkbox key={key} value={item.value}>
@@ -1442,9 +1475,8 @@ const Filters = () => {
                 </Checkbox>
               ))}
             </Checkbox.Group>
-            <a className="apply-filter" onClick={onClickApplyStateFilter}>
-              Apply Filter
-            </a>
+            <a className="apply-filter" onClick={onClickApplyStateFilter}>Apply Filter</a>
+             
           </Modal>
 
           {/* Cities popup modal */}
@@ -1459,7 +1491,9 @@ const Filters = () => {
             <Checkbox.Group
               style={{ width: "100%" }}
               name="city"
-              onChange={onChangeCity}
+              onChange={(value)=>{
+                setCity(value);
+              }}
             >
               {cityCount.map((item, key) => (
                 <Checkbox key={key} value={item.value}>
@@ -1467,7 +1501,7 @@ const Filters = () => {
                 </Checkbox>
               ))}
             </Checkbox.Group>
-            <a className="apply-filter">Apply Filter</a>
+            <a className="apply-filter" onClick={onClickApplyCityFilter}>Apply Filter</a>
           </Modal>
         </form>
         {/* Category Modal */}
@@ -1556,7 +1590,9 @@ const Filters = () => {
           <Checkbox.Group
             style={{ width: "100%" }}
             name="manufacturer"
-            onChange={onChangeManufacturer}
+            onChange={(value)=>{
+              setManufacturer(value)
+            }}
           >
             <Form.Item label="Popular">
               {manufacturerCount.map((item, key) => (
@@ -1566,7 +1602,7 @@ const Filters = () => {
               ))}
             </Form.Item>
           </Checkbox.Group>
-          <a className="apply-filter">Apply Filter</a>
+          <a onClick={onClickApplyManuFilter} className="apply-filter" >Apply Filter</a>
         </Modal>
       </div>
     </>

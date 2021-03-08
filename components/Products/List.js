@@ -215,13 +215,13 @@ const List = () => {
                 </div>
                 <div className="invent-pro-cus-rt">
                   <div className="manf-detail">
-                    <div className="lister-dealer-info">
+                  <div className="lister-dealer-info">
                       <p>
-                        <a href="#">Lorem Ipsum has</a>
+                        <a href="#">Lam Supply LLC</a>
                       </p>
-                      <p>Lorem Ipsum has has t</p>
+                      <p>{product.field_machine_location} </p>
                       <p>
-                        <span>Phone:</span> 7483804
+                        <span>Phone:</span>  +1 408-610-7177
                       </p>
                     </div>
                     <div className="products-info-btns">

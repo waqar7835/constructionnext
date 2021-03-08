@@ -124,14 +124,14 @@ const Main = ({ content }) => {
                     <ProductDetailSellerMail />
                   </div>
                   <div className="pro-b2-purchase-value"></div>
-                  <div className="pro-rt2-lft-title rigth-side-detailp">
+                  {/* <div className="pro-rt2-lft-title rigth-side-detailp">
                     <p>
                       <a href="#">Lorem ipsum dolor sit </a>
                     </p>
-                  </div>
-                  <div className="pro-rt2-lft-subt rigth-side-detailp">
+                  </div> */}
+                  {/* <div className="pro-rt2-lft-subt rigth-side-detailp">
                     <p>Lorem, ipsum dolor site</p>
-                  </div>
+                  </div> */}
                   <div className="pro-rt2-lft-phon rigth-side-detailp">
                     <p>
                       <span>Phone: </span> {!!content && content.field_phone}
