@@ -666,22 +666,22 @@ const Filters = () => {
         })
         listApply = listApply.filter(onlyUnique);
         }
-        // if(req.includes(`categoury[]=`)){            
-        // catApply= categoryCount.map((item, key) => {
-        //   categoury.map((id,key)=>{        
-        //     id =  parseInt(id) 
-        //   if(item.value == id) {
-        //     catApply = item.label;           
-        //    return (
-        //     catApply
-        //   ) 
-        // }
+        if(req.includes(`categoury[]=`)){            
+        catApply= categoryCount.map((item, key) => {
+          categoury.map((id,key)=>{        
+            id =  parseInt(id) 
+          if(item.value == id) {
+            catApply = item.label;           
+           return (
+            catApply
+          ) 
+        }
          
-        //  }) 
-        //  return catApply  
-        // })
-        // catApply = catApply.filter(onlyUnique);
-        // }
+         }) 
+         return catApply  
+        })
+        catApply = catApply.filter(onlyUnique);
+        }
         if(req.includes(`country[]=`)){          
         counApply= countryCount.map((item, key) => {
           country.map((id,key)=>{        
@@ -697,39 +697,39 @@ const Filters = () => {
         })
         counApply = counApply.filter(onlyUnique);
         }
-        // if(req.includes(`city[]=`)){               
-        // cityApply = cityCount.map((item, key) => {
-        //   city.map((id,key)=>{  
-        //     id =  parseInt(id) 
-        //   if(item.value == id) {
-        //     cityApply = item.label;    
-        //     return (
-        //       cityApply
-        //     )       
-        //    }
+        if(req.includes(`city[]=`)){               
+        cityApply = cityCount.map((item, key) => {
+          city.map((id,key)=>{  
+            id =  parseInt(id) 
+          if(item.value == id) {
+            cityApply = item.label;    
+            return (
+              cityApply
+            )       
+           }
          
-        //  })   
-        //  return cityApply
-        // })
-        //  cityApply = cityApply.filter(onlyUnique);
+         })   
+         return cityApply
+        })
+         cityApply = cityApply.filter(onlyUnique);
 
-        // }
+        }
       
-        // if(req.includes(`state[]=`)){                
-        // stateApply= stateCount.map((item, key) => {
-        //   state.map((id,key)=>{ 
-        //     id =  parseInt(id) 
-        //   if(item.value == id) {
-        //     stateApply = item.label;
-        //     return (
-        //       stateApply
-        //     )           
-        //    }         
-        //  }) 
-        //  return stateApply  
-        // })
-        // stateApply = stateApply.filter(onlyUnique);
-        // }
+        if(req.includes(`state[]=`)){                
+        stateApply= stateCount.map((item, key) => {
+          state.map((id,key)=>{ 
+            id =  parseInt(id) 
+          if(item.value == id) {
+            stateApply = item.label;
+            return (
+              stateApply
+            )           
+           }         
+         }) 
+         return stateApply  
+        })
+        stateApply = stateApply.filter(onlyUnique);
+        }
 
     return (
       <>
@@ -742,14 +742,14 @@ const Filters = () => {
       ))
       : ''
     }
-    {/* {
+    {
 
        (conditionApply)?
        conditionApply.map((item,key)=>(
        <span className="list-title-text">{item}<a onClick={()=>cancelConditionFilter(item)}>x</a></span>
       ))
       : ''
-         } */}
+         }
           {
 
         (listApply !=" ")?
@@ -758,14 +758,14 @@ const Filters = () => {
         ))
         : ''
   }
-   {/* {
+   {
 
       (catApply)?
       catApply.map((item,key)=>(
       <span className="list-title-text">{item}<a onClick={()=>cancelCategoryFilter(item)}>x</a></span>
       ))
       : ''
-  } */}
+  }
    {
 
     (counApply)?
@@ -774,7 +774,7 @@ const Filters = () => {
     ))
     : ''
   }
-   {/* {
+   {
 
     (stateApply)?
     stateApply.map((item,key)=>(
@@ -789,7 +789,7 @@ const Filters = () => {
     <span className="list-title-text">{item}<a onClick={()=>cancelCityFilter(item)}>x</a></span>
     ))
     : ''
-  } */}
+  }
        
       </>
     );
@@ -826,67 +826,67 @@ const Filters = () => {
       quickSearch,
      })    
 }
-//   const cancelConditionFilter = (label) =>{  
-//     conditionApply = conditionCount.map((item, key) => {
-//      if(item.label == label) {
-//       conditionApply = item.value;           
-//       }
-//      return (
-//       conditionApply
-//      )
+  const cancelConditionFilter = (label) =>{  
+    conditionApply = conditionCount.map((item, key) => {
+     if(item.label == label) {
+      conditionApply = item.value;           
+      }
+     return (
+      conditionApply
+     )
 
-//      })
-//     //  conditionApply =  conditionApply.filter(onlyUnique);
-//      conditionApply= condition.filter(name => name!=conditionApply);
+     })
+    //  conditionApply =  conditionApply.filter(onlyUnique);
+     conditionApply= condition.filter(name => name!=conditionApply);
      
-//      setCondition(conditionApply);
-//      applyFilter({
-//       city,
-//       date,
-//       checkDate,
-//       state,
-//       country,
-//       categoury,
-//       manufacturer,
-//       listingType,
-//       condition: conditionApply,
-//       year,
-//       price,
-//       quickSearch,
-//      })
+     setCondition(conditionApply);
+     applyFilter({
+      city,
+      date,
+      checkDate,
+      state,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition: conditionApply,
+      year,
+      price,
+      quickSearch,
+     })
     
-// }
-// const cancelCategoryFilter = (label) =>{
+}
+const cancelCategoryFilter = (label) =>{
   
-//   catApply = categoryCount.map((item, key) => {
-//    if(item.label == label) {
-//     catApply = item.value;           
-//     }
-//    return (
-//     catApply
-//    )
+  catApply = categoryCount.map((item, key) => {
+   if(item.label == label) {
+    catApply = item.value;           
+    }
+   return (
+    catApply
+   )
 
-//    })
-//   //  catApply =  catApply.filter(onlyUnique);
-//    catApply= categoury.filter(name => name!=catApply);
+   })
+  //  catApply =  catApply.filter(onlyUnique);
+   catApply= categoury.filter(name => name!=catApply);
    
-//    setCategoury(catApply);
-//    applyFilter({
-//     city,
-//     date,
-//     checkDate,
-//     state,
-//     country,
-//     categoury: catApply,
-//     manufacturer,
-//     listingType,
-//     condition,
-//     year,
-//     price,
-//     quickSearch,
-//    })
+   setCategoury(catApply);
+   applyFilter({
+    city,
+    date,
+    checkDate,
+    state,
+    country,
+    categoury: catApply,
+    manufacturer,
+    listingType,
+    condition,
+    year,
+    price,
+    quickSearch,
+   })
   
-// }
+}
 const cancelManufactureFilter = (label) =>{
   
   manufApply = manufacturerCount.map((item, key) => {
