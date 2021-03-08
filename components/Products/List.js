@@ -139,7 +139,7 @@ const List = () => {
                       typeof="Image"
                     />
                   </div>
-                  <div className="invent-cus-created">
+                  {/* <div className="invent-cus-created">
                     updated: Mon, 02/15/2021 - 15:53
                   </div>
                   <div className="invent-cus-body">
@@ -147,7 +147,7 @@ const List = () => {
                       Lorem Ipsum has been the industry's standard dummy text
                       ever since the 1500s, when an
                     </p>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="invent-pro-cus-mid">
