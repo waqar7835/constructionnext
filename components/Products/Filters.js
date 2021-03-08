@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Collapse, Checkbox, Modal, Form, Input, InputNumber } from "antd";
+import EmailBlockv from './EmailBlockv';
 
 import { useRouter } from "next/router";
 import { RangeSlider } from "rsuite";
@@ -795,9 +796,9 @@ const Filters = () => {
       <>
         {manufApply
           ? manufApply.map((item, key) => (
-              <span className="list-title-text">
-                <a onClick={() => cancelManufactureFilter(item)}>x</a>
-                {item}               
+              <span className="badge badge-secondary">
+               {item}<a onClick={() => cancelManufactureFilter(item)}>x</a>
+                            
               </span>
             ))
           : ""}
@@ -817,52 +818,52 @@ const Filters = () => {
           }
         {conditionApply
           ? conditionApply.map((item, key) => (
-              <span className="list-title-text">
-                 <a onClick={() => cancelConditionFilter(item)}>x</a>
-                {item}
+              <span className="badge badge-secondary">
+                 {item}<a onClick={() => cancelConditionFilter(item)}>x</a>
+                
                
               </span>
             ))
           : ""}
         {listApply != " "
           ? listApply.map((item, key) => (
-              <span className="list-title-text">
-                <a onClick={() => cancelListingTypeFilter(item)}>x</a>
-                {item}
+              <span className="badge badge-secondary">
+               {item} <a onClick={() => cancelListingTypeFilter(item)}>x</a>
+                
               </span>
             ))
           : ""}
         {catApply
           ? catApply.map((item, key) => (
-              <span className="list-title-text">
-                 <a onClick={() => cancelCategoryFilter(item)}>x</a>
-                {item}
+              <span className="badge badge-secondary">
+                {item} <a onClick={() => cancelCategoryFilter(item)}>x</a>
+                
                
               </span>
             ))
           : ""}
         {counApply
           ? counApply.map((item, key) => (
-              <span className="list-title-text">
-                <a onClick={() => cancelCountryFilter(item)}>x</a>
-                {item}
+              <span className="badge badge-secondary">
+               {item} <a onClick={() => cancelCountryFilter(item)}>x</a>
+                
               </span>
             ))
           : ""}
         {stateApply
           ? stateApply.map((item, key) => (
-              <span className="list-title-text">
-                 <a onClick={() => cancelStateFilter(item)}>x</a>
-                {item}
+              <span className="badge badge-secondary">
+                {item} <a onClick={() => cancelStateFilter(item)}>x</a>
+                
                
               </span>
             ))
           : ""}
         {cityApply
           ? cityApply.map((item, key) => (
-              <span className="list-title-text">
-                 <a onClick={() => cancelCityFilter(item)}>x</a>
-                {item}
+              <span className="badge badge-secondary">
+                {item}<a onClick={() => cancelCityFilter(item)}>x</a>
+                
                
               </span>
             ))
@@ -1111,13 +1112,14 @@ const Filters = () => {
 
   return (
     <>
-      <div className="views-header">
+      <div className="views-header emailand-title">
         <h6 className="list-title">{gettitle()}</h6>
+        <div className="email-right"><EmailBlockv /></div>
       </div>
       <div className="filters-block left-side-filters col-md-3 col-xs-12">
         {/* {appliedFilters} */}
         <div className="views-header">
-         {(manufApply || conditionApply || counApply || catApply || cityApply || stateApply  )?<span><a onClick={cancelAllFilters} classNmae="clear-all-filters"> Clear y All</a></span>: 't'} 
+         {(manufApply || conditionApply || counApply || catApply || cityApply || stateApply  )?<span><a onClick={cancelAllFilters} classNmae="clear-all-filters"> Clear y All</a></span>: ''} 
           <p className="list-title">{getAppliedFilters()}</p>
         </div>
         <form className="views-exposed-form left-side-filterseach">
