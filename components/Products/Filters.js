@@ -968,7 +968,7 @@ const Filters = () => {
       <div className="filters-block left-side-filters col-md-3 col-xs-12">
         {/* {appliedFilters} */}
         <div className="views-header">
-          <a onClick={() => cancelAllFilters()}> Clear All</a>
+          <a className="clearall-filter" onClick={() => cancelAllFilters()}> Clear All</a>
           <p className="list-title">{getAppliedFilters()}</p>
         </div>
         <form className="views-exposed-form left-side-filterseach">

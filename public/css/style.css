@@ -56,6 +56,7 @@ Version: 1.0
   --main-font-color: #ff9800;
   --background-white: #ffffff;
   --defaulte-font-color: #333333; 
+  --main-border-color: #ff9800;
 }
 
 /*=======================================================================
@@ -13338,11 +13339,30 @@ h2 {
 .email-block p:nth-last-child(1) {
   margin-right: 8px;
 }
+.product-listing-page .email-block {
+  margin-bottom: 0;
+}
 .email-block p a i {
   margin-right: 3px;
 }
 .email-block p a:hover {
   text-decoration: none;
+}
+.filters-block.left-side-filters .views-header {
+  padding-top: 10px;
+}
+.filters-block.left-side-filters .views-header a.clearall-filter {
+  color: var(--main-font-color);
+    background-color: var(--background-white);
+    border: 1px solid var(--main-border-color);
+    padding: 12px 15px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+.filters-block.left-side-filters .views-header a.clearall-filter:hover {
+  background-color: var(--main-font-color);
+  color: var(--background-white);
 }
 .main-menu-area .d-md-flex::after ,
 .main-menu-area .d-md-flex::before {
