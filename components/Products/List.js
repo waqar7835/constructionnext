@@ -123,6 +123,7 @@ const List = () => {
       {/* <div className="views-header">
         <h3 className="list-title">{gettitle()}</h3>
       </div> */}
+
       <div className="views-row-main">
         {!!productsData.rows &&
           productsData.rows.map((product, index) => (
@@ -231,6 +232,7 @@ const List = () => {
                 <div className="invent-pro-cus-rt">
                   <div className="manf-detail">
                   <div className="lister-dealer-info">
+                     <h6>Contact Information</h6>
                       <p>
                         <a href="#">Lam Supply LLC</a>
                       </p>
@@ -238,6 +240,7 @@ const List = () => {
                       <p>
                         <span>Phone:</span>  +1 408-610-7177
                       </p>
+                      <p><span>Contact:</span> Tinh Lam</p>
                     </div>
                     <div className="products-info-btns">
                       <Link
