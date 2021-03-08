@@ -49,6 +49,15 @@ Version: 1.0
     display: block;
   }
 }
+
+/* define custom variables for color  */
+
+:root {
+  --main-font-color: #ff9800;
+  --background-white: #ffffff;
+  --defaulte-font-color: #333333; 
+}
+
 /*=======================================================================
 [01] Typography
 =========================================================================*/
@@ -4253,7 +4262,7 @@ ul.slider-btn li:last-child {
   }
 }
 .main-menu-area nav ul li > a:hover {
-  color: #ff9800;
+  color: var(--main-font-color);
 }
 .main-menu-area nav ul li ul {
   margin-top: 0;
@@ -13184,7 +13193,19 @@ footer#page-footer .footer-area-top {
     margin-bottom: 16px;
 }
 .product-listing-page .filters-block form.views-exposed-form .ant-collapse .ant-checkbox-indeterminate .ant-checkbox-inner::after {
-  background-color: #ff9800;
+  /* background-color: #ff9800; */
+  background-color: transparent;
+  position: absolute;
+    display: table;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(
+45deg
+) scale(1) translate(-50%, -50%);
+    opacity: 1;
+    transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
+    content: ' ';
 }
 .product-listing-page .filters-block form.views-exposed-form .ant-collapse .ant-checkbox-checked .ant-checkbox-inner {
   background-color: #ff9800;
@@ -14080,4 +14101,7 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
  #listing-content-results .views-header .list-title {
    color: #333333;
    margin-bottom: 10px;
+ }
+ .product-listing-page #filter-listing-block-main {
+   padding-bottom: 25px;
  }
