@@ -1,8 +1,8 @@
 import { Container, Navbar, Nav, NavLink } from "react-bootstrap";
-import React, { useEffect } from "react";
 import Link from "next/link";
 import { Menu, Item } from "antd";
 import getEquipmentsData from "@store/actions/equipments";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const { SubMenu } = Menu;
@@ -16,9 +16,13 @@ const MainMenu = () => {
   return (
     <nav id="dropdown">
       <ul >
-     
+        
         <li>
-          <a href={`/inventory/search`}>Inventory</a>
+          <a href="/">Welcome</a>
+        </li>
+
+        <li>
+          <a href="#">Inventory</a>
           <ul>
           {equipmentsData.map((val, index) => (
             <li>
