@@ -13733,6 +13733,27 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
  } 
 
  @media (min-width: 320px) and (max-width: 575.98px)  { 
+  .listing-content .invent-pro-cus-rt .lister-dealer-info p {
+    text-align: left !important;
+  }
+  .listing-content .invent-pro-cus-rt {
+    padding: 25px 0 0 15px;
+  }
+  .email-block p:nth-last-child(1) {
+    margin-right: 17px;
+  }
+  .invent-pro-cus-rt .lister-dealer-info {
+    text-align: left;
+  }
+  .emailand-title .list-title {
+    display: block;
+    width: 100%;
+  }
+  .emailand-title .email-right,
+  .emailand-title {
+    display: block;
+    width: 100%;
+  }
   form.finace-fiance-from {
     width: 93%;
   }
@@ -13910,8 +13931,8 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
   .product-listing-page .bg-common-style {
     padding-top: 34px;
   }
-  .product-listing-page .filter-listing-block .listing-content {
-    width: 100%;
+  .product-listing-page .filter-listing-block .listing-content#listing-content-results {
+    width: 100% !important;
     padding-left: 0;
     padding-top: 25px;
   }
