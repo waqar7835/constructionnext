@@ -8876,6 +8876,15 @@ div ~ :last-child .features3-wrp-layout1 {
   padding: 100px 0 75px 60px;
   height: 517px;
 }
+#listing-content-results .view-footer {
+  text-align: center;
+}
+.filters-block.left-side-filters .views-header p.list-title {
+  
+  padding: 0;
+  margin-top: 15px;
+}
+ 
 @media (min-width: 992px) and (max-width: 1199px) {
   .contact-info-layout2 {
     padding: 115px 0 70px 50px;
@@ -13359,6 +13368,7 @@ h2 {
 }
 .filters-block.left-side-filters .views-header .list-title span.badge {
    background-color: var(--main-font-color);
+   margin-top: 15px;
 }
 .filters-block.left-side-filters .views-header .list-title span.badge a {
   color: var(--background-white);
