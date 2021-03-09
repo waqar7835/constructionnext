@@ -13613,6 +13613,9 @@ form.footer-subscribed .ant-row {
   padding-left: 0;
   padding-top: 0;
 }
+.emailand-title .list-title span {
+  color: #333;
+}
 .emailand-title .email-right {
   display: inline-block;
   width: 50%;
