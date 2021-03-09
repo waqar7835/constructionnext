@@ -59,6 +59,9 @@
     line-height: 20px;
     word-break: break-word;
 }
+.listing-content .invent-pro-cus-mid .invent-cus-machloc span {
+    font-size: 16px;
+}
 .listing-content .invent-pro-cus-mid .eqinfo {
     display: flex;
     flex-wrap: wrap;
@@ -70,6 +73,8 @@
 .listing-content .invent-pro-cus-mid .eqinfo .eq-info {
     text-align: right;
     flex: 1;
+    margin-right: 0;
+    font-weight: 300;
 }
 .invent-pro-cus-mid .invent-cus-des {
     margin-top: 3px;
