@@ -59,9 +59,6 @@ const Filters = () => {
   const maxprice = useSelector((state) => state.maxprice.maxprice);
   const productsData = useSelector((state) => state.products.products);
 
-  console.log("minyear=>",minyear);
-  console.log("maxyear=>",maxyear);
-
   useEffect(() => {
     dispatch(getCityCount());
     dispatch(getConditionCount());
@@ -77,11 +74,6 @@ const Filters = () => {
   }, []);
 
   const router = useRouter();
-  const [indeterminateInPopup, setIndeterminateInPopup] = React.useState(true);
-  const [indeterminate, setIndeterminate] = React.useState(true);
-  const [checked, setCheckAll] = useState([]);
-  const [checkedParentIds, setCheckedParentIds] = useState([]);
-  const [checkedChildIds, setCheckedChildIds] = useState([]);
   const [checkedIds, setCheckedIds] = useState([]);
   const [isCatModalVisible, setIsCatModalVisible] = useState(false);
   const [isManModalVisible, setIsManModalVisible] = useState(false);
@@ -102,20 +94,24 @@ const Filters = () => {
   const [date, setDate] = useState(30);
   const [checkDate, setCheckDate] = useState();
 
-  // useEffect(() => {
-  //   if (router.query) {
-  //     setPrice([
-  //       router.query.price_min || minprice,
-  //       router.query.price_max || maxprice,
-  //     ]);
-  //     setYear([
-  //       router.query.year_min || minyear,
-  //       router.query.year_max || maxyear,
-  //     ]);
-  //   }
-  //   if (router.query.categoury) {
-  //   }
-  // }, [router.query]);
+  useEffect(() => {
+    if (router.query) {
+      setPrice([
+        router.query.price_min || minprice,
+        router.query.price_max || maxprice,
+      ]);
+      if (router.query.year_min && router.query.year_max) {
+        setYear([
+          parseInt(router.query.year_min),
+          parseInt(router.query.year_max),
+        ]);
+      } else {
+        setYear([parseInt(minyear), parseInt(maxyear)]);
+      }
+    }
+    // if (router.query.categoury) {
+    // }
+  }, [router.query, minyear, maxyear, minprice, maxprice]);
   useEffect(() => {
     let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
     dispatch(getCityCount(req));
@@ -755,12 +751,10 @@ const Filters = () => {
 
     return (
       <>
-        {
-        
-        manufApply ||
+        {manufApply ||
         keywords ||
         dateRange ||
-        conditionApply ||        
+        conditionApply ||
         catApply ||
         counApply ||
         stateApply ||
@@ -775,7 +769,7 @@ const Filters = () => {
         ) : (
           " "
         )}
-         
+
         {manufApply
           ? manufApply.map((item, key) => (
               <span className="badge badge-secondary">
@@ -786,8 +780,8 @@ const Filters = () => {
           : ""}
         {keywords ? (
           <span className="list-title-text">
-             {keywords}
-            <a onClick={() => cancelKeywordFilter(null)}>x</a>           
+            {keywords}
+            <a onClick={cancelKeywordFilter}>x</a>
           </span>
         ) : (
           ""
@@ -795,7 +789,7 @@ const Filters = () => {
         {dateRange ? (
           <span className="list-title-text">
             {dateRange}
-            <a onClick={() => cancelDateRangeFilter(null)}>x</a>            
+            <a onClick={cancelDateRangeFilter}>x</a>
           </span>
         ) : (
           ""
@@ -923,7 +917,7 @@ const Filters = () => {
       quickSearch,
     });
   };
-  const cancelKeywordFilter = (label) => {
+  const cancelKeywordFilter = () => {
     setQuickSearch();
     applyFilter({
       city,
@@ -940,7 +934,7 @@ const Filters = () => {
       quickSearch,
     });
   };
-  const cancelDateRangeFilter = (label) => {
+  const cancelDateRangeFilter = () => {
     setDate();
     setCheckDate(false);
     applyFilter({
@@ -1124,6 +1118,7 @@ const Filters = () => {
                   <Checkbox.Group
                     style={{ width: "100%" }}
                     name="listingType"
+                    value={listingType}
                     onChange={onChangeListingType}
                   >
                     {listingTypeCount.map((item, key) => (
@@ -1139,6 +1134,7 @@ const Filters = () => {
                   <Checkbox.Group
                     style={{ width: "100%" }}
                     name="condition"
+                    value={condition}
                     onChange={onChangeCondition}
                   >
                     {conditionCount.map((item, key) => (
@@ -1170,7 +1166,7 @@ const Filters = () => {
                     <div key={key}>
                       <Checkbox
                         value={item.value}
-                        indeterminate={indeterminate}
+                        indeterminate={true}
                         onChange={(e) => {
                           if (e.target.checked) {
                             const parentId = item.tid;
@@ -1254,6 +1250,7 @@ const Filters = () => {
                 <Checkbox.Group
                   style={{ width: "100%" }}
                   name="manufacturer"
+                  value={manufacturer}
                   onChange={onChangeManufacturer}
                 >
                   <Form.Item label="Popular">
@@ -1451,6 +1448,7 @@ const Filters = () => {
                   <Checkbox.Group
                     style={{ width: "100%" }}
                     name="country"
+                    value={country}
                     onChange={onChangeCountry}
                   >
                     {countryCount.slice(0, 4).map((item, key) => (
@@ -1466,6 +1464,7 @@ const Filters = () => {
                   <Checkbox.Group
                     style={{ width: "100%" }}
                     name="state"
+                    value={state}
                     onChange={onChangeState}
                   >
                     {stateCount.slice(0, 4).map((item, key) => (
@@ -1484,6 +1483,7 @@ const Filters = () => {
                   <Checkbox.Group
                     style={{ width: "100%" }}
                     name="city"
+                    value={city}
                     onChange={onChangeCity}
                   >
                     {cityCount.slice(0, 4).map((item, key) => (
@@ -1561,6 +1561,7 @@ const Filters = () => {
             <Checkbox.Group
               style={{ width: "100%" }}
               name="state"
+              value={state}
               onChange={(value) => {
                 setState(value);
               }}
@@ -1588,6 +1589,7 @@ const Filters = () => {
             <Checkbox.Group
               style={{ width: "100%" }}
               name="city"
+              value={city}
               onChange={(value) => {
                 setCity(value);
               }}
@@ -1625,7 +1627,7 @@ const Filters = () => {
             return (
               <div key={key} className="antd-groupcheckbox-cus">
                 <Checkbox
-                  indeterminate={indeterminateInPopup}
+                  indeterminate={true}
                   onChange={(e) => {
                     if (e.target.checked) {
                       const parentId = item.tid;
@@ -1689,6 +1691,7 @@ const Filters = () => {
           <Checkbox.Group
             style={{ width: "100%" }}
             name="manufacturer"
+            value={manufacturer}
             onChange={(value) => {
               setManufacturer(value);
             }}
