@@ -13366,6 +13366,10 @@ h2 {
     text-align: center;
     font-size: 14px;
 }
+.clearall-span {
+  width: 100%;
+  display: block;
+}
 .filters-block.left-side-filters .views-header .list-title span.badge {
    background-color: var(--main-font-color);
    margin-top: 15px;

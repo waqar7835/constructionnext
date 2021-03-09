@@ -766,7 +766,7 @@ const Filters = () => {
         stateApply ||
         cityApply ||
         listApply != " " ? (
-          <span>
+          <span className="clearall-span">
             <a onClick={cancelAllFilters} className="clear-all-filters">
               {" "}
               Clear All
