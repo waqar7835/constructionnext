@@ -699,13 +699,18 @@ const Filters = () => {
         return manufApply;
       });
       manufApply = manufApply.filter(onlyUnique);
+      
     }
+    console.log("manufApply", manufApply);
     if (req.includes(`keywords=`)) {
       keywords="keywords";
     }
+    console.log("keywords", keywords);
     if (req.includes(`created=`)) {
       dateRange="Date Ranges";
     }
+    console.log("dateRange", dateRange);
+
     if (req.includes(`condition[]=`)) {
       conditionApply = conditionCount.map((item, key) => {
         condition.map((id, key) => {
@@ -718,7 +723,9 @@ const Filters = () => {
         return conditionApply;
       });
       conditionApply = conditionApply.filter(onlyUnique);
+      
     }
+    console.log("conditionApply", conditionApply);
     if (req.includes(`listing_type[]=`)) {
       listApply = listingTypeCount.map((item, key) => {
         listingType.map((id, key) => {
@@ -731,8 +738,9 @@ const Filters = () => {
         return listApply;
       });
       listApply = listApply.filter(onlyUnique);
-      console.log(listApply);
+ 
     }
+    console.log("listApply",listApply);
     if (req.includes(`categoury[]=`)) {
       catApply = categoryCount.map((item, key) => {
         console.log(item);
@@ -749,7 +757,7 @@ const Filters = () => {
         return catApply;
       });
       catApply = catApply.filter(onlyUnique);
-     // console.log(catApply);
+     
     }
     if (req.includes(`country[]=`)) {
       counApply = countryCount.map((item, key) => {
@@ -763,7 +771,9 @@ const Filters = () => {
         return counApply;
       });
       counApply = counApply.filter(onlyUnique);
+      console.log("counApply",counApply);
     }
+    console.log("catApply",catApply);
     if (req.includes(`city[]=`)) {
       cityApply = cityCount.map((item, key) => {
         city.map((id, key) => {
@@ -776,8 +786,9 @@ const Filters = () => {
         return cityApply;
       });
       cityApply = cityApply.filter(onlyUnique);
+     
     }
-
+    console.log("cityApply",cityApply);
     if (req.includes(`state[]=`)) {
       stateApply = stateCount.map((item, key) => {
         state.map((id, key) => {
@@ -790,8 +801,9 @@ const Filters = () => {
         return stateApply;
       });
       stateApply = stateApply.filter(onlyUnique);
+     
     }
-
+    console.log(" stateApply", stateApply);
     return (
       <>
         {manufApply

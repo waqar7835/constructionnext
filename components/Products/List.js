@@ -158,7 +158,7 @@ const List = () => {
                   </div>
                   <div className="invent-cus-price eqinfo">
                     <span className="eq-label">Price:</span>
-                    <span className="eq-info">{product.field_price}</span>
+                    <span className="eq-info">${product.field_price}</span>
                   </div>
                   <div className="invent-cus-purchas-cus eqinfo">
                     <span>
