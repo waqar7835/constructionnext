@@ -22,7 +22,7 @@ const MainMenu = () => {
         </li>
 
         <li>
-          <a href="#">Inventory</a>
+          <a href="/inventory/search">Inventory</a>
           <ul>
           {equipmentsData.map((val, index) => (
             <li>

@@ -165,6 +165,7 @@ const Main = ({ content }) => {
             </div>
               <div className="pro-b2-general showMe">
                 <h2>General</h2>
+                {!!content && content.field_hours && (
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Hours</div>
                   <div className="pro-b2-gen-value">
@@ -173,6 +174,8 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                 </div>
+                )}
+                {!!content && content.field_serial_numbers && (
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Serial Number</div>
                   <div className="pro-b2-gen-value">
@@ -181,6 +184,8 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                 </div>
+                )}
+                {!!content && content.field_select_equipment && (
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Equipment</div>
                   <div className="pro-b2-gen-value">
@@ -189,6 +194,8 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                 </div>
+                )}
+                 {!!content && content.field_equipment_category && (
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Category</div>
                   <div className="pro-b2-gen-value">
@@ -197,6 +204,8 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                 </div>
+                 )}
+                {!!content && content.field_category && (
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Manufacturer</div>
                   <div className="pro-b2-gen-value">
@@ -205,6 +214,8 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                 </div>
+                )}
+                  {!!content && content.field_condition && (
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Condition</div>
                   <div className="pro-b2-gen-value">
@@ -213,6 +224,8 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                 </div>
+                  )}
+                  {!!content && content.field_stock_number && (  
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Stock Number</div>
                   <div className="pro-b2-gen-value">
@@ -221,9 +234,14 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                 </div>
+                  )}
               </div>
               <div className="pro-b2-general showMe">
+              {(!!content && content.field_bucket || content.field_bucket_capacity )?
                 <h2>Attachments</h2>
+                :" "
+              }
+                {!!content && content.field_bucket && ( 
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Bucket</div>
                   <div className="pro-b2-gen-value">
@@ -232,6 +250,8 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                 </div>
+                )}
+                {!!content && content.field_bucket_capacity && ( 
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Bucket Capacity</div>
                   <div className="pro-b2-gen-value">
@@ -240,9 +260,14 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                 </div>
+                )}
               </div>
               <div className="pro-b2-general showMe">
+              {(!!content && content.field_number_of_fenders )?
                 <h2>Exterior</h2>
+                :" "
+              }
+                {!!content && content.field_number_of_fenders && ( 
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Number of Fenders</div>
                   <div className="pro-b2-gen-value">
@@ -251,9 +276,14 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                 </div>
+                )}
               </div>
               <div className="pro-b2-general showMe">
-                <h2>Interior</h2>
+                {(!!content && content.field_a_c || content.field_heater )?
+                   <h2>Interior</h2>:" "
+              }
+               
+                {!!content && content.field_a_c && ( 
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">A/C</div>
                   <div className="pro-b2-gen-value">
@@ -262,6 +292,8 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                 </div>
+                )}
+                 {!!content && content.field_heater && ( 
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Heater</div>
                   <div className="pro-b2-gen-value">
@@ -270,6 +302,7 @@ const Main = ({ content }) => {
                     </div>
                   </div>
                 </div>
+                 )}
               </div>
               <div className="pro-commercial-financial"></div>
             </div>
