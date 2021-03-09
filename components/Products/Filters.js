@@ -775,7 +775,7 @@ const Filters = () => {
         ) : (
           " "
         )}
-        <br></br>
+         
         {manufApply
           ? manufApply.map((item, key) => (
               <span className="badge badge-secondary">
