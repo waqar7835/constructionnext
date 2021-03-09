@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Collapse, Checkbox, Modal, Form, Input, InputNumber } from "antd";
-import EmailBlockv from './EmailBlockv';
+import EmailBlockv from "./EmailBlockv";
 
 import { useRouter } from "next/router";
 import { RangeSlider } from "rsuite";
@@ -33,8 +33,8 @@ const Filters = () => {
   var num4 = 0;
   let manufApply = "";
   let cityApply = "";
-  let keywords="";
-  let dateRange="";
+  let keywords = "";
+  let dateRange = "";
 
   let stateApply = "";
   let counApply = "";
@@ -59,7 +59,8 @@ const Filters = () => {
   const maxprice = useSelector((state) => state.maxprice.maxprice);
   const productsData = useSelector((state) => state.products.products);
 
-  // console.log(conditionCount);
+  console.log("minyear=>",minyear);
+  console.log("maxyear=>",maxyear);
 
   useEffect(() => {
     dispatch(getCityCount());
@@ -261,7 +262,7 @@ const Filters = () => {
     // });
   };
 
-  const onClickApplyStateFilter = () => {  
+  const onClickApplyStateFilter = () => {
     setIsStateModalVisible(false);
     applyFilter({
       state,
@@ -278,7 +279,7 @@ const Filters = () => {
       quickSearch,
     });
   };
-  const onClickApplyCityFilter = () => {  
+  const onClickApplyCityFilter = () => {
     setIsCityModalVisible(false);
     applyFilter({
       city,
@@ -295,7 +296,7 @@ const Filters = () => {
       quickSearch,
     });
   };
-  const onClickApplyManuFilter = () => {  
+  const onClickApplyManuFilter = () => {
     setIsManModalVisible(false);
     applyFilter({
       city,
@@ -474,7 +475,6 @@ const Filters = () => {
   //     quickSearch,
   //   });
   // }
-   
 
   function setCharAt(str, index, chr) {
     if (index > str.length - 1) return str;
@@ -542,19 +542,21 @@ const Filters = () => {
       }
     }
     if (params.checkDate == true) {
-       if (!!params.date) {
+      if (!!params.date) {
         let newdate = new Date();
-        let last = new Date(newdate .getTime() - (params.date * 24 * 60 * 60 * 1000));
-        let date_day =last.getDate();
-        let date_month =last.getMonth()+1;
-        let date_year =last.getFullYear();
-       
-      //   params.date= date_day - params.date
-       // if(params.date.includes("-")){
-         // month_row = month_row -1;
-       // }
-       // str += "&created=" + params.date;
-       str += `&created=${date_year}-${date_month}-${date_day}`;
+        let last = new Date(
+          newdate.getTime() - params.date * 24 * 60 * 60 * 1000
+        );
+        let date_day = last.getDate();
+        let date_month = last.getMonth() + 1;
+        let date_year = last.getFullYear();
+
+        //   params.date= date_day - params.date
+        // if(params.date.includes("-")){
+        // month_row = month_row -1;
+        // }
+        // str += "&created=" + params.date;
+        str += `&created=${date_year}-${date_month}-${date_day}`;
       }
     }
     str = setCharAt(str, 0, "?");
@@ -564,7 +566,6 @@ const Filters = () => {
       shallow: true,
     });
   };
- 
 
   // console.log(`${yeard}-${month_raw}-${date_raw}`);
   const isEmpty = (array) => {
@@ -639,15 +640,14 @@ const Filters = () => {
       //  console.log(catg);
     }
 
+    if (req.includes(`equipment=`)) {
+      !!productsData.rows &&
+        productsData.rows.map((item, key) => {
+          equipment = item.field_select_equipment;
+          return equipment;
+        });
 
-    if (req.includes(`equipment=`)) {    
-      !!productsData.rows && productsData.rows.map((item, key) => {       
-        equipment = item.field_select_equipment;       
-        return equipment;
-      });
-      
-
-        console.log(equipment);
+      // console.log(equipment);
     }
 
     if (!!productsData.pager) {
@@ -663,14 +663,13 @@ const Filters = () => {
 
     return (
       <>
-        { (manuf || catg || equipment ) ? (
+        {manuf || catg || equipment ? (
           <span className="list-title-text">
-           {catg}  {manuf} {equipment} Equipment For Sale{" "}
+            {catg} {manuf} {equipment} Equipment For Sale{" "}
           </span>
         ) : (
           <span className="list-title-text">Equipment For Sale </span>
         )}
-        
 
         <span className="list-listings-count">
           {current * per_page + 1} -{" "}
@@ -685,71 +684,45 @@ const Filters = () => {
   }
 
   const getAppliedFilters = () => {
-   
     let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
     if (req.includes(`manufacturer[]=`)) {
-      manufApply = manufacturerCount.map((item, key) => {
-        manufacturer.map((id, key) => {
-          id = parseInt(id);
-          if (item.value == id) {
-            manufApply = item.label;
-            return manufApply;
-          }
-        });
-        return manufApply;
-      });
-      manufApply = manufApply.filter(onlyUnique);
-      
+      let selectedManufData = manufacturerCount.filter(
+        (singleManufData) => manufacturer.indexOf(singleManufData.value) > -1
+      );
+      manufApply = selectedManufData.map((manuf) => manuf.label);
     }
-    console.log("manufApply", manufApply);
+
     if (req.includes(`keywords=`)) {
-      keywords="keywords";
+      keywords = "keywords";
     }
-    console.log("keywords", keywords);
+
     if (req.includes(`created=`)) {
-      dateRange="Date Ranges";
+      dateRange = "Date Ranges";
     }
-    console.log("dateRange", dateRange);
 
     if (req.includes(`condition[]=`)) {
-      conditionApply = conditionCount.map((item, key) => {
-        condition.map((id, key) => {
-          id = parseInt(id);
-          if (item.value == id) {
-            conditionApply = item.label;
-            return conditionApply;
-          }
-        });
-        return conditionApply;
-      });
-      conditionApply = conditionApply.filter(onlyUnique);
-      
+      let selectedCondData = conditionCount.filter(
+        (singleConData) => condition.indexOf(singleConData.value) > -1
+      );
+      conditionApply = selectedCondData.map((condition) => condition.label);
     }
-    console.log("conditionApply", conditionApply);
+
     if (req.includes(`listing_type[]=`)) {
-      listApply = listingTypeCount.map((item, key) => {
-        listingType.map((id, key) => {
-          id = parseInt(id);
-          if (item.value == id) {
-            listApply = item.label;
-            return listApply;
-          }
-        });
-        return listApply;
-      });
-      listApply = listApply.filter(onlyUnique);
- 
+      let selectedListTData = listingTypeCount.filter(
+        (singleListTData) => listingType.indexOf(singleListTData.value) > -1
+      );
+      listApply = selectedListTData.map((listApply) => listApply.label);
     }
-    console.log("listApply",listApply);
+
     if (req.includes(`categoury[]=`)) {
       catApply = categoryCount.map((item, key) => {
-        console.log(item);
+        // console.log(item);
         categoury.map((id, key) => {
-//console.log(id);
+          //console.log(id);
           id = parseInt(id);
-          console.log(id);
+          // console.log(id);
           if (item.tid == id) {
-            console.log(item.label);
+            // console.log(item.label);
             catApply = item.name;
             return catApply;
           }
@@ -757,108 +730,102 @@ const Filters = () => {
         return catApply;
       });
       catApply = catApply.filter(onlyUnique);
-     
     }
+
     if (req.includes(`country[]=`)) {
-      counApply = countryCount.map((item, key) => {
-        country.map((id, key) => {
-          id = parseInt(id);
-          if (item.value == id) {
-            counApply = item.label;
-            return counApply;
-          }
-        });
-        return counApply;
-      });
-      counApply = counApply.filter(onlyUnique);
-      console.log("counApply",counApply);
+      let selectedCountData = countryCount.filter(
+        (singleCounData) => country.indexOf(singleCounData.value) > -1
+      );
+      counApply = selectedCountData.map((country) => country.label);
     }
-    console.log("catApply",catApply);
+
     if (req.includes(`city[]=`)) {
-      cityApply = cityCount.map((item, key) => {
-        city.map((id, key) => {
-          id = parseInt(id);
-          if (item.value == id) {
-            cityApply = item.label;
-            return cityApply;
-          }
-        });
-        return cityApply;
-      });
-      cityApply = cityApply.filter(onlyUnique);
-     
+      let selectedCitiesData = cityCount.filter(
+        (singleCityData) => city.indexOf(singleCityData.value) > -1
+      );
+      cityApply = selectedCitiesData.map((city) => city.label);
     }
-    console.log("cityApply",cityApply);
+
     if (req.includes(`state[]=`)) {
-      stateApply = stateCount.map((item, key) => {
-        state.map((id, key) => {
-          id = parseInt(id);
-          if (item.value == id) {
-            stateApply = item.label;
-            return stateApply;
-          }
-        });
-        return stateApply;
-      });
-      stateApply = stateApply.filter(onlyUnique);
-     
+      let selectedStatesData = stateCount.filter(
+        (singleStateData) => state.indexOf(singleStateData.value) > -1
+      );
+      stateApply = selectedStatesData.map((state) => state.label);
     }
-    console.log(" stateApply", stateApply);
+
     return (
       <>
+        {
+        
+        manufApply ||
+        keywords ||
+        dateRange ||
+        conditionApply ||        
+        catApply ||
+        counApply ||
+        stateApply ||
+        cityApply ||
+        listApply != " " ? (
+          <span>
+            <a onClick={cancelAllFilters} classNmae="clear-all-filters">
+              {" "}
+              Clear All
+            </a>
+          </span>
+        ) : (
+          " "
+        )}
+        <br></br>
         {manufApply
           ? manufApply.map((item, key) => (
               <span className="badge badge-secondary">
-               {item}<a onClick={() => cancelManufactureFilter(item)}>x</a>
-                            
+                {item}
+                <a onClick={() => cancelManufactureFilter(item)}>x</a>
               </span>
             ))
           : ""}
-          {keywords
-          ?    <span className="list-title-text">
-                <a onClick={() => cancelKeywordFilter(null)}>x</a>
-                {keywords}               
-              </span>
-            : ""
-          }
-           {dateRange
-          ?    <span className="list-title-text">
-                <a onClick={() => cancelDateRangeFilter(null)}>x</a>
-                {dateRange}               
-              </span>
-            : ""
-          }
+        {keywords ? (
+          <span className="list-title-text">
+             {keywords}
+            <a onClick={() => cancelKeywordFilter(null)}>x</a>           
+          </span>
+        ) : (
+          ""
+        )}
+        {dateRange ? (
+          <span className="list-title-text">
+            {dateRange}
+            <a onClick={() => cancelDateRangeFilter(null)}>x</a>            
+          </span>
+        ) : (
+          ""
+        )}
         {conditionApply
           ? conditionApply.map((item, key) => (
               <span className="badge badge-secondary">
-                 {item}<a onClick={() => cancelConditionFilter(item)}>x</a>
-                
-               
+                {item}
+                <a onClick={() => cancelConditionFilter(item)}>x</a>
               </span>
             ))
           : ""}
         {listApply != " "
           ? listApply.map((item, key) => (
               <span className="badge badge-secondary">
-               {item} <a onClick={() => cancelListingTypeFilter(item)}>x</a>
-                
+                {item} <a onClick={() => cancelListingTypeFilter(item)}>x</a>
               </span>
             ))
           : ""}
         {catApply
-          ? catApply.map((item, key) => (
+          ? catApply.slice(1).map((item, key) => (
               <span className="badge badge-secondary">
                 {item} <a onClick={() => cancelCategoryFilter(item)}>x</a>
-                
-               
               </span>
             ))
           : ""}
         {counApply
           ? counApply.map((item, key) => (
               <span className="badge badge-secondary">
-               {item} <a onClick={() => cancelCountryFilter(item)}>x</a>
-                
+                {item} <a onClick={() => cancelCountryFilter(item)}>x</a>
               </span>
             ))
           : ""}
@@ -866,17 +833,14 @@ const Filters = () => {
           ? stateApply.map((item, key) => (
               <span className="badge badge-secondary">
                 {item} <a onClick={() => cancelStateFilter(item)}>x</a>
-                
-               
               </span>
             ))
           : ""}
         {cityApply
           ? cityApply.map((item, key) => (
               <span className="badge badge-secondary">
-                {item}<a onClick={() => cancelCityFilter(item)}>x</a>
-                
-               
+                {item}
+                <a onClick={() => cancelCityFilter(item)}>x</a>
               </span>
             ))
           : ""}
@@ -890,23 +854,23 @@ const Filters = () => {
     setManufacturer([]);
     setCategoury([]);
     setCondition([]);
-    setListingType([]);    
+    setListingType([]);
     setQuickSearch([]);
     setDate([]);
     setCheckDate(false);
     applyFilter({
-      city:[],
-      date:[],
-      checkDate:[],
-      state:[],
-      country:[],
-      categoury:[],
-      manufacturer:[],
-      listingType:[],
-      condition:[],
-      year:[],
-      price:[],
-      quickSearch:[],
+      city: [],
+      date: [],
+      checkDate: [],
+      state: [],
+      country: [],
+      categoury: [],
+      manufacturer: [],
+      listingType: [],
+      condition: [],
+      year: [],
+      price: [],
+      quickSearch: [],
     });
   };
   const cancelListingTypeFilter = (label) => {
@@ -959,7 +923,7 @@ const Filters = () => {
       quickSearch,
     });
   };
-  const cancelKeywordFilter = (label) => {   
+  const cancelKeywordFilter = (label) => {
     setQuickSearch();
     applyFilter({
       city,
@@ -976,13 +940,13 @@ const Filters = () => {
       quickSearch,
     });
   };
-  const cancelDateRangeFilter = (label) => {   
+  const cancelDateRangeFilter = (label) => {
     setDate();
     setCheckDate(false);
     applyFilter({
       city,
       date,
-      checkDate:false,
+      checkDate: false,
       state,
       country,
       categoury,
@@ -1053,7 +1017,7 @@ const Filters = () => {
       (counData) => counData.label != label
     );
     counApply = filteredCounData.map((country) => country.value);
-   
+
     setCountry(counApply);
     applyFilter({
       city,
@@ -1079,7 +1043,7 @@ const Filters = () => {
       (stateData) => stateData.label != label
     );
     stateApply = filteredStateData.map((state) => state.value);
-    setState(stateApply);  
+    setState(stateApply);
     applyFilter({
       city,
       date,
@@ -1095,7 +1059,7 @@ const Filters = () => {
       quickSearch,
     });
   };
-  const cancelCityFilter = (label) => {   
+  const cancelCityFilter = (label) => {
     let selectedCitiesData = cityCount.filter(
       (singleCityData) => city.indexOf(singleCityData.value) > -1
     );
@@ -1105,7 +1069,7 @@ const Filters = () => {
     );
     cityApply = filteredCityData.map((city) => city.value);
     setCity(cityApply);
-    console.log("->", filteredCityData, cityApply);   
+
     applyFilter({
       city: cityApply,
       date,
@@ -1126,12 +1090,12 @@ const Filters = () => {
     <>
       <div className="views-header emailand-title">
         <h6 className="list-title">{gettitle()}</h6>
-        <div className="email-right"><EmailBlockv /></div>
+        <div className="email-right">
+          <EmailBlockv />
+        </div>
       </div>
       <div className="filters-block left-side-filters col-md-3 col-xs-12">
-        {/* {appliedFilters} */}
         <div className="views-header">
-         {(manufApply || conditionApply || counApply || catApply || cityApply || stateApply  )?<span><a onClick={cancelAllFilters} classNmae="clear-all-filters"> Clear y All</a></span>: ''} 
           <p className="list-title">{getAppliedFilters()}</p>
         </div>
         <form className="views-exposed-form left-side-filterseach">
@@ -1597,8 +1561,8 @@ const Filters = () => {
             <Checkbox.Group
               style={{ width: "100%" }}
               name="state"
-              onChange={(value)=>{
-                setState(value)
+              onChange={(value) => {
+                setState(value);
               }}
             >
               {stateCount.map((item, key) => (
@@ -1607,8 +1571,9 @@ const Filters = () => {
                 </Checkbox>
               ))}
             </Checkbox.Group>
-            <a className="apply-filter" onClick={onClickApplyStateFilter}>Apply Filter</a>
-             
+            <a className="apply-filter" onClick={onClickApplyStateFilter}>
+              Apply Filter
+            </a>
           </Modal>
 
           {/* Cities popup modal */}
@@ -1623,7 +1588,7 @@ const Filters = () => {
             <Checkbox.Group
               style={{ width: "100%" }}
               name="city"
-              onChange={(value)=>{
+              onChange={(value) => {
                 setCity(value);
               }}
             >
@@ -1633,7 +1598,9 @@ const Filters = () => {
                 </Checkbox>
               ))}
             </Checkbox.Group>
-            <a className="apply-filter" onClick={onClickApplyCityFilter}>Apply Filter</a>
+            <a className="apply-filter" onClick={onClickApplyCityFilter}>
+              Apply Filter
+            </a>
           </Modal>
         </form>
         {/* Category Modal */}
@@ -1722,8 +1689,8 @@ const Filters = () => {
           <Checkbox.Group
             style={{ width: "100%" }}
             name="manufacturer"
-            onChange={(value)=>{
-              setManufacturer(value)
+            onChange={(value) => {
+              setManufacturer(value);
             }}
           >
             <Form.Item label="Popular">
@@ -1734,7 +1701,9 @@ const Filters = () => {
               ))}
             </Form.Item>
           </Checkbox.Group>
-          <a onClick={onClickApplyManuFilter} className="apply-filter" >Apply Filter</a>
+          <a onClick={onClickApplyManuFilter} className="apply-filter">
+            Apply Filter
+          </a>
         </Modal>
       </div>
     </>

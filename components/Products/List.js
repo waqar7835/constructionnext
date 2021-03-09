@@ -21,7 +21,7 @@ const List = () => {
   // }, []);
   useEffect(() => {
     let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
-  //  console.log(req);
+    //  console.log(req);
     dispatch({
       type: SET_LOADER,
       payload: true,
@@ -158,7 +158,11 @@ const List = () => {
                   </div>
                   <div className="invent-cus-price eqinfo">
                     <span className="eq-label">Price:</span>
+                    {(!!product && !!product.field_price)? (
                     <span className="eq-info">${product.field_price}</span>
+                    ):
+                    <span className="eq-info">Call for price</span>
+                    }
                   </div>
                   <div className="invent-cus-purchas-cus eqinfo">
                     <span>
@@ -166,50 +170,78 @@ const List = () => {
                     </span>
                     <a href="#"> </a>
                   </div>
+                  {!!product && !!product.field_machine_location && (
                   <div className="invent-cus-machloc bold eqinfo">
                     <span className="eq-label">Machine Location:</span>{" "}
-                    <span className="eq-info"> {product.field_machine_location}</span>
+                    <span className="eq-info">
+                      {" "}
+                      {product.field_machine_location}
+                    </span>
                   </div>
+                  )}
+                  {!!product && !!product.field_hours && (
                   <div className="invent-cus-rhrs bold eqinfo">
-                    <span className="eq-label">Hours:</span> 
+                    <span className="eq-label">Hours:</span>
                     <span className="eq-info">{product.field_hours}</span>
                   </div>
-                  <div className="invent-cus-snum bold eqinfo">
-                    <span className="eq-label">Serial Numbers:</span> 
-                    <span className="eq-info">{product.field_serial_numbers}</span>
-                  </div>
+                   )}
+                  {!!product && !!product.field_serial_numbers && (
+                    <div className="invent-cus-snum bold eqinfo">
+                      <span className="eq-label">Serial Numbers:</span>
+                      <span className="eq-info">
+                        {product.field_serial_numbers}
+                      </span>
+                    </div>
+                  )}
+                 {!!product && !!product.field_condition && (
                   <div className="invent-cus-cond bold eqinfo">
-                    <span className="eq-label">Condition:</span> 
+                    <span className="eq-label">Condition:</span>
                     <span className="eq-info">{product.field_condition}</span>
                   </div>
+                 )}
+                 {!!product && !!product.field_listing_type && (
                   <div className="invent-cus-cond bold eqinfo">
-                    <span className="eq-label">ListingType:</span> 
-                    <span className="eq-info">{product.field_listing_type}</span>
+                    <span className="eq-label">ListingType:</span>
+                    <span className="eq-info">
+                      {product.field_listing_type}
+                    </span>
                   </div>
+                 )}
+                  {!!product && !!product.field_category && (
                   <div className="invent-cus-manuf bold eqinfo">
                     <span className="eq-label">Manufacturer:</span>
-                    <span className="eq-info">{product.field_category}</span> 
+                    <span className="eq-info">{product.field_category}</span>
                   </div>
+                  )}
+                  {!!product && !!product.field_equipment_category && (
                   <div className="invent-cus-eq-cat bold eqinfo">
                     <span className="eq-label">Category:</span>
-                    <span className="eq-info">{product.field_equipment_category}</span> 
+                    <span className="eq-info">
+                      {product.field_equipment_category}
+                    </span>
                   </div>
+                  )}
+                 {!!product && !!product.field_select_equipment && (
                   <div className="invent-cus-slc-cat bold eqinfo">
                     <span className="eq-label">Equipment:</span>
-                    <span className="eq-info">{product.field_select_equipment}</span> 
+                    <span className="eq-info">
+                      {product.field_select_equipment}
+                    </span>
                   </div>
+                 )}
+                 {!!product && !!product.field_city && (
                   <div className="invent-cus-city bold eqinfo">
                     <span className="eq-label">city:</span>
-                    
-                     <span className="eq-info">{product.field_city}</span>
-                    
+                    <span className="eq-info">{product.field_city}</span>
                   </div>
+                 )}
+                 {!!product && !!product.field_state && (
                   <div className="invent-cus-city bold eqinfo">
                     <span className="eq-label">state:</span>
-                    
-                     <span className="eq-info">{product.field_state}</span>
-                    
+
+                    <span className="eq-info">{product.field_state}</span>
                   </div>
+                 )}
                   {/* <div className="invent-cus-stnum bold">
                     <span>Stock Number:</span> {product.field_stock_number}
                   </div> */}
@@ -231,16 +263,18 @@ const List = () => {
                 </div>
                 <div className="invent-pro-cus-rt">
                   <div className="manf-detail">
-                  <div className="lister-dealer-info">
-                     <h6>Contact Information</h6>
+                    <div className="lister-dealer-info">
+                      <h6>Contact Information</h6>
                       <p>
                         <a href="#">Lam Supply LLC</a>
                       </p>
                       <p>{product.field_machine_location} </p>
                       <p>
-                        <span>Phone:</span>  +1 408-610-7177
+                        <span>Phone:</span> +1 408-610-7177
                       </p>
-                      <p><span>Contact:</span> Tinh Lam</p>
+                      <p>
+                        <span>Contact:</span> Tinh Lam
+                      </p>
                     </div>
                     <div className="products-info-btns">
                       <Link
