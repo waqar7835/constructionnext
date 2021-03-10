@@ -13643,7 +13643,7 @@ form.footer-subscribed .ant-row {
 }
 .left-side-filterseach .top-input {
     width: 76%;
-    padding: 15px 20px;
+    padding: 14px 20px 15px 20px;
     border: 1px solid #d6d6d6;
     margin-bottom: 0;
     border-bottom-right-radius: 0 !important;
@@ -13753,6 +13753,9 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
  } 
 
  @media (min-width: 320px) and (max-width: 575.98px)  { 
+   .eq-for-front .equipmentsData-section .for-product-deatil {
+    width: 100.666667%;
+  }
   .product-listing-page .invent-pro-cus-lft .invent-cus-img img {
     height: 150px;
   }
@@ -13937,6 +13940,7 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
   }
   .product-title-banner .page-title {
     padding-top: 38px;
+    line-height: 46px;
   }
   #welcome-section-fluid {
     padding: 0 15px 30px;
@@ -14016,9 +14020,26 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
     max-width: 100%;
     min-width: 300px;
   }
+  .product-detail-block2 .body-description {
+    padding: 15px;
+  }
+  .product-detail-section .for-product-deatil img {
+    width: 135px;
+    height: auto;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
+  .product-detail-section .for-product-deatil img {
+    width: 135px;
+    height: auto;
+  }
+  .product-detail-block2 .body-description {
+    padding: 15px;
+  }
+  .eq-for-front .equipmentsData-section .for-product-deatil {
+    width: 100.666667%;
+  }
   .product-listing-page .listing-content .invent-pro-cus-lft {
     padding-right: 0;
   }
