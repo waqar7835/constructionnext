@@ -157,9 +157,9 @@ const List = () => {
                     {product.field_description}
                   </div>
                   <div className="invent-cus-price eqinfo">
-                    <span className="eq-label">Price:</span>
+                    <span className="eq-label">Price: </span>
                     {(!!product && !!product.field_price)? (
-                    <span className="eq-info">${product.field_price}</span>
+                    <span className="eq-info"> ${product.field_price}</span>
                     ):
                     <span className="eq-info">Call for price</span>
                     }
