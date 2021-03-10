@@ -10,6 +10,10 @@ import ProductDetailSellerMail from "./ProductDetailSellerMail";
 import ReactHtmlParser from "react-html-parser";
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
+// import '@fortawesome/fontawesome-free/css/all.min.css';
+//  import 'bootstrap-css-only/css/bootstrap.min.css';
+//   import 'mdbreact/dist/css/mdb.css';
+// import { MDBInput } from "mdbreact";
 
 import {
   EmailIcon,
@@ -33,12 +37,37 @@ import {
   WeiboIcon,
   WhatsappIcon,
   WorkplaceIcon
+  
+} from "react-share";
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  HatenaShareButton,
+  InstapaperShareButton,
+  LineShareButton,
+  LinkedinShareButton,
+  LivejournalShareButton,
+  MailruShareButton,
+  OKShareButton,
+  PinterestShareButton,
+  PocketShareButton,
+  RedditShareButton,
+  TelegramShareButton,
+  TumblrShareButton,
+  TwitterShareButton,
+  ViberShareButton,
+  VKShareButton,
+  WhatsappShareButton,
+  WorkplaceShareButton,
+  FacebookMessengerShareButton,
+  WeiboShareButton
 } from "react-share";
 const Main = ({ content }) => {
   console.log({ content });
   const [images, setContentImages] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
+  const [socialIcon, setSocialIcon] = useState(false);
 
   const handlePrint = () => {
     var prtContent = document.getElementById("listing-content-results");
@@ -69,8 +98,12 @@ const Main = ({ content }) => {
   const showModal = () => {
     setIsModalVisible(true);
   };
+ 
+  const showSocialIcons = () => {
+setSocialIcon(true);
+  }
   const handleCancel = () => {
-    setIsModalVisible(false);
+    setSocialIcon(false);
   };
 //console.log("images=>",images);
 
@@ -196,9 +229,13 @@ const Main = ({ content }) => {
                   </div>
                 </div>
               </div>
-              {/* <div>
-              <TwitterIcon size={32} round={true} />
-              </div> */}
+              <div className="social-icons">
+                <p>Share On:</p>
+                <TwitterShareButton><TwitterIcon size={32} round={true} /></TwitterShareButton>
+              <FacebookShareButton><FacebookIcon size={32} round={true}/></FacebookShareButton>
+              <LinkedinShareButton> <LinkedinIcon size={32} round={true}/></LinkedinShareButton>
+              {/* <a onClick={showSocialIcons}>+</a> */}
+              </div>
             </div>
             {/* product right side end  */}
             {/* product description start  */}
@@ -547,6 +584,52 @@ const Main = ({ content }) => {
                 }
               />
             )}
+        <Modal
+        className="modal-filters customant-popups"      
+        visible={socialIcon}
+        onCancel={handleCancel}
+        footer={[]}
+      >
+        <div className="container">
+          <h2> Share </h2>
+          <p>
+            <span className="field field--name-title field--type-string field--label-hidden">
+                {!!content && content.title}
+              </span>
+            </p>
+            <input type="text" placeholder="Find a service" />
+            <span><i className="fa fa-search"></i></span>
+           
+            <div>
+            < EmailShareButton >
+               <EmailIcon size={32} round={true} openShareDialogOnClick/>
+               Email
+            </ EmailShareButton>
+  <FacebookShareButton ><FacebookIcon size={32} round={true}/></FacebookShareButton>
+  <FacebookMessengerShareButton><FacebookMessengerIcon size={32} round={true}/></FacebookMessengerShareButton>
+  <HatenaShareButton><HatenaIcon size={32} round={true}/></HatenaShareButton>
+  <InstapaperShareButton><InstapaperIcon size={32} round={true}/></InstapaperShareButton>
+  <LineShareButton><LineIcon size={32} round={true}/></LineShareButton>
+  <LinkedinShareButton><LinkedinIcon size={32} round={true}/></LinkedinShareButton>
+  <LivejournalShareButton><LivejournalIcon size={32} round={true}/></LivejournalShareButton>
+  <MailruShareButton><MailruIcon size={32} round={true}/></MailruShareButton>
+  <OKShareButton><OKIcon size={32} round={true}/></OKShareButton>
+  <PinterestShareButton><PinterestIcon size={32} round={true}/></PinterestShareButton>
+  <PocketShareButton><PocketIcon size={32} round={true}/></PocketShareButton>
+ <RedditShareButton><RedditIcon size={32} round={true}/></RedditShareButton> 
+ <TelegramShareButton> <TelegramIcon size={32} round={true}/></TelegramShareButton>
+  <TumblrShareButton><TumblrIcon size={32} round={true} size={32} round={true}/></TumblrShareButton>
+ <TwitterShareButton> <TwitterIcon size={32} round={true}/></TwitterShareButton>
+ <ViberShareButton><ViberIcon size={32} round={true}/></ViberShareButton> 
+ <VKShareButton> <VKIcon size={32} round={true}/></VKShareButton>
+  <WeiboShareButton><WeiboIcon size={32} round={true}/></WeiboShareButton>
+  <WhatsappShareButton><WhatsappIcon size={32} round={true}/></WhatsappShareButton>
+  <WorkplaceShareButton><WorkplaceIcon size={32} round={true}/></WorkplaceShareButton>
+            </div>
+
+        </div>
+
+      </Modal>
       
 
     </>
