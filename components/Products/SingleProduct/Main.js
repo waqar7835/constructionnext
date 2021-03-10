@@ -611,42 +611,112 @@ setSocialIcon(true);
             <TwitterShareButton url={"https://twitter.com/"}>
               <TwitterIcon size={32} round={true} />
             </TwitterShareButton>
+            <p> Twitter</p>
             </div>
             <div className="social-icon">
               <FacebookShareButton url={"https://www.facebook.com/"}>
                 <FacebookIcon size={32} round={true}/>
               </FacebookShareButton>
+              <p>Facebook</p>
             </div>
             <div className="social-icon">
               <LinkedinShareButton url={"www.linkedin.com"}> 
                 <LinkedinIcon size={32} round={true}/>
               </LinkedinShareButton>
+              <p>Linkedin</p>
             </div>          
           <div className="social-icon">
             <FacebookMessengerShareButton>
               <FacebookMessengerIcon size={32} round={true}/>
             </FacebookMessengerShareButton>
+            <p>Messenger</p>
           </div>
-  
-  {/* <HatenaShareButton><HatenaIcon size={32} round={true}/></HatenaShareButton>
-  <InstapaperShareButton><InstapaperIcon size={32} round={true}/></InstapaperShareButton>
-  <LineShareButton><LineIcon size={32} round={true}/></LineShareButton>
-  <LinkedinShareButton><LinkedinIcon size={32} round={true}/></LinkedinShareButton>
-  <LivejournalShareButton><LivejournalIcon size={32} round={true}/></LivejournalShareButton>
-  <MailruShareButton><MailruIcon size={32} round={true}/></MailruShareButton>
-  <OKShareButton><OKIcon size={32} round={true}/></OKShareButton>
-  <PinterestShareButton><PinterestIcon size={32} round={true}/></PinterestShareButton>
-  <PocketShareButton><PocketIcon size={32} round={true}/></PocketShareButton>
- <RedditShareButton><RedditIcon size={32} round={true}/></RedditShareButton> 
- <TelegramShareButton> <TelegramIcon size={32} round={true}/></TelegramShareButton>
-  <TumblrShareButton><TumblrIcon size={32} round={true} size={32} round={true}/></TumblrShareButton>
- <TwitterShareButton> <TwitterIcon size={32} round={true}/></TwitterShareButton>
- <ViberShareButton><ViberIcon size={32} round={true}/></ViberShareButton> 
- <VKShareButton> <VKIcon size={32} round={true}/></VKShareButton>
-  <WeiboShareButton><WeiboIcon size={32} round={true}/></WeiboShareButton>
-  <WhatsappShareButton><WhatsappIcon size={32} round={true}/></WhatsappShareButton>
-  <WorkplaceShareButton><WorkplaceIcon size={32} round={true}/></WorkplaceShareButton> */}
-            </div>
+          <div className="social-icon">
+            <HatenaShareButton url={"https://b.hatena.ne.jp/"}>
+              <HatenaIcon size={32} round={true}/>
+            </HatenaShareButton>
+            <p>Hatena</p>
+          </div>
+          <div className="social-icon">
+          <InstapaperShareButton url={"https://www.instapaper.com/"}>
+            <InstapaperIcon size={32} round={true}/>
+          </InstapaperShareButton>
+            <p>Instapaper</p>
+          </div>
+          <div className="social-icon">
+          <LineShareButton url={"https://access.line.me/"}>
+            <LineIcon size={32} round={true}/>
+          </LineShareButton>
+            <p>Line</p>
+          </div>
+          <div className="social-icon">
+          <LivejournalShareButton url={"https://www.livejournal.com/"}>
+            <LivejournalIcon size={32} round={true}/>
+          </LivejournalShareButton>
+            <p>Livejournal</p>
+          </div>
+          <div className="social-icon">
+          <OKShareButton url={"https://notizie.virgilio.it/"}>
+            <OKIcon size={32} round={true}/>
+          </OKShareButton>
+          <p>OKNOtizie</p>
+          </div>
+          {/* <div className="social-icon">
+          <PinterestShareButton url={"https://www.pinterest.com"}>
+            <PinterestIcon size={32} round={true}/>
+          </PinterestShareButton>
+          <p>Pinterest</p>
+          </div> */}
+          <div className="social-icon">
+          <PocketShareButton url={"https://getpocket.com/"}>
+            <PocketIcon size={32} round={true}/>
+          </PocketShareButton>
+          <p>Pocket</p>
+          </div>
+          <div className="social-icon">
+          <RedditShareButton url={"https://www.reddit.com/"}>
+            <RedditIcon size={32} round={true}/>
+          </RedditShareButton> 
+          <p>Reddit</p>
+          </div>
+          <div className="social-icon">
+          <TelegramShareButton url={"https://telegram.me/"}> 
+            <TelegramIcon size={32} round={true}/>
+          </TelegramShareButton>
+          <p>Telegram</p>
+          </div>
+          <div className="social-icon">
+          <TumblrShareButton url={"https://www.tumblr.com/"}>
+            <TumblrIcon size={32} round={true} size={32} round={true}/>
+          </TumblrShareButton>
+          <p>Tumblr</p>
+          </div>
+          <div className="social-icon">
+          <ViberShareButton url={"https://www.viber.com/en/"}>
+            <ViberIcon size={32} round={true}/>
+          </ViberShareButton> 
+          <p>Viber</p>
+          </div>
+          {/* <div className="social-icon">
+          <VKShareButton url={"https://oauth.vk.com/"}> 
+            <VKIcon size={32} round={true}/>
+          </VKShareButton>
+          <p>VKontakte</p>
+          </div> */}
+          <div className="social-icon">
+          <WeiboShareButton url={"https://service.weibo.com/"}>
+            <WeiboIcon size={32} round={true}/>
+          </WeiboShareButton>
+          <p>Weibo</p>
+          </div>
+          <div className="social-icon">
+          <WhatsappShareButton url={"https://api.whatsapp.com/"}>
+            <WhatsappIcon size={32} round={true}/>
+          </WhatsappShareButton>
+          <p>WhatsApp</p>
+          </div>
+         
+            </div> 
 
         </div>
 
