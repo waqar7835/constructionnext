@@ -228,14 +228,14 @@ setSocialIcon(true);
                     <ProductEmail />
                   </div>
                 </div>
-              </div>
-              <div className="social-icons">
+                <div className="social-icons">
                 <p>Share On:</p>
-                <TwitterShareButton><TwitterIcon size={32} round={true} /></TwitterShareButton>
-              <FacebookShareButton><FacebookIcon size={32} round={true}/></FacebookShareButton>
-              <LinkedinShareButton> <LinkedinIcon size={32} round={true}/></LinkedinShareButton>
-              {/* <a onClick={showSocialIcons}>+</a> */}
+              <TwitterShareButton url={"https://twitter.com/"}><TwitterIcon size={32} round={true} /></TwitterShareButton>
+              <FacebookShareButton url={"https://www.facebook.com/"}><FacebookIcon size={32} round={true}/></FacebookShareButton>
+              <LinkedinShareButton url={"www.linkedin.com"}> <LinkedinIcon size={32} round={true}/></LinkedinShareButton>
+              <a onClick={showSocialIcons}>+</a>
               </div>
+              </div>             
             </div>
             {/* product right side end  */}
             {/* product description start  */}
@@ -601,11 +601,28 @@ setSocialIcon(true);
             <span><i className="fa fa-search"></i></span>
            
             <div>
-            < EmailShareButton >
-               <EmailIcon size={32} round={true} openShareDialogOnClick/>
-               Email
-            </ EmailShareButton>
-  <FacebookShareButton ><FacebookIcon size={32} round={true}/></FacebookShareButton>
+              <div>
+            <EmailShareButton >
+               <EmailIcon size={32} round={true} openShareDialogOnClick/>              
+            </EmailShareButton>
+            <p> Email</p>
+            </div>
+            <div>
+            <TwitterShareButton url={"https://twitter.com/"}>
+              <TwitterIcon size={32} round={true} />
+            </TwitterShareButton>
+            </div>
+            <div>
+              <FacebookShareButton url={"https://www.facebook.com/"}>
+                <FacebookIcon size={32} round={true}/>
+              </FacebookShareButton>
+            </div>
+            <div>
+              <LinkedinShareButton url={"www.linkedin.com"}> 
+                <LinkedinIcon size={32} round={true}/>
+              </LinkedinShareButton>
+            </div>
+  {/* <FacebookShareButton ><FacebookIcon size={32} round={true}/></FacebookShareButton>
   <FacebookMessengerShareButton><FacebookMessengerIcon size={32} round={true}/></FacebookMessengerShareButton>
   <HatenaShareButton><HatenaIcon size={32} round={true}/></HatenaShareButton>
   <InstapaperShareButton><InstapaperIcon size={32} round={true}/></InstapaperShareButton>
@@ -624,7 +641,7 @@ setSocialIcon(true);
  <VKShareButton> <VKIcon size={32} round={true}/></VKShareButton>
   <WeiboShareButton><WeiboIcon size={32} round={true}/></WeiboShareButton>
   <WhatsappShareButton><WhatsappIcon size={32} round={true}/></WhatsappShareButton>
-  <WorkplaceShareButton><WorkplaceIcon size={32} round={true}/></WorkplaceShareButton>
+  <WorkplaceShareButton><WorkplaceIcon size={32} round={true}/></WorkplaceShareButton> */}
             </div>
 
         </div>
