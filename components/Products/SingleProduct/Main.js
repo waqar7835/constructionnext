@@ -233,7 +233,7 @@ setSocialIcon(true);
               <TwitterShareButton url={"https://twitter.com/"}><TwitterIcon size={32} round={true} /></TwitterShareButton>
               <FacebookShareButton url={"https://www.facebook.com/"}><FacebookIcon size={32} round={true}/></FacebookShareButton>
               <LinkedinShareButton url={"www.linkedin.com"}> <LinkedinIcon size={32} round={true}/></LinkedinShareButton>
-              <a onClick={showSocialIcons}>+</a>
+              <a className="new-social-add" onClick={showSocialIcons}>+</a>
               </div>
               </div>             
             </div>
@@ -585,12 +585,12 @@ setSocialIcon(true);
               />
             )}
         <Modal
-        className="modal-filters customant-popups"      
+        className="modal-filters customant-popups new-social-popups"      
         visible={socialIcon}
         onCancel={handleCancel}
         footer={[]}
       >
-        <div className="container">
+        <div className="container1">
           <h2> Share </h2>
           <p>
             <span className="field field--name-title field--type-string field--label-hidden">
@@ -605,7 +605,7 @@ setSocialIcon(true);
             <EmailShareButton >
                <EmailIcon size={32} round={true} openShareDialogOnClick/>              
             </EmailShareButton>
-            <p> Email</p>
+            {/* <p> Email</p> */}
             </div>
             <div className="social-icon">
             <TwitterShareButton url={"https://twitter.com/"}>
