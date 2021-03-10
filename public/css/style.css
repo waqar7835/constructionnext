@@ -4238,7 +4238,8 @@ ul.slider-btn li:last-child {
   }
 }
 .logo-area {
-  margin-top: 15px;
+  /* margin-top: 15px;  */
+  margin-top: 0;
 }
 .logo-area img {
   width: 133px;
@@ -4262,6 +4263,13 @@ ul.slider-btn li:last-child {
   transition: all 1s ease-out;
   font-size: 16px;
   font-weight: 500;
+}
+.product-detail-block2 .body-description {
+  box-shadow: 0px 0px 50px 0px rgb(0 0 0 / 8%);
+  -moz-box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0px 0px 50px 0px rgb(0 0 0 / 8%);
+  padding: 20px;
+  margin-bottom: 25px;
 }
 @media (max-width: 1330px) {
   .main-menu-area nav ul li > a {
