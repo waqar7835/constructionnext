@@ -94,8 +94,29 @@ const Filters = () => {
   const [date, setDate] = useState(30);
   const [checkDate, setCheckDate] = useState();
 
+  const getArrayAlways = (data) => {
+    return Array.isArray(data) ? data : [data];
+  };
   useEffect(() => {
     if (router.query) {
+      if (router.query["state[]"]) {
+        setState(getArrayAlways(router.query["state[]"]));
+      }
+      if (router.query["listing_type[]"]) {
+        setListingType(getArrayAlways(router.query["listing_type[]"]));
+      }
+      if (router.query["country[]"]) {
+        setCountry(getArrayAlways(router.query["country[]"]));
+      }
+      if (router.query["condition[]"]) {
+        setCondition(getArrayAlways(router.query["condition[]"]));
+      }
+      if (router.query["manufacturer[]"]) {
+        setManufacturer(getArrayAlways(router.query["manufacturer[]"]));
+      }
+      if (router.query["city[]"]) {
+        setCity(getArrayAlways(router.query["city[]"]));
+      }
       setPrice([
         router.query.price_min || minprice,
         router.query.price_max || maxprice,
@@ -166,6 +187,7 @@ const Filters = () => {
       setGroupedCategoryTrems([]);
     }
   }, [categoryCount]);
+
   useEffect(() => {
     const urlCategoryIds = Array.isArray(router.query["categoury[]"])
       ? router.query["categoury[]"]
@@ -196,7 +218,7 @@ const Filters = () => {
         });
       });
     }
-  }, []);
+  }, [grouped_category_trems]);
 
   const showCatModal = () => {
     setIsCatModalVisible(true);
@@ -538,6 +560,7 @@ const Filters = () => {
       }
     }
     if (params.checkDate == true) {
+      console.log("--------------------", params.date, date);
       if (!!params.date) {
         let newdate = new Date();
         let last = new Date(
@@ -961,6 +984,7 @@ const Filters = () => {
       (catData) => catData.label != label
     );
     catApply = filteredCatData.map((cat) => cat.value);
+    // console.log("-------------", categoryCount, categoury, checkedIds, label);
     setCategoury(catApply);
     applyFilter({
       city,
@@ -1526,6 +1550,7 @@ const Filters = () => {
                 <InputNumber
                   value={date}
                   onChange={(value) => {
+                    console.log("----------------------------------", value);
                     setDate(value);
                     if (checkDate == true) {
                       applyFilter({
