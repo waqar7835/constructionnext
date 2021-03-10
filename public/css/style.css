@@ -14014,9 +14014,23 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
     max-width: 100%;
     min-width: 300px;
   }
+  .product-detail-block2 .body-description {
+    padding: 15px;
+  }
+  .product-detail-section .for-product-deatil img {
+    width: 135px;
+    height: auto;
+  }
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
+  .product-detail-section .for-product-deatil img {
+    width: 135px;
+    height: auto;
+  }
+  .product-detail-block2 .body-description {
+    padding: 15px;
+  }
   .eq-for-front .equipmentsData-section .for-product-deatil {
     width: 100.666667%;
   }
