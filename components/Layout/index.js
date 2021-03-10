@@ -23,6 +23,7 @@ const Layout = (props) => {
     <div>
       <div style={layoutStyle}>
         <Head>
+          
           <link rel="shortcut icon" href="/images/favicon.png" />
           <link rel="stylesheet" href={`/css/bootstrap.min.css`} />
 
@@ -30,6 +31,8 @@ const Layout = (props) => {
           <link rel="stylesheet" href={`/css/icofont.css`} />
           <link rel="stylesheet" href={`/css/font-awesome.min.css`} />
           <link rel="stylesheet" href={`/css/meanmenu.min.css`} />
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
           {/* <script 
                     src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
                     crossorigin="anonymous"

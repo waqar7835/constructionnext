@@ -13762,6 +13762,10 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
  } 
 
  @media (min-width: 320px) and (max-width: 575.98px)  { 
+  .image-zommer {
+    bottom: 134px;
+    right: 25px;
+  }
    .eq-for-front .equipmentsData-section .for-product-deatil {
     width: 100.666667%;
   }
@@ -14316,12 +14320,13 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
   width: 75% !important;
 }
 
-.fa-search-plus{
+.image-zommer {
   position: absolute;
-margin-top: -214px;
-margin-left: 693px;
-color: white;
-font-size: 33px !important;
+  color: white;
+  font-size: 33px !important;
+  bottom: 134px;
+  right: 25px;
+  z-index: 5;
 }
 a.new-social-add {
   color: #fff;
@@ -14329,7 +14334,7 @@ a.new-social-add {
   font-size: 15px;
   font-weight: 500;
   line-height: 1;
-  padding: 10px 12px;
+  padding: 9px 12px;
   position: relative;
   text-transform: capitalize;
   transform: perspective(1px) translateZ(0px);
@@ -14339,7 +14344,7 @@ a.new-social-add {
   border-radius: 50%;
   border: none;
   top: -10px;
-  left: 5px;
+  left: 0px;
 }
 a.new-social-add:hover {
   color: var(--background-white);
@@ -14358,5 +14363,44 @@ a.new-social-add:hover {
    padding-top: 10px;
 }
 .social-icons-div .social-icon {
-   
+  margin-right: 2px;
+}
+span.search-icon-popup {
+  color: #fff !important;
+  display: inline-table !important;
+  font-size: 21px !important;
+  font-weight: 500 !important;
+  line-height: 1;
+  padding: 15px 15px !important;
+  position: relative !important;
+  text-transform: capitalize;
+  transform: perspective(1px) translateZ(0px);
+  transition: 0.3s;
+  vertical-align: middle;
+  background: #ff9800 !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-right-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
+  border: none !important;
+  height: auto !important;
+}
+span.search-icon-popup:before {
+  background: #f57c00;
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: scaleY(0);
+  transform-origin: 50% 0 0;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+  z-index: -1;
+  border-radius: 0;
+}
+span.search-icon-popup:hover::before {
+  transform: scaley(1);
 }

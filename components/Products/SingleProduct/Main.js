@@ -162,7 +162,7 @@ setSocialIcon(true);
                 ))}
                
               </Carousel>
-                <span>
+              <span className="image-zommer">
                       <i className="fa fa-search-plus " onClick={showModal} aria-hidden="true"></i>
                 </span>
             </div>
@@ -598,7 +598,7 @@ setSocialIcon(true);
               </span>
             </p>
             <input type="text" placeholder="Find a service" />
-            <span><i className="fa fa-search"></i></span>
+            <span className="search-icon-popup"><i className="fa fa-search"></i></span>
            
             <div className="social-icons-div">
               <div className="social-icon">
