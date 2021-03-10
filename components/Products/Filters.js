@@ -99,6 +99,9 @@ const Filters = () => {
   };
   useEffect(() => {
     if (router.query) {
+      if (router.query.created) {
+        setCheckDate(true);
+      }
       if (router.query["state[]"]) {
         setState(getArrayAlways(router.query["state[]"]));
       }
@@ -1527,6 +1530,7 @@ const Filters = () => {
               )}
               <Panel header="Search Results By Date" key="10">
                 <Checkbox
+                  checked={checkDate}
                   onChange={(e) => {
                     setCheckDate(e.target.checked);
                     applyFilter({
