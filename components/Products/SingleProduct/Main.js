@@ -600,31 +600,35 @@ setSocialIcon(true);
             <input type="text" placeholder="Find a service" />
             <span><i className="fa fa-search"></i></span>
            
-            <div>
-              <div>
+            <div className="social-icons-div">
+              <div className="social-icon">
             <EmailShareButton >
                <EmailIcon size={32} round={true} openShareDialogOnClick/>              
             </EmailShareButton>
             <p> Email</p>
             </div>
-            <div>
+            <div className="social-icon">
             <TwitterShareButton url={"https://twitter.com/"}>
               <TwitterIcon size={32} round={true} />
             </TwitterShareButton>
             </div>
-            <div>
+            <div className="social-icon">
               <FacebookShareButton url={"https://www.facebook.com/"}>
                 <FacebookIcon size={32} round={true}/>
               </FacebookShareButton>
             </div>
-            <div>
+            <div className="social-icon">
               <LinkedinShareButton url={"www.linkedin.com"}> 
                 <LinkedinIcon size={32} round={true}/>
               </LinkedinShareButton>
-            </div>
-  {/* <FacebookShareButton ><FacebookIcon size={32} round={true}/></FacebookShareButton>
-  <FacebookMessengerShareButton><FacebookMessengerIcon size={32} round={true}/></FacebookMessengerShareButton>
-  <HatenaShareButton><HatenaIcon size={32} round={true}/></HatenaShareButton>
+            </div>          
+          <div className="social-icon">
+            <FacebookMessengerShareButton>
+              <FacebookMessengerIcon size={32} round={true}/>
+            </FacebookMessengerShareButton>
+          </div>
+  
+  {/* <HatenaShareButton><HatenaIcon size={32} round={true}/></HatenaShareButton>
   <InstapaperShareButton><InstapaperIcon size={32} round={true}/></InstapaperShareButton>
   <LineShareButton><LineIcon size={32} round={true}/></LineShareButton>
   <LinkedinShareButton><LinkedinIcon size={32} round={true}/></LinkedinShareButton>
