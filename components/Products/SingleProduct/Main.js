@@ -10,6 +10,30 @@ import ProductDetailSellerMail from "./ProductDetailSellerMail";
 import ReactHtmlParser from "react-html-parser";
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
+
+import {
+  EmailIcon,
+  FacebookIcon,
+  FacebookMessengerIcon,
+  HatenaIcon,
+  InstapaperIcon,
+  LineIcon,
+  LinkedinIcon,
+  LivejournalIcon,
+  MailruIcon,
+  OKIcon,
+  PinterestIcon,
+  PocketIcon,
+  RedditIcon,
+  TelegramIcon,
+  TumblrIcon,
+  TwitterIcon,
+  ViberIcon,
+  VKIcon,
+  WeiboIcon,
+  WhatsappIcon,
+  WorkplaceIcon
+} from "react-share";
 const Main = ({ content }) => {
   console.log({ content });
   const [images, setContentImages] = useState([]);
@@ -105,9 +129,9 @@ const Main = ({ content }) => {
                 ))}
                
               </Carousel>
-              <span>
-                      <i className="fa fa-search-plus" onClick={showModal} aria-hidden="true"></i>
-                    </span>
+                <span>
+                      <i className="fa fa-search-plus " onClick={showModal} aria-hidden="true"></i>
+                </span>
             </div>
             {/* product right side start  */}
             <div className="col-lg-4 col-md-4">
@@ -151,11 +175,11 @@ const Main = ({ content }) => {
                   {/* <div className="pro-rt2-lft-subt rigth-side-detailp">
                     <p>Lorem, ipsum dolor site</p>
                   </div> */}
-                  <div className="pro-rt2-lft-phon rigth-side-detailp">
+                  {/* <div className="pro-rt2-lft-phon rigth-side-detailp">
                     <p>
                       <span>Phone: </span> {!!content && content.field_phone}
                     </p>
-                  </div>
+                  </div> */}
                   <div className="pro-rt2-lft-video rigth-side-detailp">
                     <ProductVideoChat />
                   </div>
@@ -172,6 +196,9 @@ const Main = ({ content }) => {
                   </div>
                 </div>
               </div>
+              {/* <div>
+              <TwitterIcon size={32} round={true} />
+              </div> */}
             </div>
             {/* product right side end  */}
             {/* product description start  */}
@@ -498,12 +525,7 @@ const Main = ({ content }) => {
           </div>
         </div>
       </div>
-      <Modal
-        className="modal-filters"       
-        visible={isModalVisible}
-        onCancel={handleCancel}
-        footer={[]}
-      >
+    
        {isModalVisible && (
               <Lightbox
                 mainSrc={baseURL + images[photoIndex]}
@@ -525,7 +547,7 @@ const Main = ({ content }) => {
                 }
               />
             )}
-      </Modal>
+      
 
     </>
   );

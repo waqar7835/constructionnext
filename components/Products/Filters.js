@@ -779,7 +779,7 @@ const Filters = () => {
             ))
           : ""}
         {keywords ? (
-          <span className="list-title-text">
+          <span className="badge badge-secondary">
             {keywords}
             <a onClick={cancelKeywordFilter}>x</a>
           </span>
@@ -787,7 +787,7 @@ const Filters = () => {
           ""
         )}
         {dateRange ? (
-          <span className="list-title-text">
+          <span className="badge badge-secondary">
             {dateRange}
             <a onClick={cancelDateRangeFilter}>x</a>
           </span>

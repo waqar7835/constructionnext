@@ -655,6 +655,9 @@ ul {
   .brand-area-space {
     padding: 85px 0 80px;
   }
+  .fa-search-plus{ 
+   margin-left: 569px !important 
+  }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .brand-area-space {
@@ -665,6 +668,9 @@ ul {
   .brand-area-space {
     padding: 55px 0 50px;
   }
+  .fa-search-plus{ 
+    margin-left: 642px !important 
+   }
 }
 @media only screen and (max-width: 479px) {
   .brand-area-space {
@@ -14278,4 +14284,12 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
 }
 .product-listing-page #listing-content-results {
   width: 75% !important;
+}
+
+.fa-search-plus{
+  position: absolute;
+margin-top: -191px;
+margin-left: 693px;
+color: white;
+font-size: 33px !important;
 }
