@@ -13747,6 +13747,9 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
  } 
 
  @media (min-width: 320px) and (max-width: 575.98px)  { 
+   .eq-for-front .equipmentsData-section .for-product-deatil {
+    width: 100.666667%;
+  }
   .product-listing-page .invent-pro-cus-lft .invent-cus-img img {
     height: 150px;
   }
@@ -14014,6 +14017,9 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
+  .eq-for-front .equipmentsData-section .for-product-deatil {
+    width: 100.666667%;
+  }
   .product-listing-page .listing-content .invent-pro-cus-lft {
     padding-right: 0;
   }
