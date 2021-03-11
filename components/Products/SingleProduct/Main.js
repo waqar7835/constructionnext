@@ -146,8 +146,17 @@ const Main = ({ content }) => {
                   </div>
                   <div className="pro-det-prbtn">
                     <div className="pro-b2-gen-label">
-                      Price: <span className="label-info-detail-page">${" "}{!!content && content.field_price}{" "} </span>
+                      
+                      Price:  {(!!content && !!content.field_price)? 
+                       ( 
+                       <span className="label-info-detail-page"> 
+                          ${" "}{!!content && content.field_price} 
+                       </span>
+                       ) 
+                       :  
+                       <span className="eq-info">Call for price</span>}
                     </div>
+                   
                     {/* <div className="pro-det-prbtn rigth-side-detailp">
                      
                     </div> */}
