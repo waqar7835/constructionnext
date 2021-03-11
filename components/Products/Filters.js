@@ -139,7 +139,11 @@ const Filters = () => {
     // }
   }, [router.query, minyear, maxyear, minprice, maxprice]);
   useEffect(() => {
+    console.log(router.query);
     let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
+    let { keywords } = router.query;
+    req += !!keywords && "&description=" + quickSearch;
+    console.log(req);
     dispatch(getCityCount(req));
     dispatch(getConditionCount(req));
     dispatch(getCountryCount(req));
@@ -564,6 +568,11 @@ const Filters = () => {
         str += "&keywords=" + params.quickSearch;
       }
     }
+    // if (!isEmpty(params.quickSearch)) {
+    //   if (!!params.quickSearch) {
+    //     str += "&description=" + params.quickSearch;
+    //   }
+    // }
     if (params.checkDate == true) {
       console.log("--------------------", params.date, date);
       if (!!params.date) {
@@ -725,11 +734,11 @@ const Filters = () => {
     }
 
     if (req.includes(`price_max=`)) {
-      console.log("yes includes")
+      console.log("yes includes");
       priceRange = "Price Ranges";
     }
     if (req.includes(`year_max=`)) {
-      console.log("yes includes")
+      console.log("yes includes");
       yearRange = "Year Ranges";
     }
     if (req.includes(`condition[]=`)) {
@@ -824,7 +833,7 @@ const Filters = () => {
         ) : (
           ""
         )}
-         {priceRange ? (
+        {priceRange ? (
           <span className="badge badge-secondary">
             {priceRange}
             <a onClick={cancelPriceFilter}>x</a>
@@ -832,7 +841,7 @@ const Filters = () => {
         ) : (
           ""
         )}
-         {yearRange ? (
+        {yearRange ? (
           <span className="badge badge-secondary">
             {yearRange}
             <a onClick={cancelYearFilter}>x</a>
@@ -892,7 +901,6 @@ const Filters = () => {
               </span>
             ))
           : ""}
-        
       </>
     );
   };
@@ -1020,7 +1028,7 @@ const Filters = () => {
       manufacturer,
       listingType,
       condition,
-      year:[],
+      year: [],
       price,
       quickSearch,
     });
@@ -1619,12 +1627,12 @@ const Filters = () => {
                 <InputNumber
                   value={date}
                   onChange={(value) => {
-                   // console.log("----------------------------------", value);
-                    setDate(value);}
-                  }
-                    onBlur={()=> {
+                    // console.log("----------------------------------", value);
+                    setDate(value);
+                  }}
+                  onBlur={() => {
                     if (checkDate == true) {
-                     // console.log("yes calling me");
+                      // console.log("yes calling me");
                       applyFilter({
                         date,
                         checkDate,

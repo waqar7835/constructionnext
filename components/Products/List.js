@@ -10,6 +10,7 @@ import getProductsData from "@store/actions/products";
 import { baseURL } from "@config/config";
 import { Pagination } from "antd";
 import scrollToHeader from "@store/actions/scroll";
+import ReactHtmlParser from "react-html-parser";
 
 const List = () => {
   const router = useRouter();
@@ -174,8 +175,8 @@ const List = () => {
                   <div className="invent-cus-machloc bold eqinfo">
                     <span className="eq-label">Machine Location:</span>{" "}
                     <span className="eq-info">
-                      {" "}
-                      {product.field_machine_location}
+                      {" "}                     
+                      {ReactHtmlParser(product.field_machine_location)}
                     </span>
                   </div>
                   )}
