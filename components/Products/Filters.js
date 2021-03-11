@@ -996,7 +996,7 @@ const Filters = () => {
       condition,
       year,
       price,
-      quickSearch,
+      quickSearch: '',
     });
   };
   const cancelPriceFilter = () => {
@@ -1182,6 +1182,24 @@ const Filters = () => {
 
   return (
     <>
+    <div classNmae="mobile-search">
+    <Form.Item label="Quick Search">
+            <Input
+              className="form-control top-input"
+              placeholder="Enter your search keyword"
+              value={quickSearch}
+              onChange={(e) => {
+                setQuickSearch(e.target.value);
+              }}
+            />
+            <button
+              className="apply-filter btn-str-up2"
+              onClick={submitHandler}
+            >
+              <i className="icofont icofont-search"></i>
+            </button>
+          </Form.Item>
+    </div>
       <div className="views-header emailand-title">
         <h6 className="list-title">{gettitle()}</h6>
         <div className="email-right">
