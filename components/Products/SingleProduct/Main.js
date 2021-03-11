@@ -169,14 +169,16 @@ setSocialIcon(true);
                   <div className="pro-rt2-lft-video rigth-side-detailp">
                     <ProductVideoChat />
                   </div>
+                  {!!content && !!content.field_machine_location && (
                   <div className="pro-rt2-lft-loc rigth-side-detailp">
                     <p>Machine Location:</p>
                     <p></p>
                     <div className="field field--name-field-machine-location field--type-string-long field--label-hidden field__item">
-                      {!!content && content.field_machine_location}
+                        {ReactHtmlParser(content.field_machine_location)}
                     </div>
                     <p></p>
                   </div>
+                  )}
                   <div className="pro-send-emailbtn rigth-side-detailp">
                     <ProductEmail />
                   </div>
@@ -298,11 +300,11 @@ setSocialIcon(true);
                 </div>
                   )}
               </div>
-              <div className="pro-b2-general showMe">
               {(!!content && content.field_bucket || content.field_bucket_capacity || content.field_bucket_type )?
-                <h2>Attachments</h2>
-                :" "
-              }
+             
+              <div className="pro-b2-general showMe">
+               <h2>Attachments</h2>
+               
                 {!!content && content.field_bucket && ( 
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Bucket</div>
@@ -334,11 +336,13 @@ setSocialIcon(true);
                 </div>
                 )}
               </div>
-              <div className="pro-b2-general showMe">
+              :" "
+               }
               {(!!content && content.field_number_of_fenders || content.field_rops)?
+              <div className="pro-b2-general showMe">
+             
                 <h2>Exterior</h2>
-                :" "
-              }
+                
                 {!!content && content.field_number_of_fenders && ( 
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Number of Fenders</div>
@@ -360,10 +364,12 @@ setSocialIcon(true);
                 </div>
                 )}
               </div>
+              :" "
+               }
+              {(!!content && content.field_a_c || content.field_heater || content.field_keyless_start || content.field_seat_material)?
+
               <div className="pro-b2-general showMe">
-                {(!!content && content.field_a_c || content.field_heater || content.field_keyless_start || content.field_seat_material)?
-                   <h2>Interior</h2>:" "
-              }
+                                  <h2>Interior</h2>
                {!!content && content.field_keyless_start && ( 
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Keyless Start</div>
@@ -406,10 +412,12 @@ setSocialIcon(true);
                 </div>
                  )}
               </div>
+              :" "
+               }
+              {(!!content && content.field_track_type )?
               <div className="pro-b2-general showMe">
-                {(!!content && content.field_track_type )?
-                   <h2>Chassis</h2>:" "
-              }
+               
+                   <h2>Chassis</h2>
                {!!content && content.field_track_type && ( 
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Track Type</div>
@@ -421,10 +429,11 @@ setSocialIcon(true);
                 </div>
                 )}                
               </div>
-              <div className="pro-b2-general showMe">
-                {(!!content && content.field_operating_weight )?
-                   <h2>Category Specific</h2>:" "
-              }
+              :" "
+               }
+              {(!!content && content.field_operating_weight )?
+              <div className="pro-b2-general showMe">               
+                   <h2>Category Specific</h2>
                {!!content && content.field_operating_weight && ( 
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Operating Weight</div>
@@ -436,10 +445,12 @@ setSocialIcon(true);
                 </div>
                 )}                
               </div>
+              :" "
+               }
+              {(!!content && content.field_max_travel_speed )?
               <div className="pro-b2-general showMe">
-                {(!!content && content.field_max_travel_speed )?
-                   <h2>Powertrain</h2>:" "
-              }
+               
+                   <h2>Powertrain</h2>
                {!!content && content.field_max_travel_speed && ( 
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Max Travel Speed</div>
@@ -451,10 +462,13 @@ setSocialIcon(true);
                 </div>
                 )}                
               </div>
+              :" "
+               }
+              {(!!content && content.field_horsepower || content.field_engine_manufacturer || content.field_engine_model || content.field_engine_tier || content.field_engine_turbo)?
+ 
               <div className="pro-b2-general showMe">
-                {(!!content && content.field_horsepower || content.field_engine_manufacturer || content.field_engine_model || content.field_engine_tier || content.field_engine_turbo)?
-                   <h2>Engine</h2>:" "
-              }
+                                 <h2>Engine</h2>
+             
                {!!content && content.field_horsepower && ( 
                 <div className="pro-b2-gen-flex">
                   <div className="pro-b2-gen-label">Horsepower</div>
@@ -506,6 +520,8 @@ setSocialIcon(true);
                 </div>
                 )}           
               </div>
+              :" "
+               }
               <div className="pro-commercial-financial"></div>
             </div>
             {/* product description end  */}

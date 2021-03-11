@@ -227,7 +227,10 @@ const Header = ({header}) => {
               </div>
               <div className="col-lg-2 col-md-3 menusearch">
                 <div className="header-search layout2">
-                  <form>
+                  <form onSubmit={(e) => {
+                    e.preventDefault();
+                     router.push(`/inventory/search`, `/inventory/search?keywords=${keyword}`, { shallow: true });
+                  }}>
                     <input
                       value={keyword}
                       onChange = {(e) => setkeyword(e.target.value)}
