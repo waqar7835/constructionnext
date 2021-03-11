@@ -3420,6 +3420,11 @@ ul.slider-btn li:last-child {
     padding: 6px 5px;
     font-size: 12px;
   } 
+  .project-info-layout1 .pro-rt2-lft-loc p:nth-child(1),
+  .project-info-layout1 .pro-det-prbtn .pro-b2-gen-label,
+  .project-info-layout1 .pro-det-title {
+    font-weight: bold;
+  }
 }
 @media only screen and (max-width: 767px) {
   .nav-control-middle3 .owl-controls .owl-prev {
