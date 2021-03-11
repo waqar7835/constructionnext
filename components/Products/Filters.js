@@ -35,6 +35,8 @@ const Filters = () => {
   let cityApply = "";
   let keywords = "";
   let dateRange = "";
+  let priceRange = "";
+  let yearRange = "";
 
   let stateApply = "";
   let counApply = "";
@@ -722,6 +724,14 @@ const Filters = () => {
       dateRange = "Date Ranges";
     }
 
+    if (req.includes(`price_max=`)) {
+      console.log("yes includes")
+      priceRange = "Price Ranges";
+    }
+    if (req.includes(`year_max=`)) {
+      console.log("yes includes")
+      yearRange = "Year Ranges";
+    }
     if (req.includes(`condition[]=`)) {
       let selectedCondData = conditionCount.filter(
         (singleConData) => condition.indexOf(singleConData.value) > -1
@@ -785,6 +795,8 @@ const Filters = () => {
         counApply ||
         stateApply ||
         cityApply ||
+        priceRange ||
+        yearRange ||
         listApply != " " ? (
           <span className="clearall-span">
             <a onClick={cancelAllFilters} className="clear-all-filters">
@@ -808,6 +820,22 @@ const Filters = () => {
           <span className="badge badge-secondary">
             {keywords}
             <a onClick={cancelKeywordFilter}>x</a>
+          </span>
+        ) : (
+          ""
+        )}
+         {priceRange ? (
+          <span className="badge badge-secondary">
+            {priceRange}
+            <a onClick={cancelPriceFilter}>x</a>
+          </span>
+        ) : (
+          ""
+        )}
+         {yearRange ? (
+          <span className="badge badge-secondary">
+            {yearRange}
+            <a onClick={cancelYearFilter}>x</a>
           </span>
         ) : (
           ""
@@ -864,6 +892,7 @@ const Filters = () => {
               </span>
             ))
           : ""}
+        
       </>
     );
   };
@@ -877,6 +906,8 @@ const Filters = () => {
     setListingType([]);
     setQuickSearch([]);
     setDate([]);
+    setPrice([]);
+    setYear([]);
     setCheckDate(false);
     applyFilter({
       city: [],
@@ -956,6 +987,40 @@ const Filters = () => {
       listingType,
       condition,
       year,
+      price,
+      quickSearch,
+    });
+  };
+  const cancelPriceFilter = () => {
+    setPrice([]);
+    applyFilter({
+      city,
+      date,
+      checkDate,
+      state,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year,
+      price: [],
+      quickSearch,
+    });
+  };
+  const cancelYearFilter = () => {
+    setYear([]);
+    applyFilter({
+      city,
+      date,
+      checkDate,
+      state,
+      country,
+      categoury,
+      manufacturer,
+      listingType,
+      condition,
+      year:[],
       price,
       quickSearch,
     });
@@ -1559,7 +1624,7 @@ const Filters = () => {
                   }
                     onBlur={()=> {
                     if (checkDate == true) {
-                      console.log("yes calling me");
+                     // console.log("yes calling me");
                       applyFilter({
                         date,
                         checkDate,
