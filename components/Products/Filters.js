@@ -1182,7 +1182,7 @@ const Filters = () => {
 
   return (
     <>
-    <div classNmae="mobile-search">
+    <div className="mobile-search">
     <Form.Item label="Quick Search">
             <Input
               className="form-control top-input"
