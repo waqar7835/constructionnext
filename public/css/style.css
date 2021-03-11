@@ -14051,8 +14051,9 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
     height: 150px;
   }
   .product-title-banner .page-title {
-    padding-top: 38px;
-    line-height: 46px;
+    padding-top: 48px;
+    line-height: 40px;
+    font-size: 36px;
     height: 127px;
     overflow: hidden;
   }
@@ -14221,6 +14222,10 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
   }
   .product-title-banner .page-title {
     padding-top: 38px;
+    line-height: 40px;
+    font-size: 36px;
+    height: 127px;
+    overflow: hidden;
   }
   form.finace-fiance-from {
     width: 93%;
