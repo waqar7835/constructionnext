@@ -115,7 +115,7 @@ setSocialIcon(true);
                 ))}
                
               </Carousel>
-                <span>
+              <span className="image-zommer">
                       <i className="fa fa-search-plus " onClick={showModal} aria-hidden="true"></i>
                 </span>
             </div>
@@ -534,6 +534,8 @@ setSocialIcon(true);
                 }
               />
             )}
+
+      
 
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6048f19e79dc9981"></script> 
     </>
