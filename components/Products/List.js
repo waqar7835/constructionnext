@@ -132,6 +132,12 @@ const List = () => {
               <div className="invent-pro-cus">
                 <div className="invent-pro-cus-lft">
                   <div className="invent-cus-img">
+                   <Link
+                        href={`/inventory/${product.title
+                          .replace(/[^a-z0-9_]+/gi, "-")
+                          .replace(/^-|-$/g, "")
+                          .toLowerCase()}/${product.nid}`}
+                      >
                     <img
                       src={baseURL + product.field_image}
                       width="1064"
@@ -140,6 +146,7 @@ const List = () => {
                       loading="lazy"
                       typeof="Image"
                     />
+                   </Link>
                   </div>
                   {/* <div className="invent-cus-created">
                     updated: Mon, 02/15/2021 - 15:53
@@ -153,7 +160,16 @@ const List = () => {
                 </div>
 
                 <div className="invent-pro-cus-mid">
-                  <div className="invent-cus-title">{product.title}</div>
+                  <div className="invent-cus-title">
+                  <Link
+                        href={`/inventory/${product.title
+                          .replace(/[^a-z0-9_]+/gi, "-")
+                          .replace(/^-|-$/g, "")
+                          .toLowerCase()}/${product.nid}`}
+                      >
+                    {product.title}
+                  </Link>
+                    </div>
                   <div className="invent-cus-des">
                     {product.field_description}
                   </div>
