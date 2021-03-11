@@ -161,6 +161,20 @@ const Main = ({ content }) => {
                      
                     </div> */}
                   </div>
+                  <div className="lister-dealer-info">
+                      <h6>Contact Information</h6>
+                      <p>
+                        <a href="#">Lam Supply LLC</a>
+                      </p>
+                      <p>{!!content.field_machine_location} </p>
+                      <p>
+                        <span>Phone:</span> +1 408-610-7177
+                      </p>
+                      <p>
+                        <span>Contact:</span> Tinh Lam
+                      </p>
+                    </div>
+                    <br></br>
                   <div className="pro-det-btnp rigth-side-detailp">
                     <ProductDetailSellerMail />
                   </div>
@@ -186,7 +200,7 @@ const Main = ({ content }) => {
                     <div className="pro-b2-gen-label">
                       <div > Machine Location:  </div>
                       <span className="label-info-detail-page">
-                        {!!content && content.field_machine_location}
+                      {ReactHtmlParser(content.field_machine_location)}
                       </span>
                     </div>
                   </div>
