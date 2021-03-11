@@ -150,7 +150,7 @@ const Main = ({ content }) => {
                       Price:  {(!!content && !!content.field_price)? 
                        ( 
                        <span className="label-info-detail-page"> 
-                          ${" "}{!!content && content.field_price} 
+                          ${!!content && content.field_price} 
                        </span>
                        ) 
                        :  
