@@ -15,53 +15,6 @@ import 'react-image-lightbox/style.css';
 //   import 'mdbreact/dist/css/mdb.css';
 // import { MDBInput } from "mdbreact";
 
-import {
-  EmailIcon,
-  FacebookIcon,
-  FacebookMessengerIcon,
-  HatenaIcon,
-  InstapaperIcon,
-  LineIcon,
-  LinkedinIcon,
-  LivejournalIcon,
-  MailruIcon,
-  OKIcon,
-  PinterestIcon,
-  PocketIcon,
-  RedditIcon,
-  TelegramIcon,
-  TumblrIcon,
-  TwitterIcon,
-  ViberIcon,
-  VKIcon,
-  WeiboIcon,
-  WhatsappIcon,
-  WorkplaceIcon
-  
-} from "react-share";
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  HatenaShareButton,
-  InstapaperShareButton,
-  LineShareButton,
-  LinkedinShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
-  OKShareButton,
-  PinterestShareButton,
-  PocketShareButton,
-  RedditShareButton,
-  TelegramShareButton,
-  TumblrShareButton,
-  TwitterShareButton,
-  ViberShareButton,
-  VKShareButton,
-  WhatsappShareButton,
-  WorkplaceShareButton,
-  FacebookMessengerShareButton,
-  WeiboShareButton
-} from "react-share";
 const Main = ({ content }) => {
   console.log({ content });
   const [images, setContentImages] = useState([]);
@@ -229,12 +182,9 @@ setSocialIcon(true);
                   </div>
                 </div>
                 <div className="social-icons">
-                <p>Share On:</p>
-              <TwitterShareButton url={"https://twitter.com/"}><TwitterIcon size={32} round={true} /></TwitterShareButton>
-              <FacebookShareButton url={"https://www.facebook.com/"}><FacebookIcon size={32} round={true}/></FacebookShareButton>
-              <LinkedinShareButton url={"www.linkedin.com"}> <LinkedinIcon size={32} round={true}/></LinkedinShareButton>
-              <a className="new-social-add" onClick={showSocialIcons}>+</a>
-              </div>
+                  <p>Share On:</p>             
+                  <div class="addthis_inline_share_toolbox"></div>
+                </div>
               </div>             
             </div>
             {/* product right side end  */}
@@ -584,145 +534,8 @@ setSocialIcon(true);
                 }
               />
             )}
-        <Modal
-        className="modal-filters customant-popups new-social-popups"      
-        visible={socialIcon}
-        onCancel={handleCancel}
-        footer={[]}
-      >
-        <div className="container1">
-          <h2> Share </h2>
-          <p>
-            <span className="field field--name-title field--type-string field--label-hidden">
-                {!!content && content.title}
-              </span>
-            </p>
-            <input type="text" placeholder="Find a service" />
-            <span><i className="fa fa-search"></i></span>
-           
-            <div className="social-icons-div">
-              <div className="social-icon">
-            <EmailShareButton >
-               <EmailIcon size={32} round={true} openShareDialogOnClick/>              
-            </EmailShareButton>
-            {/* <p> Email</p> */}
-            </div>
-            <div className="social-icon">
-            <TwitterShareButton url={"https://twitter.com/"}>
-              <TwitterIcon size={32} round={true} />
-            </TwitterShareButton>
-            <p> Twitter</p>
-            </div>
-            <div className="social-icon">
-              <FacebookShareButton url={"https://www.facebook.com/"}>
-                <FacebookIcon size={32} round={true}/>
-              </FacebookShareButton>
-              <p>Facebook</p>
-            </div>
-            <div className="social-icon">
-              <LinkedinShareButton url={"www.linkedin.com"}> 
-                <LinkedinIcon size={32} round={true}/>
-              </LinkedinShareButton>
-              <p>Linkedin</p>
-            </div>          
-          <div className="social-icon">
-            <FacebookMessengerShareButton>
-              <FacebookMessengerIcon size={32} round={true}/>
-            </FacebookMessengerShareButton>
-            <p>Messenger</p>
-          </div>
-          <div className="social-icon">
-            <HatenaShareButton url={"https://b.hatena.ne.jp/"}>
-              <HatenaIcon size={32} round={true}/>
-            </HatenaShareButton>
-            <p>Hatena</p>
-          </div>
-          <div className="social-icon">
-          <InstapaperShareButton url={"https://www.instapaper.com/"}>
-            <InstapaperIcon size={32} round={true}/>
-          </InstapaperShareButton>
-            <p>Instapaper</p>
-          </div>
-          <div className="social-icon">
-          <LineShareButton url={"https://access.line.me/"}>
-            <LineIcon size={32} round={true}/>
-          </LineShareButton>
-            <p>Line</p>
-          </div>
-          <div className="social-icon">
-          <LivejournalShareButton url={"https://www.livejournal.com/"}>
-            <LivejournalIcon size={32} round={true}/>
-          </LivejournalShareButton>
-            <p>Livejournal</p>
-          </div>
-          <div className="social-icon">
-          <OKShareButton url={"https://notizie.virgilio.it/"}>
-            <OKIcon size={32} round={true}/>
-          </OKShareButton>
-          <p>OKNOtizie</p>
-          </div>
-          {/* <div className="social-icon">
-          <PinterestShareButton url={"https://www.pinterest.com"}>
-            <PinterestIcon size={32} round={true}/>
-          </PinterestShareButton>
-          <p>Pinterest</p>
-          </div> */}
-          <div className="social-icon">
-          <PocketShareButton url={"https://getpocket.com/"}>
-            <PocketIcon size={32} round={true}/>
-          </PocketShareButton>
-          <p>Pocket</p>
-          </div>
-          <div className="social-icon">
-          <RedditShareButton url={"https://www.reddit.com/"}>
-            <RedditIcon size={32} round={true}/>
-          </RedditShareButton> 
-          <p>Reddit</p>
-          </div>
-          <div className="social-icon">
-          <TelegramShareButton url={"https://telegram.me/"}> 
-            <TelegramIcon size={32} round={true}/>
-          </TelegramShareButton>
-          <p>Telegram</p>
-          </div>
-          <div className="social-icon">
-          <TumblrShareButton url={"https://www.tumblr.com/"}>
-            <TumblrIcon size={32} round={true} size={32} round={true}/>
-          </TumblrShareButton>
-          <p>Tumblr</p>
-          </div>
-          <div className="social-icon">
-          <ViberShareButton url={"https://www.viber.com/en/"}>
-            <ViberIcon size={32} round={true}/>
-          </ViberShareButton> 
-          <p>Viber</p>
-          </div>
-          {/* <div className="social-icon">
-          <VKShareButton url={"https://oauth.vk.com/"}> 
-            <VKIcon size={32} round={true}/>
-          </VKShareButton>
-          <p>VKontakte</p>
-          </div> */}
-          <div className="social-icon">
-          <WeiboShareButton url={"https://service.weibo.com/"}>
-            <WeiboIcon size={32} round={true}/>
-          </WeiboShareButton>
-          <p>Weibo</p>
-          </div>
-          <div className="social-icon">
-          <WhatsappShareButton url={"https://api.whatsapp.com/"}>
-            <WhatsappIcon size={32} round={true}/>
-          </WhatsappShareButton>
-          <p>WhatsApp</p>
-          </div>
-         
-            </div> 
 
-        </div>
-
-      </Modal>
-      
-
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6048f19e79dc9981"></script> 
     </>
   );
 };
