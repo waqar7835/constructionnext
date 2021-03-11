@@ -174,18 +174,11 @@ const Main = ({ content }) => {
                   </div>
                   {!!content && !!content.field_machine_location && (
                   <div className="pro-rt2-lft-loc rigth-side-detailp">
-<<<<<<< HEAD
                     <div className="pro-b2-gen-label">
                       <div > Machine Location:  </div>
                       <span className="label-info-detail-page">
                         {!!content && content.field_machine_location}
                       </span>
-=======
-                    <p>Machine Location:</p>
-                    <p></p>
-                    <div className="field field--name-field-machine-location field--type-string-long field--label-hidden field__item">
-                        {ReactHtmlParser(content.field_machine_location)}
->>>>>>> 0542687fe18fbc3ff8d1cbc1d6aea7dd331e3718
                     </div>
                   </div>
                   )}
@@ -310,12 +303,11 @@ const Main = ({ content }) => {
                   </div>
                 )}
               </div>
-<<<<<<< HEAD
+              {(!!content && content.field_bucket || content.field_bucket_capacity || content.field_bucket_type) ?
+
               <div className="pro-b2-general showMe">
-                {(!!content && content.field_bucket || content.field_bucket_capacity || content.field_bucket_type) ?
-                  <h2>Attachments</h2>
-                  : " "
-                }
+                                 <h2>Attachments</h2>
+                 
                 {!!content && content.field_bucket && (
                   <div className="pro-b2-gen-flex">
                     <div className="pro-b2-gen-label">Bucket</div>
@@ -323,19 +315,6 @@ const Main = ({ content }) => {
                       <div className="field field--name-field-bucket field--type-list-string field--label-hidden field__item">
                         {!!content && content.field_bucket}
                       </div>
-=======
-              {(!!content && content.field_bucket || content.field_bucket_capacity || content.field_bucket_type )?
-             
-              <div className="pro-b2-general showMe">
-               <h2>Attachments</h2>
-               
-                {!!content && content.field_bucket && ( 
-                <div className="pro-b2-gen-flex">
-                  <div className="pro-b2-gen-label">Bucket</div>
-                  <div className="pro-b2-gen-value">
-                    <div className="field field--name-field-bucket field--type-list-string field--label-hidden field__item">
-                      {!!content && content.field_bucket}
->>>>>>> 0542687fe18fbc3ff8d1cbc1d6aea7dd331e3718
                     </div>
                   </div>
                 )}
@@ -360,12 +339,13 @@ const Main = ({ content }) => {
                   </div>
                 )}
               </div>
-<<<<<<< HEAD
-              <div className="pro-b2-general showMe">
-                {(!!content && content.field_number_of_fenders || content.field_rops) ?
-                  <h2>Exterior</h2>
-                  : " "
+              : " "
                 }
+              {(!!content && content.field_number_of_fenders || content.field_rops) ?
+
+              <div className="pro-b2-general showMe">
+                                 <h2>Exterior</h2>
+                
                 {!!content && content.field_number_of_fenders && (
                   <div className="pro-b2-gen-flex">
                     <div className="pro-b2-gen-label">Number of Fenders</div>
@@ -373,21 +353,6 @@ const Main = ({ content }) => {
                       <div className="field field--name-field-number-of-fenders field--type-integer field--label-hidden field__item">
                         {!!content && content.field_number_of_fenders}
                       </div>
-=======
-              :" "
-               }
-              {(!!content && content.field_number_of_fenders || content.field_rops)?
-              <div className="pro-b2-general showMe">
-             
-                <h2>Exterior</h2>
-                
-                {!!content && content.field_number_of_fenders && ( 
-                <div className="pro-b2-gen-flex">
-                  <div className="pro-b2-gen-label">Number of Fenders</div>
-                  <div className="pro-b2-gen-value">
-                    <div className="field field--name-field-number-of-fenders field--type-integer field--label-hidden field__item">
-                      {!!content && content.field_number_of_fenders}
->>>>>>> 0542687fe18fbc3ff8d1cbc1d6aea7dd331e3718
                     </div>
                   </div>
                 )}
@@ -407,10 +372,7 @@ const Main = ({ content }) => {
               {(!!content && content.field_a_c || content.field_heater || content.field_keyless_start || content.field_seat_material)?
 
               <div className="pro-b2-general showMe">
-<<<<<<< HEAD
-                {(!!content && content.field_a_c || content.field_heater || content.field_keyless_start || content.field_seat_material) ?
-                  <h2>Interior</h2> : " "
-                }
+                                 <h2>Interior</h2> 
                 {!!content && content.field_keyless_start && (
                   <div className="pro-b2-gen-flex">
                     <div className="pro-b2-gen-label">Keyless Start</div>
@@ -418,15 +380,6 @@ const Main = ({ content }) => {
                       <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
                         {!!content && content.field_keyless_start}
                       </div>
-=======
-                                  <h2>Interior</h2>
-               {!!content && content.field_keyless_start && ( 
-                <div className="pro-b2-gen-flex">
-                  <div className="pro-b2-gen-label">Keyless Start</div>
-                  <div className="pro-b2-gen-value">
-                    <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
-                      {!!content && content.field_keyless_start}
->>>>>>> 0542687fe18fbc3ff8d1cbc1d6aea7dd331e3718
                     </div>
                   </div>
                 )}
@@ -466,7 +419,6 @@ const Main = ({ content }) => {
                }
               {(!!content && content.field_track_type )?
               <div className="pro-b2-general showMe">
-<<<<<<< HEAD
                 {(!!content && content.field_track_type) ?
                   <h2>Chassis</h2> : " "
                 }
@@ -477,25 +429,16 @@ const Main = ({ content }) => {
                       <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
                         {!!content && content.field_track_type}
                       </div>
-=======
-               
-                   <h2>Chassis</h2>
-               {!!content && content.field_track_type && ( 
-                <div className="pro-b2-gen-flex">
-                  <div className="pro-b2-gen-label">Track Type</div>
-                  <div className="pro-b2-gen-value">
-                    <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
-                      {!!content && content.field_track_type}
->>>>>>> 0542687fe18fbc3ff8d1cbc1d6aea7dd331e3718
                     </div>
                   </div>
                 )}
               </div>
-<<<<<<< HEAD
+              : " "
+            }
+            {(!!content && content.field_operating_weight) ?
               <div className="pro-b2-general showMe">
-                {(!!content && content.field_operating_weight) ?
-                  <h2>Category Specific</h2> : " "
-                }
+                
+                  <h2>Category Specific</h2> 
                 {!!content && content.field_operating_weight && (
                   <div className="pro-b2-gen-flex">
                     <div className="pro-b2-gen-label">Operating Weight</div>
@@ -503,19 +446,6 @@ const Main = ({ content }) => {
                       <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
                         {!!content && content.field_operating_weight}
                       </div>
-=======
-              :" "
-               }
-              {(!!content && content.field_operating_weight )?
-              <div className="pro-b2-general showMe">               
-                   <h2>Category Specific</h2>
-               {!!content && content.field_operating_weight && ( 
-                <div className="pro-b2-gen-flex">
-                  <div className="pro-b2-gen-label">Operating Weight</div>
-                  <div className="pro-b2-gen-value">
-                    <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
-                      {!!content && content.field_operating_weight}
->>>>>>> 0542687fe18fbc3ff8d1cbc1d6aea7dd331e3718
                     </div>
                   </div>
                 )}
@@ -524,7 +454,6 @@ const Main = ({ content }) => {
                }
               {(!!content && content.field_max_travel_speed )?
               <div className="pro-b2-general showMe">
-<<<<<<< HEAD
                 {(!!content && content.field_max_travel_speed) ?
                   <h2>Powertrain</h2> : " "
                 }
@@ -535,16 +464,6 @@ const Main = ({ content }) => {
                       <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
                         {!!content && content.field_max_travel_speed}
                       </div>
-=======
-               
-                   <h2>Powertrain</h2>
-               {!!content && content.field_max_travel_speed && ( 
-                <div className="pro-b2-gen-flex">
-                  <div className="pro-b2-gen-label">Max Travel Speed</div>
-                  <div className="pro-b2-gen-value">
-                    <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
-                      {!!content && content.field_max_travel_speed}
->>>>>>> 0542687fe18fbc3ff8d1cbc1d6aea7dd331e3718
                     </div>
                   </div>
                 )}
@@ -554,7 +473,6 @@ const Main = ({ content }) => {
               {(!!content && content.field_horsepower || content.field_engine_manufacturer || content.field_engine_model || content.field_engine_tier || content.field_engine_turbo)?
  
               <div className="pro-b2-general showMe">
-<<<<<<< HEAD
                 {(!!content && content.field_horsepower || content.field_engine_manufacturer || content.field_engine_model || content.field_engine_tier || content.field_engine_turbo) ?
                   <h2>Engine</h2> : " "
                 }
@@ -565,16 +483,6 @@ const Main = ({ content }) => {
                       <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
                         {!!content && content.field_horsepower}
                       </div>
-=======
-                                 <h2>Engine</h2>
-             
-               {!!content && content.field_horsepower && ( 
-                <div className="pro-b2-gen-flex">
-                  <div className="pro-b2-gen-label">Horsepower</div>
-                  <div className="pro-b2-gen-value">
-                    <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
-                      {!!content && content.field_horsepower}
->>>>>>> 0542687fe18fbc3ff8d1cbc1d6aea7dd331e3718
                     </div>
                   </div>
                 )}
