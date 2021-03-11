@@ -13834,8 +13834,12 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
   padding: 17px 18px;
 }
  @media (min-width: 320px) and (max-width: 575.98px)  { 
+  .invent-pro-cus-mid .invent-cus-title {
+    height: 44px;
+    overflow: hidden;
+  }
   .filter-listing-block .mobile-search input {
-    width: 84%;
+    width: 82%;
   }
   .filter-listing-block .mobile-search {
     display: block;
@@ -14049,6 +14053,8 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
   .product-title-banner .page-title {
     padding-top: 38px;
     line-height: 46px;
+    height: 127px;
+    overflow: hidden;
   }
   #welcome-section-fluid {
     padding: 0 15px 30px;
@@ -14136,8 +14142,23 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
     height: auto;
   }
 }
-
+.invent-pro-cus-mid .invent-cus-title a {
+  color: var(--defaulte-font-color);
+  -webkit-transition: all 1s ease-out;
+  -moz-transition: all 1s ease-out;
+  -ms-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
+  transition: all 1s ease-out;
+}
+.invent-pro-cus-mid .invent-cus-title a:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
 @media (min-width: 576px) and (max-width: 767.98px) {
+  .invent-pro-cus-mid .invent-cus-title {
+    height: 44px;
+    overflow: hidden;
+  }
   .filter-listing-block .mobile-search input {
     width: 90%;
   }
@@ -14405,6 +14426,10 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
   }
   .get-quote {
     padding-bottom: 15px;
+  }
+  .invent-pro-cus-mid .invent-cus-title {
+    height: 44px;
+    overflow: hidden;
   }
 }
 @media (min-width: 320px) and (max-width: 575.98px)   and (orientation : landscape){
