@@ -3374,6 +3374,57 @@ ul.slider-btn li:last-child {
   .nav-control-middle3 .owl-controls .owl-prev {
     left: -20px;
   }
+  .eq-for-front .for-product-deatil .shape-service-layout1 {
+    padding: 36px 15px 30px;
+  }
+  .eq-for-front .for-product-deatil .shape-service-layout1 h3 {
+    font-size: 14px;
+  }
+  .eq-for-front .for-product-deatil .shape-service-layout1 img {
+    width: 100px;
+    height: 52px;
+  } 
+  .eq-for-front .for-product-deatil .shape-service-layout1 {
+    min-height: 175px;
+  }
+  #listing-content-results .invent-pro-cus-rt .products-info-btns a {
+    padding: 8px 8px;
+    font-size: 12px;
+  }
+  .product-listing-page .filters-block.left-side-filters form.views-exposed-form {
+    padding: 0;
+  }
+  .left-side-filters .left-side-filterseach button.apply-filter {
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    line-height: 1;
+    padding: 15px 10px !important;
+  }
+  .left-side-filters .left-side-filterseach .top-input {
+    padding: 11px 19px 12px 20px;
+  }
+  .ant-collapse-content > .ant-collapse-content-box {
+    padding: 10px 6px !important;
+  }
+  .product-listing-page .filters-block form.views-exposed-form .ant-collapse .ant-collapse-content .ant-collapse-content-box .ant-checkbox-group {
+    margin-left: 9px !important;
+  }  
+  .left-side-filters .ant-collapse-item.number-ranges .ant-input-number-disabled {
+    margin-bottom: 8px;
+  }
+  .left-side-filters .left-side-filterseach .number-ranges .ant-collapse-content-box .ant-input-number:nth-child(2) {
+    float: none;
+  }
+  .ant-collapse-item .ant-collapse-content-box .apply-filter {
+    width: 76px;
+    padding: 6px 5px;
+    font-size: 12px;
+  } 
+  .project-info-layout1 .pro-rt2-lft-loc p:nth-child(1),
+  .project-info-layout1 .pro-det-prbtn .pro-b2-gen-label,
+  .project-info-layout1 .pro-det-title {
+    font-weight: bold;
+  }
 }
 @media only screen and (max-width: 767px) {
   .nav-control-middle3 .owl-controls .owl-prev {
