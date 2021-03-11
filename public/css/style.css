@@ -13819,8 +13819,27 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
     width: 219px;
   }
  } 
-
+ .mobile-search {
+   display: none;
+ }
+ .filter-listing-block .mobile-search input {
+  width: 83%;
+  padding: 13px 20px 14px 20px;
+  border: 1px solid #d6d6d6;
+  margin-bottom: 0;
+  border-bottom-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+.filter-listing-block .mobile-search .btn-str-up2 {
+  padding: 17px 18px;
+}
  @media (min-width: 320px) and (max-width: 575.98px)  { 
+  .filter-listing-block .mobile-search input {
+    width: 84%;
+  }
+  .filter-listing-block .mobile-search {
+    display: block;
+  }
   .product-detail-section .product-detail-block2 {
     padding: 15px;
   }
@@ -14049,20 +14068,20 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
   .headermenu button {
     display: block;
   }
-    .headermenu .navbar-nav a {
-      padding: 35px 20px 35px 0px;
-      text-decoration: none;
-      color: #fff;
-      -webkit-transition: all 1s ease-out;
-      -moz-transition: all 1s ease-out;
-      -ms-transition: all 1s ease-out;
-      -o-transition: all 1s ease-out;
-      transition: all 1s ease-out;
-      font-size: 16px;
-      font-weight: 500;
-      display: block;
-      border-bottom: 1px solid #fff;
-      text-align: center;
+  .headermenu .navbar-nav a {
+    padding: 35px 20px 35px 0px;
+    text-decoration: none;
+    color: #fff;
+    -webkit-transition: all 1s ease-out;
+    -moz-transition: all 1s ease-out;
+    -ms-transition: all 1s ease-out;
+    -o-transition: all 1s ease-out;
+    transition: all 1s ease-out;
+    font-size: 16px;
+    font-weight: 500;
+    display: block;
+    border-bottom: 1px solid #fff;
+    text-align: center;
   }
   .get-quote {
     padding-bottom: 15px;
@@ -14119,6 +14138,12 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
+  .filter-listing-block .mobile-search input {
+    width: 90%;
+  }
+  .filter-listing-block .mobile-search {
+    display: block;
+  }
   .product-detail-section {
     display: flex;
     flex-wrap: wrap;
@@ -14238,10 +14263,10 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
   .mobilemenu-inner .mobilemenu-btnn button span::before {
     content: '';
     position: absolute;
-    height: 2px;
+    height: 3px;
     background-color: #fff;
     width: 22px;
-    top: -6px;
+    top: -13px;
     left: -11px;
     right: 0;
     margin: 0 auto;
@@ -14250,10 +14275,10 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
   .mobilemenu-inner .mobilemenu-btnn button span::after {
     content: '';
     position: absolute;
-    height: 2px;
+    height: 3px;
     background-color: #fff;
     width: 22px;
-    top: -2px;
+    top: -6px;
     left: -11px;
     right: 0;
     margin: 0 auto;
