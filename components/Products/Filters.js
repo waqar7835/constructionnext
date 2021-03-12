@@ -122,6 +122,7 @@ const Filters = () => {
       if (router.query["city[]"]) {
         setCity(getArrayAlways(router.query["city[]"]));
       }
+     
       setPrice([
         router.query.price_min || minprice,
         router.query.price_max || maxprice,
@@ -917,6 +918,7 @@ const Filters = () => {
     setPrice([]);
     setYear([]);
     setCheckDate(false);
+    setCheckedIds([]);
     applyFilter({
       city: [],
       date: [],
