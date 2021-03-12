@@ -10,6 +10,7 @@ import ProductDetailSellerMail from "./ProductDetailSellerMail";
 import ReactHtmlParser from "react-html-parser";
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
+import Head from 'next/head'
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 //  import 'bootstrap-css-only/css/bootstrap.min.css';
 //   import 'mdbreact/dist/css/mdb.css';
@@ -62,6 +63,10 @@ const Main = ({ content }) => {
 
   return (
     <>
+    <Head>       
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6048f19e79dc9981"></script>
+      </Head>
       <div id="header-area-space"></div>
       <section
         className="bg-gray2 product-title-banner"
@@ -585,7 +590,7 @@ const Main = ({ content }) => {
 
 
 
-      <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6048f19e79dc9981"></script>
+     
     </>
   );
 };
