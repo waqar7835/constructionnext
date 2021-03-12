@@ -141,9 +141,9 @@ const Filters = () => {
   useEffect(() => {
     console.log(router.query);
     let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
-    let { keywords } = router.query;
-    req += !!keywords && "&description=" + quickSearch;
-    console.log(req);
+    // let { keywords } = router.query;
+    // req += !!keywords && "&description=" + quickSearch;
+    // console.log(req);
     dispatch(getCityCount(req));
     dispatch(getConditionCount(req));
     dispatch(getCountryCount(req));
