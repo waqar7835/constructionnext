@@ -307,7 +307,7 @@ const List = () => {
                       </Link>
                       {/* <a href="/inventory/listing/skid-steers-2"></a> */}
                       {/* <EmailSellerModal /> */}
-                      <EmailSellerModalv />
+                      <EmailSellerModalv title = {product.title} />
                       <VideoChatModalv />
                     </div>
                   </div>
