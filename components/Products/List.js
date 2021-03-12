@@ -132,21 +132,24 @@ const List = () => {
               <div className="invent-pro-cus">
                 <div className="invent-pro-cus-lft">
                   <div className="invent-cus-img">
-                   <Link
-                        href={`/inventory/${product.title
-                          .replace(/[^a-z0-9_]+/gi, "-")
-                          .replace(/^-|-$/g, "")
-                          .toLowerCase()}/${product.nid}`}
-                      >
-                    <img
-                      src={baseURL + product.field_image}
-                      width="1064"
-                      height="768"
-                      alt={product.title}
-                      loading="lazy"
-                      typeof="Image"
-                    />
-                   </Link>
+                    <Link
+                      href={`/inventory/${product.title
+                        .replace(/[^a-z0-9_]+/gi, "-")
+                        .replace(/^-|-$/g, "")
+                        .toLowerCase()}/${product.nid}`}
+                      passHref
+                    >
+                      <a>
+                        <img
+                          src={baseURL + product.field_image}
+                          width="1064"
+                          height="768"
+                          alt={product.title}
+                          loading="lazy"
+                          typeof="Image"
+                        />
+                      </a>
+                    </Link>
                   </div>
                   {/* <div className="invent-cus-created">
                     updated: Mon, 02/15/2021 - 15:53
@@ -161,25 +164,26 @@ const List = () => {
 
                 <div className="invent-pro-cus-mid">
                   <div className="invent-cus-title">
-                  <Link
-                        href={`/inventory/${product.title
-                          .replace(/[^a-z0-9_]+/gi, "-")
-                          .replace(/^-|-$/g, "")
-                          .toLowerCase()}/${product.nid}`}
-                      >
-                    {product.title}
-                  </Link>
-                    </div>
+                    <Link
+                      href={`/inventory/${product.title
+                        .replace(/[^a-z0-9_]+/gi, "-")
+                        .replace(/^-|-$/g, "")
+                        .toLowerCase()}/${product.nid}`}
+                      passHref
+                    >
+                      <a>{product.title}</a>
+                    </Link>
+                  </div>
                   <div className="invent-cus-des">
                     {product.field_description}
                   </div>
                   <div className="invent-cus-price eqinfo">
                     <span className="eq-label">Price: </span>
-                    {(!!product && !!product.field_price)? (
-                    <span className="eq-info"> ${product.field_price}</span>
-                    ):
-                    <span className="eq-info">Call for price</span>
-                    }
+                    {!!product && !!product.field_price ? (
+                      <span className="eq-info"> ${product.field_price}</span>
+                    ) : (
+                      <span className="eq-info">Call for price</span>
+                    )}
                   </div>
                   <div className="invent-cus-purchas-cus eqinfo">
                     <span>
@@ -188,20 +192,20 @@ const List = () => {
                     <a href="#"> </a>
                   </div>
                   {!!product && !!product.field_machine_location && (
-                  <div className="invent-cus-machloc bold eqinfo">
-                    <span className="eq-label">Machine Location:</span>{" "}
-                    <span className="eq-info">
-                      {" "}                     
-                      {ReactHtmlParser(product.field_machine_location)}
-                    </span>
-                  </div>
+                    <div className="invent-cus-machloc bold eqinfo">
+                      <span className="eq-label">Machine Location:</span>{" "}
+                      <span className="eq-info">
+                        {" "}
+                        {ReactHtmlParser(product.field_machine_location)}
+                      </span>
+                    </div>
                   )}
                   {!!product && !!product.field_hours && (
-                  <div className="invent-cus-rhrs bold eqinfo">
-                    <span className="eq-label">Hours:</span>
-                    <span className="eq-info">{product.field_hours}</span>
-                  </div>
-                   )}
+                    <div className="invent-cus-rhrs bold eqinfo">
+                      <span className="eq-label">Hours:</span>
+                      <span className="eq-info">{product.field_hours}</span>
+                    </div>
+                  )}
                   {!!product && !!product.field_serial_numbers && (
                     <div className="invent-cus-snum bold eqinfo">
                       <span className="eq-label">Serial Numbers:</span>
@@ -210,55 +214,55 @@ const List = () => {
                       </span>
                     </div>
                   )}
-                 {!!product && !!product.field_condition && (
-                  <div className="invent-cus-cond bold eqinfo">
-                    <span className="eq-label">Condition:</span>
-                    <span className="eq-info">{product.field_condition}</span>
-                  </div>
-                 )}
-                 {!!product && !!product.field_listing_type && (
-                  <div className="invent-cus-cond bold eqinfo">
-                    <span className="eq-label">ListingType:</span>
-                    <span className="eq-info">
-                      {product.field_listing_type}
-                    </span>
-                  </div>
-                 )}
+                  {!!product && !!product.field_condition && (
+                    <div className="invent-cus-cond bold eqinfo">
+                      <span className="eq-label">Condition:</span>
+                      <span className="eq-info">{product.field_condition}</span>
+                    </div>
+                  )}
+                  {!!product && !!product.field_listing_type && (
+                    <div className="invent-cus-cond bold eqinfo">
+                      <span className="eq-label">ListingType:</span>
+                      <span className="eq-info">
+                        {product.field_listing_type}
+                      </span>
+                    </div>
+                  )}
                   {!!product && !!product.field_category && (
-                  <div className="invent-cus-manuf bold eqinfo">
-                    <span className="eq-label">Manufacturer:</span>
-                    <span className="eq-info">{product.field_category}</span>
-                  </div>
+                    <div className="invent-cus-manuf bold eqinfo">
+                      <span className="eq-label">Manufacturer:</span>
+                      <span className="eq-info">{product.field_category}</span>
+                    </div>
                   )}
                   {!!product && !!product.field_equipment_category && (
-                  <div className="invent-cus-eq-cat bold eqinfo">
-                    <span className="eq-label">Category:</span>
-                    <span className="eq-info">
-                      {product.field_equipment_category}
-                    </span>
-                  </div>
+                    <div className="invent-cus-eq-cat bold eqinfo">
+                      <span className="eq-label">Category:</span>
+                      <span className="eq-info">
+                        {product.field_equipment_category}
+                      </span>
+                    </div>
                   )}
-                 {!!product && !!product.field_select_equipment && (
-                  <div className="invent-cus-slc-cat bold eqinfo">
-                    <span className="eq-label">Equipment:</span>
-                    <span className="eq-info">
-                      {product.field_select_equipment}
-                    </span>
-                  </div>
-                 )}
-                 {!!product && !!product.field_city && (
-                  <div className="invent-cus-city bold eqinfo">
-                    <span className="eq-label">city:</span>
-                    <span className="eq-info">{product.field_city}</span>
-                  </div>
-                 )}
-                 {!!product && !!product.field_state && (
-                  <div className="invent-cus-city bold eqinfo">
-                    <span className="eq-label">state:</span>
+                  {!!product && !!product.field_select_equipment && (
+                    <div className="invent-cus-slc-cat bold eqinfo">
+                      <span className="eq-label">Equipment:</span>
+                      <span className="eq-info">
+                        {product.field_select_equipment}
+                      </span>
+                    </div>
+                  )}
+                  {!!product && !!product.field_city && (
+                    <div className="invent-cus-city bold eqinfo">
+                      <span className="eq-label">city:</span>
+                      <span className="eq-info">{product.field_city}</span>
+                    </div>
+                  )}
+                  {!!product && !!product.field_state && (
+                    <div className="invent-cus-city bold eqinfo">
+                      <span className="eq-label">state:</span>
 
-                    <span className="eq-info">{product.field_state}</span>
-                  </div>
-                 )}
+                      <span className="eq-info">{product.field_state}</span>
+                    </div>
+                  )}
                   {/* <div className="invent-cus-stnum bold">
                     <span>Stock Number:</span> {product.field_stock_number}
                   </div> */}
@@ -307,7 +311,7 @@ const List = () => {
                       </Link>
                       {/* <a href="/inventory/listing/skid-steers-2"></a> */}
                       {/* <EmailSellerModal /> */}
-                      <EmailSellerModalv />
+                      <EmailSellerModalv title={product.title} />
                       <VideoChatModalv />
                     </div>
                   </div>
