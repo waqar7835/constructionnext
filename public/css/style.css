@@ -14133,7 +14133,8 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
   .product-detail-section .product-detail-block2 .pro-b2-gen-flex .pro-b2-gen-label {
     width: 100%;
     max-width: 100%;
-    min-width: 300px;
+    display: block;
+    min-width: auto;
   }
   .product-detail-block2 .body-description {
     padding: 15px;
