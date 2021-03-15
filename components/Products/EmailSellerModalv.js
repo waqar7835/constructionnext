@@ -3,11 +3,12 @@ import { Modal, Form, Input, Button, Radio, Checkbox, Menu, Dropdown,  notificat
 import submitContant from "@store/actions/forms/emailseller";
 
 // antd v3
-const EmailSellerModalv = ({ form: { getFieldDecorator, validateFields } ,title}) => {
+const EmailSellerModalv = ({ form: { getFieldDecorator, validateFields } ,title, id}) => {
 // console.log("props=>",title);
   const [loading, setLoading] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const product_title = title;
+  const product_id = id;
   const onSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -15,7 +16,7 @@ const EmailSellerModalv = ({ form: { getFieldDecorator, validateFields } ,title}
     validateFields((err, values) => {
       if (!err) {
         const { first_name  ,last_name  , email ,policy,  message, phone, postal_code  } = values;
-        submitContant({ first_name  ,last_name  , email ,policy,  message, phone, postal_code, product_title })
+        submitContant({ first_name  ,last_name  , email ,policy,  message, phone, postal_code, product_title, product_id })
           .then((res) => {
             if (res.code == 200) {
               openNotification();

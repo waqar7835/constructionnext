@@ -16,9 +16,11 @@ import submitContant from "@store/actions/forms/videochat";
 const { Option } = Select;
 const { TextArea } = Input;
 // antd v3
-const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
+const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } ,title, id}) => {
   const [loading, setLoading] = useState(false);
   const [isVideoModalVisible, setIsVideoModalVisible] = useState(false);
+  const product_title = title;
+  const product_id = id;
   const onSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -49,6 +51,8 @@ const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
           video_chat_service,
           time,
           days,
+          product_title,
+          product_id,
         })
           .then((res) => {
             if (res.code == 200) {
@@ -167,7 +171,7 @@ const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
               )}
             </Form.Item>
           </div>
-          <div className="col-md-6 col-xs-12  form-input-mb30">
+          {/* <div className="col-md-6 col-xs-12  form-input-mb30">
             <Form.Item>
               {getFieldDecorator("recipient_s_email", {
                 rules: [
@@ -184,7 +188,7 @@ const VideoChatModalv = ({ form: { getFieldDecorator, validateFields } }) => {
                 />
               )}
             </Form.Item>
-          </div>
+          </div> */}
           <div className="col-md-6 col-xs-12  form-input-mb30">
             <Form.Item>
               {getFieldDecorator("phone", {
