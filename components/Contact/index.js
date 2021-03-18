@@ -7,7 +7,7 @@ const Index = ({findUs, header}) => {
     <>
       <div id="header-area-space"></div>
       <ImgContact />
-      <WhereToFind  findUs= { findUs }/>
+      {/* <WhereToFind  findUs= { findUs }/>   //// to remove for new changes*/}
       <FormContainer header= { header } />
     </>
   );

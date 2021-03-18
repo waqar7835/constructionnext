@@ -177,7 +177,7 @@ const Header = ({header}) => {
               </div>
               {/* logo section  */}
 
-              <div className="col-lg-3 col-md-3 col-sm-12">
+              {/* <div className="col-lg-3 col-md-3 col-sm-12">     //// to remove for new changes
                 <div className="media top-bar-contact-layout4">
                   <div className="media-left media-middle">
                     <i className="icofont icofont-location-arrow"></i>
@@ -198,8 +198,8 @@ const Header = ({header}) => {
                     <h2 className="media-heading">{!!header && header.field_days}:{!!header && header.field_hours_value}</h2>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-2 col-md-3 col-sm-12">
+              </div> */}
+              <div className="col-lg-2 col-md-3 col-sm-12" style={{float:"right"}}>
                 <div className="media top-bar-contact-layout4">
                   <div className="media-left media-middle">
                     <i className="icofont icofont-phone"></i>

@@ -130,7 +130,7 @@ const List = () => {
           productsData.rows.map((product, index) => (
             <div key={index} className="views-row">
               <div className="invent-pro-cus">
-                {/* <div className="invent-pro-cus-lft">
+                <div className="invent-pro-cus-lft">
                   <div className="invent-cus-img">
                     <Link
                       href={`/inventory/${product.title
@@ -150,7 +150,7 @@ const List = () => {
                         />
                       </a>
                     </Link>
-                  </div> */}
+                  </div>
                   {/* <div className="invent-cus-created">
                     updated: Mon, 02/15/2021 - 15:53
                   </div>
@@ -160,29 +160,9 @@ const List = () => {
                       ever since the 1500s, when an
                     </p>
                   </div> */}
-                {/* </div> */}
+                </div>
 
                 <div className="invent-pro-cus-mid">
-                <div className="invent-cus-img">
-                    <Link
-                      href={`/inventory/${product.title
-                        .replace(/[^a-z0-9_]+/gi, "-")
-                        .replace(/^-|-$/g, "")
-                        .toLowerCase()}/${product.nid}`}
-                      passHref
-                    >
-                      <a>
-                        <img
-                          src={baseURL + product.field_image}
-                          width="1064"
-                          height="768"
-                          alt={product.title}
-                          loading="lazy"
-                          typeof="Image"
-                        />
-                      </a>
-                    </Link>
-                  </div>
                   <div className="invent-cus-title">
                     <Link
                       href={`/inventory/${product.title
@@ -197,7 +177,14 @@ const List = () => {
                   {/* <div className="invent-cus-des">    //// to remove for new changes
                     {product.field_description}
                   </div> */}
-                 
+                  <div className="invent-cus-price eqinfo">
+                    <span className="eq-label">Price: </span>
+                    {!!product && !!product.field_price ? (
+                      <span className="eq-info"> ${product.field_price}</span>
+                    ) : (
+                      <span className="eq-info">Call for price</span>
+                    )}
+                  </div>
                   {/* <div className="invent-cus-purchas-cus eqinfo">
                     <span>
                       <i className="fa fa-money" aria-hidden="true"></i>
@@ -213,28 +200,6 @@ const List = () => {
                       </span>
                     </div>
                   )}
-                   <div className="invent-cus-price eqinfo">
-                    <span className="eq-label">Price: </span>
-                    {!!product && !!product.field_price ? (
-                      <span className="eq-info"> ${product.field_price}</span>
-                    ) : (
-                      <span className="eq-info">Call for price</span>
-                    )}
-                  </div>
-                    <div className="products-info-btns">
-                      <Link
-                        href={`/inventory/${product.title
-                          .replace(/[^a-z0-9_]+/gi, "-")
-                          .replace(/^-|-$/g, "")
-                          .toLowerCase()}/${product.nid}`}
-                      >
-                        <a>
-                          <i className="fa fa-search" aria-hidden="true"></i>{" "}
-                          View Details
-                        </a>
-                      </Link>
-                     
-                    </div>
                   {/* {!!product && !!product.field_hours && (        //// to remove for new changes
                     <div className="invent-cus-rhrs bold eqinfo">
                       <span className="eq-label">Hours:</span>

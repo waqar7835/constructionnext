@@ -2,12 +2,15 @@ import Layout from "@components/Layout";
 import HomePage from "@components/Home";
 import fetch from "isomorphic-fetch";
 import { baseURL } from "@config/config";
+import NewHomePage from "@components/Products";
+
 // import Header from "@components/Layout/Header";
 const Index = ({header, welcome, about, equipmentHeading, feedback}) => {
   // console.log({header, welcome, about, equipmentHeading, feedback});
   return (
     <Layout header = { header } >
-      <HomePage welcome = { welcome } about = { about } equipmentHeading = { equipmentHeading } feedback = { feedback } />
+      {/* <HomePage welcome = { welcome } about = { about } equipmentHeading = { equipmentHeading } feedback = { feedback } /> */}
+       <NewHomePage />
     </Layout>
   );
 };

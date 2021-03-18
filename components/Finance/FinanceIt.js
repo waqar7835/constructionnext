@@ -50,7 +50,7 @@ const Fineit = ({finance}) => {
                   call you right away.
                 </div> */}
 
-                <form className="finace-fiance-from" 
+                {/* <form className="finace-fiance-from"      //// to remove for new changes
                   
                 >
  
@@ -66,7 +66,7 @@ const Fineit = ({finance}) => {
                     />
                     <span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="icofont icofont-paper-plane"></i></button></span>
                   </div>
-                </form>
+                </form> */}
                
                 
 

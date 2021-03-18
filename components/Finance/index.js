@@ -8,7 +8,7 @@ const Index = ({finance}) => {
       <div id="header-area-space"></div>
       <ImgFine />
       <FinanceIt finance = { finance } />
-      <FineForm />
+      {/* <FineForm />    //// to remove for new changes*/}
     </div>
   );
 };

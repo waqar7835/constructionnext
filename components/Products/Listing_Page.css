@@ -6,6 +6,8 @@
     padding-bottom: 15px;
     border-bottom: 1px solid #ddd;
     margin-bottom: 20px;
+    /* for new changes */
+    width:33%; 
 }
 .listing-content .invent-pro-cus {
     display: flex;
@@ -50,7 +52,7 @@
 }
 .listing-content .invent-pro-cus-mid {
     font-size: 12px;
-    width: 44%;
+    /* width: 44%;  for new changes */   
     padding: 0 15px;
 }
 .invent-pro-cus-mid .invent-cus-title {
@@ -63,6 +65,8 @@
 .listing-content .invent-pro-cus-mid .eqinfo {
     display: flex;
     flex-wrap: wrap;
+    /* for new change  */
+    min-height:40px;
 }
 .listing-content .invent-pro-cus-mid .eqinfo .eq-label {
     text-align: left;
@@ -230,4 +234,38 @@ form input[type='checkbox'] {
         padding: 20px;
     }
    
-    
+    /* for new changes  */
+    .invent-pro-cus-mid .invent-cus-img {
+        background: #333;
+        color: #fff;
+        padding: 10px;
+        flex-shrink: 0;
+        align-self: flex-start;
+        margin-bottom: 7px;
+    }
+    .invent-pro-cus-mid .invent-cus-img img {
+        max-height: 150px;
+        max-width: 100%;
+    }
+
+    .invent-pro-cus-mid .products-info-btns a {
+        clear: both;
+        color: #ff9800;
+        background-color: #fff;
+        border: 1px solid #ff9800;
+        padding: 8px 10px;
+        margin-bottom: 5px;
+        display: block;
+        text-align: center;
+        font-size: 14px;
+    }
+   
+    .invent-pro-cus-mid .products-info-btns a:hover {
+        cursor: pointer;
+        background-color: #ff9800;
+        color: #fff;
+    }
+    .listing-content .views-row-main{
+        display: flex;
+    flex-wrap: wrap;
+    }

@@ -3,6 +3,7 @@ import List from "./List";
 import Filters from "./Filters";
 import EmailBlock from "./EmailBlock";
 import EmailBlockv from "./EmailBlockv";
+import ImgProduct from "./ImgProduct";
 import "./Listing_Page.css";
 
 const Index = ({ year_min, year_max, price_min, price_max }) => {
@@ -10,6 +11,7 @@ const Index = ({ year_min, year_max, price_min, price_max }) => {
     <>
       <div id="header-area-space"></div>
       <div className="product-listing-page">
+        <ImgProduct />
         <div className=" bg-common-style">
           <div className="" id='filter-scroll'>
             <div className="equipments-onlisting-page">
