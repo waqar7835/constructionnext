@@ -23,7 +23,7 @@ const MainMenu = () => {
 
         <li>
           {/* <a href="/inventory/search">Inventory</a> */}
-          <a href="/">Equipment for Sale</a>
+          <a href="/">Equipments for Sale</a>
           <ul>
           {equipmentsData.map((val, index) => (
             <li>
