@@ -205,7 +205,7 @@ const List = () => {
                     <a href="#"> </a>
                   </div> */}
                   {!!product && !!product.field_machine_location && (
-                    <div className="invent-cus-machloc bold eqinfo">
+                    <div className="invent-cus-machloc bold eqinfo" style={{paddingTop:'10px'}}>
                       <span className="eq-label">Machine Location:</span>{" "}
                       <span className="eq-info">
                         {" "}

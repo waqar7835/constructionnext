@@ -13835,7 +13835,7 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
 }
  @media (min-width: 320px) and (max-width: 575.98px)  { 
   .invent-pro-cus-mid .invent-cus-title {
-    height: 44px;
+    /* height: 44px; */
     overflow: hidden;
   }
   .filter-listing-block .mobile-search input {
@@ -14211,8 +14211,9 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
   .product-listing-page .bg-common-style #filter-scroll .filter-listing-block .listing-content .views-row-main .views-row {
     width: 50%;
   }
-  .product-listing-page .bg-common-style #filter-scroll .filter-listing-block .invent-pro-cus-rt .lister-dealer-info,
-  .product-listing-page .bg-common-style #filter-scroll .filter-listing-block .invent-pro-cus-mid .eqinfo {
+  .product-listing-page .bg-common-style #filter-scroll .filter-listing-block .invent-pro-cus-rt .lister-dealer-info
+  /*, .product-listing-page .bg-common-style #filter-scroll .filter-listing-block .invent-pro-cus-mid .eqinfo  */
+  {
     display: none;
   }
   .product-listing-page .bg-common-style #filter-scroll .filter-listing-block .invent-pro-cus-mid .invent-cus-price.eqinfo {
