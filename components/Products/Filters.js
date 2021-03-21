@@ -1307,7 +1307,6 @@ const Filters = () => {
                 <InputNumber
                   value={date}
                   onChange={(value) => {
-                    // console.log("----------------------------------", value);
                     setDate(value);
                   }}
                   onBlur={() => {
