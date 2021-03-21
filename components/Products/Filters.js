@@ -122,7 +122,7 @@ const Filters = () => {
       if (router.query["city[]"]) {
         setCity(getArrayAlways(router.query["city[]"]));
       }
-     
+
       setPrice([
         router.query.price_min || minprice,
         router.query.price_max || maxprice,
@@ -276,213 +276,58 @@ const Filters = () => {
     // }
     setIsCatModalVisible(false);
     onChangeCategoury(ids);
-    // applyFilter({
-    //   categoury: list,
-    //   city,
-    //   country,
-    //   state,
-    //   manufacturer,
-    //   listingType,
-    //   condition,
-    //   year,
-    //   price,
-    //   quickSearch,
-    // });
   };
 
   const onClickApplyStateFilter = () => {
     setIsStateModalVisible(false);
-    applyFilter({
-      state,
-      date,
-      checkDate,
-      city,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({});
   };
   const onClickApplyCityFilter = () => {
     setIsCityModalVisible(false);
-    applyFilter({
-      city,
-      date,
-      checkDate,
-      state,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({});
   };
   const onClickApplyManuFilter = () => {
     setIsManModalVisible(false);
-    applyFilter({
-      city,
-      date,
-      checkDate,
-      state,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({});
   };
 
   //  for group checkboxes of  category
   const onChangeCategoury = (list) => {
     setCategoury(list);
 
-    applyFilter({
-      categoury: list,
-      date,
-      checkDate,
-      city,
-      country,
-      state,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ categoury: list });
   };
 
   function submitHandler(e) {
     e.preventDefault();
-    applyFilter({
-      quickSearch,
-      date,
-      checkDate,
-      city,
-      state,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-    });
+    applyNewFilter({});
   }
   function onChangeCondition(value) {
     setCondition(value);
     setAppliedFilters(value);
-    applyFilter({
-      condition: value,
-      city,
-      checkDate,
-      date,
-      state,
-      categoury,
-      country,
-      manufacturer,
-      listingType,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ condition: value });
   }
   function onChangeListingType(value) {
     setListingType(value);
-    applyFilter({
-      listingType: value,
-      date,
-      checkDate,
-      city,
-      state,
-      categoury,
-      country,
-      manufacturer,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ listingType: value });
   }
   function onChangeManufacturer(value) {
     setManufacturer(value);
 
     setAppliedFilters(value);
-    applyFilter({
-      manufacturer: value,
-      date,
-      checkDate,
-      city,
-      state,
-      categoury,
-      country,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ manufacturer: value });
   }
   function onChangeCountry(value) {
     setCountry(value);
-    applyFilter({
-      country: value,
-      date,
-      city,
-      checkDate,
-      state,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ country: value });
   }
   function onChangeState(value) {
     setState(value);
-    applyFilter({
-      state: value,
-      date,
-      checkDate,
-      city,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ state: value });
   }
   function onChangeCity(value) {
     setCity(value);
-    applyFilter({
-      city: value,
-      date,
-      checkDate,
-      state,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ city: value });
   }
 
   // function onChangeDate(e) {
@@ -735,11 +580,9 @@ const Filters = () => {
     }
 
     if (req.includes(`price_max=`)) {
-      console.log("yes includes");
       priceRange = "Price Ranges";
     }
     if (req.includes(`year_max=`)) {
-      console.log("yes includes");
       yearRange = "Year Ranges";
     }
     if (req.includes(`condition[]=`)) {
@@ -944,7 +787,10 @@ const Filters = () => {
     );
     listApply = filteredltData.map((listApply) => listApply.value);
     setListingType(listApply);
-    applyFilter({
+    applyNewFilter({ listingType: listApply });
+  };
+  const applyNewFilter = (newData) => {
+    const data = {
       city,
       date,
       checkDate,
@@ -952,12 +798,50 @@ const Filters = () => {
       country,
       categoury,
       manufacturer,
-      listingType: listApply,
+      listingType,
       condition,
       year,
       price,
       quickSearch,
-    });
+    };
+    if (newData.city) {
+      data.city = newData.city;
+    }
+    if (newData.date) {
+      data.date = newData.date;
+    }
+    if (Object.keys(newData).indexOf("checkDate") > -1) {
+      data.checkDate = newData.checkDate;
+    }
+    if (newData.state) {
+      data.state = newData.state;
+    }
+    if (newData.country) {
+      data.country = newData.country;
+    }
+    if (newData.categoury) {
+      data.categoury = newData.categoury;
+    }
+    if (newData.manufacturer) {
+      data.manufacturer = newData.manufacturer;
+    }
+    if (newData.listingType) {
+      data.listingType = newData.listingType;
+    }
+    if (newData.condition) {
+      data.condition = newData.condition;
+    }
+    if (newData.year) {
+      data.year = newData.year;
+    }
+    if (newData.price) {
+      data.price = newData.price;
+    }
+    if (Object.keys(newData).indexOf("quickSearch") > -1) {
+      data.quickSearch = newData.quickSearch;
+    }
+
+    applyFilter(data);
   };
   const cancelConditionFilter = (label) => {
     let selectedCondData = conditionCount.filter(
@@ -969,89 +853,24 @@ const Filters = () => {
     );
     conditionApply = filteredConData.map((condition) => condition.value);
     setCondition(conditionApply);
-    applyFilter({
-      city,
-      date,
-      checkDate,
-      state,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition: conditionApply,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ condition: conditionApply });
   };
   const cancelKeywordFilter = () => {
     setQuickSearch();
-    applyFilter({
-      city,
-      date,
-      checkDate,
-      state,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch: '',
-    });
+    applyNewFilter({ quickSearch: "" });
   };
   const cancelPriceFilter = () => {
     setPrice([]);
-    applyFilter({
-      city,
-      date,
-      checkDate,
-      state,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price: [],
-      quickSearch,
-    });
+    applyNewFilter({ price: [] });
   };
   const cancelYearFilter = () => {
     setYear([]);
-    applyFilter({
-      city,
-      date,
-      checkDate,
-      state,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year: [],
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ year: [] });
   };
   const cancelDateRangeFilter = () => {
     setDate();
     setCheckDate(false);
-    applyFilter({
-      city,
-      date,
-      checkDate: false,
-      state,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ checkDate: false });
   };
   const cancelCategoryFilter = (label) => {
     let selectedCatgData = categoryCount.filter(
@@ -1064,20 +883,7 @@ const Filters = () => {
     catApply = filteredCatData.map((cat) => cat.value);
     // console.log("-------------", categoryCount, categoury, checkedIds, label);
     setCategoury(catApply);
-    applyFilter({
-      city,
-      date,
-      checkDate,
-      state,
-      country,
-      categoury: catApply,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ categoury: catApply });
   };
   const cancelManufactureFilter = (label) => {
     let selectedManufData = manufacturerCount.filter(
@@ -1089,20 +895,7 @@ const Filters = () => {
     );
     manufApply = filteredManuData.map((manuf) => manuf.value);
     setManufacturer(manufApply);
-    applyFilter({
-      city,
-      date,
-      checkDate,
-      state,
-      country,
-      categoury,
-      manufacturer: manufApply,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ manufacturer: manufApply });
   };
   const cancelCountryFilter = (label) => {
     let selectedCountData = countryCount.filter(
@@ -1115,20 +908,7 @@ const Filters = () => {
     counApply = filteredCounData.map((country) => country.value);
 
     setCountry(counApply);
-    applyFilter({
-      city,
-      date,
-      checkDate,
-      state,
-      country: counApply,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ country: counApply });
   };
   const cancelStateFilter = (label) => {
     let selectedStatesData = stateCount.filter(
@@ -1140,20 +920,7 @@ const Filters = () => {
     );
     stateApply = filteredStateData.map((state) => state.value);
     setState(stateApply);
-    applyFilter({
-      city,
-      date,
-      checkDate,
-      state: stateApply,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ state: stateApply });
   };
   const cancelCityFilter = (label) => {
     let selectedCitiesData = cityCount.filter(
@@ -1166,42 +933,26 @@ const Filters = () => {
     cityApply = filteredCityData.map((city) => city.value);
     setCity(cityApply);
 
-    applyFilter({
-      city: cityApply,
-      date,
-      checkDate,
-      state,
-      country,
-      categoury,
-      manufacturer,
-      listingType,
-      condition,
-      year,
-      price,
-      quickSearch,
-    });
+    applyNewFilter({ city: cityApply });
   };
 
   return (
     <>
-    <div className="mobile-search">
-    <Form.Item label="Quick Search">
-            <Input
-              className="form-control top-input"
-              placeholder="Enter your search keyword"
-              value={quickSearch}
-              onChange={(e) => {
-                setQuickSearch(e.target.value);
-              }}
-            />
-            <button
-              className="apply-filter btn-str-up2"
-              onClick={submitHandler}
-            >
-              <i className="icofont icofont-search"></i>
-            </button>
-          </Form.Item>
-    </div>
+      <div className="mobile-search">
+        <Form.Item label="Quick Search">
+          <Input
+            className="form-control top-input"
+            placeholder="Enter your search keyword"
+            value={quickSearch}
+            onChange={(e) => {
+              setQuickSearch(e.target.value);
+            }}
+          />
+          <button className="apply-filter btn-str-up2" onClick={submitHandler}>
+            <i className="icofont icofont-search"></i>
+          </button>
+        </Form.Item>
+      </div>
       <div className="views-header emailand-title">
         <h6 className="list-title">{gettitle()}</h6>
         <div className="email-right">
@@ -1398,20 +1149,7 @@ const Filters = () => {
                     return;
                   }
                   setYear([nextValue, end]);
-                  applyFilter({
-                    year: [start, end],
-                    date,
-                    checkDate,
-                    city,
-                    state,
-                    categoury,
-                    country,
-                    manufacturer,
-                    listingType,
-                    condition,
-                    price,
-                    quickSearch,
-                  });
+                  applyNewFilter({ year: [start, end] });
                 }}
               />
               <InputNumber
@@ -1425,20 +1163,7 @@ const Filters = () => {
                     return;
                   }
                   setYear([start, nextValue]);
-                  applyFilter({
-                    year: [start, nextValue],
-                    date,
-                    checkDate,
-                    city,
-                    state,
-                    categoury,
-                    country,
-                    manufacturer,
-                    listingType,
-                    condition,
-                    price,
-                    quickSearch,
-                  });
+                  applyNewFilter({ year: [start, nextValue] });
                 }}
               />
               <RangeSlider
@@ -1451,20 +1176,7 @@ const Filters = () => {
                   setYear(value);
                 }}
                 onMouseUp={() => {
-                  applyFilter({
-                    year: year,
-                    date,
-                    checkDate,
-                    city,
-                    state,
-                    categoury,
-                    country,
-                    manufacturer,
-                    listingType,
-                    condition,
-                    price,
-                    quickSearch,
-                  });
+                  applyNewFilter({ year: year });
                 }}
               />
             </Panel>
@@ -1480,20 +1192,7 @@ const Filters = () => {
                     return;
                   }
                   setPrice([nextValue, end]);
-                  applyFilter({
-                    price: [nextValue, end],
-                    date,
-                    checkDate,
-                    city,
-                    state,
-                    categoury,
-                    country,
-                    manufacturer,
-                    listingType,
-                    condition,
-                    year,
-                    quickSearch,
-                  });
+                  applyNewFilter({ price: [nextValue, end] });
                 }}
               />
               <InputNumber
@@ -1507,20 +1206,7 @@ const Filters = () => {
                     return;
                   }
                   setPrice([start, nextValue]);
-                  applyFilter({
-                    price: [start, nextValue],
-                    date,
-                    checkDate,
-                    city,
-                    state,
-                    categoury,
-                    country,
-                    manufacturer,
-                    listingType,
-                    condition,
-                    year,
-                    quickSearch,
-                  });
+                  applyNewFilter({ price: [start, nextValue] });
                 }}
               />
               <RangeSlider
@@ -1533,20 +1219,7 @@ const Filters = () => {
                   setPrice(value);
                 }}
                 onMouseUp={() => {
-                  applyFilter({
-                    price: price,
-                    date,
-                    checkDate,
-                    city,
-                    state,
-                    categoury,
-                    country,
-                    manufacturer,
-                    listingType,
-                    condition,
-                    year,
-                    quickSearch,
-                  });
+                  applyNewFilter({ price: price });
                 }}
               />
             </Panel>
@@ -1626,20 +1299,7 @@ const Filters = () => {
                   checked={checkDate}
                   onChange={(e) => {
                     setCheckDate(e.target.checked);
-                    applyFilter({
-                      checkDate: e.target.checked,
-                      date,
-                      price,
-                      city,
-                      state,
-                      categoury,
-                      country,
-                      manufacturer,
-                      listingType,
-                      condition,
-                      year,
-                      quickSearch,
-                    });
+                    applyNewFilter({ checkDate: e.target.checked });
                   }}
                 >
                   Show listings added in the last
@@ -1652,21 +1312,7 @@ const Filters = () => {
                   }}
                   onBlur={() => {
                     if (checkDate == true) {
-                      // console.log("yes calling me");
-                      applyFilter({
-                        date,
-                        checkDate,
-                        price,
-                        city,
-                        state,
-                        categoury,
-                        country,
-                        manufacturer,
-                        listingType,
-                        condition,
-                        year,
-                        quickSearch,
-                      });
+                      applyNewFilter({});
                     }
                   }}
                 />
