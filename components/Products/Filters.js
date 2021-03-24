@@ -103,6 +103,11 @@ const Filters = () => {
     if (router.query) {
       if (router.query.created) {
         setCheckDate(true);
+        const date = new Date(router.query.created);
+        date.setDate(date.getDate() + 1);
+        const today = new Date();
+        const one_day = 1000 * 60 * 60 * 24;
+        setDate(Math.ceil((today.getTime() - date.getTime()) / one_day));
       }
       if (router.query["state[]"]) {
         setState(getArrayAlways(router.query["state[]"]));
@@ -139,6 +144,7 @@ const Filters = () => {
     // if (router.query.categoury) {
     // }
   }, [router.query, minyear, maxyear, minprice, maxprice]);
+
   useEffect(() => {
     console.log(router.query);
     let req = router.asPath.split("?")[1] ? router.asPath.split("?")[1] : "";
@@ -420,7 +426,6 @@ const Filters = () => {
     //   }
     // }
     if (params.checkDate == true) {
-      console.log("--------------------", params.date, date);
       if (!!params.date) {
         let newdate = new Date();
         let last = new Date(
@@ -1299,7 +1304,6 @@ const Filters = () => {
                   checked={checkDate}
                   onChange={(e) => {
                     setCheckDate(e.target.checked);
-                    applyNewFilter({ checkDate: e.target.checked });
                   }}
                 >
                   Show listings added in the last
@@ -1309,13 +1313,18 @@ const Filters = () => {
                   onChange={(value) => {
                     setDate(value);
                   }}
-                  onBlur={() => {
+                />
+                days
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
                     if (checkDate == true) {
                       applyNewFilter({});
                     }
                   }}
-                />
-                days
+                >
+                  Search
+                </button>
               </Panel>
             </Collapse>
           )}
