@@ -1,4 +1,4 @@
-const Detail = ({header}) => {
+const Detail = ({ header }) => {
   return (
     <div>
       <div className="contact-info-layout3 shadow-equal">
@@ -6,20 +6,36 @@ const Detail = ({header}) => {
           <h2>Contact details</h2>
         </div>
         <ul className="contact-address">
-          <li>
+          {/* <li>
             <i className="bi bi-location-pointer"></i>
             <p>{!!header && header.field_address_1}</p>
           </li>
           <li>
-            <i className="bi bi-phone"></i>
-            <p>{!!header&& header.field_phone_number}</p>
+            <i className="bi bi-location-pointer"></i>
+            <p>{!!header && header.field_address_1}</p>
+          </li> */}
+          <li>
+            <i className="bi bi-location-pointer"></i>
+            <p>1125 Mabury Road San Jose, CA 95133</p>
           </li>
           <li>
+            <i className="bi bi-location-pointer"></i>
+            <p>832 Jones Creek Road Dickson, TN 37055</p>
+          </li>
+          <li>
+            <i className="bi bi-phone"></i>
+            <p>{!!header && header.field_phone_number}</p>
+          </li>
+          {/* <li>
             <i className="bi bi-envelop"></i>
-            <p>{!!header&& header.field_site_e}</p>
+            <p>{!!header && header.field_site_e}</p>
+          </li> */}
+          <li>
+            <i className="bi bi-envelop"></i>
+            <p>Sales@lamequipmentstore.com</p>
           </li>
         </ul>
-        <p>Working hours {!!header&& header.field_hours_value}</p>
+        {/* <p>Working hours {!!header && header.field_hours_value}</p> */}
         <ul className="contact-social">
           <li>
             <a href="#" title="facebook">

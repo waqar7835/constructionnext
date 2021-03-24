@@ -1,271 +1,285 @@
 .listing-content {
-    width: 67%;
-    padding: 0 0 0 15px;
+  width: 67%;
+  padding: 0 0 0 15px;
+}
+.home-banner .banner-content-layout2 h2 {
+  color: #fff;
+}
+.home-banner .banner-content-layout2 {
+  width: 80%;
+  margin: auto;
+}
+.home-banner .banner-content-layout2 p {
+  font-size: 16px;
+}
+.home-banner {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .listing-content .views-row {
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 20px;
-    /* for new changes */
-    width:33%; 
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  /* for new changes */
+  width: 33%;
 }
 .listing-content .invent-pro-cus {
-    display: flex;
-    position: relative;
-    color: #333333;
-    text-transform: capitalize;
+  display: flex;
+  position: relative;
+  color: #333333;
+  text-transform: capitalize;
 }
 .pro-cus-lft {
-    width: 33%;
-    padding: 0 15px;
+  width: 33%;
+  padding: 0 15px;
 }
 .invent-pro-cus-lft .invent-cus-img {
-    background: #333;
-    color: #fff;
-    padding: 10px;
-    flex-shrink: 0;
-    align-self: flex-start;
-    margin-bottom: 7px;
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-bottom: 7px;
 }
 .invent-pro-cus-lft .invent-cus-img img {
-    max-height: 220px;
-    max-width: 100%;
+  max-height: 220px;
+  max-width: 100%;
 }
 .invent-pro-cus-lft {
-    width: 33%;
-    padding: 0 15px;
+  width: 33%;
+  padding: 0 15px;
 }
-.invent-pro-cus-mid .invent-cus-machloc span{
-    font-weight: 800;
-    margin-right: 10px;
-    font-size: 12px;
+.invent-pro-cus-mid .invent-cus-machloc span {
+  font-weight: 800;
+  margin-right: 10px;
+  font-size: 12px;
 }
 .invent-pro-cus-lft .invent-cus-created {
-    text-align: left;
-    font-size: 11px;
-    margin-top: 7px;
+  text-align: left;
+  font-size: 11px;
+  margin-top: 7px;
 }
 .invent-pro-cus-lft .invent-cus-body {
-    word-break: break-word;
-    font-size: 12px;
-    font-weight: 200;
+  word-break: break-word;
+  font-size: 12px;
+  font-weight: 200;
 }
 .listing-content .invent-pro-cus-mid {
-    font-size: 12px;
-    /* width: 44%;  for new changes */   
-    padding: 0 15px;
+  font-size: 12px;
+  /* width: 44%;  for new changes */
+  padding: 0 15px;
 }
 .invent-pro-cus-mid .invent-cus-title {
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 20px;
-    word-break: break-word;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  word-break: break-word;
 }
- 
+
 .listing-content .invent-pro-cus-mid .eqinfo {
-    display: flex;
-    flex-wrap: wrap;
-    /* for new change  */
-    min-height:40px;
+  display: flex;
+  flex-wrap: wrap;
+  /* for new change  */
+  min-height: 40px;
 }
 .listing-content .invent-pro-cus-mid .eqinfo .eq-label {
-    text-align: left;
-    flex: 1;
+  text-align: left;
+  flex: 1;
 }
 .listing-content .invent-pro-cus-mid .eqinfo .eq-info {
-    text-align: right;
-    flex: 1;
-    margin-right: 0;
-    font-weight: 300;
+  text-align: right;
+  flex: 1;
+  margin-right: 0;
+  font-weight: 300;
 }
 .invent-pro-cus-mid .invent-cus-des {
-    margin-top: 3px;
-    font-size: 12px;
-    word-break: break-word;
+  margin-top: 3px;
+  font-size: 12px;
+  word-break: break-word;
 }
 .invent-pro-cus-mid .invent-cus-price {
-    font-size: 16px;
-    font-weight: 600;
+  font-size: 16px;
+  font-weight: 600;
 }
 .listing-content .invent-pro-cus-rt {
-    width: 23%;
-    padding: 0 0 0 15px;
+  width: 23%;
+  padding: 0 0 0 15px;
 }
 .invent-pro-cus-rt .lister-dealer-info {
-    text-align: right;
-    margin-bottom: 15px;
+  text-align: right;
+  margin-bottom: 15px;
 }
 .invent-pro-cus-rt .lister-dealer-info p {
-    text-align: right !important;
-    line-height: 18px;
-    font-size: 12px;
-    margin-top: 3px;
+  text-align: right !important;
+  line-height: 18px;
+  font-size: 12px;
+  margin-top: 3px;
 }
 .invent-pro-cus-rt .lister-dealer-info p span {
-    font-weight: bold;
+  font-weight: bold;
 }
 .invent-pro-cus-rt .lister-dealer-info p:nth-child(1) a {
-    font-size: 14px;
-    color: #ff9800;
+  font-size: 14px;
+  color: #ff9800;
 }
 .invent-pro-cus-rt .products-info-btns a {
-    clear: both;
-    color: #ff9800;
-    background-color: #fff;
-    border: 1px solid #ff9800;
-    padding: 8px 10px;
-    margin-bottom: 5px;
-    display: block;
-    text-align: center;
-    font-size: 14px;
+  clear: both;
+  color: #ff9800;
+  background-color: #fff;
+  border: 1px solid #ff9800;
+  padding: 8px 10px;
+  margin-bottom: 5px;
+  display: block;
+  text-align: center;
+  font-size: 14px;
 }
-.listing-content .invent-pro-cus{
-    display: flex;
+.listing-content .invent-pro-cus {
+  display: flex;
 }
 .invent-pro-cus-rt .products-info-btns a:hover,
 .email-block p a:hover {
-    cursor: pointer;
-    background-color: #ff9800;
-    color: #fff;
+  cursor: pointer;
+  background-color: #ff9800;
+  color: #fff;
 }
 /* email block */
 .svg-inline--fa.fa-w-16 {
-    width: 1em;
+  width: 1em;
 }
-.email-block  p {
-    margin: 3px 5px;
+.email-block p {
+  margin: 3px 5px;
 }
 .email-block p a {
-    color: #ff9800;
-    background-color: #fff;
-    border: 1px solid #ff9800;
-    padding: 10px 13px;
-    font-size: 14px;
+  color: #ff9800;
+  background-color: #fff;
+  border: 1px solid #ff9800;
+  padding: 10px 13px;
+  font-size: 14px;
 }
-.email-block{
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-    margin-top: 0;
+.email-block {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  margin-top: 0;
 }
-
-
 
 /* expose form */
-.views-exposed-form  .form-item {
-    float: none;
+.views-exposed-form .form-item {
+  float: none;
 }
 .views-exposed-form .custom-control.custom-textfield {
-    padding: 0 15px 15px;
-    border-bottom: 1px solid #ddd;
-    margin-right: 0;
+  padding: 0 15px 15px;
+  border-bottom: 1px solid #ddd;
+  margin-right: 0;
 }
 .custom-control-label {
-    position: relative;
-    margin-bottom: 0;
-    vertical-align: top;
+  position: relative;
+  margin-bottom: 0;
+  vertical-align: top;
 }
 .form-control {
-    height: auto;
+  height: auto;
 }
 
 .form-text {
-    display: block;
-    margin-top: 0.25rem;
+  display: block;
+  margin-top: 0.25rem;
 }
-.filters-block{
-    width: 33%;
-    border: 1px solid #ddd;
-    padding-bottom: 26px;
+.filters-block {
+  width: 33%;
+  border: 1px solid #ddd;
+  padding-bottom: 26px;
 }
 /* .filter-listing-block {
     display: flex;
 } */
-.form-composite > legend, .label {
-    display: inline;
-    margin: 0;
-    padding: 0;
-    font-size: inherit;
-    font-weight: bold;
+.form-composite > legend,
+.label {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: bold;
 }
 legend {
-   
-    width: 100%;
-    max-width: 100%;
-    
-    line-height: inherit;
-    color: inherit;
-    white-space: normal;
-    border-bottom: none;
+  width: 100%;
+  max-width: 100%;
+
+  line-height: inherit;
+  color: inherit;
+  white-space: normal;
+  border-bottom: none;
 }
 label.option {
-    display: inline-block;
+  display: inline-block;
 }
 
-form input[type='checkbox'] {
-    margin-left: 1.5rem;
+form input[type="checkbox"] {
+  margin-left: 1.5rem;
 }
 .custom-control-label {
-    position: relative;
-    margin-bottom: 0;
-    vertical-align: top;
+  position: relative;
+  margin-bottom: 0;
+  vertical-align: top;
 }
 .custom-checkbox label {
-    margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 .custom-select {
-    display: inline-block;
-    width: 100%;
-    height: calc(1.35em + 0.75rem + 2px);
-    padding: 0.375rem 2rem 0.375rem 1rem;
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.35;
-    color: #495057;
-    vertical-align: middle;
-    /* background: #fff url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e) no-repeat right 1rem center/8px 10px; */
-    border: 1px solid #ced4da;
-    border-radius: 0.2rem;
-    appearance: none;}
-    .bold span{
-        font-weight: 600;
-    }
-    .list-title{
-        padding: 20px;
-    }
-   
-    /* for new changes  */
-    .invent-pro-cus-mid .invent-cus-img {
-        background: #333;
-        color: #fff;
-        padding: 10px;
-        flex-shrink: 0;
-        align-self: flex-start;
-        margin-bottom: 7px;
-    }
-    .invent-pro-cus-mid .invent-cus-img img {
-        max-height: 150px;
-        max-width: 100%;
-    }
+  display: inline-block;
+  width: 100%;
+  height: calc(1.35em + 0.75rem + 2px);
+  padding: 0.375rem 2rem 0.375rem 1rem;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.35;
+  color: #495057;
+  vertical-align: middle;
+  /* background: #fff url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e) no-repeat right 1rem center/8px 10px; */
+  border: 1px solid #ced4da;
+  border-radius: 0.2rem;
+  appearance: none;
+}
+.bold span {
+  font-weight: 600;
+}
+.list-title {
+  padding: 20px;
+}
 
-    .invent-pro-cus-mid .products-info-btns a {
-        clear: both;
-        color: #ff9800;
-        background-color: #fff;
-        border: 1px solid #ff9800;
-        padding: 8px 10px;
-        margin-bottom: 5px;
-        display: block;
-        text-align: center;
-        font-size: 14px;
-    }
-   
-    .invent-pro-cus-mid .products-info-btns a:hover {
-        cursor: pointer;
-        background-color: #ff9800;
-        color: #fff;
-    }
-    .listing-content .views-row-main{
-        display: flex;
-    flex-wrap: wrap;
-    }
+/* for new changes  */
+.invent-pro-cus-mid .invent-cus-img {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-bottom: 7px;
+}
+.invent-pro-cus-mid .invent-cus-img img {
+  max-height: 150px;
+  max-width: 100%;
+}
+
+.invent-pro-cus-mid .products-info-btns a {
+  clear: both;
+  color: #ff9800;
+  background-color: #fff;
+  border: 1px solid #ff9800;
+  padding: 8px 10px;
+  margin-bottom: 5px;
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
+
+.invent-pro-cus-mid .products-info-btns a:hover {
+  cursor: pointer;
+  background-color: #ff9800;
+  color: #fff;
+}
+.listing-content .views-row-main {
+  display: flex;
+  flex-wrap: wrap;
+}
