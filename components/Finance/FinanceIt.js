@@ -20,16 +20,16 @@ const Fineit = ({ finance }) => {
               className="section-space-less30 bg-gray2 bg-common-style block block-block-content block-block-content14bbc390-4504-40e5-b7df-9f691c2e1fa2"
             >
               <h3 className="finance-title">
-                Finance with us now. With 0 cash down finance!<span> </span>
-                <span style={{ fontSize: "12px", verticalAlign: " middle" }}>
+                Finance with us now. With $0 cash down finance!<span> </span>
+                {/* <span style={{ fontSize: "12px", verticalAlign: " middle" }}>
                   O.A.C on approved credit
-                </span>
+                </span> */}
               </h3>
 
               <div className="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__items">
                 <p>
-                  <b>Taycor : </b>
-                  Get Pre Approval within Minutes!
+                  {/* <b>Taycor : </b> */}
+                  Get Pre Approval within Hours!
                 </p>
                 <p>
                   Taycor Financial has been a partner to the small and

@@ -168,7 +168,7 @@ const Header = ({header}) => {
                 <div className="logo-area">
                   <a href="/">
                     <img
-                      src="/images/logo.png"
+                      src="/images/2nd-logo.png"
                       alt="logo"
                       className="img-responsive"
                     />

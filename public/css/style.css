@@ -4047,11 +4047,11 @@ ul.slider-btn li:last-child {
 }
 .header .header-top-area1 {
   background-color: #ffffff;
-  padding: 22px 0;
+  /* padding: 22px 0; */
 }
 .header .header-top-area1 {
   background-color: #f5f5f5;
-  padding: 22px 0;
+  /* padding: 22px 0;   //for new changes*/ 
 }
 .header .header-top-area {
   background-color: #fffffd;
@@ -4139,6 +4139,8 @@ ul.slider-btn li:last-child {
 }
 .header .top-bar-contact-layout4 {
   margin-top: 10px;
+  /* for new changes */
+  padding: 29px 0 ; 
 }
 @media (max-width: 1199px) {
   .header .top-bar-contact-layout4 {
@@ -4302,7 +4304,8 @@ ul.slider-btn li:last-child {
   margin-top: 0;
 }
 .logo-area img {
-  width: 133px;
+  /* width: 133px; for new changes */
+  width: 190px;
 }
 .logo-area.mt-28 {
   margin-top: 28px;

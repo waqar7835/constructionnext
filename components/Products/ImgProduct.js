@@ -10,8 +10,9 @@ const ImgProduct = () => {
             <div className="banner-content-layout2 text-center">
               <h2 className="txt-white">
                 <b>
-                  Buy Equipment at the Source. NEW and Used equipment at
-                  wholesale prices.
+                  Buy Equipment at the Source  
+                  <br />
+                  NEW and USED equipment at wholesale prices
                 </b>
                 <br />
                 <br />
@@ -26,14 +27,6 @@ const ImgProduct = () => {
               </p>
               <br />
               <p>
-                We offer creative financing and Leasing programs to get you the
-                right equipment and lower rates that fits your budget and
-                preferences: Zero down financing* for your business needs, ITIN
-                only programs, Lease to Own, Rent to Own, and many other payment
-                plans.
-              </p>
-              <br />
-              <p>
                 Browse our complete inventory, and see if there’s anything you
                 need. If you cannot find what you are looking for, we can locate
                 you one using our cast network of partner dealers, bank repo,
@@ -42,6 +35,14 @@ const ImgProduct = () => {
                 a third party to ensure our high standards of quality and
                 performance.
               </p>
+              <br />
+              <p>
+                We offer creative financing and Leasing programs to get you the
+                right equipment and lower rates that fits your budget and
+                preferences: Zero down financing* for your business needs, ITIN
+                only programs, Lease to Own, Rent to Own, and many other payment
+                plans.
+              </p>             
               <br />
               <p>
                 <small style={{ fontSize: 11 }}>O.A.C on approved credit</small>
