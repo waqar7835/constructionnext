@@ -12406,7 +12406,7 @@ div ~ :last-child .features3-wrp-layout1 {
   color: #a9aeba;
 }
 .footer-area-top .footer-logo {
-  margin-bottom: 30px;
+  /* margin-bottom: 30px;  for new changes */
 }
 .footer-area-top .footer-logo img {
   margin-bottom: 40px;
@@ -13955,7 +13955,7 @@ form.left-side-filterseach .ant-form-item-control-wrapper span.ant-form-item-chi
     padding: 0 15px 0 10px;
   }
   .mobilemenu-inner .mobilemenu-logo img {
-    width: 150px;
+    width: 160px;
   }
   .mobilemenu-inner .mobilemenu-btnn {
     justify-content: right;

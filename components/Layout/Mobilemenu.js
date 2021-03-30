@@ -12,7 +12,7 @@ const Mobilemenu = () => {
       <>
       <div className="mobilemenu-inner">
         
-          <div className="mobilemenu-logo"><a href="/"><img src='/images/logo.png' /></a></div>
+          <div className="mobilemenu-logo"><a href="/"><img src='/images/2nd-logo.png' /></a></div>
           <div className="mobilemenu-btnn"> 
           <Button type="primary" onClick={() => setVisible(!visible)}>
           Open
