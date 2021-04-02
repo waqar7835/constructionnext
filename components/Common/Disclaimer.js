@@ -18,12 +18,6 @@ const Disclaimer = () => {
             FORKLIFT, AGRICULTURAL EQUIPMENT, ATTACHMENTS, TRACK LOADERS
             <br />
             <br />
-            We offer creative financing and Leasing programs to get you the
-            right equipment and lower rates that fits your budget and
-            preferences: Zero down financing* for your business needs, ITIN only
-            programs, Lease to Own, Rent to Own, and many other payment plans.
-            <br />
-            <br />
             Browse our complete inventory, and see if there’s anything you need.
             If you cannot find what you are looking for, we can locate you one
             using our cast network of partner dealers, bank repo, trade-ins, and
@@ -32,6 +26,13 @@ const Disclaimer = () => {
             high standards of quality and performance.
             <br />
             <br />
+            We offer creative financing and Leasing programs to get you the
+            right equipment and lower rates that fits your budget and
+            preferences: Zero down financing* for your business needs, ITIN only
+            programs, Lease to Own, Rent to Own, and many other payment plans.
+            <br />
+            <br />
+           
             <small style={{ fontSize: "12px" }}>O.A.C on approved credit</small>
           </p>
         </div>
