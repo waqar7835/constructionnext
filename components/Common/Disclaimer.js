@@ -6,7 +6,7 @@ const Disclaimer = () => {
           <h3>Disclaimer</h3>
           <br />
           <span style={{ fontSize: "22px" }}>
-            Buy Equipment at the Source. NEW and Used equipment at wholesale
+            Buy Equipment at the Source. NEW and USED equipment at wholesale
             prices.
           </span>
           <br />
@@ -33,7 +33,7 @@ const Disclaimer = () => {
             <br />
             <br />
            
-            <small style={{ fontSize: "12px" }}>O.A.C on approved credit</small>
+            <small style={{ fontSize: "12px" }}><sup>*</sup>O.A.C on approved credit</small>
           </p>
         </div>
       </div>

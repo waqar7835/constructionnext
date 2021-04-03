@@ -14575,3 +14575,11 @@ span.search-icon-popup:before {
 span.search-icon-popup:hover::before {
   transform: scaley(1);
 }
+a.apply-now {
+  color: #575757;
+  font-size: 26px;
+  font-weight: bold;
+}
+a.apply-now:hover {
+  color: #575757;
+}

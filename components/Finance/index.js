@@ -9,7 +9,7 @@ const Index = ({ finance }) => {
       <div id="header-area-space"></div>
       <ImgFine />
       <FinanceIt finance={finance} />
-      <Disclaim />
+      {/* <Disclaim /> */}
       {/* <FineForm />    //// to remove for new changes*/}
     </div>
   );

@@ -19,18 +19,20 @@ const Fineit = ({ finance }) => {
               id="block-welcome"
               className="section-space-less30 bg-gray2 bg-common-style block block-block-content block-block-content14bbc390-4504-40e5-b7df-9f691c2e1fa2"
             >
-              <h3 className="finance-title">
-                Finance with us now. With $0 cash down finance!<span> </span>
-                {/* <span style={{ fontSize: "12px", verticalAlign: " middle" }}>
+              <div className="clearfix text-center">
+                <h3 className="finance-title">
+                  Finance with us now. With $0 cash down finance!<span> </span>
+                  {/* <span style={{ fontSize: "12px", verticalAlign: " middle" }}>
                   O.A.C on approved credit
                 </span> */}
-              </h3>
-
-              <div className="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__items">
-                <p>
+                </h3>
+                <p className="mb-10">
                   {/* <b>Taycor : </b> */}
                   Get Pre Approval within Hours!
                 </p>
+              </div>
+
+              <div className="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__items">
                 <p>
                   Taycor Financial has been a partner to the small and
                   medium-sized business community for nearly three decades.
@@ -41,10 +43,30 @@ const Fineit = ({ finance }) => {
                   equipment infrastructure, or need working capital, Taycor has
                   a tailored program to fit your needs.
                 </p>
-                <div style={{ marginTop: 20 }}>
-                  <a href="https://www.apply.taycor.com/619" target="_blank">
-                    <img src="/images/tay.png" />
-                  </a>
+                <p>
+                  We offer creative financing and Leasing programs to get you
+                  the right equipment and lower rates that fits your budget and
+                  preferences: Zero down financing* for your business needs,
+                  ITIN only programs, Lease to Own, Rent to Own, and many other
+                  payment plans.
+                </p>
+
+                <div style={{ marginTop: 30 }}>
+                  <div className="clearfix text-center">
+                    <a href="https://www.apply.taycor.com/619" target="_blank">
+                      <img src="/images/tay.png" />
+                    </a>
+                  </div>
+                  <div className="clearfix text-center mb-10">
+                    <a className='apply-now' href="https://www.apply.taycor.com/619" target="_blank">
+                      Apply Now
+                    </a>
+                  </div>
+                  <div className="clearfix text-center">
+                    <small style={{ fontSize: "12px" }}>
+                      <sup>*</sup>O.A.C on approved credit
+                    </small>
+                  </div>
                 </div>
               </div>
             </div>

@@ -45,7 +45,7 @@ const ImgProduct = () => {
               </p>             
               <br />
               <p>
-                <small style={{ fontSize: 11 }}>O.A.C on approved credit</small>
+                <small style={{ fontSize: 12 }}><sup>*</sup>O.A.C on approved credit</small>
               </p>
             </div>
           </div>
