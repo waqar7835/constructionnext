@@ -276,16 +276,56 @@ const Main = ({ content }) => {
                       </div>
                     </div>
                   )}
-                  {!!content && content.field_category && (
+                   {!!content && content.field_fuel_type && (
                     <div className="pro-b2-gen-flex">
-                      <div className="pro-b2-gen-label">Manufacturer</div>
+                      <div className="pro-b2-gen-label">Fuel Type</div>
+                      <div className="pro-b2-gen-value">
+                        <div className="field field--name-field-stock-number field--type-string field--label-hidden field__item">
+                          {!!content && content.field_fuel_type}
+                        </div> 
+                      </div>
+                    </div>
+                  )}
+                   {!!content && content.field_city && (
+                    <div className="pro-b2-gen-flex">
+                      <div className="pro-b2-gen-label"> City </div>
+                      <div className="pro-b2-gen-value">
+                        <div className="field field--name-field-stock-number field--type-string field--label-hidden field__item">
+                          {!!content && content.field_city}
+                        </div> 
+                      </div>
+                    </div>
+                  )}
+                  {!!content && content.field_state && (
+                    <div className="pro-b2-gen-flex">
+                      <div className="pro-b2-gen-label"> State </div>
+                      <div className="pro-b2-gen-value">
+                        <div className="field field--name-field-stock-number field--type-string field--label-hidden field__item">
+                          {!!content && content.field_state}
+                        </div> 
+                      </div>
+                    </div>
+                  )}
+                  {!!content && content.field_country && (
+                    <div className="pro-b2-gen-flex">
+                      <div className="pro-b2-gen-label">Country</div>
+                      <div className="pro-b2-gen-value">
+                        <div className="field field--name-field-stock-number field--type-string field--label-hidden field__item">
+                          {!!content && content.field_country}
+                        </div> 
+                      </div>
+                    </div>
+                  )}
+                  {/* {!!content && content.field_category && (
+                    <div className="pro-b2-gen-flex">
+                      <div className="pro-b2-gen-label">Manufacturer111</div>
                       <div className="pro-b2-gen-value">
                         <div className="field field--name-field-serial-numbers field--type-string field--label-hidden field__item">
                           {!!content && content.field_category}
                         </div>
                       </div>
                     </div>
-                  )}
+                  )} */}
                   {!!content && content.field_condition && (
                     <div className="pro-b2-gen-flex">
                       <div className="pro-b2-gen-label">Condition</div>
@@ -306,6 +346,18 @@ const Main = ({ content }) => {
                       </div>
                     </div>
                   )}
+                   {!!content && content.field_listing_type && (
+                    <div className="pro-b2-gen-flex">
+                      <div className="pro-b2-gen-label">Listing Type</div>
+                      <div className="pro-b2-gen-value">
+                        <div className="field field--name-field-stock-number field--type-string field--label-hidden field__item">
+                          {!!content && content.field_listing_type}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                 
+                  
                   {!!content && content.field_modal && (
                     <div className="pro-b2-gen-flex">
                       <div className="pro-b2-gen-label">Model</div>
@@ -336,9 +388,11 @@ const Main = ({ content }) => {
                       </div>
                     </div>
                   )}
+                  
+
                 </div>
-                {(!!content && content.field_bucket) ||
-                content.field_bucket_capacity ||
+                {(!!content && content.field_bucket) || content.field_bucket_size || 
+                content.field_bucket_capacity || content.field_bucket_width || 
                 content.field_bucket_type ? (
                   <div className="pro-b2-general showMe">
                     <h2>Attachments</h2>
@@ -369,6 +423,268 @@ const Main = ({ content }) => {
                         <div className="pro-b2-gen-value">
                           <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
                             {!!content && content.field_bucket_capacity}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                     {!!content && content.field_bucket_size && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Bucket Size</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_bucket_size}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                     {!!content && content.field_bucket_width && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Bucket Width</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_bucket_width}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_rearview_camera && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Rearview Camera</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_rearview_camera}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_traction_control && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Traction Control</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_traction_control}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_tire_type && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Tire Type</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_tire_type}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_ride_control && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Ride Control</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_ride_control}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_pad_width && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Pad Width</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_pad_width}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                     {!!content && content.field_track_shoe_width && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Track shoe Width</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_track_shoe_width}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {/* new fileds added  */}
+                    {!!content && content.field_auxiliary_hydraulics && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Auxiliary Hydraulics</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_auxiliary_hydraulics}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_arm_length && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Arm Length </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_arm_length}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {!!content && content.field_track_remaining && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Track Remaining</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_track_remaining}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_battery_type && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Battery Type</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_battery_type}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_coupler && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Coupler </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_coupler}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_backfill_blade && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Backfill Blade </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_backfill_blade}
+                          </div>
+                        </div>
+                      </div>
+                    )} 
+                    {!!content && content.field_max_dump_height && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Max Dump Height</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_max_dump_height}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_max_reach && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Max Reach</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_max_reach}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                     {!!content && content.field_dig_depth && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Dig Depth</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_dig_depth}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_shipping_length && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Shipping Length</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_shipping_length}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_shipping_width && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Shipping Width</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_shipping_width}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_shipping_height && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Shipping Height</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_shipping_height}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_shipping_weight && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Shipping Weight</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_shipping_weight}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_thumb && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Thumb </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_thumb}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_number_of_attachments && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Number of Attachments </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_number_of_attachments}
+                          </div>
+                        </div>
+                      </div>
+                    )} 
+                    {!!content && content.field_hours_meter && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Hours Meter </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_hours_meter}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_seat_type && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Seat Type </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_seat_type}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_premium_display_panel && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Premium Display Panel </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_premium_display_panel}
                           </div>
                         </div>
                       </div>
@@ -445,6 +761,16 @@ const Main = ({ content }) => {
                         </div>
                       </div>
                     )}
+                    {!!content && content.field_a_c_condition && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">A/C Condition </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_a_c_condition}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                     {!!content && content.field_heater && (
                       <div className="pro-b2-gen-flex">
                         <div className="pro-b2-gen-label">Heater</div>
@@ -455,6 +781,17 @@ const Main = ({ content }) => {
                         </div>
                       </div>
                     )}
+                    {!!content && content.field_fenders && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Fenders</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-heater field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_fenders}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
                   </div>
                 ) : (
                   " "
@@ -539,6 +876,150 @@ const Main = ({ content }) => {
                         <div className="pro-b2-gen-value">
                           <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
                             {!!content && content.field_horsepower}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_cutting_width && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Cutting Width</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_cutting_width}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_drive && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Drive </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_drive}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_transmission_type && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Transmission Type </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_transmission_type}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {!!content && content.field_person_capacity && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Person Capacity </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_person_capacity}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_quick_attach && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Quick Attach </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_quick_attach}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {!!content && content.field_two_speed && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Two Apeed </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_two_speed}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_operator_controls && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Operator Controls</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_operator_controls}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                     {!!content && content.field_product_configuration && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Product Configuration  </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_product_configuration}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_track_size && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Track Size</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_track_size}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {!!content && content.field_powertrain_guards && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Powertrain Guards </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_powertrain_guards}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {!!content && content.field_differential_lock && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Differential Lock</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_differential_lock}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_hydraulic_high_flow && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Hydraulic High Flow </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_hydraulic_high_flow}
+                          </div>
+                        </div>
+                      </div>
+                    )} 
+                    {!!content && content.field_self_leveling_bucket && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Self Leveling Bucket </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_self_leveling_bucket}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_purchasing_option && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Purchasing Option</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_purchasing_option}
                           </div>
                         </div>
                       </div>
