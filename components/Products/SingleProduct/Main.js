@@ -508,7 +508,16 @@ const Main = ({ content }) => {
                       </div>
                     )}
                     {/* new fileds added  */}
-                    
+                    {!!content && content.field_max_travel_speed && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Max Travel Speed</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_max_travel_speed}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                     {!!content && content.field_standard_hydraulic_flow && (
                       <div className="pro-b2-gen-flex">
                         <div className="pro-b2-gen-label">Standard Hydraulic Flow </div>
@@ -945,7 +954,7 @@ const Main = ({ content }) => {
                 ) : (
                   " "
                 )}
-                {!!content && content.field_max_travel_speed ? (
+                {/* {!!content && content.field_max_travel_speed ? (
                   <div className="pro-b2-general showMe">
                     {!!content && content.field_max_travel_speed ? (
                       <h2>Powertrain</h2>
@@ -965,7 +974,8 @@ const Main = ({ content }) => {
                   </div>
                 ) : (
                   " "
-                )}
+                )} */}
+                
                 {(!!content && content.field_horsepower) ||
                 content.field_engine_manufacturer ||
                 content.field_engine_model ||
