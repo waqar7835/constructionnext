@@ -508,6 +508,117 @@ const Main = ({ content }) => {
                       </div>
                     )}
                     {/* new fileds added  */}
+                    
+                    {!!content && content.field_standard_hydraulic_flow && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Standard Hydraulic Flow </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_standard_hydraulic_flow}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_operator_type && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Operator Type</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_operator_type}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_operating_capacity && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Operating Capacity</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_operating_capacity}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_ground_pressure && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Fuel Capacity</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_ground_pressure}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_gauges_work && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Gauges Work</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_gauges_work}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_headlights_work && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Headlights work </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_headlights_work}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_width_w_o_bucket && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Width w/o bucket</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_width_w_o_bucket}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_height_to_top_of_rops && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Height to Top of ROPS</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_height_to_top_of_rops}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_length_with_bucket && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Length with Bucket</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_length_with_bucket}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_length_w_o_bucket && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Length w/o Bucket</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_length_w_o_bucket}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_ground_clearance && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Ground Clearance  </div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_ground_clearance}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                     {!!content && content.field_auxiliary_hydraulics && (
                       <div className="pro-b2-gen-flex">
                         <div className="pro-b2-gen-label">Auxiliary Hydraulics</div>
