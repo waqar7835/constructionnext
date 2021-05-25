@@ -651,7 +651,7 @@ const Main = ({ content }) => {
                     
                     {!!content && content.field_track_remaining && (
                       <div className="pro-b2-gen-flex">
-                        <div className="pro-b2-gen-label">Track Remaining</div>
+                        <div className="pro-b2-gen-label">Track % Remaining</div>
                         <div className="pro-b2-gen-value">
                           <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
                             {!!content && content.field_track_remaining}
@@ -1157,6 +1157,7 @@ const Main = ({ content }) => {
                         </div>
                       </div>
                     )}
+                    
                     {!!content && content.field_engine_model && (
                       <div className="pro-b2-gen-flex">
                         <div className="pro-b2-gen-label">Engine Model</div>
