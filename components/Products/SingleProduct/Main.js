@@ -360,7 +360,7 @@ const Main = ({ content }) => {
                   
                   {!!content && content.field_modal && (
                     <div className="pro-b2-gen-flex">
-                      <div className="pro-b2-gen-label">Model</div>
+                      <div className="pro-b2-gen-label">Modal</div>
                       <div className="pro-b2-gen-value">
                         <div className="field field--name-field-stock-number field--type-string field--label-hidden field__item">
                           {!!content && content.field_modal}
@@ -508,6 +508,27 @@ const Main = ({ content }) => {
                       </div>
                     )}
                     {/* new fileds added  */}
+                    
+                    {!!content && content.field_number_of_buckets && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Number Of Buckets</div> 
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_number_of_buckets}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_equipment_category && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Equipment Category</div> 
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
+                            {!!content && content.field_equipment_category}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                     {!!content && content.field_max_travel_speed && (
                       <div className="pro-b2-gen-flex">
                         <div className="pro-b2-gen-label">Max Travel Speed</div>
@@ -548,9 +569,19 @@ const Main = ({ content }) => {
                         </div>
                       </div>
                     )}
-                    {!!content && content.field_ground_pressure && (
+                     {!!content && content.field_fuel_capacity && (
                       <div className="pro-b2-gen-flex">
                         <div className="pro-b2-gen-label">Fuel Capacity</div>
+                        <div className="pro-b2-gen-value">
+                          <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
+                            {!!content && content.field_fuel_capacity}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {!!content && content.field_ground_pressure && (
+                      <div className="pro-b2-gen-flex">
+                        <div className="pro-b2-gen-label">Ground Pressure</div>
                         <div className="pro-b2-gen-value">
                           <div className="field field--name-field-bucket-capacity field--type-string field--label-hidden field__item">
                             {!!content && content.field_ground_pressure}
@@ -1055,7 +1086,7 @@ const Main = ({ content }) => {
                     
                     {!!content && content.field_two_speed && (
                       <div className="pro-b2-gen-flex">
-                        <div className="pro-b2-gen-label">Two Apeed </div>
+                        <div className="pro-b2-gen-label">Two Speed</div>
                         <div className="pro-b2-gen-value">
                           <div className="field field--name-field-a-c field--type-list-string field--label-hidden field__item">
                             {!!content && content.field_two_speed}
